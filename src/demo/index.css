@@ -1,0 +1,21 @@
+/* font face Gotham */
+@font-face {
+  font-family: 'Gotham';
+  src: url("../lib/fonts/Gotham/Gotham Light/Gotham-Light.eot?#iefix") format("embedded-opentype"), url("../lib/fonts/Gotham/Gotham Light/Gotham-Light.woff") format("woff"), url("../lib/fonts/Gotham/Gotham Light/Gotham-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal; }
+@font-face {
+  font-family: 'Gotham';
+  src: url("../lib/fonts/Gotham/Gotham Book/Gotham-Book.eot?#iefix") format("embedded-opentype"), url("../lib/fonts/Gotham/Gotham Book/Gotham-Book.woff") format("woff"), url("../lib/fonts/Gotham/Gotham Book/Gotham-Book.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal; }
+@font-face {
+  font-family: 'Gotham';
+  src: url("../lib/fonts/Gotham/Gotham Medium/Gotham-Medium.eot?#iefix") format("embedded-opentype"), url("../lib/fonts/Gotham/Gotham Medium/Gotham-Medium.woff") format("woff"), url("../lib/fonts/Gotham/Gotham Medium/Gotham-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal; }
+@font-face {
+  font-family: 'Gotham';
+  src: url("../lib/fonts/Gotham/Gotham Bold/Gotham-Bold.eot?#iefix") format("embedded-opentype"), url("../lib/fonts/Gotham/Gotham Bold/Gotham-Bold.woff") format("woff"), url("../lib/fonts/Gotham/Gotham Bold/Gotham-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal; }
