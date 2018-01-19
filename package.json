@@ -19,7 +19,13 @@
   },
   "homepage": "https://github.com/DimitriMikadze/create-react-library#readme",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "from": "^0.1.7",
+    "material-ui": "^1.0.0-beta.29",
+    "react": "^16.2.0",
+    "react-import": "^1.5.1",
+    "react-toggle": "^4.0.2"
+  },
   "devDependencies": {
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
