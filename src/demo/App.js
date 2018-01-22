@@ -9,8 +9,11 @@ import GradientButton from '../lib/Button/GradientButton';
 import AccentButton from '../lib/Button/AccentButton';
 import PaperCard from '../lib/PaperCard';
 import TextField from '../lib/TextField';
-import DropDown from '../lib/DropDown';
-import Switch from '../lib/Switch';
+import MenuList from '../lib/DropDown/MenuList';
+import Switch from '../lib/Switch/Switch';
+import NestedList from '../lib/DropDown/NestedList';
+import FilterStatus from '../lib/DropDown/FilterStatus';
+
 
 class App extends Component {
   render() {
@@ -73,37 +76,35 @@ class App extends Component {
             </form>
           </PaperCard>
         </div>
-        <div id='Switch Select' style={{
-            height: '100%'}}>
 
-            <h1>Switch Select</h1>
-           <Switch></Switch>
-          </div>
+            <div id='Switch' style={{
+                height: '100%'}}>
+                <h1>Switch</h1>
+               <Switch></Switch>
+              </div>
 
-        <div id='DropDown' style={{
-          height: '100%'
-        }}>
-
-          <h1>DropDown</h1>
-          <DropDown>
-            <form>
-              <TextField
-                id="Example"
-                label="Example"
-                margin="normal"
-                placeholder="Example"
-              />
-              <TextField disabled
-                id="Disabled"
-                label="Disabled"
-                margin="normal"
-                placeholder="Disabled"
-                value="Disable input"
-              />
-            </form>
-          </DropDown>
-          </div>
-      </div>
+            <div id='FilterStatus' style={{
+              height: '100%'}}>
+              <h1>FilterStatus</h1>
+              <FilterStatus>
+                <form>
+                  <TextField
+                    id="Example"
+                    label="Example"
+                    margin="normal"
+                    placeholder="Example"
+                  />
+                  <TextField disabled
+                    id="Disabled"
+                    label="Disabled"
+                    margin="normal"
+                    placeholder="Disabled"
+                    value="Disable input"
+                  />
+                </form>
+              </FilterStatus>
+              </div>
+        </div>
     )
   }
 }
