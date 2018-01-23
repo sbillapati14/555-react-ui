@@ -12,22 +12,19 @@ import ExpandMore from 'material-ui-icons/ExpandMore';
 import StarBorder from 'material-ui-icons/StarBorder';
 import Check from 'material-ui-icons/Check';
 import ClickAwayListener from 'material-ui/utils/ClickAwayListener';
+import Typography from 'material-ui/Typography/Typography';
 
 const styles = theme => ({
     root: {
-        width: '100%',
-        maxWidth: 250,
-        margin: 5,
-    },
-    nested: {
-        // paddingLeft: theme.spacing.unit * 4,
-        paddingLeft: -50
+        Width: 221,
+        margin: 10,
+        color: "#fff",
+        fontSize: 13,
     },
 
     button: {
-        backgroundColor: "#30b7ff",
-        borderRadius: 10,
-
+        backgroundColor: "#2b9cd8",
+        
         '&:hover': {
             backgroundColor: "#2b9cd8"
         },
@@ -35,18 +32,21 @@ const styles = theme => ({
 
     check: {
         color: "#2b9cd8",
-        fontWeight: "800"
+        fontWeight: 500,
     },
-    header:{
-        light : "white"
-    },
-    list:{
+    list: {
         backgroundColor: theme.palette.background.paper,
+    },
+    ListItem:{
+        fontSize: 14,
+        color: "#666666",
+        fontFamily: 'Actor',
+        fontWeight: 400,
+
     }
 });
 
 class NestedList extends React.Component {
-
     constructor() {
         super();
         this.state = {
@@ -57,12 +57,11 @@ class NestedList extends React.Component {
              "Lorem Application",
              "Dolor Application",
              "Ipsum Application",
-             "Loremipsum Application",
+             "Hello Application",
              "Lipsum Application"
             ]
         };
 
-        // this.handleSelectOption = this.handleSelectOption.bind(this, index);
     }
 
     handleClick = () => {
@@ -70,18 +69,19 @@ class NestedList extends React.Component {
     };
 
     handleSelectOption = (index) => {
-        this.setState({ selected: index })
-        this.handleClick()
-        console.log(index)
+        this.setState({ selected: index, open: false })
     }
 
     render() {
         const { classes } = this.props;
+        const { options, selected } = this.state;
 
         return (
             <List className={classes.root}>
-                <ListItem button onClick={this.handleClick} disableRipple={true} className={classes.button}>
-                    <ListItemText  primary="Acme Application" className={classes.header} style={{fontSize : 20}} />
+                <ListItem button onClick={this.handleClick} disableRipple={true} className={classes.button} style={{ borderRadius : this.state.open ? "5px 5px 0px 0px" : "5px 5px 5px 5px"}}>
+                    {/* <ListItemText primary={options[selected]} className={classes.header} style={{ fontSize: 15, }} /> */}
+                    <Typography style={{color: "white" , fontFamily : "Actor", fontSize: 15, fontWeight: "800"}} > {options[selected]} </Typography>
+                    <ListItemText />
                     {this.state.open ? <ExpandLess /> : <ExpandMore />}
                 </ListItem>
                 <Collapse component="li" in={this.state.open} timeout="auto" unmountOnExit>
@@ -92,8 +92,8 @@ class NestedList extends React.Component {
                                 <List
                                     key={index}
                                     disablePadding
-                                    subheader={index === 0 ? <ListSubheader style={{ fontWeight: "bold", color: "black", alignContent: "center" }}>Choose Application</ListSubheader> : undefined} 
-                                    className = {classes.list}
+                                    subheader={index === 0 ? <ListSubheader style={{ fontWeight: "800", fontSize:15, color: "black", alignContent: "center", fontFamily:"Actor" }}>Choose Application</ListSubheader> : undefined}
+                                    className={classes.list}
                                     >
                                     <ListItem
                                     button
@@ -103,9 +103,12 @@ class NestedList extends React.Component {
                                         onClick={(e) => {
                                         this.handleSelectOption(index, e)
                                         }}
-                                 //    onClick = {this.handleSelectOption.bind(this,index)}
-                                    >
-                                        <ListItemText style={{ marginLeft: 0 }} primary={value} />
+                                        >
+                                        {/* <ListItemText style={{ marginLeft: 0, fontSize:90 }} secondary={value} /> */}
+
+
+                                        <Typography className={classes.ListItem} style={{color: this.state.selected=== index ? "#2b9cd8" : "black"}} > {value} </Typography>
+                                        <ListItemText />
                                         {this.state.selected === index ? <Check className={classes.check} /> : undefined}
                                     </ListItem>
                                 </List>

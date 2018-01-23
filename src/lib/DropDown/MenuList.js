@@ -6,10 +6,9 @@ import { MenuItem, MenuList } from 'material-ui/Menu';
 import Grow from 'material-ui/transitions/Grow';
 import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
-import { Manager, Target, Popper } from 'react-popper';
+import { Manager, Target, Popper,  } from 'react-popper';
 import ClickAwayListener from 'material-ui/utils/ClickAwayListener';
 import Avatar from 'material-ui/Avatar';
-import Divider from 'material-ui/Divider';
 
 
 const styles = {
@@ -31,7 +30,9 @@ const styles = {
     },
     avatar: {
         marginRight: 15,
-        marginLeft : 15
+        marginLeft : 15,
+        height: 20,
+        width: 21,
     },
 };
 
@@ -87,7 +88,7 @@ class MenuListComposition extends React.Component {
            <ClickAwayListener onClickAway={this.handleClose}>
                 <Grow in={open} id="menu-list" style={{ transformOrigin: '0 0 0' }}>
                     <Paper>
-                        <MenuList style={{ width: 200 }}>
+                        <MenuList style={{ width: 170, height: 170, position: "relative",}}>
                             <MenuItem
                                onClick={
                                this.handleProfile
@@ -98,7 +99,7 @@ class MenuListComposition extends React.Component {
                             alt="Remy Sharp"
                             className={classNames(classes.avatar, classes.bigAvatar)}
                             src="https://image.flaticon.com/icons/png/128/118/118781.png" className={classes.avatar} />
-                        <p style={{ marginTop: 10 }}> Profile</p>
+                        <p style={{ marginTop: -4 }}> Profile</p>
                     </div>
                     </MenuItem>
                     <MenuItem
@@ -109,7 +110,7 @@ class MenuListComposition extends React.Component {
                             alt="Remy Sharp"
                             className={classNames(classes.avatar, classes.bigAvatar)}
                             src="https://d30y9cdsu7xlg0.cloudfront.net/png/196271-200.png" className={classes.avatar} />
-                        <p style={{ marginTop: 10 }}> Setting</p>
+                        <p style={{ marginTop: -4 }}> Setting</p>
                     </div>
                     </MenuItem>
                     <MenuItem
@@ -120,7 +121,7 @@ class MenuListComposition extends React.Component {
                         alt="Remy Sharp"
                         className={classNames(classes.avatar, classes.bigAvatar)}
                         src="https://d30y9cdsu7xlg0.cloudfront.net/png/7237-200.png" className={classes.avatar} />
-                        <p style={{ marginTop: 10 }}> Logout</p>
+                        <p style={{ marginTop: -4 }}> Logout</p>
                         </div>
                     </MenuItem>
                      </MenuList>

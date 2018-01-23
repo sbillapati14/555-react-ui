@@ -14,23 +14,26 @@ import Check from 'material-ui-icons/Check';
 import Dot from 'material-ui-icons/Brightness1'
 import Divider from 'material-ui/Divider';
 import ClickAwayListener from 'material-ui/utils/ClickAwayListener';
+import Paper from 'material-ui/Paper/Paper';
+import Card from 'material-ui/Card/Card';
 
 const styles = theme => ({
     root: {
         maxWidth: 230,
-        backgroundColor: "#fff",
         margin: 20
     },
 
     nested: {
         // paddingLeft: theme.spacing.unit * 4,
-        // paddingLeft: -50
+        // paddingLeft: -50,
+
     },
 
     button: {
         backgroundColor: "#F0F0F0",
         borderRadius: 30,
-        width : 130,
+        width: 130,
+        marginBottom: 5,
 
         '&:hover': {
             backgroundColor: "#F0F0F0"
@@ -41,15 +44,15 @@ const styles = theme => ({
         color: "#2b9cd8",
         fontWeight: "800"
     },
-    header:{
-        light : "white"
+    header: {
+        // light: "white"
     },
 
-    divider : {
-        width: 200,
-        marginLeft: theme.spacing.unit * 2,
-        marginRight: theme.spacing.unit * 70,
-        backgroundColor:"#F0F0F0"
+    divider: {
+        // width: 200,
+        // marginLeft: theme.spacing.unit * 2,
+        // marginRight: theme.spacing.unit * 70,
+        backgroundColor: "#F0F0F0"
     }
 });
 
@@ -57,28 +60,27 @@ class NestedList extends React.Component {
     constructor() {
       super();
       this.state = {
-        open: false,
+        open: true,
         selected: 0,
         options: [
             {
-                value : "All",
-                color : "grey"
+                value: "All",
+                color: "#585858",
             },
             {
                 value: "Closed",
-                color: "green"
+                color: "#1eb368"
             },
             {
                 value: "Open",
-                color: "red"
+                color: "#ee4c4c"
             },
             {
                 value: "Review",
-                color: "skyblue"
+                color: "#2b9cd8"
             },
         ]
     };
-        // this.handleSelectOption = this.handleSelectOption.bind(this, index);
     }
 
     handleClick = () => {
@@ -86,20 +88,30 @@ class NestedList extends React.Component {
     };
 
     handleSelectOption = (index) => {
+
+        console.log("i am clicked", index)
         this.setState({ selected: index })
-        setTimeout((_)=>{
-            this.handleClick()
+        // this.handleClick
+        if (index === 0) {
+            this.setState({ open: false });
+
+        }
+
+        setTimeout((_) => {
+            this.handleClick
         }, 300)
         console.log(index)
     }
 
     render() {
         const { classes } = this.props;
+        const { options, selected } = this.state;
 
         return (
+
             <List className={classes.root}>
                 <ListItem button onClick={this.handleClick} disableRipple={true} className={classes.button}>
-                    <ListItemText  primary="All" className={classes.header} style={{fontSize : 20}} />
+                    <ListItemText primary={this.state.options[selected].value} className={classes.header} style={{ fontSize: 20 }} />
                     {this.state.open ? <ExpandLess /> : <ExpandMore />}
                 </ListItem>
                 <Collapse component="li" in={this.state.open} timeout="auto" unmountOnExit>
@@ -107,26 +119,29 @@ class NestedList extends React.Component {
                     {
                     this.state.options.map((element, index) => {
                         return (
+                        <div style={{ backgroundColor: "white" }}>
                             <List
                                 key={index}
                                 disablePadding
-                                subheader={index === 0 ? <ListSubheader style={{ fontWeight: "bold", color: "black", alignContent: "center",}}>Filter-By-Status :</ListSubheader> : undefined} >
+                                subheader={index === 0 ? <ListSubheader style={{ fontWeight: "bold", color: "#666666", alignContent: "center", }}>Filter-By-Status :</ListSubheader> : undefined} >
                                 <ListItem
                                 button
                                 className={classes.nested}
                                 disableRipple={true}
                                 centerRipple={true}
-                                onClick={(e) => {
-                                this.handleSelectOption(index, e)
-                                }}
-                                // onClick = {this.handleSelectOption.bind(this,index)}
+                                // onClick={(e) => {
+                                //     this.handleSelectOption(index, e)
+                                // }}
                                 >
-                                <Dot style={{ color: element.color}} />
-                                <ListItemText style={{ marginLeft: 0 }} primary={element.value} />
+                                <Dot style={{ color: element.color }} />
+                                <ListItemText style={{ marginLeft: 0 }} primary={element.value} onClick={(e) => {
+                            this.handleSelectOption(index, e)
+                        }} />
                                 {this.state.selected === index ? <Check className={classes.check} /> : undefined}
                                 </ListItem>
                                 <Divider className={classes.divider} />
-                             </List>
+                            </List>
+                        </div>
                             )
                         })
                     }

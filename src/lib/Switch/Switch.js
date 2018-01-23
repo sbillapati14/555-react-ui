@@ -4,30 +4,65 @@ import classNames from 'classnames';
 import Switch from 'material-ui/Switch';
 import withStyles from "material-ui/styles/withStyles";
 
-class SwitchLabels extends React.Component {
+const styles =  {
+  bar: {
+    backgroundColor: "#cccccc",
+    display: "block",
+    width: 57,
+    height: 33,
+    borderRadius: 33,
+
+  },
+
+  checked: {
+    color: "#fff",
+    display: "block",
+    width: 57,
+    height: 33,
+    borderRadius: 33,
+    position: "absolute",
+
+    '& + $bar': {
+      width:60,
+      backgroundColor: "#03ba8d",
+    },
+  },
+};
+
+class Switches extends React.Component {
   state = {
     checked: true,
     checked: false,
+    checked: true,
+  };
+
+  handleChange = name => (event, checked) => {
+    this.setState({ [name]: checked });
   };
 
   render() {
-  const { classes } = this.props;
-    return (
+    const { classes } = this.props;
 
-       <Switch
-           checked={this.state.checked}
-           onChange={(event, checked) => this.setState({ checked: checked })}
-         />
+    return (
+      <div>
+        <Switch
+          classes={{
+            checked: classes.checked,
+            bar: classes.bar,
+          }}
+          checked={this.state.checked}
+          onChange={this.handleChange('checked')}
+        />
+      </div>
     );
   }
 }
 
-
-SwitchLabels.propTypes = {
+Switches.propTypes = {
   classes: PropTypes.object.isRequired,
-}
+};
 
-export default withStyles()(SwitchLabels);
+export default withStyles(styles)(Switches);
 
 
 
