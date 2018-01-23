@@ -22,13 +22,16 @@ class App extends Component {
 
     return (
       <div style={{ padding: '1em' }}>
+
+        <Typography type="display4" gutterBottom>Components</Typography>
+
         <div id="Buttons" style={{
           backgroundColor: '#085279',
           color: 'white',
           height: '100%',
           padding: '1em'
         }}>
-          <h1>Buttons</h1>
+          <Typography type="display3" gutterBottom>Buttons</Typography>
           <Button>Root</Button>
           <GradientButton>GradientButton</GradientButton>
           <OutlineButton color="white">OutlineButton</OutlineButton>
@@ -37,7 +40,7 @@ class App extends Component {
         <div id="PaperCard" style={{
           height: '100%'
         }}>
-          <h1>Paper</h1>
+          <Typography type="display3" gutterBottom>Paper</Typography>
           <PaperCard
             title="Here is the title"
             avatar={
@@ -57,7 +60,7 @@ class App extends Component {
         <div id='Forms' style={{
           height: '100%'
         }}>
-          <h1>Forms</h1>
+          <Typography type="display3" gutterBottom>Forms</Typography>
           <PaperCard>
             <form>
               <TextField
@@ -77,34 +80,36 @@ class App extends Component {
           </PaperCard>
         </div>
 
-            <div id='Switch' style={{
-                height: '100%'}}>
-                <h1>Switch</h1>
-               <Switch></Switch>
-              </div>
-
-            <div id='FilterStatus' style={{
-              height: '100%'}}>
-              <h1>FilterStatus</h1>
-              <FilterStatus>
-                <form>
-                  <TextField
-                    id="Example"
-                    label="Example"
-                    margin="normal"
-                    placeholder="Example"
-                  />
-                  <TextField disabled
-                    id="Disabled"
-                    label="Disabled"
-                    margin="normal"
-                    placeholder="Disabled"
-                    value="Disable input"
-                  />
-                </form>
-              </FilterStatus>
-              </div>
+        <div id='Switch' style={{
+          height: '100%'
+        }}>
+          <Typography type="display3" gutterBottom>Switch</Typography>
+          <Switch></Switch>
         </div>
+
+        <div id='FilterStatus' style={{
+          height: '100%'
+        }}>
+          <Typography type="display3" gutterBottom>Filters</Typography>
+          <FilterStatus>
+            <form>
+              <TextField
+                id="Example"
+                label="Example"
+                margin="normal"
+                placeholder="Example"
+              />
+              <TextField disabled
+                id="Disabled"
+                label="Disabled"
+                margin="normal"
+                placeholder="Disabled"
+                value="Disable input"
+              />
+            </form>
+          </FilterStatus>
+        </div>
+      </div>
     )
   }
 }
