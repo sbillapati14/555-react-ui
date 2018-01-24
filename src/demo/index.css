@@ -1,5 +1,5 @@
 /* font face Gotham */
-@font-face {
+{/*@font-face {
   font-family: 'Gotham';
   src: url("../lib/fonts/Gotham/Gotham Light/Gotham-Light.eot?#iefix") format("embedded-opentype"), url("../lib/fonts/Gotham/Gotham Light/Gotham-Light.woff") format("woff"), url("../lib/fonts/Gotham/Gotham Light/Gotham-Light.ttf") format("truetype");
   font-weight: 300;
@@ -18,4 +18,4 @@
   font-family: 'Gotham';
   src: url("../lib/fonts/Gotham/Gotham Bold/Gotham-Bold.eot?#iefix") format("embedded-opentype"), url("../lib/fonts/Gotham/Gotham Bold/Gotham-Bold.woff") format("woff"), url("../lib/fonts/Gotham/Gotham Bold/Gotham-Bold.ttf") format("truetype");
   font-weight: 700;
-  font-style: normal; }
+  font-style: normal; }*/}

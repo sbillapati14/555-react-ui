@@ -6,33 +6,25 @@ import withStyles from "material-ui/styles/withStyles";
 
 const styles =  {
   bar: {
-    backgroundColor: "#cccccc",
-    display: "block",
-    width: 57,
-    height: 33,
-    borderRadius: 33,
+          height: 24,
+          width : 45,
+          borderRadius : 80,
+          marginTop: -11,
+          backgroundColor: "#cccccc",
 
-  },
+      },
+      checked: {
+          color: "#fff",
+          '& + $bar': {
+              backgroundColor: "#03ba8d",
+          },
+          width:68,
 
-  checked: {
-    color: "#fff",
-    display: "block",
-    width: 57,
-    height: 33,
-    borderRadius: 33,
-    position: "absolute",
-
-    '& + $bar': {
-      width:60,
-      backgroundColor: "#03ba8d",
-    },
-  },
-};
+      },
+  };
 
 class Switches extends React.Component {
   state = {
-    checked: true,
-    checked: false,
     checked: true,
   };
 

@@ -12,7 +12,8 @@ import ExpandMore from 'material-ui-icons/ExpandMore';
 import StarBorder from 'material-ui-icons/StarBorder';
 import Check from 'material-ui-icons/Check';
 import ClickAwayListener from 'material-ui/utils/ClickAwayListener';
-import Typography from 'material-ui/Typography/Typography';
+import Typography from 'material-ui/Typography';
+
 
 const styles = theme => ({
     root: {
@@ -38,10 +39,13 @@ const styles = theme => ({
         backgroundColor: theme.palette.background.paper,
     },
     ListItem:{
-        fontSize: 14,
+        fontSize: 13,
         color: "#666666",
-        fontFamily: 'Actor',
-        fontWeight: 400,
+        fontFamily: 'sans-serif',
+        fontWeight: 500,
+        position: "relative",
+        display: "inline-block",
+        width: "100%",
 
     }
 });
@@ -80,7 +84,7 @@ class NestedList extends React.Component {
             <List className={classes.root}>
                 <ListItem button onClick={this.handleClick} disableRipple={true} className={classes.button} style={{ borderRadius : this.state.open ? "5px 5px 0px 0px" : "5px 5px 5px 5px"}}>
                     {/* <ListItemText primary={options[selected]} className={classes.header} style={{ fontSize: 15, }} /> */}
-                    <Typography style={{color: "white" , fontFamily : "Actor", fontSize: 15, fontWeight: "800"}} > {options[selected]} </Typography>
+                    <Typography style={{color: "white" , fontFamily : "sans-serif", fontSize: 15, fontWeight: "800"}} > {options[selected]} </Typography>
                     <ListItemText />
                     {this.state.open ? <ExpandLess /> : <ExpandMore />}
                 </ListItem>
@@ -92,7 +96,7 @@ class NestedList extends React.Component {
                                 <List
                                     key={index}
                                     disablePadding
-                                    subheader={index === 0 ? <ListSubheader style={{ fontWeight: "800", fontSize:15, color: "black", alignContent: "center", fontFamily:"Actor" }}>Choose Application</ListSubheader> : undefined}
+                                    subheader={index === 0 ? <ListSubheader style={{ fontWeight: "800", fontSize:15, color: "black", alignContent: "center", fontFamily:"sans-serif" }}>Choose Application</ListSubheader> : undefined}
                                     className={classes.list}
                                     >
                                     <ListItem

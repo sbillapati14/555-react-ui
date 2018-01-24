@@ -1,5 +1,5 @@
 import createMuiTheme from 'material-ui/styles/createMuiTheme';
-import 'typeface-montserrat';
+//import 'typeface-montserrat';
 
 import Palette from './palette';
 import Typography from './typography';

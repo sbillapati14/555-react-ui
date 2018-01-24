@@ -20,13 +20,12 @@ import Card from 'material-ui/Card/Card';
 const styles = theme => ({
     root: {
         maxWidth: 230,
-        margin: 20
+        margin: 20,
     },
 
     nested: {
         // paddingLeft: theme.spacing.unit * 4,
         // paddingLeft: -50,
-
     },
 
     button: {
@@ -49,11 +48,8 @@ const styles = theme => ({
     },
 
     divider: {
-        // width: 200,
-        // marginLeft: theme.spacing.unit * 2,
-        // marginRight: theme.spacing.unit * 70,
         backgroundColor: "#F0F0F0"
-    }
+    },
 });
 
 class NestedList extends React.Component {
@@ -66,6 +62,7 @@ class NestedList extends React.Component {
             {
                 value: "All",
                 color: "#585858",
+
             },
             {
                 value: "Closed",
@@ -89,7 +86,7 @@ class NestedList extends React.Component {
 
     handleSelectOption = (index) => {
 
-        console.log("i am clicked", index)
+        console.log("clicked", index)
         this.setState({ selected: index })
         // this.handleClick
         if (index === 0) {
@@ -133,8 +130,8 @@ class NestedList extends React.Component {
                                 //     this.handleSelectOption(index, e)
                                 // }}
                                 >
-                                <Dot style={{ color: element.color }} />
-                                <ListItemText style={{ marginLeft: 0 }} primary={element.value} onClick={(e) => {
+                                <Dot style={{ color: element.color, }} />
+                                <ListItemText style={{ marginLeft: 0, }} primary={element.value} onClick={(e) => {
                             this.handleSelectOption(index, e)
                         }} />
                                 {this.state.selected === index ? <Check className={classes.check} /> : undefined}
