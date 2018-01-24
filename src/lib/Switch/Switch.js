@@ -33,7 +33,7 @@ const styles =  {
         height: 33,
         borderRadius: 33,
       },
-      left: 6,
+      left: 4,
     },
   };
 
