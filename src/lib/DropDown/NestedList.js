@@ -41,7 +41,7 @@ const styles = theme => ({
     ListItem:{
         fontSize: 13,
         color: "#666666",
-        fontFamily: "sans-serif",
+       // fontFamily: "sans-serif",
         fontWeight: 400,
         position: "relative",
         display: "inline-block",
@@ -84,7 +84,7 @@ class NestedList extends React.Component {
             <List className={classes.root}>
                 <ListItem button onClick={this.handleClick} disableRipple={true} className={classes.button} style={{ borderRadius : this.state.open ? "5px 5px 0px 0px" : "5px 5px 5px 5px"}}>
                     {/* <ListItemText primary={options[selected]} className={classes.header} style={{ fontSize: 15, }} /> */}
-                    <Typography style={{color: "white" , fontFamily : "sans-serif", fontSize: 15, fontWeight: "500"}} > {options[selected]} </Typography>
+                    <Typography style={{color: "white" ,  fontSize: 15, fontWeight: "500"}} > {options[selected]} </Typography>
                     <ListItemText />
                     {this.state.open ? <ExpandLess /> : <ExpandMore />}
                 </ListItem>
@@ -96,7 +96,7 @@ class NestedList extends React.Component {
                                 <List
                                     key={index}
                                     disablePadding
-                                    subheader={index === 0 ? <ListSubheader style={{ fontWeight: "bold", fontSize:14, color: "#282828", alignContent: "center", fontFamily:"sans-serif" }}>Choose Application</ListSubheader> : undefined}
+                                    subheader={index === 0 ? <ListSubheader style={{ fontWeight: "bold", fontSize:14, color: "#282828", alignContent: "center",  }}>Choose Application</ListSubheader> : undefined}
                                     className={classes.list}
                                     >
                                     <ListItem

@@ -32,6 +32,7 @@ const styles =  {
         width: 57,
         height: 33,
         borderRadius: 33,
+        opacity: 1,
       },
       left: 4,
     },
