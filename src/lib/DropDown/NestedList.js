@@ -41,8 +41,8 @@ const styles = theme => ({
     ListItem:{
         fontSize: 13,
         color: "#666666",
-        fontFamily: 'sans-serif',
-        fontWeight: 500,
+        fontFamily: "sans-serif",
+        fontWeight: 400,
         position: "relative",
         display: "inline-block",
         width: "100%",
@@ -84,7 +84,7 @@ class NestedList extends React.Component {
             <List className={classes.root}>
                 <ListItem button onClick={this.handleClick} disableRipple={true} className={classes.button} style={{ borderRadius : this.state.open ? "5px 5px 0px 0px" : "5px 5px 5px 5px"}}>
                     {/* <ListItemText primary={options[selected]} className={classes.header} style={{ fontSize: 15, }} /> */}
-                    <Typography style={{color: "white" , fontFamily : "sans-serif", fontSize: 15, fontWeight: "800"}} > {options[selected]} </Typography>
+                    <Typography style={{color: "white" , fontFamily : "sans-serif", fontSize: 15, fontWeight: "500"}} > {options[selected]} </Typography>
                     <ListItemText />
                     {this.state.open ? <ExpandLess /> : <ExpandMore />}
                 </ListItem>
@@ -96,7 +96,7 @@ class NestedList extends React.Component {
                                 <List
                                     key={index}
                                     disablePadding
-                                    subheader={index === 0 ? <ListSubheader style={{ fontWeight: "800", fontSize:15, color: "black", alignContent: "center", fontFamily:"sans-serif" }}>Choose Application</ListSubheader> : undefined}
+                                    subheader={index === 0 ? <ListSubheader style={{ fontWeight: "bold", fontSize:14, color: "#282828", alignContent: "center", fontFamily:"sans-serif" }}>Choose Application</ListSubheader> : undefined}
                                     className={classes.list}
                                     >
                                     <ListItem
@@ -111,7 +111,7 @@ class NestedList extends React.Component {
                                         {/* <ListItemText style={{ marginLeft: 0, fontSize:90 }} secondary={value} /> */}
 
 
-                                        <Typography className={classes.ListItem} style={{color: this.state.selected=== index ? "#2b9cd8" : "black"}} > {value} </Typography>
+                                        <Typography className={classes.ListItem} style={{color: this.state.selected=== index ? "#2b9cd8" : "#666666"}} > {value} </Typography>
                                         <ListItemText />
                                         {this.state.selected === index ? <Check className={classes.check} /> : undefined}
                                     </ListItem>
