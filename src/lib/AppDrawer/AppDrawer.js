@@ -32,6 +32,12 @@ const styles = theme => {
 class AppDrawer extends Component {
     render() {
         const { children, className, classes, title, mobileOpen, onClose } = this.props;
+         const listOptions = { options: [ "Acme Application",
+                                       "Lorem Application",
+                                       "Dolor Application",
+                                       "Ipsum Application",
+                                       "Hello Application",
+                                       "Lipsum Application"], selected: 0};
 
         const drawer = (
             <div className={classes.nav}>
@@ -56,7 +62,7 @@ class AppDrawer extends Component {
             <aside className={className}>
                 {drawer}
                 {children}
-                <NestedList />
+                <NestedList listOptions={listOptions} />
             </aside>
         )
     }

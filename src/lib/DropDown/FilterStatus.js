@@ -41,14 +41,25 @@ const styles = theme => ({
 
     check: {
         color: "#2b9cd8",
-        fontWeight: "800"
     },
     header: {
         // light: "white"
     },
+    filter: {
+        fontWeight: 400,
+        color: "#585858",
+        alignContent: "center",
+        fontSize: 15,
+        height: 41,
+        fontWeight: "bold",
+    },
 
     divider: {
-        backgroundColor: "#F0F0F0"
+        backgroundColor: "#f1f1f1",
+    },
+    circle: {
+        width: 12,
+        height: 12,
     },
 });
 
@@ -61,7 +72,7 @@ class NestedList extends React.Component {
         options: [
             {
                 value: "All",
-                color: "#585858",
+                color: "#ebebeb",
 
             },
             {
@@ -120,7 +131,7 @@ class NestedList extends React.Component {
                             <List
                                 key={index}
                                 disablePadding
-                                subheader={index === 0 ? <ListSubheader style={{ fontWeight: "bold", color: "#666666", alignContent: "center", }}>Filter-By-Status :</ListSubheader> : undefined} >
+                                subheader={index === 0 ? <ListSubheader className={classes.filter}>Filter-By-Status :</ListSubheader> : undefined} >
                                 <ListItem
                                 button
                                 className={classes.nested}
@@ -130,7 +141,7 @@ class NestedList extends React.Component {
                                 //     this.handleSelectOption(index, e)
                                 // }}
                                 >
-                                <Dot style={{ color: element.color, }} />
+                                <Dot style={{ color: element.color,}} className={classes.circle} />
                                 <ListItemText style={{ marginLeft: 0, }} primary={element.value} onClick={(e) => {
                             this.handleSelectOption(index, e)
                         }} />

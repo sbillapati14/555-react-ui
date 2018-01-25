@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Switch from 'material-ui/Switch';
 import withStyles from "material-ui/styles/withStyles";
-import green from 'material-ui/colors/green';
 
 const styles =  {
   bar: {

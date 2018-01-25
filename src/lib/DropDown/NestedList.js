@@ -41,29 +41,32 @@ const styles = theme => ({
     ListItem:{
         fontSize: 13,
         color: "#666666",
-       // fontFamily: "sans-serif",
         fontWeight: 400,
         position: "relative",
         display: "inline-block",
         width: "100%",
 
+    },
+    select: {
+        color: "#fff" ,
+        fontSize: 15,
+        fontWeight: "500",
+    },
+    choose: {
+        fontWeight: "bold",
+        fontSize:14,
+        color: "#282828",
+        alignContent: "center",
     }
 });
 
 class NestedList extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             open: false,
-            selected: 0,
-            options: [
-             "Acme Application",
-             "Lorem Application",
-             "Dolor Application",
-             "Ipsum Application",
-             "Hello Application",
-             "Lipsum Application"
-            ]
+            selected: props.listOptions.selected,
+            options: props.listOptions.options
         };
 
     }
@@ -78,13 +81,14 @@ class NestedList extends React.Component {
 
     render() {
         const { classes } = this.props;
-        const { options, selected } = this.state;
+
+         const { options, selected } = this.state;
 
         return (
             <List className={classes.root}>
                 <ListItem button onClick={this.handleClick} disableRipple={true} className={classes.button} style={{ borderRadius : this.state.open ? "5px 5px 0px 0px" : "5px 5px 5px 5px"}}>
-                    {/* <ListItemText primary={options[selected]} className={classes.header} style={{ fontSize: 15, }} /> */}
-                    <Typography style={{color: "white" ,  fontSize: 15, fontWeight: "500"}} > {options[selected]} </Typography>
+                     {/*<ListItemText primary={options[selected]} className={classes.header} style={{ fontSize: 15, }} />*/}
+                    <Typography className={classes.select} > {options[selected]} </Typography>
                     <ListItemText />
                     {this.state.open ? <ExpandLess /> : <ExpandMore />}
                 </ListItem>
@@ -96,7 +100,7 @@ class NestedList extends React.Component {
                                 <List
                                     key={index}
                                     disablePadding
-                                    subheader={index === 0 ? <ListSubheader style={{ fontWeight: "bold", fontSize:14, color: "#282828", alignContent: "center",  }}>Choose Application</ListSubheader> : undefined}
+                                    subheader={index === 0 ? <ListSubheader className={classes.choose}>Choose Application</ListSubheader> : undefined}
                                     className={classes.list}
                                     >
                                     <ListItem
@@ -109,7 +113,6 @@ class NestedList extends React.Component {
                                         }}
                                         >
                                         {/* <ListItemText style={{ marginLeft: 0, fontSize:90 }} secondary={value} /> */}
-
 
                                         <Typography className={classes.ListItem} style={{color: this.state.selected=== index ? "#2b9cd8" : "#666666"}} > {value} </Typography>
                                         <ListItemText />
@@ -126,7 +129,9 @@ class NestedList extends React.Component {
     }
 }
 
+
 NestedList.propTypes = {
+    listOptions: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired,
 };
 
