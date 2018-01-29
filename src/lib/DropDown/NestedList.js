@@ -38,7 +38,7 @@ const styles = theme => ({
     list: {
         backgroundColor: theme.palette.background.paper,
     },
-    ListItem:{
+    ListItem: {
         fontSize: 13,
         color: "#666666",
         fontWeight: 400,
@@ -48,13 +48,13 @@ const styles = theme => ({
 
     },
     select: {
-        color: "#fff" ,
+        color: "#fff",
         fontSize: 15,
         fontWeight: "500",
     },
     choose: {
         fontWeight: "bold",
-        fontSize:14,
+        fontSize: 14,
         color: "#282828",
         alignContent: "center",
     }
@@ -82,47 +82,47 @@ class NestedList extends React.Component {
     render() {
         const { classes } = this.props;
 
-         const { options, selected } = this.state;
+        const { options, selected } = this.state;
 
         return (
             <List className={classes.root}>
-                <ListItem button onClick={this.handleClick} disableRipple={true} className={classes.button} style={{ borderRadius : this.state.open ? "5px 5px 0px 0px" : "5px 5px 5px 5px"}}>
-                     {/*<ListItemText primary={options[selected]} className={classes.header} style={{ fontSize: 15, }} />*/}
+                <ListItem button onClick={this.handleClick} disableRipple={true} className={classes.button} style={{ borderRadius: this.state.open ? "5px 5px 0px 0px" : "5px 5px 5px 5px" }}>
+                    {/*<ListItemText primary={options[selected]} className={classes.header} style={{ fontSize: 15, }} />*/}
                     <Typography className={classes.select} > {options[selected]} </Typography>
                     <ListItemText />
                     {this.state.open ? <ExpandLess /> : <ExpandMore />}
                 </ListItem>
                 <Collapse component="li" in={this.state.open} timeout="auto" unmountOnExit>
-                     <ClickAwayListener onClickAway={this.handleClick}>
-                    {
-                        this.state.options.map((value, index) => {
-                            return (
-                                <List
-                                    key={index}
-                                    disablePadding
-                                    subheader={index === 0 ? <ListSubheader className={classes.choose}>Choose Application</ListSubheader> : undefined}
-                                    className={classes.list}
+                    <ClickAwayListener onClickAway={this.handleClick}>
+                        {
+                            this.state.options.map((value, index) => {
+                                return (
+                                    <List
+                                        key={index}
+                                        disablePadding
+                                        subheader={index === 0 ? <ListSubheader className={classes.choose}>Choose Application</ListSubheader> : undefined}
+                                        className={classes.list}
                                     >
-                                    <ListItem
-                                    button
-                                    className={classes.nested}
-                                        disableRipple={true}
-                                        centerRipple={true}
-                                        onClick={(e) => {
-                                        this.handleSelectOption(index, e)
-                                        }}
+                                        <ListItem
+                                            button
+                                            className={classes.nested}
+                                            disableRipple={true}
+                                            centerRipple={true}
+                                            onClick={(e) => {
+                                                this.handleSelectOption(index, e)
+                                            }}
                                         >
-                                        {/* <ListItemText style={{ marginLeft: 0, fontSize:90 }} secondary={value} /> */}
+                                            {/* <ListItemText style={{ marginLeft: 0, fontSize:90 }} secondary={value} /> */}
 
-                                        <Typography className={classes.ListItem} style={{color: this.state.selected=== index ? "#2b9cd8" : "#666666"}} > {value} </Typography>
-                                        <ListItemText />
-                                        {this.state.selected === index ? <Check className={classes.check} /> : undefined}
-                                    </ListItem>
-                                </List>
-                            )
-                        })
-                    }
-                </ClickAwayListener>
+                                            <Typography className={classes.ListItem} style={{ color: this.state.selected === index ? "#2b9cd8" : "#666666" }} > {value} </Typography>
+                                            <ListItemText />
+                                            {this.state.selected === index ? <Check className={classes.check} /> : undefined}
+                                        </ListItem>
+                                    </List>
+                                )
+                            })
+                        }
+                    </ClickAwayListener>
                 </Collapse>
             </List>
         );

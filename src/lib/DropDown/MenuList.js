@@ -6,7 +6,7 @@ import { MenuItem, MenuList } from 'material-ui/Menu';
 import Grow from 'material-ui/transitions/Grow';
 import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
-import { Manager, Target, Popper,  } from 'react-popper';
+import { Manager, Target, Popper, } from 'react-popper';
 import ClickAwayListener from 'material-ui/utils/ClickAwayListener';
 import Avatar from 'material-ui/Avatar';
 
@@ -14,12 +14,12 @@ import Avatar from 'material-ui/Avatar';
 const styles = {
     root: {
         display: 'flex',
-        zIndex:10
+        zIndex: 10
     },
     row: {
         display: 'flex',
         justifyContent: 'center',
-        zIndex:10
+        zIndex: 10
     },
     popperClose: {
         pointerEvents: 'none',
@@ -30,7 +30,7 @@ const styles = {
     },
     avatar: {
         marginRight: 15,
-        marginLeft : 15,
+        marginLeft: 15,
         height: 20,
         width: 21,
     },
@@ -49,7 +49,7 @@ class MenuListComposition extends React.Component {
         this.setState({ open: false });
     };
 
-    handleProfile = () =>{
+    handleProfile = () => {
         this.handleClose()
         console.log("profile clicked")
     }
@@ -66,72 +66,72 @@ class MenuListComposition extends React.Component {
         const { classes } = this.props;
         const { open } = this.state;
 
-    return (
-     <div className={classes.root}>
-      <Paper>
-       </Paper>
-        <Manager>
-         <Target>
-          <Button
-           aria-owns={open ? 'menu-list' : null}
-           aria-haspopup="true"
-           onClick={this.handleClick}
-         >
-          Open Menu
-         </Button>
-         </Target>
-         <Popper
-            placement="bottom-start"
-            eventsEnabled={open}
-            className={classNames({ [classes.popperClose]: !open })}
-         >
-           <ClickAwayListener onClickAway={this.handleClose}>
-                <Grow in={open} id="menu-list" style={{ transformOrigin: '0 0 0' }}>
-                    <Paper>
-                        <MenuList style={{ width: 170, height: 170, position: "relative",}}>
-                            <MenuItem
-                               onClick={
-                               this.handleProfile
-                            }
+        return (
+            <div className={classes.root}>
+                <Paper>
+                </Paper>
+                <Manager>
+                    <Target>
+                        <Button
+                            aria-owns={open ? 'menu-list' : null}
+                            aria-haspopup="true"
+                            onClick={this.handleClick}
+                        >
+                            Open Menu
+                        </Button>
+                    </Target>
+                    <Popper
+                        placement="bottom-start"
+                        eventsEnabled={open}
+                        className={classNames({ [classes.popperClose]: !open })}
                     >
-                    <div className={classes.row}>
-                        <Avatar
-                            alt="Remy Sharp"
-                            className={classNames(classes.avatar, classes.bigAvatar)}
-                            src="https://image.flaticon.com/icons/png/128/118/118781.png" className={classes.avatar} />
-                        <p style={{ marginTop: -4 }}> Profile</p>
-                    </div>
-                    </MenuItem>
-                    <MenuItem
-                        onClick={this.handleSetting}
-                    >
-                    <div className={classes.row}>
-                        <Avatar
-                            alt="Remy Sharp"
-                            className={classNames(classes.avatar, classes.bigAvatar)}
-                            src="https://d30y9cdsu7xlg0.cloudfront.net/png/196271-200.png" className={classes.avatar} />
-                        <p style={{ marginTop: -4 }}> Setting</p>
-                    </div>
-                    </MenuItem>
-                    <MenuItem
-                        onClick={this.handleLogout}
-                    >
-                      <div className={classes.row}>
-                        <Avatar
-                        alt="Remy Sharp"
-                        className={classNames(classes.avatar, classes.bigAvatar)}
-                        src="https://d30y9cdsu7xlg0.cloudfront.net/png/7237-200.png" className={classes.avatar} />
-                        <p style={{ marginTop: -4 }}> Logout</p>
-                        </div>
-                    </MenuItem>
-                     </MenuList>
-                       </Paper>
-                       </Grow>
-                   </ClickAwayListener>
-                </Popper>
-            </Manager>
-          </div>
-       );
+                        <ClickAwayListener onClickAway={this.handleClose}>
+                            <Grow in={open} id="menu-list" style={{ transformOrigin: '0 0 0' }}>
+                                <Paper>
+                                    <MenuList style={{ width: 170, height: 170, position: "relative", }}>
+                                        <MenuItem
+                                            onClick={
+                                                this.handleProfile
+                                            }
+                                        >
+                                            <div className={classes.row}>
+                                                <Avatar
+                                                    alt="Remy Sharp"
+                                                    className={classNames(classes.avatar, classes.bigAvatar)}
+                                                    src="https://image.flaticon.com/icons/png/128/118/118781.png" className={classes.avatar} />
+                                                <p style={{ marginTop: -4 }}> Profile</p>
+                                            </div>
+                                        </MenuItem>
+                                        <MenuItem
+                                            onClick={this.handleSetting}
+                                        >
+                                            <div className={classes.row}>
+                                                <Avatar
+                                                    alt="Remy Sharp"
+                                                    className={classNames(classes.avatar, classes.bigAvatar)}
+                                                    src="https://d30y9cdsu7xlg0.cloudfront.net/png/196271-200.png" className={classes.avatar} />
+                                                <p style={{ marginTop: -4 }}> Setting</p>
+                                            </div>
+                                        </MenuItem>
+                                        <MenuItem
+                                            onClick={this.handleLogout}
+                                        >
+                                            <div className={classes.row}>
+                                                <Avatar
+                                                    alt="Remy Sharp"
+                                                    className={classNames(classes.avatar, classes.bigAvatar)}
+                                                    src="https://d30y9cdsu7xlg0.cloudfront.net/png/7237-200.png" className={classes.avatar} />
+                                                <p style={{ marginTop: -4 }}> Logout</p>
+                                            </div>
+                                        </MenuItem>
+                                    </MenuList>
+                                </Paper>
+                            </Grow>
+                        </ClickAwayListener>
+                    </Popper>
+                </Manager>
+            </div>
+        );
     }
 }
 
