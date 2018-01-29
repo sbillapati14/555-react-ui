@@ -49,7 +49,6 @@ class App extends Component {
               <div id="Buttons" style={{
                 backgroundColor: '#085279',
                 color: 'white',
-                height: '100%',
                 padding: '1em'
               }}>
                 <Typography type="display3" gutterBottom>Buttons</Typography>
@@ -58,9 +57,7 @@ class App extends Component {
                 <OutlineButton color="white">OutlineButton</OutlineButton>
                 <AccentButton>AccentButton</AccentButton>
               </div>
-              <div id="PaperCard" style={{
-                height: '100%'
-              }}>
+              <div id="PaperCard">
                 <Typography type="display3" gutterBottom>Paper</Typography>
                 <PaperCard
                   title="Here is the title"
@@ -78,9 +75,7 @@ class App extends Component {
 
               </div>
 
-              <div id='Forms' style={{
-                height: '100%'
-              }}>
+              <div id='Forms'>
                 <Typography type="display3" gutterBottom>Forms</Typography>
                 <PaperCard>
                   <form>
@@ -101,16 +96,12 @@ class App extends Component {
                 </PaperCard>
               </div>
 
-              <div id='Switch' style={{
-                height: '100%'
-              }}>
+              <div id='Switch'>
                 <Typography type="display3" gutterBottom>Switch</Typography>
                 <Switch></Switch>
               </div>
 
-              <div id='FilterStatus' style={{
-                height: '100%'
-              }}>
+              <div id='FilterStatus'>
                 <Typography type="display3" gutterBottom>Filters</Typography>
                 <FilterStatus>
                   <form>
