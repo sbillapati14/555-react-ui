@@ -39,7 +39,7 @@ class App extends Component {
               <MenuList />
             </AppBar>
 
-            <AppDrawer title="IRIS| Portal" />
+            <AppDrawer title="IRIS| Portal" isMobileOpen={isMobileOpen} />
 
             <AppContent isMobileOpen={isMobileOpen}>
 
