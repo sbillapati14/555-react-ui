@@ -93,7 +93,7 @@ AppBar.propTypes = {
     toggleDrawer: PropTypes.func,
 }
 
-AppBar.propDefaults = {
+AppBar.defaultProps = {
     isMobileOpen: false,
 }
 

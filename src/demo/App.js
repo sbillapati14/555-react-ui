@@ -21,6 +21,7 @@ import MenuList from '../lib/DropDown/MenuList';
 import Switch from '../lib/Switch/Switch';
 import NestedList from '../lib/DropDown/NestedList';
 import FilterStatus from '../lib/DropDown/FilterStatus';
+import SelectList, { SelectListItem } from '../lib/SelectList';
 
 const styles = theme => ({
 
@@ -28,10 +29,26 @@ const styles = theme => ({
 
 class App extends Component {
 
+  state = {
+    selectedApplication: '',
+  }
+
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
   render() {
+
+    const { selectedApplication } = this.state;
 
     return (
       <AppWrapper render={({ isMobileOpen, toggleDrawer }) => {
+
         return (
           <AppFrame>
 
@@ -39,7 +56,13 @@ class App extends Component {
               <MenuList />
             </AppBar>
 
-            <AppDrawer title="IRIS| Portal" isMobileOpen={isMobileOpen} />
+            <AppDrawer title="IRIS| Portal" isMobileOpen={isMobileOpen}>
+              <SelectList name="selectedApplication" value={selectedApplication} onChange={this.handleChange}>
+                <SelectListItem value="yolo_app">Yolo App</SelectListItem>
+                <SelectListItem value="1_app">Test App</SelectListItem>
+                <SelectListItem value="3">Funny App</SelectListItem>
+              </SelectList>
+            </AppDrawer>
 
             <AppContent isMobileOpen={isMobileOpen}>
 
