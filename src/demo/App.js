@@ -22,6 +22,10 @@ import Switch from '../lib/Switch/Switch';
 import NestedList from '../lib/DropDown/NestedList';
 import FilterStatus from '../lib/DropDown/FilterStatus';
 import SelectList, { SelectListItem } from '../lib/SelectList';
+import SideNav from '../lib/SideNav';
+import SideNavSection from '../lib/SideNav/SideNavSection';
+import SideNavOption from '../lib/SideNav/SideNavOption';
+import InboxIcon from 'material-ui-icons/Inbox';
 
 const styles = theme => ({
 
@@ -62,6 +66,34 @@ class App extends Component {
                 <SelectListItem value="1_app">Test App</SelectListItem>
                 <SelectListItem value="3">Funny App</SelectListItem>
               </SelectList>
+
+              <SideNav>
+              {/* this is out menu with nested also */}
+              <SideNavSection leftIcon={<InboxIcon />}  label="Auth Types" onCLick={() => {}} active={true|false}>
+               <SideNavOption onClick={()=>console.log('clicked first')}> Server API Endpoints </SideNavOption>
+                  <SideNavOption> Report a Problem </SideNavOption>
+                  <SideNavOption> API Status </SideNavOption>
+                  <SideNavOption> Call Trace </SideNavOption>
+               </SideNavSection>
+              <SideNavSection leftIcon={<InboxIcon />}  label="Tokens" onCLick={() => {}} active={true|false}>
+               <SideNavOption onClick={()=>console.log('clicked first')}> Server API Endpoints </SideNavOption>
+                  <SideNavOption> Reports a Problem </SideNavOption>
+                  <SideNavOption> Call Trace </SideNavOption>
+               </SideNavSection>
+               <SideNavSection leftIcon={<InboxIcon />}  label="Notifications" onCLick={() => {}} active={true|false}>
+                 </SideNavSection>
+              <SideNavSection leftIcon={<InboxIcon />}  label="Tools and Support" onCLick={() => {}} active={true|false}>
+                <SideNavOption onClick={()=>console.log('clicked first')}> Server API Endpoints </SideNavOption>
+                <SideNavOption> Reports A Problem </SideNavOption>
+                <SideNavOption> Call Trace </SideNavOption>
+              </SideNavSection>
+              <SideNavSection leftIcon={<InboxIcon />}  label="Platform Health" onCLick={() => {}} active={true|false}>
+                </SideNavSection>
+              <SideNavSection leftIcon={<InboxIcon />}  label="Settings" onCLick={() => {}} active={true|false}>
+              </SideNavSection>
+              <SideNavSection leftIcon={<InboxIcon />}  label="About" onCLick={() => {}} active={true|false}>
+               </SideNavSection>
+            </SideNav>
             </AppDrawer>
 
             <AppContent isMobileOpen={isMobileOpen}>

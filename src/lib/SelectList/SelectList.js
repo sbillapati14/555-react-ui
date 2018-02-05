@@ -3,16 +3,18 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Collapse from 'material-ui/transitions/Collapse';
 import List, { ListItem, ListItemIcon, ListItemText, ListSubheader } from 'material-ui/List';
-
 import ArrowDropDown from 'material-ui-icons/ArrowDropDown';
 import ArrowDropUp from 'material-ui-icons/ArrowDropUp';
+import Typography from 'material-ui/Typography';
 
 const styles = theme => ({
     root: {
         width: 238,
-        margin: '16px 14px 14px',
+        margin: '16px 14px -10px',
         color: "#fff",
         fontSize: 13,
+        position: 'absolute',
+        zIndex : 10,
     },
     selectedItem: {
         borderRadius: '5px',
@@ -29,6 +31,7 @@ const styles = theme => ({
     },
     selectedItemIcon: {
         marginRight: 0,
+        color: '#fff'
     },
     listItemsContainer: {
         backgroundColor: theme.palette.background.paper,
@@ -41,7 +44,13 @@ const styles = theme => ({
         lineHeight: '17px',
     },
     listItems: {
-        paddingTop: 0
+        paddingTop: 0,
+    },
+    subItemText: {
+        color: '#fff',
+        fontSize: '15px',
+        display: 'block',
+        transition: 'all 0.4s',
     }
 });
 
@@ -103,7 +112,8 @@ class SelectList extends Component {
         return (
             <List className={classes.root} component="ul">
                 <ListItem button disableRipple className={selectedItemClass} onClick={this.toggleDropDown}>
-                    <ListItemText primary={value ? value : placeHolderText} />
+                    <ListItemText disableTypography
+                        primary={<Typography className={classes.subItemText}>{value ? value : placeHolderText}</Typography>}/>
                     <ListItemIcon className={classes.selectedItemIcon}>
                         {this.state.open ? <ArrowDropUp /> : <ArrowDropDown />}
                     </ListItemIcon>

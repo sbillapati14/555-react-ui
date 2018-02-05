@@ -1,27 +1,41 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
+import List from 'material-ui/List';
 
-/*
 
-    <SideNav>
-        <NavSection leftIcon={</Element>} label="" onCLick={() => {}} active={true|false}>
-            <NavOption active={true|false} onClick={()={}}>
-                text
-            </NavOptiion/>
-        </NavSection>
-    </SideNav>
-*/
+const styles = theme => ({
+   root: {
+     marginTop : '65px',
+    }
+});
 
 class SideNav extends Component {
-    render() {
 
-        const { children } = this.props;
+   state = {
+     open: false,
+    }
+
+    toggleDropDown = (e) => {
+     this.setState({ open: !this.state.open });
+    }
+
+    render() {
+        const { classes, children, } = this.props;
 
         return (
-            <ul>
-                <li>{children}</li>
-            </ul>
+            <List className={classes.root}>
+                  {children}
+            </List>
         );
     }
 }
 
-export default SideNav;
+SideNav.propTypes = {
+};
+
+SideNav.defaultProps = {
+
+}
+
+export default withStyles(styles)(SideNav);
