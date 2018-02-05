@@ -9,84 +9,78 @@ import Typography from 'material-ui/Typography';
 
 const styles = theme => ({
   root: {
-     backgroundColor: '#182831',
-     color:"#fff"
+    backgroundColor: '#182831',
+    color: "#fff"
   },
   itemText: {
-     textAlign:"left",
-     color:"red"
+    textAlign: "left",
+    color: "red"
   },
   selectedItemIcon: {
-     color: '#fff'
+    color: '#fff'
   },
-  listItem  : {
+  listItem: {
     color: '#fff',
     fontSize: '15',
     position: 'relative',
     transition: 'all 0.4s',
-    marginBottom : 8,
+    marginBottom: 8,
   },
- activeListItem :{
+  activeListItem: {
     height: 58,
     color: '#fff',
     fontSize: '15',
     position: 'relative',
     transition: 'all 0.4s',
-    marginBottom : 8,
-    backgroundColor : "#253843",
- },
- subItemText: {
+    marginBottom: 8,
+    backgroundColor: "#253843",
+  },
+  subItemText: {
     color: '#fff',
     fontSize: '15',
     display: 'block',
-    transition: 'all 0.4s', }
+    transition: 'all 0.4s',
+  }
 });
 
 class NavSection extends Component {
-    state = {
-      open: false,
-    }
-    handleClick(){
-      if(this.props.children){
-        this.setState({ open: !this.state.open });
-      }else {
-        this.props.onCLick();
-      }
-    }
 
-    render() {
-        const { props, classes, children, leftIcon, label, to  } = this.props;
-        return (
-          <List className={classes.root} component="nav" >
-            <ListItem onClick={this.handleClick.bind(this)} exact to={to} className={this.state.open ? classes.activeListItem : classes.listItem} >
-              {
-                leftIcon?<ListItemIcon>
-                {leftIcon}
-              </ListItemIcon>:null}
-              <ListItemText disableTypography
-                primary={<Typography className={classes.subItemText}>{label}</Typography>}/>
-              {children?
-                <ListItemIcon className={classes.selectedItemIcon}>
-                {this.state.open ? <ArrowDropUp /> : <ArrowDropDown />}
-              </ListItemIcon>:null}
-            </ListItem>
-            {
-              children?
-              <Collapse component="li" in={this.state.open}>
-                {children}
-              </Collapse>:null
-            }
-          </List>
-        );
+  handleClick() {
+    if (this.props.children) {
+      this.setState({ open: !this.props.open });
+    } else {
+      this.props.onCLick();
     }
+  }
+
+  render() {
+    const { classes, children, leftIcon, label, to } = this.props;
+    return (
+      <ListItem component="li">
+        {leftIcon && <ListItemIcon>
+          {leftIcon}
+        </ListItemIcon>}
+        <ListItemText primary={label} />
+        {children ?
+          <ListItemIcon className={classes.selectedItemIcon}>
+            {this.props.open ? <ArrowDropUp /> : <ArrowDropDown />}
+          </ListItemIcon> : null}
+
+        <List className={classes.root} component="ul" >
+          {children}
+        </List>
+      </ListItem>
+    );
+  }
 }
 
 NavSection.propTypes = {
   label: PropTypes.string.isRequired,
+  open: PropTypes.bool,
 };
 
 NavSection.defaultProps = {
-
+  open: false,
 }
 
 export default withStyles(styles)(NavSection);

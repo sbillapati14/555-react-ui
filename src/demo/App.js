@@ -68,32 +68,32 @@ class App extends Component {
               </SelectList>
 
               <SideNav>
-              {/* this is out menu with nested also */}
-              <SideNavSection leftIcon={<InboxIcon />}  label="Auth Types" onCLick={() => {}} active={true|false}>
-               <SideNavOption onClick={()=>console.log('clicked first')}> Server API Endpoints </SideNavOption>
-                  <SideNavOption> Report a Problem </SideNavOption>
+                {/* this is out menu with nested also */}
+                <SideNavSection leftIcon={<InboxIcon />} label="Auth Types" onCLick={() => { }} active={true}>
+                  <SideNavOption primary="Server API Endpoints " />
+                  <SideNavOption primary="Report a Problem" />
                   <SideNavOption> API Status </SideNavOption>
                   <SideNavOption> Call Trace </SideNavOption>
-               </SideNavSection>
-              <SideNavSection leftIcon={<InboxIcon />}  label="Tokens" onCLick={() => {}} active={true|false}>
-               <SideNavOption onClick={()=>console.log('clicked first')}> Server API Endpoints </SideNavOption>
+                </SideNavSection>
+                <SideNavSection leftIcon={<InboxIcon />} label="Tokens" onCLick={() => { }} active={true | false}>
+                  <SideNavOption onClick={() => console.log('clicked first')}> Server API Endpoints </SideNavOption>
                   <SideNavOption> Reports a Problem </SideNavOption>
                   <SideNavOption> Call Trace </SideNavOption>
-               </SideNavSection>
-               <SideNavSection leftIcon={<InboxIcon />}  label="Notifications" onCLick={() => {}} active={true|false}>
-                 </SideNavSection>
-              <SideNavSection leftIcon={<InboxIcon />}  label="Tools and Support" onCLick={() => {}} active={true|false}>
-                <SideNavOption onClick={()=>console.log('clicked first')}> Server API Endpoints </SideNavOption>
-                <SideNavOption> Reports A Problem </SideNavOption>
-                <SideNavOption> Call Trace </SideNavOption>
-              </SideNavSection>
-              <SideNavSection leftIcon={<InboxIcon />}  label="Platform Health" onCLick={() => {}} active={true|false}>
                 </SideNavSection>
-              <SideNavSection leftIcon={<InboxIcon />}  label="Settings" onCLick={() => {}} active={true|false}>
-              </SideNavSection>
-              <SideNavSection leftIcon={<InboxIcon />}  label="About" onCLick={() => {}} active={true|false}>
-               </SideNavSection>
-            </SideNav>
+                <SideNavSection leftIcon={<InboxIcon />} label="Notifications" onCLick={() => { }} active={true | false}>
+                </SideNavSection>
+                <SideNavSection leftIcon={<InboxIcon />} label="Tools and Support" onCLick={() => { }} active={true | false}>
+                  <SideNavOption onClick={() => console.log('clicked first')}> Server API Endpoints </SideNavOption>
+                  <SideNavOption> Reports A Problem </SideNavOption>
+                  <SideNavOption> Call Trace </SideNavOption>
+                </SideNavSection>
+                <SideNavSection leftIcon={<InboxIcon />} label="Platform Health" onCLick={() => { }} active={true | false}>
+                </SideNavSection>
+                <SideNavSection leftIcon={<InboxIcon />} label="Settings" onCLick={() => { }} active={true | false}>
+                </SideNavSection>
+                <SideNavSection leftIcon={<InboxIcon />} label="About" onCLick={() => { }} active={true | false}>
+                </SideNavSection>
+              </SideNav>
             </AppDrawer>
 
             <AppContent isMobileOpen={isMobileOpen}>

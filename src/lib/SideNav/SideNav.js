@@ -5,37 +5,32 @@ import List from 'material-ui/List';
 
 
 const styles = theme => ({
-   root: {
-     marginTop : '65px',
+    root: {
+        marginTop: '65px',
     }
 });
 
 class SideNav extends Component {
 
-   state = {
-     open: false,
-    }
-
-    toggleDropDown = (e) => {
-     this.setState({ open: !this.state.open });
+    state = {
+        open: false,
     }
 
     render() {
         const { classes, children, } = this.props;
 
         return (
-            <List className={classes.root}>
-                  {children}
-            </List>
+            <nav>
+                <List className={classes.root} component="ul">
+                    {children}
+                </List>
+            </nav>
         );
     }
 }
 
 SideNav.propTypes = {
+    children: PropTypes.element.isRequired
 };
-
-SideNav.defaultProps = {
-
-}
 
 export default withStyles(styles)(SideNav);
