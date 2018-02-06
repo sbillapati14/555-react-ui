@@ -115,21 +115,86 @@ class App extends Component {
 
               <div id='Forms'>
                 <Typography type="display3" gutterBottom>Forms</Typography>
-                <PaperCard>
+                <PaperCard
+                   title="Acme Application Details"
+                   avatar={
+                    <Avatar>
+                      <ImageIcon />
+                    </Avatar>
+                 }
+               >
                   <form>
+                  <label style={{color: '#282828', display: 'inline-block',
+                     marginTop: 16, fontSize: 14, fontWeight: 'bold',
+                     fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif', }}>App Domain</label>
                     <TextField
                       id="Example"
-                      label="Example"
                       margin="normal"
-                      placeholder="Example"
+                      defaultValue ="Example"
+                      fullWidth={true}
+                     InputProps={{
+                     disableUnderline: true
+                      }}
+                      style={{alignItems: 'center',
+                      flexDirection: 'row', paddingLeft: 17,}}
                     />
-                    <TextField disabled
+
+                    <label style={{color: '#282828', display: 'inline-block',
+                      marginTop: 16, marginBottom: 16, fontSize: 14, fontWeight: 'bold',
+                      fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',}}>Federation Type</label>
+                    <TextField
                       id="Disabled"
-                      label="Disabled"
-                      margin="normal"
-                      placeholder="Disabled"
+                      fullWidth={true}
                       value="Disable input"
+                      InputProps={{
+                      disableUnderline: true
+                      }}
+                      style={{alignItems: 'center',
+                      flexDirection: 'row', paddingLeft: 17,}}
                     />
+
+                   <label style={{color: '#282828', display: 'inline-block',
+                     marginTop: 16, marginBottom: 16, fontSize: 14, fontWeight: 'bold',
+                      fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif', }}>App Key</label>
+                    <TextField
+                     id="name"
+                     fullWidth={true}
+                     defaultValue="None"
+                     InputProps={{
+                     disableUnderline: true
+                     }}
+                     style={{alignItems: 'center',
+                     flexDirection: 'row', paddingLeft: 17,}}
+                    />
+
+                   <label style={{color: '#282828', display: 'inline-block',
+                       marginTop: 16, marginBottom: 16, fontSize: 14, fontWeight: 'bold',
+                        fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',}}>App Secret</label>
+                      <TextField
+                       id="name"
+                       fullWidth={true}
+                       defaultValue="Default Value"
+                       InputProps={{
+                       disableUnderline: true
+                       }}
+                       style={{alignItems: 'center',
+                       flexDirection: 'row', paddingLeft: 17,}}
+                      />
+
+                   <label style={{color: '#282828', display: 'inline-block',
+                       marginTop: 16, marginBottom: 16, fontSize: 14, fontWeight: 'bold',
+                       fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',}}>App </label>
+                      <TextField
+                       id="name"
+                       fullWidth={true}
+                       defaultValue="jhfghjgssfshgjksgd@*$&nv"
+                       InputProps={{
+                       disableUnderline: true
+                       }}
+                       style={{alignItems: 'center',
+                       flexDirection: 'row', paddingLeft: 17,}}
+                      />
+
                   </form>
                 </PaperCard>
               </div>
@@ -155,6 +220,11 @@ class App extends Component {
                       margin="normal"
                       placeholder="Disabled"
                       value="Disable input"
+                    />
+                    <TextField
+                        hintText="Text Here"
+                        fullWidth={true}
+                        floatingLabelText="Text Here Label"
                     />
                   </form>
                 </FilterStatus>
