@@ -10,11 +10,9 @@ import Typography from 'material-ui/Typography';
 const styles = theme => ({
     root: {
         width: 238,
-        margin: '16px 14px -10px',
         color: "#fff",
         fontSize: 13,
-        position: 'absolute',
-        zIndex : 10,
+        margin: '16px 14px 14px',
     },
     selectedItem: {
         borderRadius: '5px',
@@ -94,26 +92,30 @@ class SelectList extends Component {
         if (this.state.open)
             selectedItemClass += ` ${classes.selectedItemOpen}`
 
+        let selected = placeHolderText;
         const items = React.Children.map(children, child => {
+
             if (!React.isValidElement(child)) {
                 return null;
             }
-            let selected = value === child.props.value;
+
+            let isSelected = value === child.props.value;
+            if (isSelected)
+                selected = child.props.children;
+
 
             return React.cloneElement(child, {
                 role: 'option',
-                selected,
+                isSelected,
                 onClick: this.handleItemClick(child),
             });
         });
-
-        // const text = value ? children.
 
         return (
             <List className={classes.root} component="ul">
                 <ListItem button disableRipple className={selectedItemClass} onClick={this.toggleDropDown}>
                     <ListItemText disableTypography
-                        primary={<Typography className={classes.subItemText}>{value ? value : placeHolderText}</Typography>}/>
+                        primary={<Typography className={classes.subItemText}>{selected}</Typography>} />
                     <ListItemIcon className={classes.selectedItemIcon}>
                         {this.state.open ? <ArrowDropUp /> : <ArrowDropDown />}
                     </ListItemIcon>
