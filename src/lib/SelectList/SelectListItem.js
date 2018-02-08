@@ -4,7 +4,7 @@ import { withStyles } from 'material-ui/styles';
 
 import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import Check from 'material-ui-icons/Check';
-
+import Typography from 'material-ui/Typography';
 const styles = theme => ({
     root: {
         width: 238,
@@ -13,6 +13,7 @@ const styles = theme => ({
     },
     icon: {
         marginRight: 0,
+        color: "#2b9cd8"
     }
 });
 
@@ -30,8 +31,9 @@ class SelectListItem extends Component {
         const { classes, children, selected } = this.props;
 
         return (
-            <ListItem button disableRipple onClick={e => this.handleClick(e)}>
-                <ListItemText className={classes.root} primary={children} />
+            <ListItem onClick={e => this.handleClick(e)}>
+                <ListItemText disableTypography
+                    primary={<Typography style={{ color: selected ? "#2b9cd8" : "#666666" }}>{children}</Typography>} />
                 {selected && <ListItemIcon classes={{ root: classes.icon }}><Check /></ListItemIcon>}
             </ListItem>
         );

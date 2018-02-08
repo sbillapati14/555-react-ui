@@ -1,14 +1,14 @@
 import createMuiTheme from 'material-ui/styles/createMuiTheme';
-//import 'typeface-montserrat';
+import 'typeface-montserrat';
 
 import Palette from './palette';
 import Typography from './typography';
 
-Typography.themeTypography.fontFamily = '"Montserrat", "Helvetica", "Arial", sans-serif';
-
 const theme = createMuiTheme({
   palette: Palette.themePalette,
-  typography: Typography.themeTypography,
+  typography: {
+      fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
+  },
   overrides: {
     MuiFormLabel: {
       focused: {

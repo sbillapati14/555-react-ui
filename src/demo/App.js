@@ -5,6 +5,7 @@ import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import Avatar from 'material-ui/Avatar';
 import ImageIcon from 'material-ui-icons/Image';
+import InboxIcon from 'material-ui-icons/Inbox';
 
 import AppWrapper from '../lib/AppWrapper';
 import AppFrame from '../lib/AppFrame';
@@ -22,6 +23,7 @@ import Switch from '../lib/Switch/Switch';
 import NestedList from '../lib/DropDown/NestedList';
 import FilterStatus from '../lib/DropDown/FilterStatus';
 import SelectList, { SelectListItem } from '../lib/SelectList';
+import SideNav, { SideNavSection, SideNavOption } from '../lib/SideNav';
 
 const styles = theme => ({
 
@@ -57,11 +59,24 @@ class App extends Component {
             </AppBar>
 
             <AppDrawer title="IRIS| Portal" isMobileOpen={isMobileOpen}>
-              <SelectList name="selectedApplication" value={selectedApplication} onChange={this.handleChange}>
-                <SelectListItem value="yolo_app">Yolo App</SelectListItem>
-                <SelectListItem value="1_app">Test App</SelectListItem>
-                <SelectListItem value="3">Funny App</SelectListItem>
-              </SelectList>
+
+              <nav>
+                <SelectList name="selectedApplication" value={selectedApplication} onChange={this.handleChange}>
+                  <SelectListItem value="yolo_app">Yolo App</SelectListItem>
+                  <SelectListItem value="1_app">Test App</SelectListItem>
+                  <SelectListItem value="3">Funny App</SelectListItem>
+                </SelectList>
+
+                <SideNav>
+                  {/* this is out menu with nested also */}
+                  <SideNavSection leftIcon={<InboxIcon height="20" />} label="Auth Types" open>
+                    <SideNavOption primary="Server API Endpoints" />
+                    <SideNavOption primary="Report a Problem" active />
+                    <SideNavOption primary="API Status" />
+                    <SideNavOption primary="Call Trace" />
+                  </SideNavSection>
+                </SideNav>
+              </nav>
             </AppDrawer>
 
             <AppContent isMobileOpen={isMobileOpen}>
