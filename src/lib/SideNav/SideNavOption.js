@@ -2,20 +2,47 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import { ListItem, ListItemText, } from 'material-ui/List';
-import Typography from 'material-ui/Typography';
-
 
 const styles = theme => ({
-  optionListItem: {
-    backgroundColor: '#0e171c',
-    marginBottom: '8px',
-    display: 'block',
-    height: '38px',
-    lineHeight: '38px',
-    padding: '0 14px 0 60px',
-    opacity: '0.7',
-    fontSize: '15px',
-    position: 'relative',
+  root: {
+    verticalAlign: 'baseline',
+    padding: 0,
+  },
+  listItem: {
+    '&:first-child': {
+      backgroundColor: '#0e171c',
+      opacity: '0.7',
+      marginBottom: '8px',
+      display: 'block',
+      height: '38px',
+      lineHeight: '38px',
+      padding: '0 14px 0 60px',
+      fontSize: '15px',
+      position: 'relative',
+    }
+  },
+  listItemActive: {
+    '&:first-child': {
+      backgroundColor: '#0e171c',
+      opacity: '1',
+      marginBottom: '8px',
+      display: 'block',
+      height: '38px',
+      lineHeight: '38px',
+      padding: '0 14px 0 60px',
+      fontSize: '15px',
+      position: 'relative',
+    },
+    '&:before': {
+      content: '""',
+      display: 'block',
+      width: '4px',
+      height: '38px',
+      position: 'absolute',
+      left: 0,
+      top: 0,
+      background: '#2b9cd8',
+    }
   },
   subItemText: {
     color: '#fff',
@@ -29,10 +56,15 @@ const styles = theme => ({
 class NavOption extends Component {
 
   render() {
-    const { classes, children, } = this.props;
+    const { classes, active } = this.props;
+
+    let listItemClass = classes.listItem;
+    if (active)
+      listItemClass = classes.listItemActive;
+
     return (
-      <ListItem component="li" className={classes.optionListItem} onClick={this.props.onClick}>
-        <ListItemText disableTypography
+      <ListItem component="li" classes={{ root: classes.root }} onClick={this.props.onClick}>
+        <ListItemText disableTypography classes={{ root: listItemClass }}
           primary={this.props.primary} secondary={this.props.secondary} />
       </ListItem>
     );

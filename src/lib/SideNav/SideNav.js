@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
 import List from 'material-ui/List';
-
-
-const styles = theme => ({
-    root: {
-        marginTop: '65px',
-    }
-});
 
 class SideNav extends Component {
 
@@ -17,11 +9,11 @@ class SideNav extends Component {
     }
 
     render() {
-        const { classes, children, } = this.props;
+        const { children, } = this.props;
 
         return (
             <nav>
-                <List className={classes.root} component="ul">
+                <List component="ul">
                     {children}
                 </List>
             </nav>
@@ -33,4 +25,4 @@ SideNav.propTypes = {
     children: PropTypes.element.isRequired
 };
 
-export default withStyles(styles)(SideNav);
+export default SideNav;

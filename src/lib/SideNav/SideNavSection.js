@@ -1,47 +1,68 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-import Collapse from 'material-ui/transitions/Collapse';
 import List, { ListItem, ListItemIcon, ListItemText, } from 'material-ui/List';
 import ArrowDropDown from 'material-ui-icons/ArrowDropDown';
 import ArrowDropUp from 'material-ui-icons/ArrowDropUp';
-import Typography from 'material-ui/Typography';
 
-const styles = theme => ({
-  root: {
-    backgroundColor: '#182831',
-    color: "#fff"
-  },
-  itemText: {
-    textAlign: "left",
-    color: "red"
-  },
-  selectedItemIcon: {
-    color: '#fff'
-  },
-  listItem: {
-    color: '#fff',
-    fontSize: '15',
-    position: 'relative',
-    transition: 'all 0.4s',
-    marginBottom: 8,
-  },
-  activeListItem: {
-    height: 58,
-    color: '#fff',
-    fontSize: '15',
-    position: 'relative',
-    transition: 'all 0.4s',
-    marginBottom: 8,
-    backgroundColor: "#253843",
-  },
-  subItemText: {
-    color: '#fff',
-    fontSize: '15',
-    display: 'block',
-    transition: 'all 0.4s',
+const styles = theme => {
+  return {
+    root: {
+      flexDirection: 'column',
+      fontSize: '15px',
+      fontFamily: theme.typography.fontFamily,
+      fontWeight: theme.typography.fontWeighthHevey,
+      padding: '0',
+    },
+    listItem: {
+      display: 'flex',
+      width: '100%',
+      color: '#fff',
+      position: 'relative',
+      transition: 'all 0.4s',
+      marginBottom: 8,
+      height: '58px',
+      padding: '0 0 0 62px',
+    },
+    listItemActive: {
+      backgroundColor: "#253843",
+    },
+    label: {
+      color: '#FFF',
+      height: '58px',
+      lineHeight: '58px',
+      padding: '0',
+    },
+    leftIcon: {
+      position: 'absolute',
+      top: '31%',
+      left: '18px',
+      color: '#FFF'
+    },
+    rightIcon: {
+      position: 'absolute',
+      right: 0,
+      top: 13,
+      color: '#fff',
+      transition: theme.transitions.create(['all']),
+    },
+    itemText: {
+      textAlign: "left",
+      color: "red"
+    },
+    options: {
+      padding: 0,
+      backgroundColor: '#182831',
+      width: '100%',
+      color: "#fff",
+      display: 'none',
+      lineHeight: '38px',
+    },
+    optionsActive: {
+      display: 'block'
+    }
   }
-});
+};
 
 class NavSection extends Component {
 
@@ -54,19 +75,33 @@ class NavSection extends Component {
   }
 
   render() {
-    const { classes, children, leftIcon, label, to } = this.props;
-    return (
-      <ListItem component="li">
-        {leftIcon && <ListItemIcon>
-          {leftIcon}
-        </ListItemIcon>}
-        <ListItemText primary={label} />
-        {children ?
-          <ListItemIcon className={classes.selectedItemIcon}>
-            {this.props.open ? <ArrowDropUp /> : <ArrowDropDown />}
-          </ListItemIcon> : null}
+    const { classes, children, leftIcon, label, open } = this.props;
 
-        <List className={classes.root} component="ul" >
+    let listItemClass = classes.listItem;
+    let optionsClass = classes.options;
+    if (open) {
+      listItemClass += ` ${classes.listItemActive}`;
+      optionsClass += ` ${classes.optionsActive}`
+    }
+
+    return (
+      <ListItem component="li" className={classes.root}>
+        <div className={listItemClass}>
+
+          {leftIcon && (
+            <ListItemIcon className={classes.leftIcon}>
+              {leftIcon}
+            </ListItemIcon>
+          )}
+
+          <ListItemText classes={{ primary: classes.label }} primary={label} />
+
+          <ListItemIcon className={classes.rightIcon}>
+            {this.props.open ? <ArrowDropUp /> : <ArrowDropDown />}
+          </ListItemIcon>
+
+        </div>
+        <List className={optionsClass} component="ul" >
           {children}
         </List>
       </ListItem>
