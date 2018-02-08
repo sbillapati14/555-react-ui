@@ -5,6 +5,7 @@ import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import Avatar from 'material-ui/Avatar';
 import ImageIcon from 'material-ui-icons/Image';
+import InboxIcon from 'material-ui-icons/Inbox';
 
 import AppWrapper from '../lib/AppWrapper';
 import AppFrame from '../lib/AppFrame';
@@ -22,10 +23,7 @@ import Switch from '../lib/Switch/Switch';
 import NestedList from '../lib/DropDown/NestedList';
 import FilterStatus from '../lib/DropDown/FilterStatus';
 import SelectList, { SelectListItem } from '../lib/SelectList';
-import SideNav from '../lib/SideNav';
-import SideNavSection from '../lib/SideNav/SideNavSection';
-import SideNavOption from '../lib/SideNav/SideNavOption';
-import InboxIcon from 'material-ui-icons/Inbox';
+import SideNav, { SideNavSection, SideNavOption } from '../lib/SideNav';
 
 const styles = theme => ({
 
@@ -61,39 +59,24 @@ class App extends Component {
             </AppBar>
 
             <AppDrawer title="IRIS| Portal" isMobileOpen={isMobileOpen}>
-              <SelectList name="selectedApplication" value={selectedApplication} onChange={this.handleChange}>
-                <SelectListItem value="yolo_app">Yolo App</SelectListItem>
-                <SelectListItem value="1_app">Test App</SelectListItem>
-                <SelectListItem value="3">Funny App</SelectListItem>
-              </SelectList>
 
-              <SideNav>
-                {/* this is out menu with nested also */}
-                <SideNavSection leftIcon={<InboxIcon />} label="Auth Types" onCLick={() => { }} active={true}>
-                  <SideNavOption primary="Server API Endpoints " />
-                  <SideNavOption primary="Report a Problem" />
-                  <SideNavOption> API Status </SideNavOption>
-                  <SideNavOption> Call Trace </SideNavOption>
-                </SideNavSection>
-                <SideNavSection leftIcon={<InboxIcon />} label="Tokens" onCLick={() => { }} active={true | false}>
-                  <SideNavOption onClick={() => console.log('clicked first')}> Server API Endpoints </SideNavOption>
-                  <SideNavOption> Reports a Problem </SideNavOption>
-                  <SideNavOption> Call Trace </SideNavOption>
-                </SideNavSection>
-                <SideNavSection leftIcon={<InboxIcon />} label="Notifications" onCLick={() => { }} active={true | false}>
-                </SideNavSection>
-                <SideNavSection leftIcon={<InboxIcon />} label="Tools and Support" onCLick={() => { }} active={true | false}>
-                  <SideNavOption onClick={() => console.log('clicked first')}> Server API Endpoints </SideNavOption>
-                  <SideNavOption> Reports A Problem </SideNavOption>
-                  <SideNavOption> Call Trace </SideNavOption>
-                </SideNavSection>
-                <SideNavSection leftIcon={<InboxIcon />} label="Platform Health" onCLick={() => { }} active={true | false}>
-                </SideNavSection>
-                <SideNavSection leftIcon={<InboxIcon />} label="Settings" onCLick={() => { }} active={true | false}>
-                </SideNavSection>
-                <SideNavSection leftIcon={<InboxIcon />} label="About" onCLick={() => { }} active={true | false}>
-                </SideNavSection>
-              </SideNav>
+              <nav>
+                <SelectList name="selectedApplication" value={selectedApplication} onChange={this.handleChange}>
+                  <SelectListItem value="yolo_app">Yolo App</SelectListItem>
+                  <SelectListItem value="1_app">Test App</SelectListItem>
+                  <SelectListItem value="3">Funny App</SelectListItem>
+                </SelectList>
+
+                <SideNav>
+                  {/* this is out menu with nested also */}
+                  <SideNavSection leftIcon={<InboxIcon height="20" />} label="Auth Types" onCLick={() => { }} open={true}>
+                    <SideNavOption primary="Server API Endpoints" />
+                    <SideNavOption primary="Report a Problem" />
+                    <SideNavOption primary="API Status" />
+                    <SideNavOption primary="Call Trace" />
+                  </SideNavSection>
+                </SideNav>
+              </nav>
             </AppDrawer>
 
             <AppContent isMobileOpen={isMobileOpen}>
