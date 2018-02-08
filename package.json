@@ -9,8 +9,8 @@
     "test": "node scripts/test.js --env=jsdom",
     "build:umd": "node scripts/build.js",
     "build:es2015": "cross-env NODE_ENV=production ./node_modules/.bin/babel ./src/lib --ignore *.test.js --out-dir ./build",
-    "build:es2015modules": "cross-env NODE_ENV=production BABEL_ENV=module ./node_modules/.bin/babel ./src/lib/index.js --out-file ./build/index.es.js",
-    "build:es": "cross-env NODE_ENV=production BABEL_ENV=es ./node_modules/.bin/babel ./src/lib --ignore *.test.js --out-dir ./build/es",
+    "build:es2015modules": "cross-env NODE_ENV=production BABEL_ENV=production ./node_modules/.bin/babel ./src/lib/index.js --out-file ./build/index.es.js",
+    "build:es": "cross-env NODE_ENV=production BABEL_ENV=production ./node_modules/.bin/babel ./src/lib --ignore *.test.js --out-dir ./build/es",
     "build": "yarn build:es2015 && yarn build:es2015modules && yarn build:es && yarn build:umd",
     "prebuild": "rimraf build",
     "prepare": "npm run build"
@@ -59,7 +59,7 @@
     "fs-extra": "3.0.1",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
-    "material-ui": "^1.0.0-beta.29",
+    "material-ui": "^1.0.0-beta.32",
     "material-ui-icons": "^1.0.0-beta.17",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
@@ -121,9 +121,7 @@
   },
   "babel": {
     "presets": [
-      "./config/material-ui-babel-preset-env",
-      "stage-1",
-      "react"
+      "react-app"
     ]
   },
   "eslintConfig": {

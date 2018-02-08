@@ -1,9 +1,3 @@
-import DropDown from './MenuList';
-import DropDown from './NestedList';
-import DropDown from '.FilterStatus';
-
-export default {
-    MenuList,
-    NestedList,
-   FilterStatus,
-}
+export { default as MenuList } from './MenuList';
+export { default as NestedList } from './NestedList';
+export { default as FilterStatus } from './FilterStatus';
