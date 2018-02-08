@@ -22,7 +22,6 @@ class TextField extends React.Component {
     return (
       <MuiTextField className={classes.root}
         { ...this.props }
-        
       >
       </MuiTextField>
     );

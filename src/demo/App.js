@@ -17,7 +17,7 @@ import OutlineButton from '../lib/Button/OutlineButton';
 import GradientButton from '../lib/Button/GradientButton';
 import AccentButton from '../lib/Button/AccentButton';
 import PaperCard from '../lib/PaperCard';
-import TextField from '../lib/TextField';
+import { TextField } from '../lib/InputFields';
 import MenuList from '../lib/DropDown/MenuList';
 import Switch from '../lib/Switch/Switch';
 import NestedList from '../lib/DropDown/NestedList';
@@ -116,84 +116,104 @@ class App extends Component {
               <div id='Forms'>
                 <Typography type="display3" gutterBottom>Forms</Typography>
                 <PaperCard
-                   title="Acme Application Details"
-                   avatar={
+                  title="Acme Application Details"
+                  avatar={
                     <Avatar>
                       <ImageIcon />
                     </Avatar>
-                 }
-               >
+                  }
+                >
                   <form>
-                  <label style={{color: '#282828', display: 'inline-block',
-                     marginTop: 16, fontSize: 14, fontWeight: 'bold',
-                     fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif', }}>App Domain</label>
+                    <label style={{
+                      color: '#282828', display: 'inline-block',
+                      marginTop: 16, fontSize: 14, fontWeight: 'bold',
+                      fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
+                    }}>App Domain</label>
                     <TextField
                       id="Example"
                       margin="normal"
-                      defaultValue ="Example"
+                      defaultValue="Example"
                       fullWidth={true}
-                     InputProps={{
-                     disableUnderline: true
+                      InputProps={{
+                        disableUnderline: true
                       }}
-                      style={{alignItems: 'center',
-                      flexDirection: 'row', paddingLeft: 17,}}
+                      style={{
+                        alignItems: 'center',
+                        flexDirection: 'row', paddingLeft: 17,
+                      }}
                     />
 
-                    <label style={{color: '#282828', display: 'inline-block',
+                    <label style={{
+                      color: '#282828', display: 'inline-block',
                       marginTop: 16, marginBottom: 16, fontSize: 14, fontWeight: 'bold',
-                      fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',}}>Federation Type</label>
+                      fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
+                    }}>Federation Type</label>
                     <TextField
                       id="Disabled"
                       fullWidth={true}
                       value="Disable input"
                       InputProps={{
-                      disableUnderline: true
+                        disableUnderline: true
                       }}
-                      style={{alignItems: 'center',
-                      flexDirection: 'row', paddingLeft: 17,}}
+                      style={{
+                        alignItems: 'center',
+                        flexDirection: 'row', paddingLeft: 17,
+                      }}
                     />
 
-                   <label style={{color: '#282828', display: 'inline-block',
-                     marginTop: 16, marginBottom: 16, fontSize: 14, fontWeight: 'bold',
-                      fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif', }}>App Key</label>
+                    <label style={{
+                      color: '#282828', display: 'inline-block',
+                      marginTop: 16, marginBottom: 16, fontSize: 14, fontWeight: 'bold',
+                      fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
+                    }}>App Key</label>
                     <TextField
-                     id="name"
-                     fullWidth={true}
-                     defaultValue="None"
-                     InputProps={{
-                     disableUnderline: true
-                     }}
-                     style={{alignItems: 'center',
-                     flexDirection: 'row', paddingLeft: 17,}}
+                      id="name"
+                      fullWidth={true}
+                      defaultValue="None"
+                      InputProps={{
+                        disableUnderline: true
+                      }}
+                      style={{
+                        alignItems: 'center',
+                        flexDirection: 'row', paddingLeft: 17,
+                      }}
                     />
 
-                   <label style={{color: '#282828', display: 'inline-block',
-                       marginTop: 16, marginBottom: 16, fontSize: 14, fontWeight: 'bold',
-                        fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',}}>App Secret</label>
-                      <TextField
-                       id="name"
-                       fullWidth={true}
-                       defaultValue="Default Value"
-                       InputProps={{
-                       disableUnderline: true
-                       }}
-                       style={{alignItems: 'center',
-                       flexDirection: 'row', paddingLeft: 17,}}
-                      />
+                    <label style={{
+                      color: '#282828', display: 'inline-block',
+                      marginTop: 16, marginBottom: 16, fontSize: 14, fontWeight: 'bold',
+                      fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
+                    }}>App Secret</label>
+                    <TextField
+                      id="name"
+                      fullWidth={true}
+                      defaultValue="Default Value"
+                      InputProps={{
+                        disableUnderline: true
+                      }}
+                      style={{
+                        alignItems: 'center',
+                        flexDirection: 'row', paddingLeft: 17,
+                      }}
+                    />
 
-                   <label style={{color: '#282828', display: 'inline-block',
-                       marginTop: 16, marginBottom: 16, fontSize: 14, fontWeight: 'bold',
-                       fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',}}>App </label>
-                      <TextField
-                       id="name"
-                       fullWidth={true}
-                       defaultValue="jhfghjgssfshgjksgd@*$&nv"
-                       InputProps={{
-                       disableUnderline: true
-                       }}
-                       style={{alignItems: 'center',
-                       flexDirection: 'row', paddingLeft: 17,}}
-                      />
+                    <label style={{
+                      color: '#282828', display: 'inline-block',
+                      marginTop: 16, marginBottom: 16, fontSize: 14, fontWeight: 'bold',
+                      fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
+                    }}>App </label>
+                    <TextField
+                      id="name"
+                      fullWidth={true}
+                      defaultValue="jhfghjgssfshgjksgd@*$&nv"
+                      InputProps={{
+                        disableUnderline: true
+                      }}
+                      style={{
+                        alignItems: 'center',
+                        flexDirection: 'row', paddingLeft: 17,
+                      }}
+                    />
 
                   </form>
                 </PaperCard>
@@ -222,9 +242,9 @@ class App extends Component {
                       value="Disable input"
                     />
                     <TextField
-                        hintText="Text Here"
-                        fullWidth={true}
-                        floatingLabelText="Text Here Label"
+                      hintText="Text Here"
+                      fullWidth={true}
+                      floatingLabelText="Text Here Label"
                     />
                   </form>
                 </FilterStatus>
