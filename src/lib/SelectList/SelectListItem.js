@@ -13,6 +13,7 @@ const styles = theme => ({
     },
     icon: {
         marginRight: 0,
+        color: "#2b9cd8"
     }
 });
 
@@ -31,8 +32,8 @@ class SelectListItem extends Component {
 
         return (
             <ListItem disableRipple onClick={e => this.handleClick(e)}>
-              <ListItemText disableTypography
-               primary={<Typography style={{ color: selected ? "#2b9cd8" : "#666666" }}>{children}</Typography>}/>
+                <ListItemText disableTypography
+                    primary={<Typography style={{ color: selected ? "#2b9cd8" : "#666666" }}>{children}</Typography>} />
                 {selected && <ListItemIcon classes={{ root: classes.icon }}><Check /></ListItemIcon>}
             </ListItem>
         );

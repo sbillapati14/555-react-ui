@@ -2,27 +2,32 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Collapse from 'material-ui/transitions/Collapse';
-import List, { ListItem, ListItemIcon, ListItemText, ListSubheader } from 'material-ui/List';
+import List, { ListSubheader } from 'material-ui/List';
 import ArrowDropDown from 'material-ui-icons/ArrowDropDown';
 import ArrowDropUp from 'material-ui-icons/ArrowDropUp';
 import Typography from 'material-ui/Typography';
+import Button from 'material-ui/Button';
 
 const styles = theme => ({
     root: {
-        width: 238,
+        width: '238px',
         color: "#fff",
         fontSize: 13,
         margin: '16px 14px 14px',
+        position: 'relative',
     },
     selectedItem: {
+        width: '100%',
         borderRadius: '5px',
         height: 45,
         color: '#fff',
         fontSize: 15,
         lineHeight: 45,
-        paddingLeft: 17,
+        padding: '0 0 0 17px',
         position: 'relative',
-        backgroundImage: '-webkit-linear-gradient( 0deg, rgb(43,156,216) 0%, rgb(48,183,255) 100%)'
+        margin: 0,
+        backgroundImage: '-webkit-linear-gradient( 0deg, rgb(43,156,216) 0%, rgb(48,183,255) 100%)',
+        justifyContent: 'left',
     },
     selectedItemOpen: {
         borderRadius: '5px 5px 0 0',
@@ -31,9 +36,16 @@ const styles = theme => ({
         marginRight: 0,
         color: '#fff'
     },
+    icon: {
+        position: 'absolute',
+        right: 3,
+    },
     listItemsContainer: {
+        width: '100%',
         backgroundColor: theme.palette.background.paper,
         borderRadius: '0 0 5px 5px',
+        position: 'absolute',
+        zIndex: 1,
     },
     subHeaderText: {
         color: '#282828',
@@ -41,15 +53,15 @@ const styles = theme => ({
         fontSize: '1rem',
         lineHeight: '17px',
     },
-    listItems: {
-        paddingTop: 0,
-    },
-    subItemText: {
+    selectedItemText: {
         color: '#fff',
         fontSize: '15px',
         display: 'block',
         transition: 'all 0.4s',
-    }
+    },
+    options: {
+        paddingTop: 0,
+    },
 });
 
 
@@ -86,7 +98,7 @@ class SelectList extends Component {
 
 
     render() {
-        const { classes, subHeaderText, placeHolderText, children, value } = this.props;
+        const { classes, placeHolderText, subHeaderText, children, value } = this.props;
 
         let selectedItemClass = classes.selectedItem;
         if (this.state.open)
@@ -106,30 +118,28 @@ class SelectList extends Component {
 
             return React.cloneElement(child, {
                 role: 'option',
-                isSelected,
+                selected: isSelected,
                 onClick: this.handleItemClick(child),
             });
         });
 
+        items.unshift(<ListSubheader classes={{ root: classes.subHeaderText }}
+            component='p' disableSticky >
+            {subHeaderText}
+        </ListSubheader>);
+
         return (
-            <List className={classes.root} component="ul">
-                <ListItem button disableRipple className={selectedItemClass} onClick={this.toggleDropDown}>
-                    <ListItemText disableTypography
-                        primary={<Typography className={classes.subItemText}>{selected}</Typography>} />
-                    <ListItemIcon className={classes.selectedItemIcon}>
-                        {this.state.open ? <ArrowDropUp /> : <ArrowDropDown />}
-                    </ListItemIcon>
-                </ListItem>
-                <Collapse component="li" in={this.state.open} className={classes.listItemsContainer}>
-                    <ListSubheader classes={{ root: classes.subHeaderText }}
-                        component='p' disableSticky >
-                        {subHeaderText}
-                    </ListSubheader>
-                    <List classes={{ root: classes.listItems }}>
+            <div className={classes.root}>
+                <Button primary disableRipple className={selectedItemClass} onClick={this.toggleDropDown}>
+                    <Typography className={classes.selectedItemText}>{selected}</Typography>
+                    {this.state.open ? <ArrowDropUp className={classes.icon} /> : <ArrowDropDown className={classes.icon} />}
+                </Button>
+                <Collapse component="div" in={this.state.open} className={classes.listItemsContainer}>
+                    <List component="ul" classes={{ root: classes.options }}>
                         {items}
                     </List>
                 </Collapse>
-            </List>
+            </div>
         );
     }
 }
