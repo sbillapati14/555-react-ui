@@ -65,30 +65,30 @@ const styles = theme => ({
 
 class NestedList extends React.Component {
     constructor() {
-      super();
-      this.state = {
-        open: true,
-        selected: 0,
-        options: [
-            {
-                value: "All",
-                color: "#ebebeb",
+        super();
+        this.state = {
+            open: true,
+            selected: 0,
+            options: [
+                {
+                    value: "All",
+                    color: "#ebebeb",
 
-            },
-            {
-                value: "Closed",
-                color: "#1eb368"
-            },
-            {
-                value: "Open",
-                color: "#ee4c4c"
-            },
-            {
-                value: "Review",
-                color: "#2b9cd8"
-            },
-        ]
-    };
+                },
+                {
+                    value: "Closed",
+                    color: "#1eb368"
+                },
+                {
+                    value: "Open",
+                    color: "#ee4c4c"
+                },
+                {
+                    value: "Review",
+                    color: "#2b9cd8"
+                },
+            ]
+        };
     }
 
     handleClick = () => {
@@ -123,36 +123,36 @@ class NestedList extends React.Component {
                     {this.state.open ? <ExpandLess /> : <ExpandMore />}
                 </ListItem>
                 <Collapse component="li" in={this.state.open} timeout="auto" unmountOnExit>
-                   <ClickAwayListener onClickAway={this.handleClick}>
-                    {
-                    this.state.options.map((element, index) => {
-                        return (
-                        <div style={{ backgroundColor: "white" }}>
-                            <List
-                                key={index}
-                                disablePadding
-                                subheader={index === 0 ? <ListSubheader className={classes.filter}>Filter-By-Status :</ListSubheader> : undefined} >
-                                <ListItem
-                                button
-                                className={classes.nested}
-                                disableRipple={true}
-                                centerRipple={true}
-                                // onClick={(e) => {
-                                //     this.handleSelectOption(index, e)
-                                // }}
-                                >
-                                <Dot style={{ color: element.color,}} className={classes.circle} />
-                                <ListItemText style={{ marginLeft: 0, }} primary={element.value} onClick={(e) => {
-                            this.handleSelectOption(index, e)
-                        }} />
-                                {this.state.selected === index ? <Check className={classes.check} /> : undefined}
-                                </ListItem>
-                                <Divider className={classes.divider} />
-                            </List>
-                        </div>
-                            )
-                        })
-                    }
+                    <ClickAwayListener onClickAway={this.handleClick}>
+                        {
+                            this.state.options.map((element, index) => {
+                                return (
+                                    <div key={index} style={{ backgroundColor: "white" }}>
+                                        <List
+                                            key={index}
+                                            disablePadding
+                                            subheader={index === 0 ? <ListSubheader className={classes.filter}>Filter-By-Status :</ListSubheader> : undefined} >
+                                            <ListItem
+                                                button
+                                                className={classes.nested}
+                                                disableRipple={true}
+                                                centerRipple={true}
+                                            // onClick={(e) => {
+                                            //     this.handleSelectOption(index, e)
+                                            // }}
+                                            >
+                                                <Dot style={{ color: element.color, }} className={classes.circle} />
+                                                <ListItemText style={{ marginLeft: 0, }} primary={element.value} onClick={(e) => {
+                                                    this.handleSelectOption(index, e)
+                                                }} />
+                                                {this.state.selected === index ? <Check className={classes.check} /> : undefined}
+                                            </ListItem>
+                                            <Divider className={classes.divider} />
+                                        </List>
+                                    </div>
+                                )
+                            })
+                        }
                     </ClickAwayListener>
                 </Collapse>
             </List>
@@ -161,7 +161,7 @@ class NestedList extends React.Component {
 }
 
 NestedList.propTypes = {
-  classes: PropTypes.object.isRequired,
+    classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(NestedList);
