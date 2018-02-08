@@ -53,7 +53,7 @@ const styles = theme => ({
   }
 });
 
-class NavOption extends Component {
+class SdieNavOption extends Component {
 
   render() {
     const { classes, active } = this.props;
@@ -71,14 +71,13 @@ class NavOption extends Component {
   }
 }
 
-NavOption.propTypes = {
-  disableTypography: PropTypes.boolean,
+SdieNavOption.propTypes = {
   primary: PropTypes.node,
   secondary: PropTypes.node,
 };
 
-NavOption.defaultProps = {
+SdieNavOption.defaultProps = {
   disableTypography: false,
 }
 
-export default withStyles(styles)(NavOption);
+export default withStyles(styles)(SdieNavOption);

@@ -31,7 +31,7 @@ class SelectListItem extends Component {
         const { classes, children, selected } = this.props;
 
         return (
-            <ListItem disableRipple onClick={e => this.handleClick(e)}>
+            <ListItem onClick={e => this.handleClick(e)}>
                 <ListItemText disableTypography
                     primary={<Typography style={{ color: selected ? "#2b9cd8" : "#666666" }}>{children}</Typography>} />
                 {selected && <ListItemIcon classes={{ root: classes.icon }}><Check /></ListItemIcon>}

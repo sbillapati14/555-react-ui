@@ -105,7 +105,7 @@ class SelectList extends Component {
             selectedItemClass += ` ${classes.selectedItemOpen}`
 
         let selected = placeHolderText;
-        const items = React.Children.map(children, child => {
+        const items = React.Children.map(children, (child, index) => {
 
             if (!React.isValidElement(child)) {
                 return null;
@@ -118,19 +118,20 @@ class SelectList extends Component {
 
             return React.cloneElement(child, {
                 role: 'option',
+                key: index + 1,
                 selected: isSelected,
                 onClick: this.handleItemClick(child),
             });
         });
 
-        items.unshift(<ListSubheader classes={{ root: classes.subHeaderText }}
+        items.unshift(<ListSubheader key={0} classes={{ root: classes.subHeaderText }}
             component='p' disableSticky >
             {subHeaderText}
         </ListSubheader>);
 
         return (
             <div className={classes.root}>
-                <Button primary disableRipple className={selectedItemClass} onClick={this.toggleDropDown}>
+                <Button disableRipple={true} className={selectedItemClass} onClick={this.toggleDropDown}>
                     <Typography className={classes.selectedItemText}>{selected}</Typography>
                     {this.state.open ? <ArrowDropUp className={classes.icon} /> : <ArrowDropDown className={classes.icon} />}
                 </Button>

@@ -69,9 +69,9 @@ class App extends Component {
 
                 <SideNav>
                   {/* this is out menu with nested also */}
-                  <SideNavSection leftIcon={<InboxIcon height="20" />} label="Auth Types" onCLick={() => { }} open={true}>
+                  <SideNavSection leftIcon={<InboxIcon height="20" />} label="Auth Types" open>
                     <SideNavOption primary="Server API Endpoints" />
-                    <SideNavOption primary="Report a Problem" />
+                    <SideNavOption primary="Report a Problem" active />
                     <SideNavOption primary="API Status" />
                     <SideNavOption primary="Call Trace" />
                   </SideNavSection>
