@@ -110,21 +110,17 @@ class App extends Component {
                     Here is the content of the PaperCard
               </Typography>
                 </PaperCard>
-
               </div>
-
-
 
               <div id='Switch'>
                 <Typography type="display3" gutterBottom>Switch</Typography>
                 <Switch></Switch>
               </div>
 
-
-               <div id='formfield'>
-                <Typography type="display3" gutterBottom>Form</Typography>
+               <div id='FormField'>
                 <FormField></FormField>
               </div>
+
               <div id='FilterStatus'>
                 <Typography type="display3" gutterBottom>Filters</Typography>
                 <FilterStatus>
