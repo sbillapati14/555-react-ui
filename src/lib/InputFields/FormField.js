@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import Avatar from 'material-ui/Avatar';
 import ImageIcon from 'material-ui-icons/Image';
-import InboxIcon from 'material-ui-icons/Inbox';
 import TextField from 'material-ui/TextField';
-import Paper from 'material-ui/Paper';
-import Card from 'material-ui/Card/Card';
-//import classes from 'classnames';
 import PaperCard from '../PaperCard';
 
 const styles = theme => ({
+     root : {
+       background: '#f5f5f5',
+       border: 'none',
+       outline: 'none',
+       borderRadius: 5,
+       height: 39,
+       fontSize: 14,
+       color: '#606060',
+     },
 
     formLabel: {
       color: '#282828',
@@ -22,15 +26,16 @@ const styles = theme => ({
       fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
 
     },
-    root : {
-          background: '#f5f5f5',
-          border: 'none',
-          outline: 'none',
-          borderRadius: 5,
-          height: 39,
-          fontSize: 14,
-          color: '#606060',
-        },
+    formFieldLabel: {
+      color: '#282828',
+      display: 'inline-block',
+      marginTop: 16,
+      marginBottom: 16,
+      fontSize: 14,
+      fontWeight: 'bold',
+      fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
+
+    },
 });
 
 class FormField extends Component {
@@ -64,7 +69,7 @@ class FormField extends Component {
                       }}
                     />
 
-                    <label className={classes.formLabel}>Federation Type</label>
+                    <label className={classes.formFieldLabel}>Federation Type</label>
                     <TextField
                       className={classes.root}
                       id="Disabled"
@@ -79,7 +84,7 @@ class FormField extends Component {
                       }}
                     />
 
-                    <label className={classes.formLabel}>App Key</label>
+                    <label className={classes.formFieldLabel}>App Key</label>
                     <TextField
                       className={classes.root}
                       id="name"
@@ -94,7 +99,7 @@ class FormField extends Component {
                       }}
                     />
 
-                    <label className={classes.formLabel}>App Secret</label>
+                    <label className={classes.formFieldLabel}>App Secret</label>
                     <TextField
                       className={classes.root}
                       id="name"
@@ -109,7 +114,7 @@ class FormField extends Component {
                       }}
                     />
 
-                    <label className={classes.formLabel}>App </label>
+                    <label className={classes.formFieldLabel}>App </label>
                     <TextField
                       className={classes.root}
                       id="name"
