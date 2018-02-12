@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { withStyles } from 'material-ui/styles';
+import {
+  BrowserRouter as Router,
+  Link,
+} from 'react-router-dom'
 
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
@@ -60,23 +64,26 @@ class App extends Component {
 
             <AppDrawer title="IRIS| Portal" isMobileOpen={isMobileOpen}>
 
-              <nav>
-                <SelectList name="selectedApplication" value={selectedApplication} onChange={this.handleChange}>
-                  <SelectListItem value="yolo_app">Yolo App</SelectListItem>
-                  <SelectListItem value="1_app">Test App</SelectListItem>
-                  <SelectListItem value="3">Funny App</SelectListItem>
-                </SelectList>
+              <Router>
+                <nav>
+                  <SelectList name="selectedApplication" value={selectedApplication} onChange={this.handleChange}>
+                    <SelectListItem value="yolo_app">Yolo App</SelectListItem>
+                    <SelectListItem value="1_app">Test App</SelectListItem>
+                    <SelectListItem value="3">Funny App</SelectListItem>
+                  </SelectList>
 
-                <SideNav>
-                  {/* this is out menu with nested also */}
-                  <SideNavSection leftIcon={<InboxIcon height="20" />} label="Auth Types" open>
-                    <SideNavOption primary="Server API Endpoints" />
-                    <SideNavOption primary="Report a Problem" active />
-                    <SideNavOption primary="API Status" />
-                    <SideNavOption primary="Call Trace" />
-                  </SideNavSection>
-                </SideNav>
-              </nav>
+                  <SideNav>
+                    {/* this is out menu with nested also */}
+                    <SideNavSection component={Link} to="/yolo" leftIcon={<InboxIcon height="20" />} label="Section Link" />
+                    <SideNavSection leftIcon={<InboxIcon height="20" />} label="Auth Types" >
+                      <SideNavOption component={Link} to="/yolo" primary="Server API Endpoints" />
+                      <SideNavOption primary="Report a Problem" active />
+                      <SideNavOption primary="API Status" />
+                      <SideNavOption primary="Call Trace" />
+                    </SideNavSection>
+                  </SideNav>
+                </nav>
+              </Router>
             </AppDrawer>
 
             <AppContent isMobileOpen={isMobileOpen}>

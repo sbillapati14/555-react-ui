@@ -19,6 +19,7 @@ const styles = theme => ({
       padding: '0 14px 0 60px',
       fontSize: '15px',
       position: 'relative',
+      color: '#FFF',
     }
   },
   listItemActive: {
@@ -56,16 +57,16 @@ const styles = theme => ({
 class SdieNavOption extends Component {
 
   render() {
-    const { classes, active } = this.props;
+    const { classes, active, primary, component, ...rest } = this.props;
 
     let listItemClass = classes.listItem;
     if (active)
       listItemClass = classes.listItemActive;
 
     return (
-      <ListItem component="li" classes={{ root: classes.root }} onClick={this.props.onClick}>
+      <ListItem component={component} {...rest} classes={{ root: classes.root }} onClick={this.props.onClick}>
         <ListItemText disableTypography classes={{ root: listItemClass }}
-          primary={this.props.primary} secondary={this.props.secondary} />
+          primary={primary} />
       </ListItem>
     );
   }
@@ -73,11 +74,12 @@ class SdieNavOption extends Component {
 
 SdieNavOption.propTypes = {
   primary: PropTypes.node,
-  secondary: PropTypes.node,
+  /**
+   * The component used for the root node.
+   * Either a string to use a DOM element or a component.
+   * By default, it's a `li` when `button` is `false` and a `div` when `button` is `true`.
+   */
+  component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 };
-
-SdieNavOption.defaultProps = {
-  disableTypography: false,
-}
 
 export default withStyles(styles)(SdieNavOption);
