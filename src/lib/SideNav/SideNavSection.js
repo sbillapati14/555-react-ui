@@ -15,6 +15,7 @@ const styles = theme => {
       padding: '0',
     },
     listItem: {
+      cursor: 'pointer',
       display: 'flex',
       width: '100%',
       color: '#fff',
@@ -31,7 +32,11 @@ const styles = theme => {
       color: '#FFF',
       height: '58px',
       lineHeight: '58px',
-      padding: '0',
+      padding: 0,
+    },
+    anchor: {
+      textDecoration: 'none',
+      padding: '0 16px',
     },
     leftIcon: {
       position: 'absolute',
@@ -42,7 +47,7 @@ const styles = theme => {
     rightIcon: {
       position: 'absolute',
       right: 0,
-      top: 13,
+      top: 16,
       color: '#fff',
       transition: theme.transitions.create(['all']),
     },
@@ -64,18 +69,31 @@ const styles = theme => {
   }
 };
 
-class NavSection extends Component {
+class SideNavSection extends Component {
 
-  handleClick() {
+  state = {
+    open: false,
+  }
+
+  constructor(props) {
+    super(props);
+
+    if (props.open && props.open !== undefined)
+      this.state.open = props.open;
+  }
+
+  handleClick(e) {
     if (this.props.children) {
-      this.setState({ open: !this.props.open });
+      this.setState({ open: !this.state.open });
     } else {
-      this.props.onCLick();
+      if (this.props.onCLick)
+        this.props.onCLick();
     }
   }
 
   render() {
-    const { classes, children, leftIcon, label, open } = this.props;
+    const { classes, children, leftIcon, label, component: Component, ...rest } = this.props;
+    const { open } = this.state;
 
     let listItemClass = classes.listItem;
     let optionsClass = classes.options;
@@ -84,8 +102,14 @@ class NavSection extends Component {
       optionsClass += ` ${classes.optionsActive}`
     }
 
+    let text = <ListItemText classes={{ primary: classes.label }} primary={label} />;
+    if (Component) {
+      const anchorClass = `${classes.root} ${classes.label} ${classes.anchor}`;
+      text = <Component {...rest} className={anchorClass} >{label}</Component>
+    }
+
     return (
-      <ListItem component="li" className={classes.root}>
+      <ListItem className={classes.root} onClick={(e) => this.handleClick(e)}>
         <div className={listItemClass}>
 
           {leftIcon && (
@@ -94,11 +118,11 @@ class NavSection extends Component {
             </ListItemIcon>
           )}
 
-          <ListItemText classes={{ primary: classes.label }} primary={label} />
+          {text}
 
-          <ListItemIcon className={classes.rightIcon}>
+          {children && <ListItemIcon className={classes.rightIcon}>
             {this.props.open ? <ArrowDropUp /> : <ArrowDropDown />}
-          </ListItemIcon>
+          </ListItemIcon>}
 
         </div>
         <List className={optionsClass} component="ul" >
@@ -109,13 +133,19 @@ class NavSection extends Component {
   }
 }
 
-NavSection.propTypes = {
+SideNavSection.propTypes = {
   label: PropTypes.string.isRequired,
   open: PropTypes.bool,
+  /**
+   * The component used for the root node.
+   * Either a string to use a DOM element or a component.
+   * By default, it's a `li` when `button` is `false` and a `div` when `button` is `true`.
+   */
+  component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 };
 
-NavSection.defaultProps = {
+SideNavSection.defaultProps = {
   open: false,
 }
 
-export default withStyles(styles)(NavSection);
+export default withStyles(styles)(SideNavSection);

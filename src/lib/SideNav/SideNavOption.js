@@ -7,6 +7,7 @@ const styles = theme => ({
   root: {
     verticalAlign: 'baseline',
     padding: 0,
+    cursor: 'pointer',
   },
   listItem: {
     '&:first-child': {
@@ -19,6 +20,7 @@ const styles = theme => ({
       padding: '0 14px 0 60px',
       fontSize: '15px',
       position: 'relative',
+      color: '#FFF',
     }
   },
   listItemActive: {
@@ -32,6 +34,7 @@ const styles = theme => ({
       padding: '0 14px 0 60px',
       fontSize: '15px',
       position: 'relative',
+      width: '100%',
     },
     '&:before': {
       content: '""',
@@ -42,6 +45,32 @@ const styles = theme => ({
       left: 0,
       top: 0,
       background: '#2b9cd8',
+    }
+  },
+  link: {
+    color: '#FFF',
+    textDecoration: 'none',
+    backgroundColor: '#0e171c',
+    marginBottom: '8px',
+    display: 'block',
+    height: '38px',
+    lineHeight: '38px',
+    padding: '0 14px 0 60px',
+    fontSize: '15px',
+    position: 'relative',
+    width: '100%',
+    '&.active': {
+      opacity: '1',
+      '&:before': {
+        content: '""',
+        display: 'block',
+        width: '4px',
+        height: '38px',
+        position: 'absolute',
+        left: 0,
+        top: 0,
+        background: '#2b9cd8',
+      }
     }
   },
   subItemText: {
@@ -55,17 +84,27 @@ const styles = theme => ({
 
 class SdieNavOption extends Component {
 
+  handleClick(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (this.props.onClick)
+      this.props.onClick(e);
+  }
+
   render() {
-    const { classes, active } = this.props;
+    const { classes, active, primary, component: Component, ...rest } = this.props;
 
     let listItemClass = classes.listItem;
     if (active)
       listItemClass = classes.listItemActive;
 
+    let text = <ListItemText disableTypography classes={{ root: listItemClass }} primary={primary} />;
+    if (Component)
+      text = <Component {...rest} className={classes.link}>{primary}</Component>
+
     return (
-      <ListItem component="li" classes={{ root: classes.root }} onClick={this.props.onClick}>
-        <ListItemText disableTypography classes={{ root: listItemClass }}
-          primary={this.props.primary} secondary={this.props.secondary} />
+      <ListItem component='li' classes={{ root: classes.root }} onClick={(e) => this.handleClick(e)}>
+        {text}
       </ListItem>
     );
   }
@@ -73,11 +112,12 @@ class SdieNavOption extends Component {
 
 SdieNavOption.propTypes = {
   primary: PropTypes.node,
-  secondary: PropTypes.node,
+  /**
+   * The component used for the root node.
+   * Either a string to use a DOM element or a component.
+   * By default, it's a `li` when `button` is `false` and a `div` when `button` is `true`.
+   */
+  component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 };
-
-SdieNavOption.defaultProps = {
-  disableTypography: false,
-}
 
 export default withStyles(styles)(SdieNavOption);

@@ -27,7 +27,7 @@ class SideNav extends Component {
 }
 
 SideNav.propTypes = {
-    children: PropTypes.element.isRequired
+    children: PropTypes.node.isRequired,
 };
 
 export default withStyles(styles)(SideNav);

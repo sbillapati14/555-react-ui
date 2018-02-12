@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { withStyles } from 'material-ui/styles';
+import {
+  BrowserRouter as Router,
+  NavLink,
+} from 'react-router-dom'
 
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
@@ -17,7 +21,7 @@ import OutlineButton from '../lib/Button/OutlineButton';
 import GradientButton from '../lib/Button/GradientButton';
 import AccentButton from '../lib/Button/AccentButton';
 import PaperCard from '../lib/PaperCard';
-import { TextField,FormField } from '../lib/InputFields';
+import { TextField, FormField } from '../lib/InputFields';
 import MenuList from '../lib/DropDown/MenuList';
 import Switch from '../lib/Switch/Switch';
 import NestedList from '../lib/DropDown/NestedList';
@@ -60,23 +64,27 @@ class App extends Component {
 
             <AppDrawer title="IRIS| Portal" isMobileOpen={isMobileOpen}>
 
-              <nav>
-                <SelectList name="selectedApplication" value={selectedApplication} onChange={this.handleChange}>
-                  <SelectListItem value="yolo_app">Yolo App</SelectListItem>
-                  <SelectListItem value="1_app">Test App</SelectListItem>
-                  <SelectListItem value="3">Funny App</SelectListItem>
-                </SelectList>
+              <Router>
+                <nav>
+                  <SelectList name="selectedApplication" value={selectedApplication} onChange={this.handleChange}>
+                    <SelectListItem value="yolo_app">Yolo App</SelectListItem>
+                    <SelectListItem value="1_app">Test App</SelectListItem>
+                    <SelectListItem value="3">Funny App</SelectListItem>
+                  </SelectList>
 
-                <SideNav>
-                  {/* this is out menu with nested also */}
-                  <SideNavSection leftIcon={<InboxIcon height="20" />} label="Auth Types" open>
-                    <SideNavOption primary="Server API Endpoints" />
-                    <SideNavOption primary="Report a Problem" active />
-                    <SideNavOption primary="API Status" />
-                    <SideNavOption primary="Call Trace" />
-                  </SideNavSection>
-                </SideNav>
-              </nav>
+                  <SideNav>
+                    {/* this is out menu with nested also */}
+                    <SideNavSection component={NavLink} to="/stand-alone-nav-section" leftIcon={<InboxIcon height="20" />} label="Section NavLink" />
+                    <SideNavSection leftIcon={<InboxIcon height="20" />} label="Auth Types" >
+                      <SideNavOption component={NavLink} to="/page-one" primary="Server API Endpoints" />
+                      <SideNavOption component={NavLink} to="/page-two" primary="Report a Problem" />
+                      <SideNavOption component={NavLink} to="/page-three" primary="API Status" />
+                      <SideNavOption component={NavLink} to="/page-four" primary="Call Trace" />
+                      <SideNavOption primary="Not A Link" />
+                    </SideNavSection>
+                  </SideNav>
+                </nav>
+              </Router>
             </AppDrawer>
 
             <AppContent isMobileOpen={isMobileOpen}>
@@ -117,7 +125,7 @@ class App extends Component {
                 <Switch></Switch>
               </div>
 
-               <div id='FormField'>
+              <div id='FormField'>
                 <FormField></FormField>
               </div>
 
