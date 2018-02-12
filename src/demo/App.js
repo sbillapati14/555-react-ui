@@ -17,7 +17,7 @@ import OutlineButton from '../lib/Button/OutlineButton';
 import GradientButton from '../lib/Button/GradientButton';
 import AccentButton from '../lib/Button/AccentButton';
 import PaperCard from '../lib/PaperCard';
-import TextField from '../lib/TextField';
+import { TextField,FormField } from '../lib/InputFields';
 import MenuList from '../lib/DropDown/MenuList';
 import Switch from '../lib/Switch/Switch';
 import NestedList from '../lib/DropDown/NestedList';
@@ -110,33 +110,15 @@ class App extends Component {
                     Here is the content of the PaperCard
               </Typography>
                 </PaperCard>
-
-              </div>
-
-              <div id='Forms'>
-                <Typography type="display3" gutterBottom>Forms</Typography>
-                <PaperCard>
-                  <form>
-                    <TextField
-                      id="Example"
-                      label="Example"
-                      margin="normal"
-                      placeholder="Example"
-                    />
-                    <TextField disabled
-                      id="Disabled"
-                      label="Disabled"
-                      margin="normal"
-                      placeholder="Disabled"
-                      value="Disable input"
-                    />
-                  </form>
-                </PaperCard>
               </div>
 
               <div id='Switch'>
                 <Typography type="display3" gutterBottom>Switch</Typography>
                 <Switch></Switch>
+              </div>
+
+               <div id='FormField'>
+                <FormField></FormField>
               </div>
 
               <div id='FilterStatus'>
@@ -155,6 +137,11 @@ class App extends Component {
                       margin="normal"
                       placeholder="Disabled"
                       value="Disable input"
+                    />
+                    <TextField
+                      hintText="Text Here"
+                      fullWidth={true}
+                      floatingLabelText="Text Here Label"
                     />
                   </form>
                 </FilterStatus>
