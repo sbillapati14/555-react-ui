@@ -69,7 +69,7 @@ const styles = theme => {
   }
 };
 
-class NavSection extends Component {
+class SideNavSection extends Component {
 
   state = {
     open: false,
@@ -105,7 +105,7 @@ class NavSection extends Component {
     let text = <ListItemText classes={{ primary: classes.label }} primary={label} />;
     if (Component) {
       const anchorClass = `${classes.root} ${classes.label} ${classes.anchor}`;
-      text = <Component {...rest} className={anchorClass}>{label}</Component>
+      text = <Component {...rest} className={anchorClass} >{label}</Component>
     }
 
     return (
@@ -133,7 +133,7 @@ class NavSection extends Component {
   }
 }
 
-NavSection.propTypes = {
+SideNavSection.propTypes = {
   label: PropTypes.string.isRequired,
   open: PropTypes.bool,
   /**
@@ -144,8 +144,8 @@ NavSection.propTypes = {
   component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 };
 
-NavSection.defaultProps = {
+SideNavSection.defaultProps = {
   open: false,
 }
 
-export default withStyles(styles)(NavSection);
+export default withStyles(styles)(SideNavSection);

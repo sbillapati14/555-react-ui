@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withStyles } from 'material-ui/styles';
 import {
   BrowserRouter as Router,
-  Link,
+  NavLink,
 } from 'react-router-dom'
 
 import Button from 'material-ui/Button';
@@ -21,7 +21,7 @@ import OutlineButton from '../lib/Button/OutlineButton';
 import GradientButton from '../lib/Button/GradientButton';
 import AccentButton from '../lib/Button/AccentButton';
 import PaperCard from '../lib/PaperCard';
-import { TextField,FormField } from '../lib/InputFields';
+import { TextField, FormField } from '../lib/InputFields';
 import MenuList from '../lib/DropDown/MenuList';
 import Switch from '../lib/Switch/Switch';
 import NestedList from '../lib/DropDown/NestedList';
@@ -74,12 +74,13 @@ class App extends Component {
 
                   <SideNav>
                     {/* this is out menu with nested also */}
-                    <SideNavSection component={Link} to="/yolo" leftIcon={<InboxIcon height="20" />} label="Section Link" />
+                    <SideNavSection component={NavLink} to="/stand-alone-nav-section" leftIcon={<InboxIcon height="20" />} label="Section NavLink" />
                     <SideNavSection leftIcon={<InboxIcon height="20" />} label="Auth Types" >
-                      <SideNavOption component={Link} to="/yolo" primary="Server API Endpoints" />
-                      <SideNavOption primary="Report a Problem" active />
-                      <SideNavOption primary="API Status" />
-                      <SideNavOption primary="Call Trace" />
+                      <SideNavOption component={NavLink} to="/page-one" primary="Server API Endpoints" />
+                      <SideNavOption component={NavLink} to="/page-two" primary="Report a Problem" />
+                      <SideNavOption component={NavLink} to="/page-three" primary="API Status" />
+                      <SideNavOption component={NavLink} to="/page-four" primary="Call Trace" />
+                      <SideNavOption primary="Not A Link" />
                     </SideNavSection>
                   </SideNav>
                 </nav>
@@ -124,7 +125,7 @@ class App extends Component {
                 <Switch></Switch>
               </div>
 
-               <div id='FormField'>
+              <div id='FormField'>
                 <FormField></FormField>
               </div>
 
