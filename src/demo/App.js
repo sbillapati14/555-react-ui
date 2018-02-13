@@ -126,7 +126,8 @@ class App extends Component {
               </div>
 
               <div id='FormField'>
-                <FormField></FormField>
+                 <FormField label="App Domain" default="Example" disable={false}/>
+                 <FormField id="Disable" label="Federation Type" default="Disable input" disable={true}/>
               </div>
 
               <div id='FilterStatus'>
