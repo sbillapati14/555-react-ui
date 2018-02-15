@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withStyles } from 'material-ui/styles';
-import Avatar from 'material-ui/Avatar';
 import TextField from 'material-ui/TextField';
 
 const styles = theme => ({
@@ -38,6 +37,9 @@ const styles = theme => ({
 class FormField extends Component {
     render() {
         const {classes} = this.props
+          if(this.props.component) {
+       return (this.props.component);
+      } else {
         return (
             <div>
                 <label className={classes.formLabel}>{this.props.label}</label>
@@ -57,7 +59,8 @@ class FormField extends Component {
                   }}
                 />
             </div>
-        );
+            );
+          }
     }
 }
 

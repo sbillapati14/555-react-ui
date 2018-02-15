@@ -28,7 +28,7 @@ import NestedList from '../lib/DropDown/NestedList';
 import FilterStatus from '../lib/DropDown/FilterStatus';
 import SelectList, { SelectListItem } from '../lib/SelectList';
 import SideNav, { SideNavSection, SideNavOption } from '../lib/SideNav';
-
+import Select from 'material-ui/Select';
 const styles = theme => ({
 
 })
@@ -51,7 +51,18 @@ class App extends Component {
   render() {
 
     const { selectedApplication } = this.state;
-
+    const select = <Select
+            native
+            value="25"
+            inputProps={{
+              id: 'age-native-simple',
+            }}
+          >
+            <option value="" />
+            <option value={10}>Ten</option>
+            <option value={20}>Twenty</option>
+            <option value={30}>Thirty</option>
+          </Select>;
     return (
       <AppWrapper render={({ isMobileOpen, toggleDrawer }) => {
 
@@ -126,9 +137,11 @@ class App extends Component {
               </div>
 
               <div id='FormField'>
-                <FormField label="App Domain" default="Example" disable={false}/>
-                <FormField id="Disable" label="Federation Type" default="Disable input" disable={true}/>
-             </div>
+                  <FormField component={select}/>
+                   <FormField/>
+                  {/* <FormField label="App Domain" default="Example" disable={false}/>
+                 <FormField id="Disable" label="Federation Type" default="Disable input" disable={true}/>*/}
+              </div>
               <div id='FilterStatus'>
                 <Typography type="display3" gutterBottom>Filters</Typography>
                 <FilterStatus>
