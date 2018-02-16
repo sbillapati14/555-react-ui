@@ -12,15 +12,29 @@ const styles = theme => ({
 class SideNav extends Component {
 
     state = {
-        open: false,
+        openIndex: -1,
+    }
+
+    processChild(child, index) {
+        if (React.Children.count(child.props.children) === 0)
+            return child;
+
+        const { openIndex } = this.state;
+        return React.cloneElement(child, { onClick: (e) => this.handleSectionClick(e, index), open: openIndex === index });
+    }
+
+    handleSectionClick(e, index) {
+        this.setState({ openIndex: index });
     }
 
     render() {
         const { children, classes } = this.props;
 
+        const items = React.Children.map(children, (child, index) => this.processChild(child, index));
+
         return (
             <List component="ul" classes={{ root: classes.root }}>
-                {children}
+                {items}
             </List>
         );
     }

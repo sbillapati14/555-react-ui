@@ -5,7 +5,7 @@
   "main": "./build/index.js",
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "build": "rimraf build && NODE_ENV=production babel ./src/lib -s -D -d build --ignore '**/*.test.js'",
     "demo": "node scripts/demo.js",
     "test": "node scripts/test.js --env=jsdom",
     "prebuild": "rimraf build",

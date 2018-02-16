@@ -82,6 +82,13 @@ class App extends Component {
                       <SideNavOption component={NavLink} to="/page-four" primary="Call Trace" />
                       <SideNavOption primary="Not A Link" />
                     </SideNavSection>
+                    <SideNavSection leftIcon={<InboxIcon height="20" />} label="More Options" >
+                      <SideNavOption component={NavLink} to="/page-one" primary="Server API Endpoints" />
+                      <SideNavOption component={NavLink} to="/page-two" primary="Report a Problem" />
+                      <SideNavOption component={NavLink} to="/page-three" primary="API Status" />
+                      <SideNavOption component={NavLink} to="/page-four" primary="Call Trace" />
+                      <SideNavOption primary="Not A Link" />
+                    </SideNavSection>
                   </SideNav>
                 </nav>
               </Router>
