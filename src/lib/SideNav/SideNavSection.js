@@ -11,7 +11,7 @@ const styles = theme => {
       flexDirection: 'column',
       fontSize: '15px',
       fontFamily: theme.typography.fontFamily,
-      fontWeight: theme.typography.fontWeightHeavy,
+      fontWeight: 600,
       padding: '0',
     },
     listItem: {
@@ -33,6 +33,8 @@ const styles = theme => {
       height: '58px',
       lineHeight: '58px',
       padding: 0,
+      fontSize: 15,
+      fontWeight: 600,
     },
     anchor: {
       textDecoration: 'none',
