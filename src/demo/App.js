@@ -97,21 +97,21 @@ class App extends Component {
             <AppContent isMobileOpen={isMobileOpen}>
 
 
-              <Typography type="display4" gutterBottom>Components</Typography>
+              <Typography variant="display4" gutterBottom>Components</Typography>
 
               <div id="Buttons" style={{
                 backgroundColor: '#085279',
                 color: 'white',
                 padding: '1em'
               }}>
-                <Typography type="display3" gutterBottom>Buttons</Typography>
+                <Typography variant="display3" gutterBottom>Buttons</Typography>
                 <Button>Root</Button>
                 <GradientButton>GradientButton</GradientButton>
                 <OutlineButton color="white">OutlineButton</OutlineButton>
                 <AccentButton>AccentButton</AccentButton>
               </div>
               <div id="PaperCard">
-                <Typography type="display3" gutterBottom>Paper</Typography>
+                <Typography variant="display3" gutterBottom>Paper</Typography>
                 <PaperCard
                   title="Here is the title"
                   avatar={
@@ -128,16 +128,17 @@ class App extends Component {
               </div>
 
               <div id='Switch'>
-                <Typography type="display3" gutterBottom>Switch</Typography>
+                <Typography variant="display3" gutterBottom>Switch</Typography>
                 <Switch></Switch>
               </div>
 
               <div id='FormField'>
+                <Typography variant="display3" gutterBottom>Forms</Typography>
                 <FormField></FormField>
               </div>
 
               <div id='FilterStatus'>
-                <Typography type="display3" gutterBottom>Filters</Typography>
+                <Typography variant="display3" gutterBottom>Filters</Typography>
                 <FilterStatus>
                   <form>
                     <TextField

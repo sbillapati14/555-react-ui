@@ -27,6 +27,7 @@ const styles = theme => {
     },
     listItemActive: {
       backgroundColor: "#253843",
+      padding: 0,
     },
     label: {
       color: '#FFF',

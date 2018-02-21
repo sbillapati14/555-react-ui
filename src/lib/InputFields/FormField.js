@@ -43,7 +43,7 @@ class FormField extends Component {
         const {classes} = this.props
         return (
             <div id='Forms'>
-                <Typography type="display3" gutterBottom>Forms</Typography>
+
                 <PaperCard
                   title="Acme Application Details"
                   avatar={
