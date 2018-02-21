@@ -144,12 +144,9 @@ class App extends Component {
               </div>
 
               <div id='FormField'>
-                  <FormField component={select}/>
-                   <FormField/>
-                  {/* <FormField label="App Domain" default="Example" disable={false}/>
-                 <FormField id="Disable" label="Federation Type" default="Disable input" disable={true}/>*/}
                 <Typography variant="display3" gutterBottom>Forms</Typography>
-                <FormField></FormField>
+                 <FormField component={select}/>
+                 <FormField/>
               </div>
               <div id='FilterStatus'>
                 <Typography variant="display3" gutterBottom>Filters</Typography>
