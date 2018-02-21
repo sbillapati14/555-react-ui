@@ -11,7 +11,7 @@ const styles = theme => {
       flexDirection: 'column',
       fontSize: '15px',
       fontFamily: theme.typography.fontFamily,
-      fontWeight: theme.typography.fontWeighthHevey,
+      fontWeight: 600,
       padding: '0',
     },
     listItem: {
@@ -20,19 +20,22 @@ const styles = theme => {
       width: '100%',
       color: '#fff',
       position: 'relative',
-      transition: 'all 0.4s',
       marginBottom: 8,
       height: '58px',
       padding: '0 0 0 62px',
+      transition: 'all 0.4s',
     },
     listItemActive: {
       backgroundColor: "#253843",
+      // padding: 0,
     },
     label: {
       color: '#FFF',
       height: '58px',
       lineHeight: '58px',
       padding: 0,
+      fontSize: 15,
+      fontWeight: 600,
     },
     anchor: {
       textDecoration: 'none',
@@ -71,29 +74,8 @@ const styles = theme => {
 
 class SideNavSection extends Component {
 
-  state = {
-    open: false,
-  }
-
-  constructor(props) {
-    super(props);
-
-    if (props.open && props.open !== undefined)
-      this.state.open = props.open;
-  }
-
-  handleClick(e) {
-    if (this.props.children) {
-      this.setState({ open: !this.state.open });
-    } else {
-      if (this.props.onCLick)
-        this.props.onCLick();
-    }
-  }
-
   render() {
-    const { classes, children, leftIcon, label, component: Component, ...rest } = this.props;
-    const { open } = this.state;
+    const { classes, children, open, onClick, leftIcon, label, component: Component, ...rest } = this.props;
 
     let listItemClass = classes.listItem;
     let optionsClass = classes.options;
@@ -109,7 +91,7 @@ class SideNavSection extends Component {
     }
 
     return (
-      <ListItem className={classes.root} onClick={(e) => this.handleClick(e)}>
+      <ListItem className={classes.root} onClick={(e) => onClick(e)}>
         <div className={listItemClass}>
 
           {leftIcon && (
@@ -121,7 +103,7 @@ class SideNavSection extends Component {
           {text}
 
           {children && <ListItemIcon className={classes.rightIcon}>
-            {this.props.open ? <ArrowDropUp /> : <ArrowDropDown />}
+            {open ? <ArrowDropUp /> : <ArrowDropDown />}
           </ListItemIcon>}
 
         </div>

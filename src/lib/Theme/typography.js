@@ -1,9 +1,9 @@
-const fontWeightMedium = 500
+//const fontWeightMedium = 500
 
 export default {
   themeTypography: {
     fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
-    fontWeightMedium,
+    fontWeightMedium : 500,
   },
-  fontWeightMedium
+  //fontWeightMedium
 }

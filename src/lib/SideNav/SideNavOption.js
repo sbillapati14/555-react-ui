@@ -59,6 +59,7 @@ const styles = theme => ({
     fontSize: '15px',
     position: 'relative',
     width: '100%',
+    opacity: .7,
     '&.active': {
       opacity: '1',
       '&:before': {

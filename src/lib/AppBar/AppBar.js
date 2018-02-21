@@ -14,6 +14,7 @@ const styles = theme => ({
     title: {
         marginLeft: 24,
         flex: '0 1 auto',
+        fontSize: 22,
     },
     navIconHide: {
         transition: theme.transitions.create(['display']),

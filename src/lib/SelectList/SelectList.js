@@ -50,12 +50,13 @@ const styles = theme => ({
     subHeaderText: {
         color: '#282828',
         fontWeight: 'bold',
-        fontSize: '1rem',
+        fontSize: 14,
         lineHeight: '17px',
     },
     selectedItemText: {
         color: '#fff',
-        fontSize: '15px',
+        fontSize: 15,
+        fontWeight: 600,
         display: 'block',
         transition: 'all 0.4s',
     },

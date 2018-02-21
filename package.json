@@ -5,7 +5,7 @@
   "main": "./build/index.js",
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "build": "rimraf build && NODE_ENV=production babel ./src/lib -s -D -d build --ignore '**/*.test.js'",
     "demo": "node scripts/demo.js",
     "test": "node scripts/test.js --env=jsdom",
     "prebuild": "rimraf build",
@@ -55,7 +55,7 @@
     "fs-extra": "3.0.1",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
-    "material-ui": "^1.0.0-beta.32",
+    "material-ui": "^1.0.0-beta.34",
     "material-ui-icons": "^1.0.0-beta.17",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
