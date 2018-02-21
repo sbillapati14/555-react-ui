@@ -12,6 +12,8 @@ const styles = theme => {
             alignItems: 'stretch',
             minHeight: '100vh',
             width: '100%',
+            fontWeight: 500,
+            fontSize: 15,
         },
         drawer: {
             transition: theme.transitions.create(['width']),
@@ -41,6 +43,11 @@ const styles = theme => {
         },
         medium: {
             fontWeight: 'bold',
+            fontSize: 20,
+        },
+        medium2: {
+        fontSize: 20,
+        fontWeight: 500,
         }
     }
 };
@@ -60,7 +67,7 @@ class AppDrawer extends Component {
             const t = theTitle.split('|');
             theTitle = (
                 <Typography type="title" color="inherit">
-                    <span className={classes.medium}>{t[0]}</span>{t[1]}
+                    <span className={classes.medium}>{t[0]}</span><span className={classes.medium2}>{t[1]}</span>
                 </Typography>
             )
         }
