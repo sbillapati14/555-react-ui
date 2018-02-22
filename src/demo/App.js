@@ -28,7 +28,7 @@ import NestedList from '../lib/DropDown/NestedList';
 import FilterStatus from '../lib/DropDown/FilterStatus';
 import SelectList, { SelectListItem } from '../lib/SelectList';
 import SideNav, { SideNavSection, SideNavOption } from '../lib/SideNav';
-
+import Select from 'material-ui/Select';
 const styles = theme => ({
 
 })
@@ -51,7 +51,18 @@ class App extends Component {
   render() {
 
     const { selectedApplication } = this.state;
-
+    const select = <Select
+      native
+      value="25"
+      inputProps={{
+        id: 'age-native-simple',
+      }}
+    >
+      <option value="" />
+      <option value={10}>Ten</option>
+      <option value={20}>Twenty</option>
+      <option value={30}>Thirty</option>
+    </Select>;
     return (
       <AppWrapper render={({ isMobileOpen, toggleDrawer }) => {
 
@@ -132,11 +143,30 @@ class App extends Component {
                 <Switch></Switch>
               </div>
 
-              <div id='FormField'>
+              {/*<div id='FormField'>
                 <Typography variant="display3" gutterBottom>Forms</Typography>
-                <FormField></FormField>
+                 <FormField component={select}/>
+                 <FormField/>
+              </div>*/}
+              <div id='Forms'>
+                <Typography type="display3" gutterBottom>Forms</Typography>
+                <PaperCard
+                  title="Acme Application Details"
+                  avatar={
+                    <Avatar>
+                      <ImageIcon />
+                    </Avatar>
+                  }
+                >
+                  <form>
+                    <FormField label="App Domain" default="Example" disable={false} />
+                    <FormField id="Disable" label="Federation Type" default="Disable input" disable={true} />
+                    <FormField id="secret" label="App Secret" default="abc" />
+                    <FormField id="key" label="App Key" default="sdfasfsadf" />
+                    <FormField id="app" label="App" default="aa" />
+                  </form>
+                </PaperCard>
               </div>
-
               <div id='FilterStatus'>
                 <Typography variant="display3" gutterBottom>Filters</Typography>
                 <FilterStatus>
