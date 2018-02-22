@@ -143,11 +143,30 @@ class App extends Component {
                 <Switch></Switch>
               </div>
 
-              <div id='FormField'>
+              {/*<div id='FormField'>
                 <Typography variant="display3" gutterBottom>Forms</Typography>
                  <FormField component={select}/>
                  <FormField/>
-              </div>
+              </div>*/}
+              <div id='Forms'>
+                  <Typography type="display3" gutterBottom>Forms</Typography>
+                  <PaperCard
+                    title="Acme Application Details"
+                    avatar={
+                      <Avatar>
+                        <ImageIcon />
+                      </Avatar>
+                    }
+                  >
+                <form>
+                  <FormField label="App Domain" default="Example" disable={false}/>
+                  <FormField id="Disable" label="Federation Type" default="Disable input" disable={true}/>
+                  <FormField id="secret" label="App Secret" default="abc"/>
+                  <FormField id="key" label="App Key" default="sdfasfsadf"/>
+                  <FormField id="app" label="App" default="aa"/>
+                </form>
+                </PaperCard>
+             </div>
               <div id='FilterStatus'>
                 <Typography variant="display3" gutterBottom>Filters</Typography>
                 <FilterStatus>

@@ -17,7 +17,7 @@ const styles = theme => ({
       color: '#282828',
       display: 'inline-block',
       marginTop: 16,
-      fontSize: 14,
+      fontSize: 16,
       fontWeight: 'bold',
       fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
 
