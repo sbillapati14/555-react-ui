@@ -52,17 +52,17 @@ class App extends Component {
 
     const { selectedApplication } = this.state;
     const select = <Select
-            native
-            value="25"
-            inputProps={{
-              id: 'age-native-simple',
-            }}
-          >
-            <option value="" />
-            <option value={10}>Ten</option>
-            <option value={20}>Twenty</option>
-            <option value={30}>Thirty</option>
-          </Select>;
+      native
+      value="25"
+      inputProps={{
+        id: 'age-native-simple',
+      }}
+    >
+      <option value="" />
+      <option value={10}>Ten</option>
+      <option value={20}>Twenty</option>
+      <option value={30}>Thirty</option>
+    </Select>;
     return (
       <AppWrapper render={({ isMobileOpen, toggleDrawer }) => {
 
@@ -149,24 +149,24 @@ class App extends Component {
                  <FormField/>
               </div>*/}
               <div id='Forms'>
-                  <Typography type="display3" gutterBottom>Forms</Typography>
-                  <PaperCard
-                    title="Acme Application Details"
-                    avatar={
-                      <Avatar>
-                        <ImageIcon />
-                      </Avatar>
-                    }
-                  >
-                <form>
-                  <FormField label="App Domain" default="Example" disable={false}/>
-                  <FormField id="Disable" label="Federation Type" default="Disable input" disable={true}/>
-                  <FormField id="secret" label="App Secret" default="abc"/>
-                  <FormField id="key" label="App Key" default="sdfasfsadf"/>
-                  <FormField id="app" label="App" default="aa"/>
-                </form>
+                <Typography type="display3" gutterBottom>Forms</Typography>
+                <PaperCard
+                  title="Acme Application Details"
+                  avatar={
+                    <Avatar>
+                      <ImageIcon />
+                    </Avatar>
+                  }
+                >
+                  <form>
+                    <FormField label="App Domain" default="Example" disable={false} />
+                    <FormField id="Disable" label="Federation Type" default="Disable input" disable={true} />
+                    <FormField id="secret" label="App Secret" default="abc" />
+                    <FormField id="key" label="App Key" default="sdfasfsadf" />
+                    <FormField id="app" label="App" default="aa" />
+                  </form>
                 </PaperCard>
-             </div>
+              </div>
               <div id='FilterStatus'>
                 <Typography variant="display3" gutterBottom>Filters</Typography>
                 <FilterStatus>
