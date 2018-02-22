@@ -18,11 +18,12 @@ const styles = {
 };
 
 function OutlinedButton(props) {
-  const { color } = props;
+  const { color, type = 'button' } = props;
 
   return (
     <Button
       className={props.classes.button}
+      type={type}
       style={{ color: color, borderColor: color }}
     >
       {props.children}
