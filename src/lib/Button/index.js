@@ -1,9 +1,3 @@
-import AccentButton from './AccentButton';
-import OutlineButton from './OutlineButton';
-import GradientButton from './GradientButton';
-
-export default {
-    AccentButton,
-    OutlineButton,
-    GradientButton,
-}
+export {default as AccentButton}  from './AccentButton';
+export {default as OutlineButton}  from './OutlineButton';
+export {default as GradientButton}  from './GradientButton';
