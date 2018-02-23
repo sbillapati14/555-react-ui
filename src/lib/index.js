@@ -1,5 +1,6 @@
 
 export { default as Theme } from './Theme';
+export { ErrorAlert } from './Alert';
 export { default as AppWrapper } from './AppWrapper';
 export { default as AppFrame } from './AppFrame';
 export { default as AppBar } from './AppBar';
