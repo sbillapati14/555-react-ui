@@ -8,7 +8,8 @@ const styles = theme => ({
        border: 'none',
        outline: 'none',
        borderRadius: 5,
-       height: 39,
+       minHeight: 39,
+       height: 'auto',
        fontSize: 14,
        color: '#606060',
      },
@@ -49,7 +50,7 @@ class FormField extends Component {
           return this.props.component
         }
       } else {
-        const { label, disabled, id, name, defaultValue, onChange, placeholder} = this.props
+        const { label, disabled, id, name, defaultValue, onChange, multiline, rows, placeholder} = this.props
 
         return (
             <div>
@@ -62,6 +63,8 @@ class FormField extends Component {
                   margin="normal"
                   defaultValue={defaultValue}
                   onChange={onChange}
+                  multiline={multiline}
+                  rows={rows}
                   placeholder={placeholder}
                   fullWidth={true}
                   InputProps={{
