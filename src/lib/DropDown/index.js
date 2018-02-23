@@ -1,3 +1,3 @@
-export { default as MenuList } from './MenuList';
+export { default as Menu } from './Menu';
 export { default as NestedList } from './NestedList';
 export { default as FilterStatus } from './FilterStatus';

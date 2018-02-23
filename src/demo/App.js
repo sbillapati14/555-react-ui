@@ -10,6 +10,11 @@ import Typography from 'material-ui/Typography';
 import Avatar from 'material-ui/Avatar';
 import ImageIcon from 'material-ui-icons/Image';
 import InboxIcon from 'material-ui-icons/Inbox';
+import { MenuItem, MenuList} from 'material-ui/Menu';
+import { ListItemIcon, ListItemText } from 'material-ui/List';
+import MoveToInboxIcon from 'material-ui-icons/MoveToInbox';
+import DraftsIcon from 'material-ui-icons/Drafts';
+import SendIcon from 'material-ui-icons/Send';
 
 import AppWrapper from '../lib/AppWrapper';
 import AppFrame from '../lib/AppFrame';
@@ -22,7 +27,7 @@ import GradientButton from '../lib/Button/GradientButton';
 import AccentButton from '../lib/Button/AccentButton';
 import PaperCard from '../lib/PaperCard';
 import { TextField, FormField } from '../lib/InputFields';
-import MenuList from '../lib/DropDown/MenuList';
+import Menu from '../lib/DropDown/Menu';
 import Switch from '../lib/Switch/Switch';
 import NestedList from '../lib/DropDown/NestedList';
 import FilterStatus from '../lib/DropDown/FilterStatus';
@@ -70,7 +75,31 @@ class App extends Component {
           <AppFrame>
 
             <AppBar title="yolo" isMobileOpen={isMobileOpen} toggleDrawer={toggleDrawer}>
-              <MenuList />
+              <Menu 
+                button={ <Button> Open Menu </Button> }
+                render={({handleClose}) => (
+                  <MenuList>
+                    <MenuItem onClick={handleClose}>
+                      <ListItemIcon>
+                        <SendIcon />
+                      </ListItemIcon>
+                      <ListItemText inset primary="Sent mail" />
+                    </MenuItem>
+                    <MenuItem onClick={handleClose}>
+                      <ListItemIcon>
+                        <DraftsIcon />
+                      </ListItemIcon>
+                      <ListItemText inset primary="Drafts" />
+                    </MenuItem>
+                    <MenuItem onClick={handleClose}>
+                      <ListItemIcon>
+                        <MoveToInboxIcon />
+                      </ListItemIcon>
+                      <ListItemText inset primary="Inbox" />
+                    </MenuItem>
+                  </MenuList>
+                )}
+              />
             </AppBar>
 
             <AppDrawer title="IRIS| Portal" isMobileOpen={isMobileOpen}>

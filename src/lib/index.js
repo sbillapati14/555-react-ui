@@ -13,7 +13,9 @@ export {
 } from './Button';
 export { default as PaperCard } from './PaperCard';
 export { TextField, FormField } from './InputFields';
-export { default as DropDown } from './DropDown';
+export { 
+    Menu
+ } from './DropDown';
 export {
     default as SideNav,
     SideNavOption,
