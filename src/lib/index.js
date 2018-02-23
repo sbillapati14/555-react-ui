@@ -25,3 +25,7 @@ export {
     default as SelectList,
     SelectListItem
 } from './SelectList';
+
+export {
+    Toolbar
+} from './Toolbar';

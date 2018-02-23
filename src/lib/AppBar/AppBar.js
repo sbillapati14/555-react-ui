@@ -23,7 +23,7 @@ const styles = theme => ({
         },
     },
     toolbar: {
-        backgroundColor: '#FFF',
+        backgroundColor: theme.palette.background.default,
         color: '#282828',
         [theme.breakpoints.down('md')]: {
             backgroundColor: 'inherit',
