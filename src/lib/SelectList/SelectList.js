@@ -13,7 +13,7 @@ const styles = theme => ({
         width: '238px',
         color: "#fff",
         fontSize: 13,
-        margin: '16px 14px 14px',
+        margin: '16px 14px 14px 0',
         position: 'relative',
     },
     selectedItem: {
@@ -195,8 +195,8 @@ SelectList.propTypes = {
 };
 
 SelectList.defaultProps = {
-    subHeaderText: 'Choose Application',
-    placeHolderText: 'Select Your Application'
+    subHeaderText: 'Selection Options',
+    placeHolderText: 'Make Selection'
 }
 
 export default withStyles(styles)(SelectList);

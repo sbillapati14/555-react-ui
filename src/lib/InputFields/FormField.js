@@ -36,19 +36,33 @@ const styles = theme => ({
 
 class FormField extends Component {
     render() {
-        const {classes} = this.props
-          if(this.props.component) {
-       return (this.props.component);
+      const { classes } = this.props
+      if(this.props.component) {
+        if (this.props.label) {
+          return (
+            <div>
+              <label className={classes.formLabel}>{this.props.label}</label>
+              {this.props.component}
+            </div>
+          )
+        } else {
+          return this.props.component
+        }
       } else {
+        const { label, disabled, id, name, defaultValue, onChange, placeholder} = this.props
+
         return (
             <div>
-                <label className={classes.formLabel}>{this.props.label}</label>
+                <label className={classes.formLabel}>{label}</label>
                 <TextField
                   className={classes.root}
-                  disabled={this.props.disable}
-                  id={this.props.id}
+                  disabled={disabled}
+                  id={id}
+                  name={name}
                   margin="normal"
-                  defaultValue={this.props.default}
+                  defaultValue={defaultValue}
+                  onChange={onChange}
+                  placeholder={placeholder}
                   fullWidth={true}
                   InputProps={{
                     disableUnderline: true
