@@ -16,13 +16,13 @@ const styles = {
 };
 
 function AccentButton(props) {
-  const { color, type = 'button' } = props;
+  const { classes, color, ...rest } = props;
 
   return (
     <Button
-      className={props.classes.button}
-      type={type}
+      className={classes.button}
       style={{ color: color, borderColor: color }}
+      {...rest}
     >
       {props.children}
     </Button>
