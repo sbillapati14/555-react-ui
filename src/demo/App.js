@@ -159,11 +159,11 @@ class App extends Component {
                   }
                 >
                   <form>
-                    <FormField label="App Domain" default="Example" defaultValue={false} />
-                    <FormField id="Disable" label="Federation Type" defaultValue="Disable input" disabled={true} />
-                    <FormField id="secret" label="App Secret" defaultValue="abc" />
-                    <FormField id="key" label="App Key" defaultValue="sdfasfsadf" />
-                    <FormField id="app" label="App" defaultValue="aa" />
+                    <FormField label="App Domain" value='Example' onChange={(e) => console.log(e)} />
+                    <FormField id="Disable" label="Federation Type" value="Disable input" disabled={true}  />
+                    <FormField id="secret" label="App Secret" value="abc" />
+                    <FormField id="key" label="App Key" value="sdfasfsadf" />
+                    <FormField id="app" label="App" value="aa" />
                   </form>
                 </PaperCard>
               </div>

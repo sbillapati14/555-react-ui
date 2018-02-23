@@ -37,43 +37,35 @@ const styles = theme => ({
 
 class FormField extends Component {
     render() {
-      const { classes } = this.props
-      if(this.props.component) {
-        if (this.props.label) {
+      const { classes, component, label, style, ...rest} = this.props
+      if(component) {
+        if (label) {
           return (
             <div>
-              <label className={classes.formLabel}>{this.props.label}</label>
-              {this.props.component}
+              <label className={classes.formLabel}>{label}</label>
+              {component}
             </div>
           )
         } else {
-          return this.props.component
+          return component
         }
       } else {
-        const { label, disabled, id, name, defaultValue, onChange, multiline, rows, placeholder} = this.props
+        const combinedStyle = { alignItems: 'center', flexDirection: 'row', paddingLeft: 17, ...style }
 
         return (
             <div>
                 <label className={classes.formLabel}>{label}</label>
                 <TextField
-                  className={classes.root}
-                  disabled={disabled}
-                  id={id}
-                  name={name}
-                  margin="normal"
-                  defaultValue={defaultValue}
-                  onChange={onChange}
-                  multiline={multiline}
-                  rows={rows}
-                  placeholder={placeholder}
-                  fullWidth={true}
-                  InputProps={{
-                    disableUnderline: true
-                  }}
-                  style={{
-                    alignItems: 'center',
-                    flexDirection: 'row', paddingLeft: 17,
-                  }}
+                    margin="normal"
+                    fullWidth={true}
+                    InputProps={{
+                        disableUnderline: true
+                    }}
+                    style={combinedStyle}
+
+                    {...rest }
+                    
+                    className={classes.root}
                 />
             </div>
             );
