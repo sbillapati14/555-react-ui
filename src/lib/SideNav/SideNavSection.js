@@ -74,8 +74,15 @@ const styles = theme => {
 
 class SideNavSection extends Component {
 
+  handleOnClick(e) {
+    const { onClick } = this.props;
+
+    if (onClick)
+      onClick(e);
+  }
+
   render() {
-    const { classes, children, open, onClick, leftIcon, label, component: Component, ...rest } = this.props;
+    const { classes, children, open, leftIcon, label, component: Component, ...rest } = this.props;
 
     let listItemClass = classes.listItem;
     let optionsClass = classes.options;
@@ -91,7 +98,7 @@ class SideNavSection extends Component {
     }
 
     return (
-      <ListItem className={classes.root} onClick={(e) => onClick(e)}>
+      <ListItem className={classes.root} onClick={(e) => this.handleOnClick(e)}>
         <div className={listItemClass}>
 
           {leftIcon && (
