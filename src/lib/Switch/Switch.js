@@ -39,11 +39,17 @@ const styles =  {
 
 class Switches extends React.Component {
   state = {
-    checked: true,
+    checked: false,
   };
+
+  constructor(props) {
+    super(props)
+    this.state.checked = props.checked || false
+  }
 
   handleChange = name => (event, checked) => {
     this.setState({ [name]: checked });
+    if (this.props.onChange) this.props.onChange(event, checked)
   };
 
   render() {
@@ -58,6 +64,7 @@ class Switches extends React.Component {
             icon: classes.icon,
           }}
           checked={this.state.checked}
+          disabled={this.props.disabled}
           onChange={this.handleChange('checked')}
         />
       </div>

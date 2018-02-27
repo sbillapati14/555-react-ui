@@ -25,6 +25,7 @@ export {
     default as SelectList,
     SelectListItem
 } from './SelectList';
+export { default as Switch } from './Switch'
 
 export {
     Toolbar

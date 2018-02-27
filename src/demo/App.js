@@ -169,7 +169,9 @@ class App extends Component {
 
               <div id='Switch'>
                 <Typography variant="display3" gutterBottom>Switch</Typography>
-                <Switch></Switch>
+                <Switch checked={true} ></Switch>
+                <Switch checked={false} ></Switch>
+                <Switch disabled={true} ></Switch>
               </div>
 
               {/*<div id='FormField'>
