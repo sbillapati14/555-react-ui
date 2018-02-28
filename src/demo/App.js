@@ -31,7 +31,7 @@ import Menu from '../lib/DropDown/Menu';
 import Switch from '../lib/Switch/Switch';
 import NestedList from '../lib/DropDown/NestedList';
 import FilterStatus from '../lib/DropDown/FilterStatus';
-import SelectList, { SelectListItem } from '../lib/SelectList';
+import { PrimarySelectList, SelectList, SelectListItem } from '../lib/SelectList';
 import SideNav, { SideNavSection, SideNavOption } from '../lib/SideNav';
 import Select from 'material-ui/Select';
 const styles = theme => ({
@@ -106,6 +106,12 @@ class App extends Component {
 
               <Router>
                 <nav>
+                  <PrimarySelectList name="selectedApplication" value={selectedApplication} onChange={this.handleChange}>
+                    <SelectListItem value="yolo_app">Yolo App</SelectListItem>
+                    <SelectListItem value="1_app">Test App</SelectListItem>
+                    <SelectListItem value="3">Funny App</SelectListItem>
+                  </PrimarySelectList>
+
                   <SelectList name="selectedApplication" value={selectedApplication} onChange={this.handleChange}>
                     <SelectListItem value="yolo_app">Yolo App</SelectListItem>
                     <SelectListItem value="1_app">Test App</SelectListItem>

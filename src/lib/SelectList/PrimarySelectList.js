@@ -11,21 +11,22 @@ import Button from 'material-ui/Button';
 const styles = theme => ({
     root: {
         width: '238px',
-        color: '#606060',
+        color: "#fff",
         fontSize: 13,
+        // margin: '16px 14px 14px 0',
         position: 'relative',
     },
     selectedItem: {
         width: '100%',
         borderRadius: '5px',
         height: 45,
-        color: '#ddd',
+        color: '#fff',
         fontSize: 15,
         lineHeight: 45,
         padding: '0 0 0 17px',
         position: 'relative',
         margin: 0,
-        backgroundColor: 'rgb(244, 244, 244)',
+        backgroundImage: '-webkit-linear-gradient( 0deg, rgb(43,156,216) 0%, rgb(48,183,255) 100%)',
         justifyContent: 'left',
     },
     selectedItemOpen: {
@@ -33,7 +34,7 @@ const styles = theme => ({
     },
     selectedItemIcon: {
         marginRight: 0,
-        color: '#ddd'
+        color: '#fff'
     },
     icon: {
         position: 'absolute',
@@ -53,7 +54,7 @@ const styles = theme => ({
         lineHeight: '17px',
     },
     selectedItemText: {
-        color: 'rgba(0, 0, 0, 0.87)',
+        color: '#fff',
         fontSize: 15,
         fontWeight: 600,
         display: 'block',

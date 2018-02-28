@@ -22,7 +22,8 @@ export {
     SideNavSection
 } from './SideNav';
 export {
-    default as SelectList,
+    SelectList,
+    PrimarySelectList,
     SelectListItem
 } from './SelectList';
 export { default as Switch } from './Switch'
