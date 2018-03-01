@@ -1,8 +1,10 @@
 
 export { default as Theme } from './Theme';
 export { ErrorAlert } from './Alert';
+export { default as AppContainer } from './AppContainer';
 export { default as AppWrapper } from './AppWrapper';
 export { default as AppFrame } from './AppFrame';
+export { default as AppPage } from './AppPage';
 export { default as AppBar } from './AppBar';
 export { default as AppContent } from './AppContent';
 export { default as AppDrawer } from './AppDrawer';
