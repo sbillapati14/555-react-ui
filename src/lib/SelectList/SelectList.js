@@ -16,6 +16,12 @@ const styles = theme => ({
         fontSize: 13,
         position: 'relative',
     },
+    fullWidth: {
+        width: '100%',
+        color: '#606060',
+        fontSize: 13,
+        position: 'relative',
+    },
     selectedItem: {
         width: '100%',
         borderRadius: '5px',
@@ -103,7 +109,7 @@ class SelectList extends Component {
     }
 
     render() {
-        const { classes, placeHolderText, subHeaderText, children, value } = this.props;
+        const { classes, placeHolderText, subHeaderText, children, value, fullWidth } = this.props;
 
         let selectedItemClass = classes.selectedItem;
         if (this.state.open)
@@ -136,8 +142,8 @@ class SelectList extends Component {
 
         return (
             <ClickAwayListener onClickAway={this.closeDropDown}>
-                <div className={classes.root}>
-                    <Button disableRipple={true} className={selectedItemClass} onClick={this.toggleDropDown}>
+                <div className={fullWidth ? classes.fullWidth : classes.root}>
+                    <Button disableRipple={true} className={selectedItemClass} onClick={this.toggleDropDown} fullwidth={fullWidth}>
                         <Typography className={classes.selectedItemText}>{selected}</Typography>
                         {this.state.open ? <ArrowDropUp className={classes.icon} /> : <ArrowDropDown className={classes.icon} />}
                     </Button>
@@ -198,11 +204,13 @@ SelectList.propTypes = {
         PropTypes.number,
         PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
     ]),
+    fullWidth: PropTypes.bool,
 };
 
 SelectList.defaultProps = {
     subHeaderText: 'Selection Options',
-    placeHolderText: 'Make Selection'
+    placeHolderText: 'Make Selection',
+    fullWidth: false,
 }
 
 export default withStyles(styles)(SelectList);
