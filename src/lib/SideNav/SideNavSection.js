@@ -45,7 +45,8 @@ const styles = theme => {
       position: 'absolute',
       top: '31%',
       left: '18px',
-      color: '#FFF'
+      color: '#FFF',
+      transform: 'scale(1.3)',
     },
     rightIcon: {
       position: 'absolute',
