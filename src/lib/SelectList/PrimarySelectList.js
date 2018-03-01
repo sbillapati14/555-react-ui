@@ -7,6 +7,7 @@ import ArrowDropDown from 'material-ui-icons/ArrowDropDown';
 import ArrowDropUp from 'material-ui-icons/ArrowDropUp';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
+import ClickAwayListener from 'material-ui/utils/ClickAwayListener';
 
 const styles = theme => ({
     root: {
@@ -66,7 +67,7 @@ const styles = theme => ({
 });
 
 
-class SelectList extends Component {
+class PrimarySelectList extends Component {
 
     state = {
         open: false,
@@ -74,6 +75,11 @@ class SelectList extends Component {
 
     toggleDropDown = (e) => {
         this.setState({ open: !this.state.open });
+    }
+
+    closeDropDown = (e) => {
+        if (this.state.open)
+            this.setState({ open: false });
     }
 
     handleItemClick = child => event => {
@@ -96,7 +102,6 @@ class SelectList extends Component {
             onChange(event, child);
         }
     }
-
 
     render() {
         const { classes, placeHolderText, subHeaderText, children, value } = this.props;
@@ -131,22 +136,25 @@ class SelectList extends Component {
         </ListSubheader>);
 
         return (
-            <div className={classes.root}>
-                <Button disableRipple={true} className={selectedItemClass} onClick={this.toggleDropDown}>
-                    <Typography className={classes.selectedItemText}>{selected}</Typography>
-                    {this.state.open ? <ArrowDropUp className={classes.icon} /> : <ArrowDropDown className={classes.icon} />}
-                </Button>
-                <Collapse component="div" in={this.state.open} className={classes.listItemsContainer}>
-                    <List component="ul" classes={{ root: classes.options }}>
-                        {items}
-                    </List>
-                </Collapse>
-            </div>
+            <ClickAwayListener onClickAway={this.closeDropDown}>
+                <div className={classes.root}>
+                    <Button disableRipple={true} className={selectedItemClass} onClick={this.toggleDropDown}>
+                        <Typography className={classes.selectedItemText}>{selected}</Typography>
+                        {this.state.open ? <ArrowDropUp className={classes.icon} /> : <ArrowDropDown className={classes.icon} />}
+                    </Button>
+                    <Collapse component="div" in={this.state.open} className={classes.listItemsContainer}>
+
+                        <List component="ul" classes={{ root: classes.options }}>
+                            {items}
+                        </List>
+                    </Collapse>
+                </div>
+            </ClickAwayListener>
         );
     }
 }
 
-SelectList.propTypes = {
+PrimarySelectList.propTypes = {
     subHeaderText: PropTypes.string,
     placeHolderText: PropTypes.string,
     /**
@@ -194,9 +202,9 @@ SelectList.propTypes = {
     ]),
 };
 
-SelectList.defaultProps = {
+PrimarySelectList.defaultProps = {
     subHeaderText: 'Selection Options',
     placeHolderText: 'Make Selection'
 }
 
-export default withStyles(styles)(SelectList);
+export default withStyles(styles)(PrimarySelectList);

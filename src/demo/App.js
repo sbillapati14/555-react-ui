@@ -10,7 +10,7 @@ import Typography from 'material-ui/Typography';
 import Avatar from 'material-ui/Avatar';
 import ImageIcon from 'material-ui-icons/Image';
 import InboxIcon from 'material-ui-icons/Inbox';
-import { MenuItem, MenuList} from 'material-ui/Menu';
+import { MenuItem, MenuList } from 'material-ui/Menu';
 import { ListItemIcon, ListItemText } from 'material-ui/List';
 import MoveToInboxIcon from 'material-ui-icons/MoveToInbox';
 import DraftsIcon from 'material-ui-icons/Drafts';
@@ -42,6 +42,7 @@ class App extends Component {
 
   state = {
     selectedApplication: '',
+    selectedTeam: '',
   }
 
   constructor(props) {
@@ -49,13 +50,13 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+  handleChange = name => event => {
+    this.setState({ [name]: event.target.value });
   };
 
   render() {
 
-    const { selectedApplication } = this.state;
+    const { selectedApplication, selectedTeam } = this.state;
     const select = <Select
       native
       value="25"
@@ -75,9 +76,9 @@ class App extends Component {
           <AppFrame>
 
             <AppBar title="yolo" isMobileOpen={isMobileOpen} toggleDrawer={toggleDrawer}>
-              <Menu 
-                button={ <Button> Open Menu </Button> }
-                render={({handleClose}) => (
+              <Menu
+                button={<Button> Open Menu </Button>}
+                render={({ handleClose }) => (
                   <MenuList>
                     <MenuItem onClick={handleClose}>
                       <ListItemIcon>
@@ -106,13 +107,14 @@ class App extends Component {
 
               <Router>
                 <nav>
-                  <PrimarySelectList name="selectedApplication" value={selectedApplication} onChange={this.handleChange}>
-                    <SelectListItem value="yolo_app">Yolo App</SelectListItem>
-                    <SelectListItem value="1_app">Test App</SelectListItem>
-                    <SelectListItem value="3">Funny App</SelectListItem>
+                  
+                  <PrimarySelectList name="selectedTeam" value={selectedTeam} onChange={this.handleChange('selectedTeam')}>
+                    <SelectListItem value="team_1">Team 1</SelectListItem>
+                    <SelectListItem value="team_2">Team 2</SelectListItem>
+                    <SelectListItem value="team_3">Team 3</SelectListItem>
                   </PrimarySelectList>
 
-                  <SelectList name="selectedApplication" value={selectedApplication} onChange={this.handleChange}>
+                  <SelectList name="selectedApplication" value={selectedApplication} onChange={this.handleChange('selectedApplication')}>
                     <SelectListItem value="yolo_app">Yolo App</SelectListItem>
                     <SelectListItem value="1_app">Test App</SelectListItem>
                     <SelectListItem value="3">Funny App</SelectListItem>
@@ -197,7 +199,7 @@ class App extends Component {
                 >
                   <form>
                     <FormField label="App Domain" value='Example' onChange={(e) => console.log(e)} />
-                    <FormField id="Disable" label="Federation Type" value="Disable input" disabled={true}  />
+                    <FormField id="Disable" label="Federation Type" value="Disable input" disabled={true} />
                     <FormField id="secret" label="App Secret" value="abc" />
                     <FormField id="key" label="App Key" value="sdfasfsadf" />
                     <FormField id="app" label="App" value="aa" />
