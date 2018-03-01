@@ -3,10 +3,7 @@ import withStyles from "material-ui/styles/withStyles";
 
 const styles = theme => ({
     root: {
-        display: 'flex',
-        alignItems: 'stretch',
-        minHeight: '100vh',
-        width: '100%',
+       
     },
 });
 

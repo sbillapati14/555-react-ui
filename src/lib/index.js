@@ -4,7 +4,7 @@ export { ErrorAlert } from './Alert';
 export { default as AppContainer } from './AppContainer';
 export { default as AppWrapper } from './AppWrapper';
 export { default as AppFrame } from './AppFrame';
-export { default as AppPage } from './AppPage';
+export { default as AppPage, PageRight, PageLeft } from './AppPage';
 export { default as AppBar } from './AppBar';
 export { default as AppContent } from './AppContent';
 export { default as AppDrawer } from './AppDrawer';
@@ -15,9 +15,9 @@ export {
 } from './Button';
 export { default as PaperCard } from './PaperCard';
 export { TextField, FormField } from './InputFields';
-export { 
+export {
     Menu
- } from './DropDown';
+} from './DropDown';
 export {
     default as SideNav,
     SideNavOption,

@@ -5,7 +5,7 @@ import withStyles from "material-ui/styles/withStyles";
 const styles = theme => ({
     appPage: {
         position: 'relative',
-        padding: 0,
+        padding: '30px 29px 24px 31px',
     },
     '@media (max-width: 767px)': {
         appPage: {

@@ -10,6 +10,7 @@ import Typography from 'material-ui/Typography';
 import Avatar from 'material-ui/Avatar';
 import ImageIcon from 'material-ui-icons/Image';
 import InboxIcon from 'material-ui-icons/Inbox';
+import Language from 'material-ui-icons/Language';
 import { MenuItem, MenuList } from 'material-ui/Menu';
 import { ListItemIcon, ListItemText } from 'material-ui/List';
 import MoveToInboxIcon from 'material-ui-icons/MoveToInbox';
@@ -17,7 +18,9 @@ import DraftsIcon from 'material-ui-icons/Drafts';
 import SendIcon from 'material-ui-icons/Send';
 
 import AppWrapper from '../lib/AppWrapper';
+import AppContainer from '../lib/AppContainer';
 import AppFrame from '../lib/AppFrame';
+import AppPage, { PageLeft, PageRight } from '../lib/AppPage';
 import AppBar from '../lib/AppBar';
 import AppDrawer from '../lib/AppDrawer';
 import AppContent from '../lib/AppContent';
@@ -29,7 +32,6 @@ import PaperCard from '../lib/PaperCard';
 import { TextField, FormField } from '../lib/InputFields';
 import Menu from '../lib/DropDown/Menu';
 import Switch from '../lib/Switch/Switch';
-import NestedList from '../lib/DropDown/NestedList';
 import FilterStatus from '../lib/DropDown/FilterStatus';
 import { PrimarySelectList, SelectList, SelectListItem } from '../lib/SelectList';
 import SideNav, { SideNavSection, SideNavOption } from '../lib/SideNav';
@@ -70,57 +72,25 @@ class App extends Component {
       <option value={30}>Thirty</option>
     </Select>;
     return (
-      <AppWrapper render={({ isMobileOpen, toggleDrawer }) => {
+      <AppContainer>
 
-        return (
+        <AppWrapper render={({ isMobileOpen, toggleDrawer }) =>
+
           <AppFrame>
-
-            <AppBar title="yolo" isMobileOpen={isMobileOpen} toggleDrawer={toggleDrawer}>
-              <Menu
-                button={<Button> Open Menu </Button>}
-                render={({ handleClose }) => (
-                  <MenuList>
-                    <MenuItem onClick={handleClose}>
-                      <ListItemIcon>
-                        <SendIcon />
-                      </ListItemIcon>
-                      <ListItemText inset primary="Sent mail" />
-                    </MenuItem>
-                    <MenuItem onClick={handleClose}>
-                      <ListItemIcon>
-                        <DraftsIcon />
-                      </ListItemIcon>
-                      <ListItemText inset primary="Drafts" />
-                    </MenuItem>
-                    <MenuItem onClick={handleClose}>
-                      <ListItemIcon>
-                        <MoveToInboxIcon />
-                      </ListItemIcon>
-                      <ListItemText inset primary="Inbox" />
-                    </MenuItem>
-                  </MenuList>
-                )}
-              />
-            </AppBar>
 
             <AppDrawer title="IRIS| Portal" isMobileOpen={isMobileOpen}>
 
               <Router>
                 <nav>
-                  
+
                   <PrimarySelectList name="selectedTeam" value={selectedTeam} onChange={this.handleChange('selectedTeam')}>
                     <SelectListItem value="team_1">Team 1</SelectListItem>
                     <SelectListItem value="team_2">Team 2</SelectListItem>
                     <SelectListItem value="team_3">Team 3</SelectListItem>
                   </PrimarySelectList>
 
-                  <SelectList name="selectedApplication" value={selectedApplication} onChange={this.handleChange('selectedApplication')}>
-                    <SelectListItem value="yolo_app">Yolo App</SelectListItem>
-                    <SelectListItem value="1_app">Test App</SelectListItem>
-                    <SelectListItem value="3">Funny App</SelectListItem>
-                  </SelectList>
-
                   <SideNav>
+
                     {/* this is out menu with nested also */}
                     <SideNavSection component={NavLink} to="/stand-alone-nav-section" leftIcon={<InboxIcon height="20" />} label="Section NavLink" />
                     <SideNavSection leftIcon={<InboxIcon height="20" />} label="Auth Types" >
@@ -140,101 +110,157 @@ class App extends Component {
                   </SideNav>
                 </nav>
               </Router>
+
             </AppDrawer>
 
             <AppContent isMobileOpen={isMobileOpen}>
 
+              <AppBar icon={<Language />} title="Acme Application" toggleDrawer={toggleDrawer}>
+                <SelectList name="selectedApplication" value={selectedApplication} onChange={this.handleChange('selectedApplication')} fullWidth>
+                  <SelectListItem value="yolo_app">Yolo App</SelectListItem>
+                  <SelectListItem value="1_app">Test App</SelectListItem>
+                  <SelectListItem value="3">Funny App</SelectListItem>
+                </SelectList>
 
-              <Typography variant="display4" gutterBottom>Components</Typography>
+                {/* <Menu
+                  button={<Button> Open Menu </Button>}
+                  render={({ handleClose }) => (
+                    <MenuList>
+                      <MenuItem onClick={handleClose}>
+                        <ListItemIcon>
+                          <SendIcon />
+                        </ListItemIcon>
+                        <ListItemText inset primary="Sent mail" />
+                      </MenuItem>
+                      <MenuItem onClick={handleClose}>
+                        <ListItemIcon>
+                          <DraftsIcon />
+                        </ListItemIcon>
+                        <ListItemText inset primary="Drafts" />
+                      </MenuItem>
+                      <MenuItem onClick={handleClose}>
+                        <ListItemIcon>
+                          <MoveToInboxIcon />
+                        </ListItemIcon>
+                        <ListItemText inset primary="Inbox" />
+                      </MenuItem>
+                    </MenuList>
+                  )}
+                /> */}
 
-              <div id="Buttons" style={{
-                backgroundColor: '#085279',
-                color: 'white',
-                padding: '1em'
-              }}>
-                <Typography variant="display3" gutterBottom>Buttons</Typography>
-                <Button>Root</Button>
-                <GradientButton>GradientButton</GradientButton>
-                <OutlineButton color="white">OutlineButton</OutlineButton>
-                <AccentButton>AccentButton</AccentButton>
-              </div>
-              <div id="PaperCard">
-                <Typography variant="display3" gutterBottom>Paper</Typography>
-                <PaperCard
-                  title="Here is the title"
-                  avatar={
-                    <Avatar>
-                      <ImageIcon />
-                    </Avatar>
-                  }
-                  style={{ width: '500px' }}
-                >
-                  <Typography>
-                    Here is the content of the PaperCard
-              </Typography>
-                </PaperCard>
-              </div>
+              </AppBar>
 
-              <div id='Switch'>
-                <Typography variant="display3" gutterBottom>Switch</Typography>
-                <Switch checked={true} ></Switch>
-                <Switch checked={false} ></Switch>
-                <Switch disabled={true} ></Switch>
-              </div>
 
-              {/*<div id='FormField'>
-                <Typography variant="display3" gutterBottom>Forms</Typography>
-                 <FormField component={select}/>
-                 <FormField/>
-              </div>*/}
-              <div id='Forms'>
-                <Typography type="display3" gutterBottom>Forms</Typography>
-                <PaperCard
-                  title="Acme Application Details"
-                  avatar={
-                    <Avatar>
-                      <ImageIcon />
-                    </Avatar>
-                  }
-                >
-                  <form>
-                    <FormField label="App Domain" value='Example' onChange={(e) => console.log(e)} />
-                    <FormField id="Disable" label="Federation Type" value="Disable input" disabled={true} />
-                    <FormField id="secret" label="App Secret" value="abc" />
-                    <FormField id="key" label="App Key" value="sdfasfsadf" />
-                    <FormField id="app" label="App" value="aa" />
-                  </form>
-                </PaperCard>
-              </div>
-              <div id='FilterStatus'>
-                <Typography variant="display3" gutterBottom>Filters</Typography>
-                <FilterStatus>
-                  <form>
-                    <TextField
-                      id="Example"
-                      label="Example"
-                      margin="normal"
-                      placeholder="Example"
-                    />
-                    <TextField disabled
-                      id="Disabled"
-                      label="Disabled"
-                      margin="normal"
-                      placeholder="Disabled"
-                      value="Disable input"
-                    />
-                    <TextField
-                      hintText="Text Here"
-                      fullWidth={true}
-                      floatingLabelText="Text Here Label"
-                    />
-                  </form>
-                </FilterStatus>
-              </div>
+              <AppPage>
+
+                <PageLeft>
+                  <PaperCard
+                    title="Buttons"
+                    avatar={
+                      <Avatar>
+                        <ImageIcon />
+                      </Avatar>
+                    }
+                  >
+                    <Button>Root</Button>
+                    <GradientButton>GradientButton</GradientButton>
+                    <OutlineButton color="white">OutlineButton</OutlineButton>
+                    <AccentButton>AccentButton</AccentButton>
+                  </PaperCard>
+
+                  <br />
+
+                  <PaperCard
+                    title="Paper Card"
+                    avatar={
+                      <Avatar>
+                        <ImageIcon />
+                      </Avatar>
+                    }
+                  >
+                    <Typography>
+                      Here is the content of the PaperCard
+                    </Typography>
+
+                  </PaperCard>
+
+                  <br />
+                  <PaperCard
+                    title="Form Inputs"
+                    avatar={
+                      <Avatar>
+                        <ImageIcon />
+                      </Avatar>
+                    }
+                  >
+                    <form>
+                      <FormField label="App Domain" value='Example' onChange={(e) => console.log(e)} />
+                      <FormField id="Disable" label="Federation Type" value="Disable input" disabled={true} />
+                      <FormField id="secret" label="App Secret" value="abc" />
+                      <FormField id="key" label="App Key" value="sdfasfsadf" />
+                      <FormField id="app" label="App" value="aa" />
+                    </form>
+                  </PaperCard>
+
+                </PageLeft>
+                <PageRight>
+                  <PaperCard
+                    title="Switch's"
+                    avatar={
+                      <Avatar>
+                        <ImageIcon />
+                      </Avatar>
+                    }
+                  >
+                    <Typography variant="display3" gutterBottom>Switch</Typography>
+                    <Switch checked={true} ></Switch>
+                    <Switch checked={false} ></Switch>
+                    <Switch disabled={true} ></Switch>
+                  </PaperCard>
+
+                  <br />
+
+                  <PaperCard
+                    title="Filters"
+                    avatar={
+                      <Avatar>
+                        <ImageIcon />
+                      </Avatar>
+                    }
+                  >
+                    <FilterStatus>
+                      <form>
+                        <TextField
+                          id="Example"
+                          label="Example"
+                          margin="normal"
+                          placeholder="Example"
+                        />
+                        <TextField disabled
+                          id="Disabled"
+                          label="Disabled"
+                          margin="normal"
+                          placeholder="Disabled"
+                          value="Disable input"
+                        />
+                        <TextField
+                          hintText="Text Here"
+                          fullWidth={true}
+                          floatingLabelText="Text Here Label"
+                        />
+                      </form>
+                    </FilterStatus>
+                  </PaperCard>
+
+                </PageRight>
+              </AppPage>
 
             </AppContent>
-          </ AppFrame>)
-      }} />
+
+          </ AppFrame>
+
+        } />
+      </AppContainer>
     )
   }
 }

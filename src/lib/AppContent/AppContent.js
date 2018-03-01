@@ -3,38 +3,41 @@ import PropTypes from 'prop-types';
 import withStyles from "material-ui/styles/withStyles";
 
 const styles = theme => ({
-    appContent: {
-        transition: theme.transitions.create('margin-left'),
-        [theme.breakpoints.up('lg')]: {
-            width: 'calc(100% - 266px)',
-        },
-        ...theme.mixins.gutters({
-            paddingTop: 80,
-            flex: 'auto',
-            maxWidth: '100%',
-            margin: '0 auto',
-        })
+    rightContent: {
+        padding: '0 0 0 266px',
+        background: '#fff',
     },
-    appContentMobile: {
-        marginLeft: '-266px',
-        [theme.breakpoints.up('lg')]: {
-            marginLeft: 0,
+    '@media (max-width: 1024px)': {
+        rightContent: {
+            padding: 0,
+            transform: 'translateX(0)',
+            transition: 'all .5s',
         },
+        isMobileOpen: {
+            position: 'fixed',
+            width: '100%',
+            transform: 'translateX(-300px)',
+        }
     }
 });
 
 class AppContent extends Component {
 
-    render() {
-        const { children, classes, isMobileOpen } = this.props;
+    getRootClass() {
+        const { classes, isMobileOpen } = this.props;
 
-        let appContentClassName = classes.appContent;
         if (isMobileOpen)
-            appContentClassName += ` ${classes.appContentMobile}`;
+            return `${classes.rightContent} ${classes.isMobileOpen}`;
 
+        return classes.rightContent;
+
+    }
+
+    render() {
+        const { children } = this.props;
 
         return (
-            <div className={appContentClassName}>
+            <div className={this.getRootClass()}>
                 {children}
             </div>
         )
