@@ -83,11 +83,11 @@ class App extends Component {
               <Router>
                 <nav>
 
-                  <PrimarySelectList name="selectedTeam" value={selectedTeam} onChange={this.handleChange('selectedTeam')}>
+                  <SelectList primary={true} name="selectedTeam" value={selectedTeam} onChange={this.handleChange('selectedTeam')}>
                     <SelectListItem value="team_1">Team 1</SelectListItem>
                     <SelectListItem value="team_2">Team 2</SelectListItem>
                     <SelectListItem value="team_3">Team 3</SelectListItem>
-                  </PrimarySelectList>
+                  </SelectList>
 
                   <SideNav>
 

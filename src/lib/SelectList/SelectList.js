@@ -66,6 +66,16 @@ const styles = theme => ({
         display: 'block',
         transition: 'all 0.4s',
     },
+    primaryRoot: {
+        color: "#fff"
+    },
+    primarySelectedItem: {
+        color: '#fff',
+        backgroundImage: '-webkit-linear-gradient( 0deg, rgb(43,156,216) 0%, rgb(48,183,255) 100%)'
+    },
+    primarySelectedItemText: {
+        color: '#fff'
+    },
     options: {
         paddingTop: 0,
     },
@@ -109,7 +119,7 @@ class SelectList extends Component {
     }
 
     render() {
-        const { classes, placeHolderText, subHeaderText, children, value, fullWidth } = this.props;
+        const { classes, placeHolderText, subHeaderText, children, value, fullWidth, primary} = this.props;
 
         let selectedItemClass = classes.selectedItem;
         if (this.state.open)
@@ -140,11 +150,20 @@ class SelectList extends Component {
             {subHeaderText}
         </ListSubheader>);
 
+        let rootClass = fullWidth ? classes.fullWidth : classes.root
+        let selectedItemTextClass = classes.selectedItemText
+
+        if (primary) {
+            rootClass += ` ${classes.primaryRoot}`
+            selectedItemClass += ` ${classes.primarySelectedItem}`
+            selectedItemTextClass += ` ${classes.primarySelectedItemText}`
+        }
+
         return (
             <ClickAwayListener onClickAway={this.closeDropDown}>
-                <div className={fullWidth ? classes.fullWidth : classes.root}>
-                    <Button disableRipple={true} className={selectedItemClass} onClick={this.toggleDropDown} fullwidth={fullWidth}>
-                        <Typography className={classes.selectedItemText}>{selected}</Typography>
+                <div className={rootClass}>
+                    <Button disableRipple={true} className={selectedItemClass} onClick={this.toggleDropDown} fullWidth={fullWidth}>
+                        <Typography className={selectedItemTextClass}>{selected}</Typography>
                         {this.state.open ? <ArrowDropUp className={classes.icon} /> : <ArrowDropDown className={classes.icon} />}
                     </Button>
                     <Collapse component="div" in={this.state.open} className={classes.listItemsContainer}>
@@ -211,6 +230,7 @@ SelectList.defaultProps = {
     subHeaderText: 'Selection Options',
     placeHolderText: 'Make Selection',
     fullWidth: false,
+    primary: false,
 }
 
 export default withStyles(styles)(SelectList);
