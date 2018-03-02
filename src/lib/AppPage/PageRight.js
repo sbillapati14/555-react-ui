@@ -6,6 +6,13 @@ const styles = theme => ({
         position: 'absolute',
         right: '29px',
     },
+    '@media (max-width: 767px)': {
+        pageRight: {
+            right: 0,
+            left: 0,
+            margin: '0 15px',
+        },
+    },
     '@media (max-width: 1024px) and (min-width: 768px)': {
         pageRight: {
             position: 'static',

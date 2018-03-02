@@ -6,25 +6,25 @@ import Divider from 'material-ui/Divider';
 import Card, { CardContent, CardHeader } from 'material-ui/Card';
 
 const styles = theme => ({
-  // header: theme.mixins.gutters({
-  //   paddingTop: 16,
-  //   paddingBottom: 16,
-  // }),
+  cardHeader: {
+    fontWeight: 'bold'
+  }
 });
 
 function PaperCard(props) {
   const { classes, title, avatar, headerIcon, ...otherProps } = props;
 
   return (
-    <Paper { ...otherProps } elevation={2}>
+    <Paper {...otherProps} elevation={2}>
       <Card className={classes.card}>
         <CardHeader
+          classes={{ title: classes.cardHeader }}
           title={title}
           avatar={avatar}
         />
         <Divider />
         <CardContent>
-          { props.children }
+          {props.children}
         </CardContent>
       </Card>
     </Paper>

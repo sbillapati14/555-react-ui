@@ -6,6 +6,12 @@ const styles = theme => ({
         float: 'left',
         paddingRight: '360px',
     },
+    '@media (max-width: 767px)': {
+        pageLeft: {
+            float: 'none',
+            padding: 0,
+        },
+    },
     '@media (max-width: 1024px) and (min-width: 768px)': {
         pageLeft: {
             float: 'none',

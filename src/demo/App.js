@@ -201,6 +201,7 @@ class App extends Component {
                       <FormField id="app" label="App" value="aa" />
                     </form>
                   </PaperCard>
+                  <br />
 
                 </PageLeft>
                 <PageRight>
