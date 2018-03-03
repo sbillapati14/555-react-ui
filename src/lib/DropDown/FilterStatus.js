@@ -1,21 +1,17 @@
 import React from 'react';
-import PropTypes, { element } from 'prop-types';
+import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import ListSubheader from 'material-ui/List/ListSubheader';
-import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+import List, { ListItem, ListItemText } from 'material-ui/List';
 import Collapse from 'material-ui/transitions/Collapse';
-import InboxIcon from 'material-ui-icons/MoveToInbox';
-import DraftsIcon from 'material-ui-icons/Drafts';
-import SendIcon from 'material-ui-icons/Send';
 import ExpandLess from 'material-ui-icons/ExpandLess';
 import ExpandMore from 'material-ui-icons/ExpandMore';
-import StarBorder from 'material-ui-icons/StarBorder';
 import Check from 'material-ui-icons/Check';
 import Dot from 'material-ui-icons/Brightness1'
 import Divider from 'material-ui/Divider';
 import ClickAwayListener from 'material-ui/utils/ClickAwayListener';
-import Paper from 'material-ui/Paper/Paper';
-import Card from 'material-ui/Card/Card';
+
+////// THIS COMPONENT IS UNFINISHED /////
 
 const styles = theme => ({
     root: {
@@ -46,7 +42,6 @@ const styles = theme => ({
         // light: "white"
     },
     filter: {
-        fontWeight: 400,
         color: "#585858",
         alignContent: "center",
         fontSize: 15,
@@ -106,14 +101,14 @@ class NestedList extends React.Component {
         }
 
         setTimeout((_) => {
-            this.handleClick
+            // this.handleClick
         }, 300)
         console.log(index)
     }
 
     render() {
         const { classes } = this.props;
-        const { options, selected } = this.state;
+        const { selected } = this.state;
 
         return (
 

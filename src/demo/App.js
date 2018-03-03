@@ -11,11 +11,6 @@ import Avatar from 'material-ui/Avatar';
 import ImageIcon from 'material-ui-icons/Image';
 import InboxIcon from 'material-ui-icons/Inbox';
 import Language from 'material-ui-icons/Language';
-import { MenuItem, MenuList } from 'material-ui/Menu';
-import { ListItemIcon, ListItemText } from 'material-ui/List';
-import MoveToInboxIcon from 'material-ui-icons/MoveToInbox';
-import DraftsIcon from 'material-ui-icons/Drafts';
-import SendIcon from 'material-ui-icons/Send';
 
 import AppWrapper from '../lib/AppWrapper';
 import AppContainer from '../lib/AppContainer';
@@ -30,15 +25,12 @@ import GradientButton from '../lib/Button/GradientButton';
 import AccentButton from '../lib/Button/AccentButton';
 import PaperCard from '../lib/PaperCard';
 import { TextField, FormField } from '../lib/InputFields';
-import Menu from '../lib/DropDown/Menu';
 import Switch from '../lib/Switch/Switch';
 import FilterStatus from '../lib/DropDown/FilterStatus';
-import { PrimarySelectList, SelectList, SelectListItem } from '../lib/SelectList';
+import { SelectList, SelectListItem } from '../lib/SelectList';
 import SideNav, { SideNavSection, SideNavOption } from '../lib/SideNav';
-import Select from 'material-ui/Select';
-const styles = theme => ({
 
-})
+const styles = theme => ({ })
 
 class App extends Component {
 
@@ -59,18 +51,7 @@ class App extends Component {
   render() {
 
     const { selectedApplication, selectedTeam } = this.state;
-    const select = <Select
-      native
-      value="25"
-      inputProps={{
-        id: 'age-native-simple',
-      }}
-    >
-      <option value="" />
-      <option value={10}>Ten</option>
-      <option value={20}>Twenty</option>
-      <option value={30}>Thirty</option>
-    </Select>;
+
     return (
       <AppContainer>
 

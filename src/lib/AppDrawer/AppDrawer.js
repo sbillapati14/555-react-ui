@@ -102,7 +102,7 @@ class AppDrawer extends Component {
 
     render() {
 
-        const { children, classes, title } = this.props;
+        const { children, title } = this.props;
 
         let theTitle = title;
         // do some work on the title

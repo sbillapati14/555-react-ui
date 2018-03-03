@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import Reboot from 'material-ui/Reboot';
 import { withStyles } from 'material-ui/styles';
