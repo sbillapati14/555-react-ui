@@ -17,6 +17,7 @@ import AppContainer from '../lib/AppContainer';
 import AppFrame from '../lib/AppFrame';
 import AppPage, { PageLeft, PageRight } from '../lib/AppPage';
 import AppBar from '../lib/AppBar';
+import Issues from '../lib/Issues/Issues';
 import AppDrawer from '../lib/AppDrawer';
 import AppContent from '../lib/AppContent';
 
@@ -51,6 +52,10 @@ class App extends Component {
   render() {
 
     const { selectedApplication, selectedTeam } = this.state;
+    const mockProps = {
+      issues: [{issueCount:2, issueName:'Open Issues'}, {issueCount:5, issueName:'Closed Issues'}],
+      totalIssueCount: 0
+  }
 
     return (
       <AppContainer>
@@ -135,6 +140,9 @@ class App extends Component {
               <AppPage>
 
                 <PageLeft>
+                  
+                  <Issues {...mockProps}/>
+
                   <PaperCard
                     title="Buttons"
                     avatar={
