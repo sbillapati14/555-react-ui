@@ -52,10 +52,6 @@ class App extends Component {
   render() {
 
     const { selectedApplication, selectedTeam } = this.state;
-    const mockProps = {
-      issues: [{issueCount:2, issueName:'Open Issues'}, {issueCount:5, issueName:'Closed Issues'}],
-      totalIssueCount: 0
-  }
 
     return (
       <AppContainer>
@@ -140,9 +136,6 @@ class App extends Component {
               <AppPage>
 
                 <PageLeft>
-                  
-                  <Issues {...mockProps}/>
-
                   <PaperCard
                     title="Buttons"
                     avatar={
@@ -193,7 +186,10 @@ class App extends Component {
                   <br />
 
                 </PageLeft>
+
                 <PageRight>
+
+                  <Issues />
                   <PaperCard
                     title="Switch's"
                     avatar={

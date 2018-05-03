@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const styles = {
     issuesWidget: {
@@ -9,21 +10,17 @@ const styles = {
         borderRadius: '5px',
         backgroundColor: 'rgb(255, 255, 255)',
         boxShadow: '0px 1px 28px -6px rgba(0,0,0,0.3)',
-        fontFamily: 'inherit'
     },
     wiggetHeader:{
-        height: '60px',
         borderBottom: '1px solid #e9e9e9',
-        fontFamily: 'inherit'
     },
     widgetTitle:{
         color: '#1682bc',
-        fontWeight: '500',
+        fontWeight: 'bold',
         paddingLeft: '55px',
-        lineHeight: '64px',
+        lineHeight: '26px',
         position: 'relative',
         fontSize: '19px',
-        fontFamily: 'inherit',
         before:{
             top: '17px',
             left: '19px',
@@ -40,12 +37,10 @@ const styles = {
         position:'relative',
         float: 'left',
         display: 'inline-flex',
-        fontFamily: 'inherit'
     },
     issueChartContainer:{
         width: '188px',
         position: 'relative',
-        fontFamily: 'inherit'
     },
     board:{
         position: 'absolute',
@@ -54,66 +49,62 @@ const styles = {
         background: '#fff',
         top: '4px',
         right: '14px',
-        fontFamily: 'inherit'
     },
     totalCount:{
         fontSize: '38px',
         color: '#7d7d7d',
         textAlign: 'center',
-        margin: '11px 0 0',
-        lineHeight: 'normal',
-        fontFamily: 'inherit'
+        margin: '11px',
     },
     txt:{
         fontSize: '12px',
         color: '#767676',
         textAlign: 'center',
-        lineHeight: 'normal',
-        fontFamily: 'inherit'
     },
     chartLegendsLeft:{
         margin: '46px 0 0 0',
         float: 'left',
-        fontFamily: 'inherit'
     },
     legend:{
-        fontSize: '13px',
+        fontSize: '14px',
         color: '#9b9b9b',
-        margin: '0 0 8px 0;',
-        lineHeight: 'normal',
-        fontFamily: 'inherit'
+        margin: '0 0 8px 0',
     },
     values:{
         fontSize: '17px',
-        fontFamily: 'inherit'
     }
 }
 
-export default class Issues extends React.Component{
-render(){
-    const {issues, totalIssueCount} = this.props;
-        return(
-            <div style={styles.issuesWidget}>
-              <div style={styles.wiggetHeader}>
-                <h3 class="title" style={styles.widgetTitle}>Issues</h3>
-              </div>
-              <div class="left chart-body" style={styles.leftChartBody}>
-                <div class="issue-chart-container left" style={styles.issueChartContainer}>
-                  <div class="board" style={styles.board}>
-                    <p class="total-count" style={styles.totalCount}>{totalIssueCount}</p>
-                    <p class="txt" style={styles.txt}>Total Issues</p>
-                  </div>
-                <svg width="188" height="169"><g class="issue-chart-svg" transform="translate(88,84.5)"></g></svg></div>
-                <div class="chart-legends left" style={styles.chartLegendsLeft}>
-                {issues.map((item, index)=> <p key={index} style={styles.legend} class="legend"><span class="values">{item.issueCount} </span> {item.issueName}</p>)}
-                </div>
-              </div>
-            </div>
-        )
-    }
-    }
+const Issues = ({ issues, totalIssueCount }) => {
+    return(
+        <div style={styles.issuesWidget}>
+<div style={styles.wiggetHeader}>
+<h3 className="title" style={styles.widgetTitle}>Issues</h3>
+    </div>
+    <div className="left chart-body" style={styles.leftChartBody}>
+<div className="issue-chart-container left" style={styles.issueChartContainer}>
+<div className="board" style={styles.board}>
+<p className="total-count" style={styles.totalCount}>{totalIssueCount}</p>
+    <p className="txt" style={styles.txt}>Total Issues</p>
+    </div>
+    <svg width="188" height="169"><g className="issue-chart-svg" transform="translate(88,84.5)"></g></svg></div>
+    <div className="chart-legends left" style={styles.chartLegendsLeft}>
+    {issues.map((item, index)=> <p key={index} style={styles.legend} className="legend"><span className="values">{item.issueCount} </span> {item.issueName}</p>)}
+</div>
+    </div>
+    </div>
+)
+}
 
-const mockProps = {
+
+Issues.propTypes = {
+    issues: PropTypes.array.isRequired,
+    totalIssueCount: PropTypes.number.isRequired,
+}
+
+Issues.defaultProps = {
     issues: [{issueCount:2, issueName:'Open Issues'}, {issueCount:5, issueName:'Closed Issues'}],
     totalIssueCount: 0
 }
+
+export default Issues;
