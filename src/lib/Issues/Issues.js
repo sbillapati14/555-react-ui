@@ -8,8 +8,6 @@ const styles = {
         display: 'inline-block',
         borderRadius: '5px',
         backgroundColor: 'rgb(255, 255, 255)',
-        // -webkitBoxShadow: '0px 1px 28px -6px rgba(0,0,0,0.3)',
-        // -mozBoxShadow: '0px 1px 28px -6px rgba(0,0,0,0.3)',
         boxShadow: '0px 1px 28px -6px rgba(0,0,0,0.3)',
         fontFamily: 'inherit'
     },
@@ -34,7 +32,6 @@ const styles = {
             backgroundPosition: '-247px -176px',
             content: "",
             display: 'block',
-            // background: url(../i/icons_d.png) no-repeat,
             backgroundSize: '750px 340px',
             position: 'absolute'
         }
