@@ -17,6 +17,7 @@ import AppContainer from '../lib/AppContainer';
 import AppFrame from '../lib/AppFrame';
 import AppPage, { PageLeft, PageRight } from '../lib/AppPage';
 import AppBar from '../lib/AppBar';
+import Issues from '../lib/Issues/Issues';
 import AppDrawer from '../lib/AppDrawer';
 import AppContent from '../lib/AppContent';
 import AlertsAndNotifications from '../lib/AlertsAndNotifications';
@@ -30,6 +31,7 @@ import Switch from '../lib/Switch/Switch';
 import FilterStatus from '../lib/DropDown/FilterStatus';
 import { SelectList, SelectListItem } from '../lib/SelectList';
 import SideNav, { SideNavSection, SideNavOption } from '../lib/SideNav';
+import Icon from '../icons';
 
 const styles = theme => ({ })
 
@@ -75,20 +77,26 @@ class App extends Component {
 
                     {/* this is out menu with nested also */}
                     <SideNavSection component={NavLink} to="/stand-alone-nav-section" leftIcon={<InboxIcon height="20" />} label="Section NavLink" />
-                    <SideNavSection leftIcon={<InboxIcon height="20" />} label="Auth Types" >
+                    <SideNavSection leftIcon={<span><Icon icon="credit"/></span>} label="Auth Types" >
                       <SideNavOption component={NavLink} to="/page-one" primary="Server API Endpoints" />
                       <SideNavOption component={NavLink} to="/page-two" primary="Report a Problem" />
                       <SideNavOption component={NavLink} to="/page-three" primary="API Status" />
                       <SideNavOption component={NavLink} to="/page-four" primary="Call Trace" />
                       <SideNavOption primary="Not A Link" />
                     </SideNavSection>
-                    <SideNavSection leftIcon={<InboxIcon height="20" />} label="More Options" >
+                   <SideNavSection component={NavLink} to="/stand-alone-nav-section" leftIcon={<span><Icon icon="token"/></span>} label="Tokens" />
+                   <SideNavSection leftIcon={<InboxIcon height="20" />} label="More Options" >
                       <SideNavOption component={NavLink} to="/page-one" primary="Server API Endpoints" />
                       <SideNavOption component={NavLink} to="/page-two" primary="Report a Problem" />
                       <SideNavOption component={NavLink} to="/page-three" primary="API Status" />
                       <SideNavOption component={NavLink} to="/page-four" primary="Call Trace" />
                       <SideNavOption primary="Not A Link" />
                     </SideNavSection>
+                      <SideNavSection component={NavLink} to="/stand-alone-nav-section" leftIcon={<span><Icon icon="notify"/></span>} label="Notification" />
+                      <SideNavSection component={NavLink} to="/stand-alone-nav-section" leftIcon={<span><Icon icon="tools"/></span>} label="Tools And Support" />
+                      <SideNavSection component={NavLink} to="/stand-alone-nav-section" leftIcon={<span><Icon icon="heart"/></span>} label="Platform Health" />
+                      <SideNavSection component={NavLink} to="/stand-alone-nav-section"  leftIcon={<span><Icon icon="settings"/></span>} label="Settings" />
+                      <SideNavSection component={NavLink} to="/stand-alone-nav-section" leftIcon={<span><Icon icon="about"/></span>} label="About" />
                   </SideNav>
                 </nav>
               </Router>
@@ -198,7 +206,10 @@ class App extends Component {
                   <br />
 
                 </PageLeft>
+
                 <PageRight>
+
+                  <Issues />
                   <PaperCard
                     title="Switch's"
                     avatar={
