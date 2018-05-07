@@ -17,6 +17,7 @@ import AppContainer from '../lib/AppContainer';
 import AppFrame from '../lib/AppFrame';
 import AppPage, { PageLeft, PageRight } from '../lib/AppPage';
 import AppBar from '../lib/AppBar';
+import Issues from '../lib/Issues/Issues';
 import AppDrawer from '../lib/AppDrawer';
 import AppContent from '../lib/AppContent';
 
@@ -185,7 +186,10 @@ class App extends Component {
                   <br />
 
                 </PageLeft>
+
                 <PageRight>
+
+                  <Issues />
                   <PaperCard
                     title="Switch's"
                     avatar={
