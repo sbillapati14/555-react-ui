@@ -20,6 +20,7 @@ import AppBar from '../lib/AppBar';
 import Issues from '../lib/Issues/Issues';
 import AppDrawer from '../lib/AppDrawer';
 import AppContent from '../lib/AppContent';
+import AlertsAndNotifications from '../lib/AlertsAndNotifications';
 
 import OutlineButton from '../lib/Button/OutlineButton';
 import GradientButton from '../lib/Button/GradientButton';
@@ -144,6 +145,18 @@ class App extends Component {
 
                 <PageLeft>
                   <PaperCard
+                    title="Alerts and Notifications"
+                    avatar={
+                        <Avatar>
+                        <ImageIcon />
+                        </Avatar>
+                }
+                >
+                <AlertsAndNotifications/>
+                    </PaperCard>
+
+                    <br />
+                    <PaperCard
                     title="Buttons"
                     avatar={
                       <Avatar>
@@ -152,7 +165,7 @@ class App extends Component {
                     }
                   >
                     <Button>Root</Button>
-                    <GradientButton>GradientButton</GradientButton>
+                    <GradientButton>Gradien tButton</GradientButton>
                     <OutlineButton color="white">OutlineButton</OutlineButton>
                     <AccentButton>AccentButton</AccentButton>
                   </PaperCard>
@@ -212,8 +225,7 @@ class App extends Component {
                   </PaperCard>
 
                   <br />
-
-                  <PaperCard
+                    <PaperCard
                     title="Filters"
                     avatar={
                       <Avatar>

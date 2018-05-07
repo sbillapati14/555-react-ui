@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Collapse from 'material-ui/transitions/Collapse';
 import { withStyles } from 'material-ui/styles';
 import List, { ListItem, ListItemIcon, ListItemText, } from 'material-ui/List';
-import ArrowDropDown from 'material-ui-icons/ArrowDropDown';
 import ArrowDropUp from 'material-ui-icons/ArrowDropUp';
 
 const styles = theme => {
@@ -27,7 +27,6 @@ const styles = theme => {
     },
     listItemActive: {
       backgroundColor: "#253843",
-      // padding: 0,
     },
     label: {
       color: '#FFF',
@@ -48,12 +47,21 @@ const styles = theme => {
       color: '#FFF',
       transform: 'scale(1.3)',
     },
-    rightIcon: {
+    rightIconOpen:{
       position: 'absolute',
       right: 0,
       top: 16,
       color: '#fff',
-      transition: theme.transitions.create(['all']),
+      transform: 'rotate(0deg)',
+      transition: 'transform 0.3s linear',
+    },
+    rightIconClose:{
+      position: 'absolute',
+      right: 0,
+      top: 16,
+      color: '#fff',
+      transform: 'rotate(180deg)',
+      transition: 'transform 0.3s linear',
     },
     itemText: {
       textAlign: "left",
@@ -74,10 +82,18 @@ const styles = theme => {
 };
 
 class SideNavSection extends Component {
+  constructor(props){
+    super(props);
+    this.state = {open: true}
+  }
 
+  componentWillMount(){
+    this.setState({open: this.props.open})
+  }
+  
   handleOnClick(e) {
     const { onClick } = this.props;
-
+    this.setState({open: !this.state.open});
     if (onClick)
       onClick(e);
   }
@@ -97,7 +113,7 @@ class SideNavSection extends Component {
       const anchorClass = `${classes.root} ${classes.label} ${classes.anchor}`;
       text = <Component {...rest} className={anchorClass} >{label}</Component>
     }
-
+    const iconClass = this.state.open ? classes.rightIconOpen : classes.rightIconClose;
     return (
       <ListItem className={classes.root} onClick={(e) => this.handleOnClick(e)}>
         <div className={listItemClass}>
@@ -110,14 +126,16 @@ class SideNavSection extends Component {
 
           {text}
 
-          {children && <ListItemIcon className={classes.rightIcon}>
-            {open ? <ArrowDropUp /> : <ArrowDropDown />}
+          {children && <ListItemIcon className={iconClass}>
+            <ArrowDropUp/>
           </ListItemIcon>}
 
         </div>
-        <List className={optionsClass} component="ul" >
-          {children}
-        </List>
+        <Collapse component="div" in={this.state.open}>
+          <List className={optionsClass} component="ul" >
+            {children}
+          </List>
+        </Collapse>
       </ListItem>
     );
   }
