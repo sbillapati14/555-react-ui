@@ -4,6 +4,7 @@ import List, { ListItem } from 'material-ui/List';
 import { withStyles } from 'material-ui/styles';
 import Divider from 'material-ui/Divider';
 import Dot from 'material-ui-icons/Brightness1'
+import {timeAgo} from './../../assets/utilities'
 
 
 const styles = theme => {
@@ -21,8 +22,9 @@ const styles = theme => {
             fontWeight: '400',
             fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
             lineHeight: '19px',
-            paddingRight: '50px',
+            paddingRight: '75px',
             display: 'inline'
+
         },
         circle: {
             width: 5,
@@ -51,8 +53,8 @@ const AlertsAndNotifications  = ({notifications, title, showTitle, classes}) => 
                   (<div>
                       <ListItem key={ind} className={classes.listItem}>
                           <Dot style={{ color:  "#000"}} className={classes.circle} />
-                          <p className={classes.alert}>{notification.text}</p>
-                    <span className={classes.alertTime}>{notification.time}</span>
+                          <p className={classes.alert}>{notification.description}</p>
+                    <span className={classes.alertTime}>{timeAgo(notification.timestamp)}</span>
                   </ListItem>
                   {(ind < notifications.length-1) && <Divider />}
                 </div>)
@@ -67,10 +69,10 @@ AlertsAndNotifications.propTypes = {
 
 AlertsAndNotifications.defaultProps = {
     notifications: [
-        {text:'Acme Application has a poor Platform health.', time:'5m ago', isSeen: true},
-        {text:'Lorem Application has been deployed', time:'5m ago', isSeen: false},
-        {text:'Acme Application has a poor Platform health.', time:'7m ago', isSeen: false},
-        {text:'Lorem Application has been deployed', time:'10m ago', isSeen: true}
+        {id:1, description:'Acme Application has a poor Platform health.', timestamp:1526235491524},
+        {id:2, description:'Lorem Application has been deployed', timestamp:1526236158569},
+        {id:3, description:'Acme Application has a poor Platform health.', timestamp:1526236194698},
+        {id:4, description:'Lorem Application has been deployed', timestamp:1526236214756}
     ]
 }
 
