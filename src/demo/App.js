@@ -142,9 +142,18 @@ class App extends Component {
                   <SelectListItem value="3">Funny App</SelectListItem>
                 </SelectList>
 
-                <PopOver Component = {<Icon icon="bell-alert" height="50" width="50"/>}>
-                   <AlertsAndNotifications/>
+                <PopOver Component = {<Icon icon="bell-alert" height="40" width="40"/>}>
+                <PaperCard
+                    title="Notifications"
+                    avatar={
+                      <Avatar>
+                      </Avatar>
+                    }
+                   >
+                  <AlertsAndNotifications/>
+                 </PaperCard>
                 </PopOver>
+
 
                 {/* <Menu
                   button={<Button> Open Menu </Button>}
@@ -176,7 +185,6 @@ class App extends Component {
 
 
               <AppPage>
-
 
                 <PageLeft>
                   <PaperCard

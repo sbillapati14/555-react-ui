@@ -1,96 +1,81 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import ClickAwayListener from 'material-ui/utils/ClickAwayListener';
 import { withStyles } from 'material-ui/styles';
-import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
-import Popover from 'material-ui/Popover';
+import { Manager, Target, Popper, } from 'react-popper';
+import Grow from 'material-ui/transitions/Grow';
+import Paper from 'material-ui/Paper';
+
+
 
 const styles = theme => ({
-  wrapper: {
-    display: 'inline-block'
-  },
-  typography: {
-    margin: theme.spacing.unit * 2,
-  },
-  carot: {
-    marginTop: '10px',
-     position: 'relative',
-     cursor: 'pointer',
-    '&:before': {
-      content: '""',
-      position: 'absolute',
-      top: '0',
-      right: '14px',
-      borderBottom: '12px solid #999',
-      borderLeft: '12px solid transparent',
-      borderRight: '12px solid transparent'
+   root: {
+       display: 'flex',
+       zIndex: 10
     },
-    '&:after': {
-      content: '""',
-      position: "absolute",
-      top: '0',
-      right: '15px',
-      borderBottom: '14px solid #fff',
-      borderLeft: '11px solid transparent',
-      borderRight: '11px solid transparent'
-    }
-  }
+   carot: {
+      position: 'absolute',
+      marginLeft: '-0.5em',
+      right: '3px',
+      border: '0.5em solid black',
+      borderColor: '#fff #fff #fff',
+      transformOrigin: '0 0',
+      transform: 'rotate(135deg)',
+      zIndex: 9999,
+      boxShadow: '-3px 3px 3px 0 rgba(0, 0, 0, 0.05)',
+   },
+   popperClose: {
+     pointerEvents: 'none',
+   },
 });
 
-class SimplePopover extends React.Component {
+class PopoverDropdown extends React.Component {
   state = {
-    anchorEl: null,
+    open: false,
   };
 
-  handleClick = event => {
-    this.setState({
-      anchorEl: event.currentTarget,
-    });
+  handleClick = () => {
+    this.setState({ open: true });
   };
 
   handleClose = () => {
-    this.setState({
-      anchorEl: null,
-    });
+    this.setState({ open: false });
   };
 
   render() {
     const { classes } = this.props;
-    const { anchorEl } = this.state;
-
+    const { open } = this.state;
     return (
-      <div className={classes.wrapper}>
-        {/* <Button variant="raised" onClick={this.handleClick}>
-          Open Popover
-        </Button> */}
-        <div onClick={this.handleClick}>
-        {this.props.Component}
-        {Boolean(anchorEl) && <span className = {classes.carot}></span>}
+      <div className={classes.root}>
+      <Manager>
+        <Target>
+         <div onClick={this.handleClick}>
+           {this.props.Component}
         </div>
-        <Popover
-          open={Boolean(anchorEl)}
-          anchorEl={anchorEl}
-          classes = {{paper:classes.paper}}
-          onClose={this.handleClose}
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'center',
-          }}
-          transformOrigin={{
-            vertical: 'top',
-            horizontal: 'center',
-          }}
+        </Target>
+        <Popper
+          placement="bottom-end"
+          eventsEnabled={open}
+          className={classNames({ [classes.popperClose]: !open})}
         >
-          {/* <Typography className={classes.typography}>The content of the Popover.</Typography> */}
-          {this.props.children}
-        </Popover>
-      </div>
+          <ClickAwayListener onClickAway={this.handleClose}>
+            <Grow in={open} id="menu-list" style={{ transformOrigin: '0 0 0' }}>
+              <Paper>
+                <span className = {classes.carot}></span>
+                {this.props.children}
+              </Paper>
+            </Grow>
+          </ClickAwayListener>
+        </Popper>
+      </Manager>
+    </div>
     );
   }
 }
 
-SimplePopover.propTypes = {
+PopoverDropdown.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SimplePopover);
+export default withStyles(styles)(PopoverDropdown);

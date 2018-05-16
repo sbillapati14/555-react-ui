@@ -22,9 +22,8 @@ const styles = theme => {
             fontWeight: '400',
             fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
             lineHeight: '19px',
-            paddingRight: '75px',
+            width: '80%',
             display: 'inline'
-
         },
         circle: {
             width: 5,
@@ -40,8 +39,9 @@ const styles = theme => {
             fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
             position: 'absolute',
             right: '0',
-            top: '16px',
-            display: 'inline'
+            display: 'inline',
+            paddingLeft: '10px',
+            width: '20%'
         }
     }
     };
@@ -50,7 +50,7 @@ const AlertsAndNotifications  = ({notifications, title, showTitle, classes}) => 
     return(
                 <List className={classes.notificationList}>
                 {notifications.map((notification, ind)=>
-                  (<div>
+                  (<div key={ind}>
                       <ListItem key={ind} className={classes.listItem}>
                           <Dot style={{ color:  "#000"}} className={classes.circle} />
                           <p className={classes.alert}>{notification.description}</p>
@@ -64,7 +64,7 @@ const AlertsAndNotifications  = ({notifications, title, showTitle, classes}) => 
 }
 
 AlertsAndNotifications.propTypes = {
-    notification : PropTypes.array.isRequired
+    notification : PropTypes.array
 }
 
 AlertsAndNotifications.defaultProps = {
