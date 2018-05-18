@@ -34,12 +34,12 @@ const theme = createMuiTheme({
     MuiInput: {
       root: {
       },
-      inkbar: {
-        '&:after': {
-          display: 'none',
-          backgroundColor: 'rgba(0, 0, 0, 0.42)'
-        }
-      },
+//      inkbar: {
+//        '&:after': {
+//          display: 'none',
+//          backgroundColor: 'rgba(0, 0, 0, 0.42)'
+//        }
+//      },
       underline: {
         '&:hover:before': {
           height: '1px !important',
@@ -61,7 +61,7 @@ const theme = createMuiTheme({
     },
     MuiPaper: {
       root: {},
-      shadow2: {
+      elevation2: {
         boxShadow: '0px 1px 28px -6px rgba(0,0,0,0.3)',
         borderRadius: '5px'
       }
@@ -105,3 +105,4 @@ const theme = createMuiTheme({
 });
 
 export default theme;
+

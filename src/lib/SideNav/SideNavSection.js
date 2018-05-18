@@ -77,6 +77,10 @@ const styles = theme => {
     },
     optionsActive: {
       display: 'block'
+    },
+    collapsableMenu: {
+        width: '100%',
+        padding: '0 10px'
     }
   }
 };
@@ -131,7 +135,7 @@ class SideNavSection extends Component {
           </ListItemIcon>}
 
         </div>
-        <Collapse component="div" in={this.state.open}>
+        <Collapse className={classes.collapsableMenu} component="div" in={this.state.open}>
           <List className={optionsClass} component="ul" >
             {children}
           </List>

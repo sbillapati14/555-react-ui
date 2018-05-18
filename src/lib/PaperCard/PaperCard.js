@@ -7,8 +7,11 @@ import Card, { CardContent, CardHeader } from 'material-ui/Card';
 
 const styles = theme => ({
   cardHeader: {
-    fontWeight: 'bold'
-  }
+    padding: 0
+  },
+  title: {
+    fontWeight: 'bold',
+}
 });
 
 function PaperCard(props) {
@@ -18,7 +21,7 @@ function PaperCard(props) {
     <Paper {...otherProps} elevation={2}>
       <Card className={classes.card}>
         <CardHeader
-          classes={{ title: classes.cardHeader }}
+          classes={{ title: classes.title, root: classes.cardHeader }}
           title={title}
           avatar={avatar}
         />

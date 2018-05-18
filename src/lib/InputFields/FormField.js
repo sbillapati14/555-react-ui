@@ -37,7 +37,7 @@ const styles = theme => ({
 
 class FormField extends Component {
     render() {
-      const { classes, component, label, style, ...rest} = this.props
+      const { classes, component, label, rightIcon, style, ...rest} = this.props
       if(component) {
         if (label) {
           return (
@@ -67,6 +67,7 @@ class FormField extends Component {
                     
                     className={classes.root}
                 />
+                <span>{rightIcon}</span>
             </div>
             );
           }

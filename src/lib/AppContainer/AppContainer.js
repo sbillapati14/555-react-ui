@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import Reboot from 'material-ui/Reboot';
+import Reboot from 'material-ui/CssBaseline';
 import { withStyles } from 'material-ui/styles';
 
 import theme from '../Theme';
