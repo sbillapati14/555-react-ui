@@ -29,6 +29,7 @@ import AccentButton from '../lib/Button/AccentButton';
 import PaperCard from '../lib/PaperCard';
 import { TextField, FormField } from '../lib/InputFields';
 import Switch from '../lib/Switch/Switch';
+import SwitchButton from '../lib/Switch/SwitchButton';
 import FilterStatus from '../lib/DropDown/FilterStatus';
 import { SelectList, SelectListItem } from '../lib/SelectList';
 import SideNav, { SideNavSection, SideNavOption } from '../lib/SideNav';
@@ -265,6 +266,7 @@ class App extends Component {
                     <Switch checked={true} ></Switch>
                     <Switch checked={false} ></Switch>
                     <Switch disabled={true} ></Switch>
+                    <SwitchButton checked={true}></SwitchButton>
                   </PaperCard>
 
                   <br />

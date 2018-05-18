@@ -24,9 +24,9 @@ const styles =  {
     },
 
     checked: {
-      color: "#fff",
+      color: "#fff !important",
       '& + $bar': {
-        backgroundColor: "#03ba8d",
+        backgroundColor: "#03ba8d !important",
         width: 57,
         height: 33,
         borderRadius: 33,
