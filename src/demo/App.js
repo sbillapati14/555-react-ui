@@ -258,7 +258,7 @@ class App extends Component {
                       <FormField id="key" label="App Key" value="sdfasfsadf" />
                       <FormField id="app" label="App" value="aa" />
                       <FormField id="cpyToClip" label="Copy to CLipboard" value={this.state.cpyToClip} endAdornment={<span onClick={this.copyToClipboard.bind(this)}><Icon icon="copyToClipboard" viewBox="0 0 500 500" fill="#282828"/></span>}/>
-                      <FormField type="file" id="upload" label="File Upload"  endAdornment={<FileUpload/>}/>
+                      <FormField type="file" id="upload" label="File Upload"/>
                     </form>
                   </PaperCard>
                   <br />
