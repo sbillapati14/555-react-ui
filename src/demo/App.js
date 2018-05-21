@@ -28,15 +28,17 @@ import GradientButton from '../lib/Button/GradientButton';
 import AccentButton from '../lib/Button/AccentButton';
 import PaperCard from '../lib/PaperCard';
 import { TextField, FormField } from '../lib/InputFields';
-import Switch from '../lib/Switch/Switch';
-import SwitchButton from '../lib/Switch/SwitchButton';
+import {Switch, SwitchButton} from '../lib/Switch';
 import FilterStatus from '../lib/DropDown/FilterStatus';
 import { SelectList, SelectListItem } from '../lib/SelectList';
 import SideNav, { SideNavSection, SideNavOption } from '../lib/SideNav';
 import Icon from '../icons';
 import ClickAwayListener from 'material-ui/utils/ClickAwayListener';
+import FileUpload from 'material-ui-icons/FileUpload';
 
-const styles = theme => ({ 
+
+
+const styles = theme => ({
   appBar: {
     display: 'flex'
   }
@@ -48,6 +50,7 @@ class App extends Component {
     selectedApplication: '',
     selectedTeam: '',
     notification: false,
+    cpyToClip: 'Click on the right icon to copy input value'
   }
 
   constructor(props) {
@@ -64,6 +67,15 @@ class App extends Component {
   handleClose = () => {
     this.setState({ notification: false});
   };
+  copyToClipboard(){
+    const el = document.createElement('textarea');
+    el.value = this.state.cpyToClip;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+  }
+
   handleChange = name => event => {
     this.setState({ [name]: event.target.value });
   };
@@ -123,7 +135,7 @@ class App extends Component {
 
             <AppContent isMobileOpen={isMobileOpen}>
 
-               <AppBar icon={<Language />} classes={{toolbar:classes.appBar}} title="Acme Application" toggleDrawer={toggleDrawer} 
+               <AppBar icon={<Language />} classes={{toolbar:classes.appBar}} title="Acme Application" toggleDrawer={toggleDrawer}
                righticon={<span onClick={this.handleClick.bind(this)}><Icon icon="bell-alert"/></span>}
                notification= {this.state.notification?(<ClickAwayListener onClickAway={this.handleClose}><PaperCard
                   title="Alerts and Notifications"
@@ -245,6 +257,8 @@ class App extends Component {
                       <FormField id="secret" label="App Secret" value="abc" />
                       <FormField id="key" label="App Key" value="sdfasfsadf" />
                       <FormField id="app" label="App" value="aa" />
+                      <FormField id="cpyToClip" label="Copy to CLipboard" value={this.state.cpyToClip} endAdornment={<span onClick={this.copyToClipboard.bind(this)}><Icon icon="copyToClipboard" viewBox="0 0 500 500" fill="#282828"/></span>}/>
+                      <FormField type="file" id="upload" label="File Upload"/>
                     </form>
                   </PaperCard>
                   <br />

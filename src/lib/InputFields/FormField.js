@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withStyles } from 'material-ui/styles';
-import TextField from 'material-ui/TextField';
+import Input from 'material-ui/Input';
 
 const styles = theme => ({
      root : {
@@ -12,6 +12,7 @@ const styles = theme => ({
        height: 'auto',
        fontSize: 14,
        color: '#606060',
+       marginTop: '17px'
      },
 
     formLabel: {
@@ -36,8 +37,19 @@ const styles = theme => ({
 });
 
 class FormField extends Component {
+  constructor(props){
+    super(props)
+    this.copyToClipboard = this.copyToClipboard.bind(this);
+  }
+
+  copyToClipboard() {
+    var copyText = document.getElementById(this.props.id);
+    copyText.select();
+    document.execCommand("copy");
+  }
     render() {
-      const { classes, component, label, rightIcon, style, ...rest} = this.props
+      const { classes, component, label, style, ...rest} = this.props
+   
       if(component) {
         if (label) {
           return (
@@ -55,19 +67,14 @@ class FormField extends Component {
         return (
             <div>
                 <label className={classes.formLabel}>{label}</label>
-                <TextField
+                <Input
                     margin="normal"
                     fullWidth={true}
-                    InputProps={{
-                        disableUnderline: true
-                    }}
+                     disableUnderline = {true}
                     style={combinedStyle}
-
                     {...rest }
-                    
                     className={classes.root}
-                />
-                <span>{rightIcon}</span>
+               />
             </div>
             );
           }
