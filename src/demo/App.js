@@ -67,7 +67,7 @@ class App extends Component {
   handleClose = () => {
     this.setState({ notification: false});
   };
-  copyToClipboard(){debugger;
+  copyToClipboard(){
     const el = document.createElement('textarea');
     el.value = this.state.cpyToClip;
     document.body.appendChild(el);
