@@ -18,6 +18,7 @@ import AppFrame from '../lib/AppFrame';
 import AppPage, { PageLeft, PageRight } from '../lib/AppPage';
 import AppBar from '../lib/AppBar';
 import Issues from '../lib/Issues/Issues';
+import PopOver from '../lib/PopOver';
 import AppDrawer from '../lib/AppDrawer';
 import AppContent from '../lib/AppContent';
 import AlertsAndNotifications from '../lib/AlertsAndNotifications';
@@ -32,17 +33,23 @@ import FilterStatus from '../lib/DropDown/FilterStatus';
 import { SelectList, SelectListItem } from '../lib/SelectList';
 import SideNav, { SideNavSection, SideNavOption } from '../lib/SideNav';
 import Icon from '../icons';
+import ClickAwayListener from 'material-ui/utils/ClickAwayListener';
 import FileUpload from 'material-ui-icons/FileUpload';
 
 
 
-const styles = theme => ({ })
+const styles = theme => ({
+  appBar: {
+    display: 'flex'
+  }
+})
 
 class App extends Component {
 
   state = {
     selectedApplication: '',
     selectedTeam: '',
+    notification: false,
     cpyToClip: 'Click on the right icon to copy input value'
   }
 
@@ -51,6 +58,15 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  // function ActionLink()
+  handleClick(e) {
+     e.preventDefault();
+     this.setState({ notification: !this.state.notification});
+  }
+
+  handleClose = () => {
+    this.setState({ notification: false});
+  };
   copyToClipboard(){debugger;
     const el = document.createElement('textarea');
     el.value = this.state.cpyToClip;
@@ -67,6 +83,7 @@ class App extends Component {
   render() {
 
     const { selectedApplication, selectedTeam } = this.state;
+    const { classes } = this.props;
 
     return (
       <AppContainer>
@@ -118,12 +135,38 @@ class App extends Component {
 
             <AppContent isMobileOpen={isMobileOpen}>
 
-              <AppBar icon={<Language />} title="Acme Application" toggleDrawer={toggleDrawer}>
+               <AppBar icon={<Language />} classes={{toolbar:classes.appBar}} title="Acme Application" toggleDrawer={toggleDrawer}
+               righticon={<span onClick={this.handleClick.bind(this)}><Icon icon="bell-alert"/></span>}
+               notification= {this.state.notification?(<ClickAwayListener onClickAway={this.handleClose}><PaperCard
+                  title="Alerts and Notifications"
+                  avatar={
+                     <Avatar>
+                     <ImageIcon />
+                     </Avatar>
+                  }
+               >
+               <AlertsAndNotifications/>
+                  </PaperCard></ClickAwayListener>): ''}>
+
+
                 <SelectList name="selectedApplication" value={selectedApplication} onChange={this.handleChange('selectedApplication')} fullWidth>
                   <SelectListItem value="yolo_app">Yolo App</SelectListItem>
                   <SelectListItem value="1_app">Test App</SelectListItem>
                   <SelectListItem value="3">Funny App</SelectListItem>
                 </SelectList>
+
+                <PopOver Component = {<Icon icon="bell-alert" height="40" width="40"/>}>
+                <PaperCard
+                    title="Notifications"
+                    avatar={
+                      <Avatar>
+                      </Avatar>
+                    }
+                   >
+                  <AlertsAndNotifications/>
+                 </PaperCard>
+                </PopOver>
+
 
                 {/* <Menu
                   button={<Button> Open Menu </Button>}
