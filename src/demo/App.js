@@ -27,12 +27,14 @@ import GradientButton from '../lib/Button/GradientButton';
 import AccentButton from '../lib/Button/AccentButton';
 import PaperCard from '../lib/PaperCard';
 import { TextField, FormField } from '../lib/InputFields';
-import Switch from '../lib/Switch/Switch';
-import SwitchButton from '../lib/Switch/SwitchButton';
+import {Switch, SwitchButton} from '../lib/Switch';
 import FilterStatus from '../lib/DropDown/FilterStatus';
 import { SelectList, SelectListItem } from '../lib/SelectList';
 import SideNav, { SideNavSection, SideNavOption } from '../lib/SideNav';
 import Icon from '../icons';
+import FileUpload from 'material-ui-icons/FileUpload';
+
+
 
 const styles = theme => ({ })
 
@@ -41,11 +43,21 @@ class App extends Component {
   state = {
     selectedApplication: '',
     selectedTeam: '',
+    cpyToClip: 'Click on the right icon to copy input value'
   }
 
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  copyToClipboard(){debugger;
+    const el = document.createElement('textarea');
+    el.value = this.state.cpyToClip;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
   }
 
   handleChange = name => event => {
@@ -202,6 +214,8 @@ class App extends Component {
                       <FormField id="secret" label="App Secret" value="abc" />
                       <FormField id="key" label="App Key" value="sdfasfsadf" />
                       <FormField id="app" label="App" value="aa" />
+                      <FormField id="cpyToClip" label="Copy to CLipboard" value={this.state.cpyToClip} endAdornment={<span onClick={this.copyToClipboard.bind(this)}><Icon icon="copyToClipboard" viewBox="0 0 500 500" fill="#282828"/></span>}/>
+                      <FormField type="file" id="upload" label="File Upload"  endAdornment={<FileUpload/>}/>
                     </form>
                   </PaperCard>
                   <br />

@@ -77,7 +77,7 @@ class SwitchButton extends React.Component {
               <input className={classes.radioSwitch} type="radio" id="switch_right" name={name} onChange={this.handleChange} value="no" checked={!this.state.checked}/>
               <label className={classes.label} htmlFor="switch_right">{values.off}</label>
             </div>
-           {labelText && <span>  -  Ids</span>}
+           {labelText && <span>{labelText}</span>}
       </form>
     );
   }
