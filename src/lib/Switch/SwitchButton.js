@@ -1,45 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import Switch from 'material-ui/Switch';
 import withStyles from "material-ui/styles/withStyles";
 
 const styles = theme => ({
-      switchField: {
-        margin: '0 0 10px 0',
-        overflow: 'hidden'
-      },
       label:{
         display: 'inline-block',
         width: '45px',
+        color: 'rgba(0, 0, 0, 0.6)',
         fontSize: '14px',
         fontWeight: 'normal',
         textAlign: 'center',
         textShadow: 'none',
-        padding: '8px 9px',
+        padding: '8px 10px',
         borderRadius: '3px',
         transition:  'all 0.1s ease-in-out',
         '&:hover': {
            cursor: 'pointer'
           },
       },
-      radioSwitch:{
-        position: 'absolute !important',
-        clip: 'rect(0, 0, 0, 0)',
-        height: '1px',
-        width: '1px',
-        border: '0',
-        overflow: 'hidden',
-        '&:checked[value="yes"] + label': {
-            backgroundColor: '#2fb3fa',
-            boxShadow: 'none',
-            color: '#fff',
-            width: '45px'
-        },
-        '&:checked[value="no"] + label': {
-            backgroundColor: '#DA4F49',
-            boxShadow: 'none',
-            color: '#fff',
-        }
+      onLabel: {
+        backgroundColor: '#2fb3fa',
+        color: '#fff'
+      },
+      offLabel: {
+        backgroundColor: '#DA4F49',
+        color: '#fff'
       },
       switch:{
           marginRight: '10px',
@@ -60,24 +47,23 @@ class SwitchButton extends React.Component {
   }
   handleChange(){
     const { onChange }  = this.props;
-    onChange && onChange(!this.state. checked)
+    onChange && onChange(!this.state.checked)
     this.setState({checked: !this.state.checked})
   }
 
   render() {
     const { classes, name, values, labelText } = this.props;
-
+    const onLabel = classNames({ [classes.onLabel] :this.state.checked}, classes.label );
+    const offLabel = classNames({ [classes.offLabel] :!this.state.checked}, classes.label );
     return (
       <form className={classes.btnContainer}>
          <div className={classes.switch}>
-            <input className={classes.radioSwitch} type="radio" id="switch_left" name={name} value="yes" onChange={this.handleChange} checked={this.state.checked}/>
-             <label className={classes.label} htmlFor="switch_left">{values.on}</label>
+            <label className={onLabel}  name={name} htmlFor="switch_on" onClick={this.handleChange}>{values.on}</label>
             </div>
             <div className={classes.switch}>
-              <input className={classes.radioSwitch} type="radio" id="switch_right" name={name} onChange={this.handleChange} value="no" checked={!this.state.checked}/>
-              <label className={classes.label} htmlFor="switch_right">{values.off}</label>
+              <label className={offLabel}  name={name} htmlFor="switch_off" onClick={this.handleChange}>{values.off}</label>
             </div>
-           {labelText && <span>{labelText}</span>}
+           {labelText && <span> {labelText}</span>}
       </form>
     );
   }
