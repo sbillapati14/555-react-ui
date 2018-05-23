@@ -57,7 +57,6 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  // function ActionLink()
   handleClick(e) {
      e.preventDefault();
      this.setState({ notification: !this.state.notification});

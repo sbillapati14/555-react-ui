@@ -70,12 +70,10 @@ class SwitchButton extends React.Component {
 
 SwitchButton.propTypes = {
   classes: PropTypes.object.isRequired,
-//  name: PropTypes.String,
   values: PropTypes.object
 };
 
 SwitchButton.defaultProps = {
-//   name : 'radio_switch',
    values : { on: "ON", off: "OFF"}
 }
 
