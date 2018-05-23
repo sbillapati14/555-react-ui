@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Switch from 'material-ui/Switch';
 import withStyles from "material-ui/styles/withStyles";
 
 const styles = theme => ({
@@ -52,16 +51,16 @@ class SwitchButton extends React.Component {
   }
 
   render() {
-    const { classes, name, values, labelText } = this.props;
+    const { classes, values, labelText } = this.props;
     const onLabel = classNames({ [classes.onLabel] :this.state.checked}, classes.label );
     const offLabel = classNames({ [classes.offLabel] :!this.state.checked}, classes.label );
     return (
       <form className={classes.btnContainer}>
          <div className={classes.switch}>
-            <label className={onLabel}  name={name} htmlFor="switch_on" onClick={this.handleChange}>{values.on}</label>
+            <label className={onLabel}  htmlFor="switch_on" onClick={this.handleChange}>{values.on}</label>
             </div>
             <div className={classes.switch}>
-              <label className={offLabel}  name={name} htmlFor="switch_off" onClick={this.handleChange}>{values.off}</label>
+              <label className={offLabel} htmlFor="switch_off" onClick={this.handleChange}>{values.off}</label>
             </div>
            {labelText && <span> {labelText}</span>}
       </form>
@@ -71,12 +70,12 @@ class SwitchButton extends React.Component {
 
 SwitchButton.propTypes = {
   classes: PropTypes.object.isRequired,
-  name: PropTypes.String,
+//  name: PropTypes.String,
   values: PropTypes.object
 };
 
 SwitchButton.defaultProps = {
-   name : 'radio_switch',
+//   name : 'radio_switch',
    values : { on: "ON", off: "OFF"}
 }
 

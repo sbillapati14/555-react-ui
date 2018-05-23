@@ -68,7 +68,7 @@ class FormField extends Component {
             <div>
                 <label className={classes.formLabel}>{label}</label>
                 <Input
-                    margin="normal"
+//                    margin="normal"
                     fullWidth={true}
                      disableUnderline = {true}
                     style={combinedStyle}

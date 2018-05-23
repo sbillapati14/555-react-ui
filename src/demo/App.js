@@ -34,7 +34,6 @@ import { SelectList, SelectListItem } from '../lib/SelectList';
 import SideNav, { SideNavSection, SideNavOption } from '../lib/SideNav';
 import Icon from '../icons';
 import ClickAwayListener from 'material-ui/utils/ClickAwayListener';
-import FileUpload from 'material-ui-icons/FileUpload';
 
 
 
