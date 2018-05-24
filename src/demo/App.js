@@ -19,6 +19,7 @@ import AppPage, { PageLeft, PageRight } from '../lib/AppPage';
 import AppBar from '../lib/AppBar';
 import Issues from '../lib/Issues/Issues';
 import PopOver from '../lib/PopOver';
+import Pagination from '../lib/Pagination';
 import AppDrawer from '../lib/AppDrawer';
 import AppContent from '../lib/AppContent';
 import AlertsAndNotifications from '../lib/AlertsAndNotifications';
@@ -36,7 +37,6 @@ import Icon from '../icons';
 import ClickAwayListener from 'material-ui/utils/ClickAwayListener';
 
 
-
 const styles = theme => ({
   appBar: {
     display: 'flex'
@@ -49,7 +49,8 @@ class App extends Component {
     selectedApplication: '',
     selectedTeam: '',
     notification: false,
-    cpyToClip: 'Click on the right icon to copy input value'
+    cpyToClip: 'Click on the right icon to copy input value',
+    pageNumber: 1
   }
 
   constructor(props) {
@@ -77,6 +78,11 @@ class App extends Component {
   handleChange = name => event => {
     this.setState({ [name]: event.target.value });
   };
+
+  handlPageChange = (pageNumber) => {
+    console.log('Page Selected:', pageNumber);
+    this.setState({pageNumber})
+  }
 
   render() {
 
@@ -258,6 +264,24 @@ class App extends Component {
                       <FormField id="cpyToClip" label="Copy to CLipboard" value={this.state.cpyToClip} endAdornment={<span onClick={this.copyToClipboard.bind(this)}><Icon icon="copyToClipboard" viewBox="0 0 500 500" fill="#282828"/></span>}/>
                       <FormField type="file" id="upload" label="File Upload"/>
                     </form>
+                  </PaperCard>
+                  
+                  <br/>
+                  <PaperCard
+                    title="Pagination"
+                    avatar={
+                      <Avatar>
+                        <ImageIcon />
+                      </Avatar>
+                    }
+                  >
+                    <Pagination    
+                      totalRecords = {200}
+                      recordsPerPage = {20}
+                      thresholdPageBtns = {5}
+                      currentPage = {this.state.pageNumber}
+                      onClickPage = {this.handlPageChange.bind(this)}
+                    />
                   </PaperCard>
                   <br />
 
