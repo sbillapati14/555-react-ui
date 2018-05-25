@@ -50,7 +50,8 @@ class App extends Component {
     selectedTeam: '',
     notification: false,
     cpyToClip: 'Click on the right icon to copy input value',
-    pageNumber: 1
+    pageNumber1: 1,
+    pageNumber2: 1
   }
 
   constructor(props) {
@@ -79,9 +80,9 @@ class App extends Component {
     this.setState({ [name]: event.target.value });
   };
 
-  handlPageChange = (pageNumber) => {
+  handlPageChange = (pageNumber, key) => {
     console.log('Page Selected:', pageNumber);
-    this.setState({pageNumber})
+    this.setState({[key] : pageNumber})
   }
 
   render() {
@@ -279,8 +280,14 @@ class App extends Component {
                       totalRecords = {200}
                       recordsPerPage = {20}
                       thresholdPageBtns = {5}
-                      currentPage = {this.state.pageNumber}
-                      onClickPage = {this.handlPageChange.bind(this)}
+                      currentPage = {this.state.pageNumber1}
+                      onClickPage = {(page)=>this.handlPageChange(page, "pageNumber1")}
+                    />
+                     <Pagination    
+                      totalRecords = {20}
+                      recordsPerPage = {4}
+                      currentPage = {this.state.pageNumber2}
+                      onClickPage = {(page)=>this.handlPageChange(page, "pageNumber2")}
                     />
                   </PaperCard>
                   <br />
