@@ -32,3 +32,6 @@ export { Switch, SwitchButton } from './Switch'
 export {
     Toolbar
 } from './Toolbar';
+export { default as Pagination } from './Pagination';
+
+
