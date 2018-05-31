@@ -81,7 +81,6 @@ class App extends Component {
   };
 
   handlPageChange = (pageNumber, key) => {
-    console.log('Page Selected:', pageNumber);
     this.setState({[key] : pageNumber})
   }
 

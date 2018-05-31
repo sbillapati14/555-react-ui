@@ -41,7 +41,7 @@ class Pagination extends React.Component {
         this.state = {currentSlide : 1}
     }
 
-onClickPage(pageLabel, totalPages) {debugger;
+onClickPage(pageLabel, totalPages) {
         const {currentPage, thresholdPageBtns} = this.props;
         const totalSlides = Math.ceil(totalPages/thresholdPageBtns);
         const {currentSlide} = this.state;
