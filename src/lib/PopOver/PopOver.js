@@ -27,6 +27,7 @@ const styles = theme => ({
    },
    popperClose: {
      pointerEvents: 'none',
+     zIndex: 10
    },
 });
 

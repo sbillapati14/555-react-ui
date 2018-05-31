@@ -4,7 +4,6 @@ import List, { ListItem } from 'material-ui/List';
 import { withStyles } from 'material-ui/styles';
 import Divider from 'material-ui/Divider';
 import Dot from 'material-ui-icons/Brightness1'
-import {timeAgo} from './../../assets/utilities'
 
 
 const styles = theme => {
@@ -77,3 +76,43 @@ AlertsAndNotifications.defaultProps = {
 }
 
 export default withStyles(styles)(AlertsAndNotifications);
+
+
+
+function timeAgo(timestamp) {
+
+    var current = Date.now();
+    var previous = timestamp;
+
+    var msPerMinute = 60 * 1000;
+    var msPerHour = msPerMinute * 60;
+    var msPerDay = msPerHour * 24;
+    var msPerMonth = msPerDay * 30;
+    var msPerYear = msPerDay * 365;
+
+    var elapsed = current - previous;
+
+    if (elapsed < msPerMinute) {
+         return Math.round(elapsed/1000) + ' sec ago';
+    }
+
+    else if (elapsed < msPerHour) {
+         return Math.round(elapsed/msPerMinute) + ' min ago';
+    }
+
+    else if (elapsed < msPerDay ) {
+         return Math.round(elapsed/msPerHour ) + ' hours ago';
+    }
+
+    else if (elapsed < msPerMonth) {
+        return Math.round(elapsed/msPerDay) + ' days ago';
+    }
+
+    else if (elapsed < msPerYear) {
+        return Math.round(elapsed/msPerMonth) + ' months ago';
+    }
+
+    else {
+        return Math.round(elapsed/msPerYear ) + ' years ago';
+    }
+}

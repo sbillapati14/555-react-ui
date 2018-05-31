@@ -295,8 +295,18 @@ class App extends Component {
                 </PageLeft>
 
                 <PageRight>
+                <PaperCard title="Issues"
+                      avatar={
+                         <Avatar>
+                          <ImageIcon />
+                          </Avatar>
+                          }>
+                     <Issues />
+              </PaperCard>
 
-                  <Issues />
+
+
+                <br/>
                   <PaperCard
                     title="Switch's"
                     avatar={

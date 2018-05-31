@@ -77,10 +77,7 @@ const styles = {
 
 const Issues = ({ issues, totalIssueCount }) => {
     return(
-        <div style={styles.issuesWidget}>
-<div style={styles.wiggetHeader}>
-<h3 className="title" style={styles.widgetTitle}>Issues</h3>
-    </div>
+
     <div className="left chart-body" style={styles.leftChartBody}>
 <div className="issue-chart-container left" style={styles.issueChartContainer}>
 <div className="board" style={styles.board}>
@@ -91,7 +88,6 @@ const Issues = ({ issues, totalIssueCount }) => {
     <div className="chart-legends left" style={styles.chartLegendsLeft}>
     {issues.map((item, index)=> <p key={index} style={styles.legend} className="legend"><span className="values">{item.issueCount} </span> {item.issueName}</p>)}
 </div>
-    </div>
     </div>
 )
 }
