@@ -12,7 +12,8 @@ const styles = theme => ({
        height: 'auto',
        fontSize: 14,
        color: '#606060',
-       marginTop: '17px'
+       marginTop: '17px',
+       paddingLeft: '17px'
      },
 
     formLabel: {
@@ -62,7 +63,7 @@ class FormField extends Component {
           return component
         }
       } else {
-        const combinedStyle = { alignItems: 'center', flexDirection: 'row', paddingLeft: 17, ...style }
+        const combinedStyle = { alignItems: 'center', flexDirection: 'row', ...style }
 
         return (
             <div>
