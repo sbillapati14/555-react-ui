@@ -7,6 +7,7 @@ export { default as AppFrame } from './AppFrame';
 export { default as AppPage, PageRight, PageLeft } from './AppPage';
 export { default as AppBar } from './AppBar';
 export { default as AppContent } from './AppContent';
+export { default as AppDrawer } from './AppDrawer';
 export {
     AccentButton,
     OutlineButton,
