@@ -88,16 +88,18 @@ const styles = theme => {
 class SideNavSection extends Component {
   constructor(props){
     super(props);
-    this.state = {open: true}
+    this.state = {open: false}
   }
 
   componentWillMount(){
     this.setState({open: this.props.open})
   }
   
-  handleOnClick(e) {
+  
+  handleOnClick(e) {debugger;
     const { onClick } = this.props;
-    this.setState({open: !this.state.open});
+    const open  = this.props.open && this.state.open;
+    this.setState({open: !open});
     if (onClick)
       onClick(e);
   }
