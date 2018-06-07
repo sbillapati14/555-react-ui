@@ -33,8 +33,10 @@ const styles = theme => ({
       fontSize: 14,
       fontWeight: 'bold',
       fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
-
     },
+    formFieldContainer:{
+        display: 'block'
+    }
 });
 
 class FormField extends Component {
@@ -54,7 +56,7 @@ class FormField extends Component {
       if(component) {
         if (label) {
           return (
-            <div>
+            <div className={classes.formFieldContainer}>
               <label className={classes.formLabel}>{label}</label>
               {component}
             </div>

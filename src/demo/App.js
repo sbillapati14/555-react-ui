@@ -163,14 +163,14 @@ class App extends Component {
                 <PaperCard
                     title="Notifications"
                     avatar={
-                      <Avatar>
-                      </Avatar>
+                     <Icon icon="bell-notif" height="36" width="33"/>
                     }
                    >
                   <AlertsAndNotifications/>
                  </PaperCard>
                 </PopOver>
-
+                 {<Icon icon="about" height="40" width="40"/> }
+                 {<Icon icon="settings" height="40" width="40"/> }
 
                 {/* <Menu
                   button={<Button> Open Menu </Button>}
@@ -206,11 +206,7 @@ class App extends Component {
                 <PageLeft>
                   <PaperCard
                     title="Alerts and Notifications"
-                    avatar={
-                        <Avatar>
-                        <ImageIcon />
-                        </Avatar>
-                }
+                    avatar={<Icon icon="bell-notif" height="36" width="33"/>}
                 >
                 <AlertsAndNotifications/>
                     </PaperCard>
@@ -295,15 +291,14 @@ class App extends Component {
 
                 <PageRight>
                 <PaperCard title="Issues"
-                      avatar={
-                         <Avatar>
-                          <ImageIcon />
-                          </Avatar>
-                          }>
-                     <Issues />
+                   avatar={
+                      <Avatar>
+                        <ImageIcon />
+                      </Avatar>
+                    }
+                    >
+                    <Issues />
               </PaperCard>
-
-
 
                 <br/>
                   <PaperCard
