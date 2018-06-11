@@ -96,7 +96,7 @@ class SideNavSection extends Component {
   }
   
   
-  handleOnClick(e) {debugger;
+  handleOnClick(e) {
     const { onClick } = this.props;
     const open  = this.props.open && this.state.open;
     this.setState({open: !open});
