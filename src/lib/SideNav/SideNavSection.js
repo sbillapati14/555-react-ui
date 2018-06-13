@@ -94,11 +94,15 @@ class SideNavSection extends Component {
   componentWillMount(){
     this.setState({open: this.props.open})
   }
+  componentWillReceiveProps(nextProps){
+    if(!nextProps.open)
+    this.setState({open: false})
+  }
   
   
   handleOnClick(e) {
-    const { onClick } = this.props;
-    const open  = this.props.open && this.state.open;
+    const { onClick} = this.props;
+    const open  = this.state.open;
     this.setState({open: !open});
     if (onClick)
       onClick(e);
