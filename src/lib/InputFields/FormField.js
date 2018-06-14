@@ -36,6 +36,9 @@ const styles = theme => ({
     },
     formFieldContainer:{
         display: 'block'
+    },
+    formFieldWrapper:{
+      display: 'block'
     }
 });
 
@@ -68,12 +71,13 @@ class FormField extends Component {
         const combinedStyle = { alignItems: 'center', flexDirection: 'row', ...style }
 
         return (
-            <div>
+            <div className={classes.formFieldWrapper}>
                 <label className={classes.formLabel}>{label}</label>
                 <Input
                     fullWidth={true}
                      disableUnderline = {true}
                     style={combinedStyle}
+                    classes={classes}
                     {...rest }
                     className={classes.root}
                />
