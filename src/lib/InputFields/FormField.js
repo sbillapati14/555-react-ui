@@ -54,8 +54,8 @@ class FormField extends Component {
     document.execCommand("copy");
   }
     render() {
-      const { classes, component, label, style, ...rest} = this.props
-   
+      const { classes, inputClasses, component, label, style, ...rest} = this.props
+
       if(component) {
         if (label) {
           return (
@@ -77,7 +77,7 @@ class FormField extends Component {
                     fullWidth={true}
                      disableUnderline = {true}
                     style={combinedStyle}
-                    classes={classes}
+                    classes = {inputClasses}
                     {...rest }
                     className={classes.root}
                />
