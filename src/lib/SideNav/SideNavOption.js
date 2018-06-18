@@ -80,6 +80,9 @@ const styles = theme => ({
     display: 'block',
     transition: 'all 0.4s',
     opacity: 0.7,
+  },
+  link: {
+    padding: '0 14px 0 55px'
   }
 });
 
@@ -104,7 +107,7 @@ class SdieNavOption extends Component {
       text = <Component {...rest} className={classes.link}>{primary}</Component>
 
     return (
-      <ListItem component='li' classes={{ root: classes.root }} onClick={(e) => this.handleClick(e)}>
+      <ListItem component='li' classes={{ root: classes.root, link: classes.link }} onClick={(e) => this.handleClick(e)}>
         {text}
       </ListItem>
     );
