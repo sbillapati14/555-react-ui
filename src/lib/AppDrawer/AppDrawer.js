@@ -6,7 +6,7 @@ import Typography from 'material-ui/Typography';
 const styles = theme => ({
     leftNavigation: {
         background: ' #182831',
-        width: '280px',
+        width: '266px',
         height: '100%',
         position: 'relative',
         zIndex: 1,
@@ -29,7 +29,7 @@ const styles = theme => ({
         },
         '& .nav': {
             marginTop: '16px',
-            height: '100vh',
+            height: '150vh',
         }
     },
     '@media (max-width: 1024px)': {
