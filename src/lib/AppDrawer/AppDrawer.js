@@ -29,7 +29,7 @@ const styles = theme => ({
         },
         '& .nav': {
             marginTop: '16px',
-            height: '150vh',
+            height: '200vh',
         }
     },
     '@media (max-width: 1024px)': {
