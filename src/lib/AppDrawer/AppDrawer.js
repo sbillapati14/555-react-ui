@@ -29,7 +29,7 @@ const styles = theme => ({
         },
         '& .nav': {
             marginTop: '16px',
-            height: '200vh',
+            height: '100%',
         }
     },
     '@media (max-width: 1024px)': {
@@ -118,13 +118,13 @@ class AppDrawer extends Component {
 
         return (
 
-            <aside className={this.getNavClasses()} style={{ height: drawerHeight }}>
+            <aside className={this.getNavClasses()}>
 
                 <div className="logo">
                     {theTitle}
                 </div>
 
-                <div className="nav">
+                <div className="nav" style={{ height: drawerHeight }}>
                     {children}
                 </div>
 
