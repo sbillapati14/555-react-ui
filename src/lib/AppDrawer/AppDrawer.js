@@ -99,10 +99,10 @@ class AppDrawer extends Component {
         return classes.leftNavigation;
 
     }
-
     render() {
 
         const { children, title } = this.props;
+        const drawerHeight = this.getHeight();
 
         let theTitle = title;
         // do some work on the title
@@ -118,7 +118,7 @@ class AppDrawer extends Component {
 
         return (
 
-            <aside className={this.getNavClasses()} style={{ height: this.state.drawerHeight }}>
+            <aside className={this.getNavClasses()} style={{ height: drawerHeight }}>
 
                 <div className="logo">
                     {theTitle}
