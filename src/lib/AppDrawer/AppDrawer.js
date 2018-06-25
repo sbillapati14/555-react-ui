@@ -29,7 +29,7 @@ const styles = theme => ({
         },
         '& .nav': {
             marginTop: '16px',
-            height: '150vh',
+            height: '100%',
         }
     },
     '@media (max-width: 1024px)': {
@@ -99,10 +99,10 @@ class AppDrawer extends Component {
         return classes.leftNavigation;
 
     }
-
     render() {
 
         const { children, title } = this.props;
+        const drawerHeight = this.getHeight();
 
         let theTitle = title;
         // do some work on the title
@@ -118,13 +118,13 @@ class AppDrawer extends Component {
 
         return (
 
-            <aside className={this.getNavClasses()} style={{ height: this.state.drawerHeight }}>
+            <aside className={this.getNavClasses()}>
 
                 <div className="logo">
                     {theTitle}
                 </div>
 
-                <div className="nav">
+                <div className="nav" style={{ height: drawerHeight }}>
                     {children}
                 </div>
 
