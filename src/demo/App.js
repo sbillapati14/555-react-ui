@@ -17,6 +17,7 @@ import AppContainer from '../lib/AppContainer';
 import AppFrame from '../lib/AppFrame';
 import AppPage, { PageLeft, PageRight } from '../lib/AppPage';
 import AppBar from '../lib/AppBar';
+import AnalyticsBox from '../lib/AnalyticsBox';
 import Issues from '../lib/Issues/Issues';
 import PopOver from '../lib/PopOver';
 import Pagination from '../lib/Pagination';
@@ -286,6 +287,16 @@ class App extends Component {
                     />
                   </PaperCard>
                   <br />
+
+                  <PaperCard title="Miscellaneous"
+                      avatar={
+                          <Avatar>
+                            <ImageIcon />
+                          </Avatar>
+                        }
+                        >
+                    <AnalyticsBox />
+              </PaperCard>
 
                 </PageLeft>
 
