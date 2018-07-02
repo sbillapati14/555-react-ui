@@ -29,6 +29,7 @@ import OutlineButton from '../lib/Button/OutlineButton';
 import GradientButton from '../lib/Button/GradientButton';
 import AccentButton from '../lib/Button/AccentButton';
 import PaperCard from '../lib/PaperCard';
+import { BarChart } from '../lib/Graphs';
 import { TextField, FormField } from '../lib/InputFields';
 import {Switch, SwitchButton} from '../lib/Switch';
 import FilterStatus from '../lib/DropDown/FilterStatus';
@@ -298,6 +299,23 @@ class App extends Component {
                     <AnalyticsBox />
               </PaperCard>
 
+  <br/>
+
+      <PaperCard
+        title="Charts"
+        avatar={
+          <Avatar>
+            <ImageIcon />
+          </Avatar>
+        }
+      >
+          <BarChart 
+          chartId="samplBarChart" 
+          chartWidth={500}
+          chartHeight={300}
+          barWidth={35}/>
+
+      </PaperCard>
                 </PageLeft>
 
                 <PageRight>
