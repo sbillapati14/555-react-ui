@@ -37,5 +37,8 @@ export {
     Toolbar
 } from './Toolbar';
 export { default as Pagination } from './Pagination';
+export { default as AnalyticsBox } from './AnalyticsBox';
+export { BarChart } from './Graphs';
+
 
 
