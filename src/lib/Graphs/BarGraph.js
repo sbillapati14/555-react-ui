@@ -14,7 +14,13 @@ const styles = theme => ({
     stroke: '#555',
     shapeRendering: 'crispEdges',
     fontSize: '12px',
-  }  
+    fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif'
+  }  ,
+  barChartTitle:{
+    fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
+    textAlign: 'center',
+    color: '#333'
+  }
 })
 
 class BarChartComponent extends React.Component{
@@ -58,7 +64,8 @@ renderChart(){
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     svg.append("g")
-        .attr("class", "x axis")
+        // .attr("class", "x axis")
+        .attr("class", classes.axis)
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis);
   
@@ -93,10 +100,13 @@ renderChart(){
       if(chartToRender){
         this.renderChart();
       }
-
+      const {title, classes} = this.props;
         return(
+          <div className={classes.barWrapper}>
+            <h3 className={classes.barChartTitle}>{title}</h3>
            <div id={this.props.chartId}>
                 
+           </div>
            </div>
         )
     }
@@ -136,5 +146,6 @@ data : [
     }
   ],
   rangeBandX: 0,
-  barSpacingFactor: .2
+  barSpacingFactor: .2,
+  title: "Bar Chart Demo"
 }
