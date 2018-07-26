@@ -1,6 +1,6 @@
 {
   "name": "iris-react-ui",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Iris React UI",
   "main": "./build/index.js",
   "scripts": {
