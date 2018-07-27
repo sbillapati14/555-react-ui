@@ -1,6 +1,6 @@
 {
   "name": "@iris-platform/iris-react-ui",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Iris React UI",
   "main": "./build/index.js",
   "scripts": {
@@ -24,7 +24,8 @@
   "dependencies": {
     "d3": "^3.5.12",
     "material-ui": "^1.0.0-beta.42",
-    "material-ui-icons": "^1.0.0-beta.17"
+    "material-ui-icons": "^1.0.0-beta.17",
+    "typeface-montserrat": "0.0.45"
   },
   "devDependencies": {
     "autoprefixer": "7.1.6",
@@ -72,7 +73,6 @@
     "rimraf": "^2.6.2",
     "style-loader": "0.19.0",
     "sw-precache-webpack-plugin": "0.11.4",
-    "typeface-montserrat": "0.0.45",
     "url-loader": "0.6.2",
     "webpack": "3.8.1",
     "webpack-dev-server": "2.9.4",
