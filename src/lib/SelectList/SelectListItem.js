@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 
-import { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
-import Check from 'material-ui-icons/Check';
-import Typography from 'material-ui/Typography';
+import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import Check from '@material-ui/icons/Check';
+import Typography from '@material-ui/core/Typography';
 const styles = theme => ({
     root: {
         width: 238,

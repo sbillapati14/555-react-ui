@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import Paper from 'material-ui/Paper';
-import Divider from 'material-ui/Divider';
-import Card, { CardContent, CardHeader } from 'material-ui/Card';
+import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Divider from '@material-ui/core/Divider';
+import {Card, CardContent, CardHeader } from '@material-ui/core';
 
 const styles = theme => ({
   cardHeader: {

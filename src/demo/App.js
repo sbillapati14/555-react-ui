@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import {
   BrowserRouter as Router,
   NavLink,
 } from 'react-router-dom'
 
-import Button from 'material-ui/Button';
-import Typography from 'material-ui/Typography';
-import Avatar from 'material-ui/Avatar';
-import ImageIcon from 'material-ui-icons/Image';
-import InboxIcon from 'material-ui-icons/Inbox';
-import Language from 'material-ui-icons/Language';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import Avatar from '@material-ui/core/Avatar';
+import ImageIcon from '@material-ui/icons/Image';
+import InboxIcon from '@material-ui/icons/Inbox';
+import Language from '@material-ui/icons/Language';
 
 import AppWrapper from '../lib/AppWrapper';
 import AppContainer from '../lib/AppContainer';
@@ -36,7 +36,7 @@ import FilterStatus from '../lib/DropDown/FilterStatus';
 import { SelectList, SelectListItem } from '../lib/SelectList';
 import SideNav, { SideNavSection, SideNavOption } from '../lib/SideNav';
 import Icon from '../icons';
-import ClickAwayListener from 'material-ui/utils/ClickAwayListener';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 
 const styles = theme => ({

@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import ListSubheader from 'material-ui/List/ListSubheader';
-import List, { ListItem, ListItemText } from 'material-ui/List';
-import Collapse from 'material-ui/transitions/Collapse';
-import ExpandLess from 'material-ui-icons/ExpandLess';
-import ExpandMore from 'material-ui-icons/ExpandMore';
-import Check from 'material-ui-icons/Check';
-import Dot from 'material-ui-icons/Brightness1'
-import Divider from 'material-ui/Divider';
-import ClickAwayListener from 'material-ui/utils/ClickAwayListener';
+import { withStyles } from '@material-ui/core/styles';
+import {List, ListItem, ListItemText, ListSubheader } from '@material-ui/core';
+import Collapse from '@material-ui/core/Collapse';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
+import Check from '@material-ui/icons/Check';
+import Dot from '@material-ui/icons/Brightness1'
+import Divider from '@material-ui/core/Divider';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 ////// THIS COMPONENT IS UNFINISHED /////
 
@@ -119,6 +118,7 @@ class NestedList extends React.Component {
                 </ListItem>
                 <Collapse component="li" in={this.state.open} timeout="auto" unmountOnExit>
                     <ClickAwayListener onClickAway={this.handleClick}>
+                    <div>
                         {
                             this.state.options.map((element, index) => {
                                 return (
@@ -148,6 +148,7 @@ class NestedList extends React.Component {
                                 )
                             })
                         }
+                        </div>
                     </ClickAwayListener>
                 </Collapse>
             </List>

@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import Collapse from 'material-ui/transitions/Collapse';
-import List, { ListSubheader } from 'material-ui/List';
-import ArrowDropDown from 'material-ui-icons/ArrowDropDown';
-import ArrowDropUp from 'material-ui-icons/ArrowDropUp';
-import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
-import ClickAwayListener from 'material-ui/utils/ClickAwayListener';
+import { withStyles } from '@material-ui/core/styles';
+import Collapse from '@material-ui/core/Collapse';
+import List from '@material-ui/core/List';
+import ListSubheader from '@material-ui/core/ListSubheader';
+import ArrowDropDown from '@material-ui/icons/ArrowDropDown';
+import ArrowDropUp from '@material-ui/icons/ArrowDropUp';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 const styles = theme => ({
     root: {

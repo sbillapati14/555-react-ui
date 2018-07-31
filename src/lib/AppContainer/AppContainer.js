@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import Reboot from 'material-ui/CssBaseline';
-import { withStyles } from 'material-ui/styles';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
+import Reboot from '@material-ui/core/CssBaseline';
+import { withStyles } from '@material-ui/core/styles';
 
 import theme from '../Theme';
 

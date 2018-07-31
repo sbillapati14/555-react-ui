@@ -1,6 +1,6 @@
 import React from 'react';
-import { withStyles } from 'material-ui/styles';
-import DomainIcon from 'material-ui-icons/Domain'
+import { withStyles } from '@material-ui/core/styles';
+import DomainIcon from '@material-ui/icons/DomainTwoTone'
 
 
 const styles = theme => {

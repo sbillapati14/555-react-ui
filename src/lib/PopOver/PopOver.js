@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import ClickAwayListener from 'material-ui/utils/ClickAwayListener';
-import { withStyles } from 'material-ui/styles';
-import { Manager, Target, Popper, } from 'react-popper';
-import Grow from 'material-ui/transitions/Grow';
-import Paper from 'material-ui/Paper';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import { withStyles } from '@material-ui/core/styles';
+//import { Manager, Target, Popper, } from 'react-popper';
+import Grow from '@material-ui/core/Grow';
+import Paper from '@material-ui/core/Paper';
 
 
 
@@ -51,13 +51,13 @@ class PopoverDropdown extends React.Component {
     const { open } = this.state;
     return (
       <div className={classes.root}>
-      <Manager>
+      {/*<Manager>
         <Target>
          <div onClick={this.handleClick}>
            {this.props.Component}
         </div>
         </Target>
-        <Popper
+       <Popper
           placement="bottom-end"
           eventsEnabled={open}
           className={classNames({ [classes.popperClose]: !open}, classes.popper)}
@@ -71,7 +71,7 @@ class PopoverDropdown extends React.Component {
             </Grow>
           </ClickAwayListener>
         </Popper>
-      </Manager>
+      </Manager>*/}
     </div>
     );
   }

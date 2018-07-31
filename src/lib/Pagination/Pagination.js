@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import withStyles from "material-ui/styles/withStyles";
-import LeftIcon from 'material-ui-icons/ChevronLeft';
-import RightIcon from 'material-ui-icons/ChevronRight';
+import withStyles from "@material-ui/core/styles/withStyles";
+import LeftIcon from '@material-ui/icons/ChevronLeft';
+import RightIcon from '@material-ui/icons/ChevronRight';
 
 const styles = theme => ({
       pageBtn:{

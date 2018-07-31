@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Collapse from 'material-ui/transitions/Collapse';
-import { withStyles } from 'material-ui/styles';
-import List, { ListItem, ListItemIcon, ListItemText, } from 'material-ui/List';
-import ArrowDropUp from 'material-ui-icons/ArrowDropUp';
+import Collapse from '@material-ui/core/Collapse';
+import { withStyles } from '@material-ui/core/styles';
+import  {List, ListItem, ListItemIcon, ListItemText, } from '@material-ui/core';
+import ArrowDropUp from '@material-ui/icons/ArrowDropUp';
 
 const styles = theme => {
   return {
