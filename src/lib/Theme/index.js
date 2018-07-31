@@ -1,4 +1,4 @@
-import createMuiTheme from 'material-ui/styles/createMuiTheme';
+import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import 'typeface-montserrat';
 
 import Palette from './palette';

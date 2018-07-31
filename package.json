@@ -22,9 +22,9 @@
   "homepage": "https://github.com/iris-platform/iris-react-ui#readme",
   "license": "MIT",
   "dependencies": {
+    "@material-ui/core": "^1.4.1",
     "d3": "^3.5.12",
-    "material-ui": "^1.0.0-beta.42",
-    "material-ui-icons": "^1.0.0-beta.17",
+    "@material-ui/icons": "^2.0.0",
     "typeface-montserrat": "0.0.45"
   },
   "devDependencies": {
@@ -80,8 +80,8 @@
     "whatwg-fetch": "2.0.3"
   },
   "peerDependencies": {
-    "material-ui": "^1.0.0-beta.32",
-    "material-ui-icons": "^1.0.0-beta.17",
+    "@material-ui/core": "^1.4.1",
+    "@material-ui/icons": "^2.0.0",
     "react": ">=0.14",
     "react-dom": ">=0.14"
   },

@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import List, { ListItem } from 'material-ui/List';
-import { withStyles } from 'material-ui/styles';
-import Divider from 'material-ui/Divider';
-import Dot from 'material-ui-icons/Brightness1'
+import {List, ListItem } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+import Divider from '@material-ui/core/Divider';
+import Dot from '@material-ui/icons/Brightness1'
 
 
 const styles = theme => {
