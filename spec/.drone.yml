@@ -2,6 +2,5 @@ pipeline:
   frontend:
     image: node:8
     commands:
-      - cd client
       - npm install
       - npm test
