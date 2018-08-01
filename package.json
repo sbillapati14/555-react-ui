@@ -7,7 +7,7 @@
     "start": "node scripts/start.js",
     "build": "rimraf build && NODE_ENV=production babel ./src/lib -s -D -d build --ignore '**/*.test.js'",
     "demo": "node scripts/demo.js",
-    "test": "node scripts/test.js --env=jsdom",
+    "test": "NODE_ENV=test jest --coverage --config ./jest.config.js",
     "prebuild": "rimraf build",
     "prepare": "npm run build"
   },
