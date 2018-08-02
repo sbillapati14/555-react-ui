@@ -1,10 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
-import Grow from 'material-ui/transitions/Grow';
-import Paper from 'material-ui/Paper';
-import { withStyles } from 'material-ui/styles';
-import { Manager, Target, Popper, } from 'react-popper';
-import ClickAwayListener from 'material-ui/utils/ClickAwayListener';
+import Grow from '@material-ui/core/Grow';
+import Paper from '@material-ui/corePaper';
+import { withStyles } from '@material-ui/corestyles';
+//import { Manager, Target, Popper, } from 'react-popper';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 const styles = {
   root: {
@@ -35,7 +35,7 @@ class Menu extends React.Component {
 
     return (
       <div className={classes.root}>
-        <Manager>
+        {/*<Manager>
           <Target>
             {({ targetProps }) => (
               <div {...targetProps} onClick={this.handleClick}>
@@ -56,7 +56,7 @@ class Menu extends React.Component {
               </Grow>
             </ClickAwayListener>
           </Popper>
-        </Manager>
+          </Manager>*/}
       </div>
     );
   }
