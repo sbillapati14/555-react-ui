@@ -1,10 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
-import Grow from 'material-ui/transitions/Grow';
-import Paper from 'material-ui/Paper';
-import { withStyles } from 'material-ui/styles';
+import Grow from '@material-ui/core/Grow';
+import Paper from '@material-ui/corePaper';
+import { withStyles } from '@material-ui/core/styles';
 import { Manager, Target, Popper, } from 'react-popper';
-import ClickAwayListener from 'material-ui/utils/ClickAwayListener';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 const styles = {
   root: {
