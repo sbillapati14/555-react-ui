@@ -1,8 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 import Grow from '@material-ui/core/Grow';
-import Paper from '@material-ui/corePaper';
-import { withStyles } from '@material-ui/corestyles';
+import Paper from '@material-ui/core/Paper';
+import { withStyles } from '@material-ui/core/styles';
 //import { Manager, Target, Popper, } from 'react-popper';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
