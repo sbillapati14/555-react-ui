@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import Grow from '@material-ui/core/Grow';
 import Paper from '@material-ui/core/Paper';
 import { withStyles } from '@material-ui/core/styles';
-//import { Manager, Target, Popper, } from 'react-popper';
+import { Manager, Reference, Popper, } from 'react-popper';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 const styles = {
@@ -35,19 +35,20 @@ class Menu extends React.Component {
 
     return (
       <div className={classes.root}>
-        {/*<Manager>
-          <Target>
+       <Manager>
+          <Reference>
             {({ targetProps }) => (
               <div {...targetProps} onClick={this.handleClick}>
                 {this.props.button}
               </div>
             )}
-          </Target>
+          </Reference>
           <Popper
             placement="bottom-start"
             eventsEnabled={open}
             className={classNames({ [classes.popperClose]: !open })}
           >
+           {({ ref, style, placement, arrowProps }) => (
             <ClickAwayListener onClickAway={this.handleClose}>
               <Grow in={open} id="menu-list" style={{ transformOrigin: '0 0 0' }}>
                 <Paper>
@@ -55,8 +56,9 @@ class Menu extends React.Component {
                 </Paper>
               </Grow>
             </ClickAwayListener>
+           )}
           </Popper>
-          </Manager>*/}
+          </Manager>
       </div>
     );
   }

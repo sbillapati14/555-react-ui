@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import MuiToolbar from 'material-ui/Toolbar'
-import withStyles from 'material-ui/styles/withStyles';
+import MuiToolbar from '@material-ui/core/Toolbar'
+import withStyles from '@material-ui/core/styles/withStyles';
 
 const styles = theme => {
   return ({
