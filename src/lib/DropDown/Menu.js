@@ -11,10 +11,26 @@ const styles = {
     display: 'flex',
     zIndex: 10
   },
-  popperClose: {
-    pointerEvents: 'none',
-  },
-};
+   carot: {
+     position: 'absolute',
+     marginLeft: '-0.5em',
+     left: '40px',
+     border: '0.5em solid black',
+     borderColor: '#fff #fff #fff',
+     transformOrigin: '0 0',
+     transform: 'rotate(135deg)',
+     zIndex: 9999,
+     boxShadow: '-3px 3px 3px 0 rgba(0, 0, 0, 0.05)'
+   },
+   popperClose: {
+     pointerEvents: 'none'
+   },
+   popperContent: {
+     position: 'absolute',
+     top: '61px',
+     right: '40px'
+   }
+ };
 
 class Menu extends React.Component {
   state = {
@@ -51,7 +67,8 @@ class Menu extends React.Component {
            {({ ref, style, placement, arrowProps }) => (
             <ClickAwayListener onClickAway={this.handleClose}>
               <Grow in={open} id="menu-list" style={{ transformOrigin: '0 0 0' }}>
-                <Paper>
+                <Paper className={classes.popperContent}>
+                  <span className = {classes.carot}></span>
                   {this.props.render({handleClose: this.handleClose})}
                 </Paper>
               </Grow>
