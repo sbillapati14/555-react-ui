@@ -60,7 +60,7 @@ class Menu extends React.Component {
             )}
           </Reference>
           <Popper
-            placement="bottom-start"
+            placement="bottom-end"
             eventsEnabled={open}
             className={classNames({ [classes.popperClose]: !open })}
           >
