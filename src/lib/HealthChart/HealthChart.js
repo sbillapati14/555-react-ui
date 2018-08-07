@@ -133,7 +133,6 @@ var y = d3.scaleLinear()
      d3.select("body").append("div")
          .attr("id", "myTooltip")
          .attr("class", classes.healthChartToolTip)
-         .attr("class", classes.carot)
          .style("opacity", 0);
   
 
