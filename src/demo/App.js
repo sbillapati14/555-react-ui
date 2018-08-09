@@ -25,6 +25,7 @@ import AppDrawer from '../lib/AppDrawer';
 import AppContent from '../lib/AppContent';
 import AlertsAndNotifications from '../lib/AlertsAndNotifications';
 import HealthChart from '../lib/HealthChart';
+import SearchDropdown from '../lib/SearchDropdown';
 
 import OutlineButton from '../lib/Button/OutlineButton';
 import GradientButton from '../lib/Button/GradientButton';
@@ -264,8 +265,25 @@ class App extends Component {
                       <FormField type="file" id="upload" label="File Upload"/>
                     </form>
                   </PaperCard>
-                  
                   <br/>
+
+                  <PaperCard
+                     title="Search Dropdown"
+                     avatar={
+                      <Avatar>
+                      <ImageIcon />
+                      </Avatar>
+                    }
+                   >
+                   <SearchDropdown
+                      validationState={()=>{}}
+                      selectedFilterObj = {{filterBy: 'code', placeholder: 'search a service', textStyle : 'uppercase'}}
+                      autoSuggestResults={this.props.autoSuggestWritingBrokers}
+                      onFilter={this.props.handleFilter}
+                  />
+                  </PaperCard>
+                  <br/>
+
                   <PaperCard
                     title="Pagination"
                     avatar={
@@ -310,8 +328,8 @@ class App extends Component {
           </Avatar>
         }
       >
-          <BarChart 
-          chartId="samplBarChart" 
+          <BarChart
+          chartId="samplBarChart"
           chartWidth={500}
           chartHeight={300}
           barWidth={35}/>

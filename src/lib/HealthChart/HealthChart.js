@@ -23,7 +23,6 @@ const styles = theme => ({
         opacity: '0.1',
         border: '1px solid #999999',
         color: '#000000',
-        fontWeight: '600',
         borderRadius: '8px 8px 8px 8px',
         pointerEvents: 'none',
         padding: '11px',
@@ -32,17 +31,18 @@ const styles = theme => ({
         fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
         fontWeight: 400
     },
-
-    toolTipAfter:{
-        content: "",
+     carot: {
         position: 'absolute',
+        marginLeft: '-0.5em',
+        left: '53px',
         top: '100%',
-        left: '50%',
-        marginLeft: '-5px',
-        borderWidth: '5px',
-        borderStyle: 'solid',
-        borderColor: '#ffffff transparent transparent transparent'
-    }
+        border: '0.5em solid black',
+        borderColor: '#fff #fff #fff',
+        transformOrigin: '0 0',
+        transform: 'rotate(135deg)',
+        zIndex: 9999,
+     },
+
 })
 
 class Chart extends React.Component{
@@ -80,8 +80,6 @@ margin = {
 width =  chartWidth - margin.left - margin.right,
 height = chartHeight - margin.top - margin.bottom,
 g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-var parseTime = d3.timeParse("%d-%b-%y");
 
 var x = d3.scaleBand()
     .rangeRound([0, width])
@@ -134,7 +132,7 @@ var y = d3.scaleLinear()
          .attr("id", "myTooltip")
          .attr("class", classes.healthChartToolTip)
          .style("opacity", 0);
-  
+
 
 function onMouseMove(d){
     var tooltipDiv = d3.select("#myTooltip");
@@ -144,6 +142,7 @@ function onMouseMove(d){
        .style("opacity", 1);
 
     tooltipDiv.html(`
+    <ListSubheader .style("color", "#1682bc")> Platform Status :</ListSubheader>
     <div>Average: ${d.avg}</div>
     <div>Time Bucket: ${d.time_bucket}</div>
     <div>Env: ${d.env}</div>
@@ -154,7 +153,9 @@ function onMouseMove(d){
        .style("top", function(d){
            return d3.event.pageY - this.offsetHeight - 17  + "px"
         })
-        .style("color", "#333333");
+        .style("color", "#333333")
+        .append("span")
+        .attr("class", classes.carot);
 }
 
 function onMouseOut(d){
