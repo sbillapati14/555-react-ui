@@ -30,28 +30,18 @@ class BarChartComponent extends React.Component{
     }
 
 renderChart(){
-  const {data, rangeBandX, barSpacingFactor, classes} = this.props;
+  const {data, rangeBandX, barPadding, classes} = this.props;
   var margin = {top: 40, right: 20, bottom: 30, left: 40},
       width = (this.props.chartWidth || 500) - margin.left - margin.right,
       height = (this.props.chartHeight || 500) - margin.top - margin.bottom;
   
-  var formatPercent = d3.format(".0%");
   
-  var x = d3.scale.ordinal()
-      .rangeRoundBands([rangeBandX, width], barSpacingFactor);
-  
-  var y = d3.scale.linear()
-      .range([height, 0]);
-  
-  var xAxis = d3.svg.axis()
-      .scale(x)
-      .orient("bottom");
-  
-  var yAxis = d3.svg.axis()
-      .scale(y)
-      .orient("left")
-      // .tickFormat(formatPercent);
+  var x = d3.scaleBand()
+    .rangeRound([0, width])
+    .padding(barPadding);
 
+var y = d3.scaleLinear()
+    .rangeRound([height, 0]);
   
   x.domain(data.map(function(d) { return d.label; }));
   y.domain([0, d3.max(data, function(d) { return d.value; })]); 
@@ -64,29 +54,25 @@ renderChart(){
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     svg.append("g")
-        // .attr("class", "x axis")
-        .attr("class", classes.axis)
-        .attr("transform", "translate(0," + height + ")")
-        .call(xAxis);
-  
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x))
+
     svg.append("g")
-        // .attr("class", "y axis")
-        .attr("class", classes.axis)
-        .call(yAxis)
-        .append("text")
-        .attr("transform", "rotate(-90)")
-        .attr("y", 6)
-        .attr("dy", ".71em")
-        .style("text-anchor", "end")
-        .text("value");
-  
-        // var barWidth = this.props.barWidth || x.rangeBand();
+    .call(d3.axisLeft(y))
+    .append("text")
+    .attr("fill", "#000")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 6)
+    .attr("dy", "0.71em")
+    .attr("text-anchor", "end")
+    .text("avg");
+
     svg.selectAll(".bar")
         .data(data)
       .enter().append("rect")
         .attr("class", classes.bar)
         .attr("x", function(d) { return x(d.label); })
-        .attr("width", x.rangeBand())
+        .attr("width", this.props.barWidth || x.bandwidth())
         .attr("y", function(d) { return y(d.value); })
         .attr("height", function(d) { return height - y(d.value); })
 
@@ -146,6 +132,6 @@ data : [
     }
   ],
   rangeBandX: 0,
-  barSpacingFactor: .2,
+  barPadding: .2,
   title: "Bar Chart Demo"
 }

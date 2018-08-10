@@ -57,14 +57,14 @@ componentDidMount(){
 
 getBarColors(currentSize, maxSize){
     let barPercent = currentSize*100/maxSize;
-    if(barPercent <= 30){
+    if(barPercent === 0){
         return '#DC2620'
     }
-    else if(barPercent <= 70){
-        return '#FF9E00'
+    else if(barPercent === 100){
+        return '#86C35D'
     }
     else{
-        return '#86C35D'
+        return '#FF9E00'
     }
 }
 
@@ -96,19 +96,6 @@ var y = d3.scaleLinear()
             return Number(d.avg);
         })]);
 
-	// g.append("g")
-	// .attr("transform", "translate(0," + height + ")")
-	// .call(d3.axisBottom(x))
-
-	// g.append("g")
-	// .call(d3.axisLeft(y))
-	// .append("text")
-	// .attr("fill", "#000")
-	// .attr("transform", "rotate(-90)")
-	// .attr("y", 6)
-	// .attr("dy", "0.71em")
-	// .attr("text-anchor", "end")
-	// .text("avg");
 
     g.selectAll(".bar")
     .data(data)
@@ -118,11 +105,11 @@ var y = d3.scaleLinear()
         return x(d.time_bucket);
     })
     .attr("y", function (d) {
-        return y(Number(d.avg));
+        return y(d3.max(data, d=> Number(d.avg)));
     })
     .attr("width", x.bandwidth())
     .attr("height", function (d) {
-        return height - y(Number(d.avg));
+        return height - y(d3.max(data, d=> Number(d.avg)));
     })
 .style("fill", d => (this.getBarColors(Number(d.avg), d3.max(data, d=> Number(d.avg)))))
     .on("mousemove", onMouseMove)
@@ -182,7 +169,7 @@ export default withStyles(styles)(Chart);
 
 
 Chart.defaultProps = {
-    chartHeight: 100,
+    chartHeight: 120,
     chartWidth: 800,
     title: "Simple Health Chart",
     data:[
@@ -270,7 +257,7 @@ Chart.defaultProps = {
         {
             "env": "sdk",
             "servertype": "Auth/Identity/Iportal Mongo DB",
-            "avg": 1,
+            "avg": 0,
             "time_bucket": "2018-08-07T02:20:00.000Z",
             "objectId": "5b6902fd1d1b7006951d1f68",
             "createdAt": 1533608701200,
@@ -279,7 +266,7 @@ Chart.defaultProps = {
         {
             "env": "sdk",
             "servertype": "Auth/Identity/Iportal Mongo DB",
-            "avg": 1,
+            "avg": 0.9,
             "time_bucket": "2018-08-07T02:15:00.000Z",
             "objectId": "5b6901d11d1b7006951d1f5b",
             "createdAt": 1533608401180,
@@ -405,7 +392,7 @@ Chart.defaultProps = {
         {
             "env": "sdk",
             "servertype": "Auth/Identity/Iportal Mongo DB",
-            "avg": 1,
+            "avg": 0.1,
             "time_bucket": "2018-08-07T01:05:00.000Z",
             "objectId": "5b68f169709fa50690a2a32c",
             "createdAt": 1533604201168,
@@ -711,7 +698,7 @@ Chart.defaultProps = {
         {
             "env": "sdk",
             "servertype": "Auth/Identity/Iportal Mongo DB",
-            "avg": 1,
+            "avg": 0,
             "time_bucket": "2018-08-06T22:15:00.000Z",
             "objectId": "5b68c99177397c068af647f0",
             "createdAt": 1533594001166,
@@ -720,7 +707,7 @@ Chart.defaultProps = {
         {
             "env": "sdk",
             "servertype": "Auth/Identity/Iportal Mongo DB",
-            "avg": 1,
+            "avg": 0,
             "time_bucket": "2018-08-06T22:10:00.000Z",
             "objectId": "5b68c865ac0ba706a160daeb",
             "createdAt": 1533593701233,

@@ -2,13 +2,15 @@ import React from "react";
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
+import SearchIcon from '@material-ui/icons/Search'
 
 const styles = theme => ({
   search : {
     position: 'relative',
     width: '100%',
     padding: '40px',
-    border: 'none'
+    border: 'none',
+    fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif'
     },
   searchInput: {
     width: '100%',
@@ -21,6 +23,10 @@ const styles = theme => ({
     fontWeight: '400',
     height: '40px',
     margin: 0,
+    '&:focus-within': {
+      border: '1px solid #66afe9',
+      boxShadow:'0 0 0 0.2rem rgba(0,123,255,.25)'
+   }
   },
   psDropdown: {
     maxHeight: '230px',
@@ -37,7 +43,7 @@ const styles = theme => ({
     borderTop: '0px',
     zindex: '100',
     width: '100%',
-    boxShadow: '1px 1px 20px #2fb3fa'
+    boxShadow: '1px 1px 10px #999'
   },
   psLabel: {
     display: 'block',
@@ -49,7 +55,13 @@ const styles = theme => ({
         background: '#005b99',
         color: '#fff'
     }
-    }
+  },
+  searchIcon:{
+    top: '50px',
+    position: 'absolute',
+    right: '46px',
+    cursor: 'pointer'
+  },
 })
 
 class SearchComponent extends React.Component {
@@ -90,7 +102,7 @@ class SearchComponent extends React.Component {
 
   handleFilter(ind) {
     let stateToUpdate = {}
-      stateToUpdate.value = this.props.optionsList[ind].description;
+      stateToUpdate.value = this.state.options.find((item, i)=> i===ind).description;
       stateToUpdate.listActive = false;
     this.setState(stateToUpdate, ()=>{
         this.props.onSelect && this.props.onSelect(this.props.optionsList[ind])
@@ -159,6 +171,7 @@ class SearchComponent extends React.Component {
             onChange={this.handleChange}
             onKeyPress={this.handleKeyPress}
           />
+          <span className={classes.searchIcon}><SearchIcon/></span>
           {this.renderList()}
         </fieldset>
       </div>
