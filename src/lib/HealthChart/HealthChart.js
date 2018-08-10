@@ -129,7 +129,6 @@ function onMouseMove(d){
        .style("opacity", 1);
 
     tooltipDiv.html(`
-    <ListSubheader .style("color", "#1682bc")> Platform Status :</ListSubheader>
     <div>Average: ${d.avg}</div>
     <div>Time Bucket: ${d.time_bucket}</div>
     <div>Env: ${d.env}</div>
