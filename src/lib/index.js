@@ -38,7 +38,9 @@ export {
 } from './Toolbar';
 export { default as Pagination } from './Pagination';
 export { default as AnalyticsBox } from './AnalyticsBox';
-export { BarChart } from './Graphs';
+export { default as BarChart } from './Graphs';
+export { default as HealthChart } from './HealthChart';
+export { default as SearchDropdown } from './SearchDropdown';
 
 
 
