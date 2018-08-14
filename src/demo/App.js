@@ -25,6 +25,7 @@ import AppDrawer from '../lib/AppDrawer';
 import AppContent from '../lib/AppContent';
 import AlertsAndNotifications from '../lib/AlertsAndNotifications';
 import HealthChart from '../lib/HealthChart';
+import ColorIndicators from '../lib/ColorIndicators';
 import SearchDropdown from '../lib/SearchDropdown';
 
 import OutlineButton from '../lib/Button/OutlineButton';
@@ -40,11 +41,34 @@ import SideNav, { SideNavSection, SideNavOption } from '../lib/SideNav';
 import Icon from '../icons';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
+import {healthChartMockdata} from './mocks'
+
 
 const styles = theme => ({
   appBar: {
     display: 'flex'
+  },
+  cardHeader:{
+    padding: '0 15px'
+  },
+  healthIndicesWrapper:{
+    textAlign: 'right',
+    margin: '10px 5px'
+  },
+  indicator:{
+    padding: '0 5px'
+  },
+  colorBox:{
+    width: '10px',
+    height: '10px',
+    background: '#000',
+    position: 'absolute',
+    marginTop: '3px'
+  },
+  healthLabel:{
+    padding: '0 0 0 15px',
   }
+
 })
 
 class App extends Component {
@@ -88,10 +112,33 @@ class App extends Component {
     this.setState({[key] : pageNumber})
   }
 
+  getTooltipData(d){
+    const tooltipHtml = `
+    <div>Average: ${d.avg}</div>
+    <div>Time Bucket: ${d.time_bucket}</div>
+    <div>Env: ${d.env}</div>
+    <div>Server Type: ${d.servertype}</div>
+    `;
+    return tooltipHtml;
+  }
+
+  getBarColors(value){
+    if(value === 0){
+        return '#DC2620'
+    }
+    else if(value === 1){
+        return '#86C35D'
+    }
+    else{
+        return '#FF9E00'
+    }
+}
+
   render() {
 
     const { selectedApplication, selectedTeam } = this.state;
     const { classes } = this.props;
+    const {cardHeader} = classes;
 
     return (
       <AppContainer>
@@ -316,6 +363,9 @@ class App extends Component {
                         }
                         >
                     <AnalyticsBox />
+                    <br/>
+                    <h3>Color Indicators</h3>
+                    <ColorIndicators/>
               </PaperCard>
 
   <br/>
@@ -335,8 +385,18 @@ class App extends Component {
           barWidth={50}/>
 
           <br/>
-          <HealthChart/>
 
+      </PaperCard>
+        <br/>
+      <PaperCard title = {"Simple Health Chart"} subtitle={'subtitle'} classes = {{cardHeader}} >
+          <div className={classes.healthIndicesWrapper}>
+            <ColorIndicators/>
+          </div>
+          <HealthChart
+           data={healthChartMockdata}
+           getTooltipData={this.getTooltipData}
+           getBarColors={this.getBarColors}
+          />
       </PaperCard>
 
       

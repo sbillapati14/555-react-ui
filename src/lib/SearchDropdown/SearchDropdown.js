@@ -160,7 +160,7 @@ class SearchComponent extends React.Component {
   render() {
     const {classes} = this.props;
     return (
-      <div className="clear" className={classes.clear}>
+      <div className={classes.clear}>
         <fieldset className={classNames(classes.search, classes.pfSelect)}>
           <input type="text" name="search" className={classes.searchInput}
             onBlur={this.onBlurSearch}

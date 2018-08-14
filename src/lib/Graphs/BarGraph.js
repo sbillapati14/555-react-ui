@@ -30,7 +30,7 @@ class BarChartComponent extends React.Component{
     }
 
 renderChart(){
-  const {data, rangeBandX, barPadding, classes} = this.props;
+  const {data, barPadding, classes} = this.props;
   var margin = {top: 40, right: 20, bottom: 30, left: 40},
       width = (this.props.chartWidth || 500) - margin.left - margin.right,
       height = (this.props.chartHeight || 500) - margin.top - margin.bottom;
