@@ -13,6 +13,7 @@ const styles = theme => ({
         marginTop: '3px'
       },
       healthLabel:{
+            fontSize: '14px',
             fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
             padding: '0 0 0 15px',
       }
@@ -34,9 +35,9 @@ const ColorIndicators  = ({colorIndices, classes}) => {
 
 ColorIndicators.defaultProps = {
     colorIndices: [
-        {status: 'down', color: '#DC2620'},
-        {status: 'issue', color: '#FF9E00'},
-        {status: 'healthy', color: '#86C35D'}
+        {status: 'Down', color: '#DC2620'},
+        {status: 'Issue', color: '#FF9E00'},
+        {status: 'Healthy', color: '#86C35D'}
       ]
 }
 

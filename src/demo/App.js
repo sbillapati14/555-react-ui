@@ -393,6 +393,7 @@ class App extends Component {
             <ColorIndicators/>
           </div>
           <HealthChart
+           chartId="healthChart1"
            data={healthChartMockdata}
            getTooltipData={this.getTooltipData}
            getBarColors={this.getBarColors}

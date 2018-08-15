@@ -16,7 +16,7 @@ const styles = theme => ({
     healthChartToolTip: {
         position: 'absolute',
         textAlign: 'left',
-        width: 'auto',
+        width: '100',
         height: 'auto',
         minHeight: '20px',
         font: '12px sans-serif',
@@ -56,8 +56,8 @@ componentDidMount(){
 }
 
 renderBarChart(){
-    const {chartHeight, chartWidth, classes, data, x_reference, y_reference, getTooltipData} = this.props;
-    var svg = d3.select("#healthChart").attr("width", chartWidth),
+    const {chartHeight, chartWidth, chartId, classes, data, x_reference, y_reference, getTooltipData} = this.props;
+    var svg = d3.select(`#${chartId}`).attr("width", chartWidth),
     margin = {
                     top: 20,
                     right: 20,
@@ -135,9 +135,10 @@ function onMouseOut(d){
 
 
     render(){
+        const {chartId} = this.props;
         return (
             <div>
-                <svg id="healthChart"></svg>
+                <svg id={chartId}></svg>
             </div>
         )
     }
@@ -147,16 +148,17 @@ export default withStyles(styles)(Chart);
 
 /*
 ------------------------------------------------------------------------
-1) getBarColors: is a function we need to send as a prop to the component that a user can customixe which color 
+1) getBarColors: is a function we need to send as a prop to the component that a user can customixe which color
                  he want fotr the given data and logic based on data
 
-2) getTooltipData: is a function we need to send as a props to the component that returns tooltip html data                 
+2) getTooltipData: is a function we need to send as a props to the component that returns tooltip html data
 
 */
 
 Chart.propTypes = {
     chartHeight: PropTypes.number,
     chartWidth: PropTypes.number,
+    chartId: PropTypes.string,
     x_reference: PropTypes.string,
     y_reference: PropTypes.string,
     data: PropTypes.array,
@@ -167,6 +169,7 @@ Chart.propTypes = {
 Chart.defaultProps = {
     chartHeight: 120,
     chartWidth: 800,
+    chartId: 'healthChart',
     x_reference: 'time_bucket',
     y_reference: 'avg',
     data: []
