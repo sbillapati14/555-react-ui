@@ -16,7 +16,7 @@ const styles = theme => ({
     healthChartToolTip: {
         position: 'absolute',
         textAlign: 'left',
-        width: '100',
+        width: 'auto',
         height: 'auto',
         minHeight: '20px',
         font: '12px sans-serif',
@@ -52,11 +52,15 @@ class Chart extends React.Component{
     }
 
 componentDidMount(){
-    this.renderBarChart();
+    this.renderBarChart(this.props.data);
 }
 
-renderBarChart(){
-    const {chartHeight, chartWidth, chartId, classes, data, x_reference, y_reference, getTooltipData} = this.props;
+componentWillReceiveProps(nextProps){
+    this.renderBarChart(nextProps.data);
+}
+
+renderBarChart(data){
+    const {chartHeight, chartWidth, chartId, classes, x_reference, y_reference, getTooltipData} = this.props;
     var svg = d3.select(`#${chartId}`).attr("width", chartWidth),
     margin = {
                     top: 20,
@@ -148,10 +152,10 @@ export default withStyles(styles)(Chart);
 
 /*
 ------------------------------------------------------------------------
-1) getBarColors: is a function we need to send as a prop to the component that a user can customixe which color
+1) getBarColors: is a function we need to send as a prop to the component that a user can customixe which color 
                  he want fotr the given data and logic based on data
 
-2) getTooltipData: is a function we need to send as a props to the component that returns tooltip html data
+2) getTooltipData: is a function we need to send as a props to the component that returns tooltip html data                 
 
 */
 
