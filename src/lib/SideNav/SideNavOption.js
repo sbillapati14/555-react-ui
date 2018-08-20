@@ -51,7 +51,7 @@ const styles = theme => ({
     color: '#FFF',
     textDecoration: 'none',
     backgroundColor: '#0e171c',
-    marginBottom: '8px',
+    marginBottom: '2px',
     display: 'block',
     height: '38px',
     lineHeight: '38px',

@@ -114,7 +114,6 @@ class App extends Component {
 
   getTooltipData(d){
     const tooltipHtml = `
-    <div>Average: ${d.avg}</div>
     <div>Time Bucket: ${d.time_bucket}</div>
     <div>Env: ${d.env}</div>
     <div>Server Type: ${d.servertype}</div>

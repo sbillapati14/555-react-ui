@@ -48,10 +48,20 @@ const styles = theme => ({
 class Chart extends React.Component{
     constructor(props){
         super(props);
-        this.state = {}
+        this.state = {};
+        this.onResizeChartRender = this.onResizeChartRender.bind(this);
     }
 
 componentDidMount(){
+    this.renderBarChart(this.props.data);
+    window.addEventListener("resize", this.onResizeChartRender);
+}
+
+componentWillUnmount() {
+    window.removeEventListener("resize", this.onResizeChartRender);
+}
+
+onResizeChartRender(){
     this.renderBarChart(this.props.data);
 }
 
@@ -61,12 +71,13 @@ componentWillReceiveProps(nextProps){
 
 renderBarChart(data){
     const {chartHeight, chartWidth, chartId, classes, x_reference, y_reference, getTooltipData} = this.props;
-    var svg = d3.select(`#${chartId}`).attr("width", chartWidth),
+    var chartWidth1 = d3.select("#"+chartId+"wrapper").node().getBoundingClientRect().width;
+    var svg = d3.select(`#${chartId}`).attr("width", chartWidth1),
     margin = {
                     top: 20,
                     right: 20,
                     bottom: 30,
-                    left: 50
+                    left: 0
                 },
     width =  chartWidth - margin.left - margin.right,
     height = chartHeight - margin.top - margin.bottom,
@@ -141,7 +152,7 @@ function onMouseOut(d){
     render(){
         const {chartId} = this.props;
         return (
-            <div>
+            <div id={chartId+"wrapper"}>
                 <svg id={chartId}></svg>
             </div>
         )

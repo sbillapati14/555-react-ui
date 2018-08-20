@@ -88,7 +88,9 @@ class SearchComponent extends React.Component {
 
   handleChange(event) {
     var options = this.props.optionsList.filter(item=> item.description.toLowerCase().includes(event.target.value.toLowerCase()))
-    this.setState({ value: event.target.value, listActive: true, options });
+    this.setState({ value: event.target.value, listActive: true, options },()=>{
+      this.props.onChange && this.props.onChange(event.target.value);
+    });
   }
 
   handleKeyPress(e) {
@@ -105,7 +107,7 @@ class SearchComponent extends React.Component {
       stateToUpdate.value = this.state.options.find((item, i)=> i===ind).description;
       stateToUpdate.listActive = false;
     this.setState(stateToUpdate, ()=>{
-        this.props.onSelect && this.props.onSelect(this.props.optionsList[ind])
+        this.props.onSelect && this.props.onSelect(this.state.options[ind])
     });
   }
 
@@ -119,7 +121,7 @@ class SearchComponent extends React.Component {
     const {tempValue, value} = this.state;
       let searchValue = value || tempValue ;
       this.props.onBlur && this.props.onBlur(searchValue);
-      (!value&& tempValue) && this.setState({value: tempValue})
+      // (!value&& tempValue) && this.setState({value: tempValue})
         this.setState({listActive: false})
   }
 
