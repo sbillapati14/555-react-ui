@@ -93,9 +93,7 @@ renderBarChart(data){
         x.domain(data.map(function (d) {
                 return d[x_reference];
             }));
-        y.domain([0, d3.max(data, function (d) {
-                return Number(d[y_reference]);
-            })]);
+        y.domain([0, 1]);
 
 
     g.selectAll(".bar")
@@ -106,11 +104,11 @@ renderBarChart(data){
         return x(d[x_reference]);
     })
     .attr("y", function (d) {
-        return y(d3.max(data, d=> Number(d[y_reference])));
+        return y(1);
     })
     .attr("width", x.bandwidth())
     .attr("height", function (d) {
-        return height - y(d3.max(data, d=> Number(d[y_reference])));
+        return height - y(1);
     })
     .style("fill", d => (this.props.getBarColors(Number(d[y_reference]), d3.max(data, d=> Number(d[y_reference])))))
     .on("mousemove", onMouseMove)

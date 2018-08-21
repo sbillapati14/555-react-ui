@@ -2,7 +2,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 0.29,
+        "avg": 0,
         "time_bucket": "2018-08-07T03:05:00.000Z",
         "objectId": "5b690d89ac0ba706a160dd4b",
         "createdAt": 1533611401206,
@@ -11,7 +11,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 0.6,
+        "avg": 0,
         "time_bucket": "2018-08-07T03:00:00.000Z",
         "objectId": "5b690c5dac0ba706a160dd43",
         "createdAt": 1533611101196,
@@ -20,7 +20,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T02:55:00.000Z",
         "objectId": "5b690b31709fa50690a2a40d",
         "createdAt": 1533610801198,
@@ -29,7 +29,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T02:50:00.000Z",
         "objectId": "5b690a05fe9c6c068ba26bf2",
         "createdAt": 1533610501270,
@@ -38,7 +38,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T02:45:00.000Z",
         "objectId": "5b6908d9709fa50690a2a3f8",
         "createdAt": 1533610201158,
@@ -47,7 +47,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T02:40:00.000Z",
         "objectId": "5b6907ad77397c068af649f8",
         "createdAt": 1533609901297,
@@ -56,7 +56,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T02:35:00.000Z",
         "objectId": "5b6906812f253906a66ef579",
         "createdAt": 1533609601154,
@@ -65,7 +65,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T02:30:00.000Z",
         "objectId": "5b690555e54b720685356cd8",
         "createdAt": 1533609301284,
@@ -74,7 +74,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T02:25:00.000Z",
         "objectId": "5b690429fe9c6c068ba26bc4",
         "createdAt": 1533609001144,
@@ -92,7 +92,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 0.9,
+        "avg": 0,
         "time_bucket": "2018-08-07T02:15:00.000Z",
         "objectId": "5b6901d11d1b7006951d1f5b",
         "createdAt": 1533608401180,
@@ -101,7 +101,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T02:10:00.000Z",
         "objectId": "5b6900a51d1b7006951d1f4e",
         "createdAt": 1533608101256,
@@ -110,7 +110,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T02:05:00.000Z",
         "objectId": "5b68ff792a316706962882a5",
         "createdAt": 1533607801166,
@@ -119,7 +119,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T02:00:00.000Z",
         "objectId": "5b68fe4d2f253906a66ef522",
         "createdAt": 1533607501233,
@@ -128,7 +128,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T01:55:00.000Z",
         "objectId": "5b68fd21fe9c6c068ba26b8d",
         "createdAt": 1533607201193,
@@ -137,7 +137,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T01:50:00.000Z",
         "objectId": "5b68fbf52a3167069628828a",
         "createdAt": 1533606901202,
@@ -146,7 +146,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T01:45:00.000Z",
         "objectId": "5b68fac9e54b720685356c83",
         "createdAt": 1533606601164,
@@ -155,7 +155,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T01:40:00.000Z",
         "objectId": "5b68f99d2f253906a66ef500",
         "createdAt": 1533606301209,
@@ -164,7 +164,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T01:35:00.000Z",
         "objectId": "5b68f871e54b720685356c70",
         "createdAt": 1533606001154,
@@ -173,7 +173,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T01:30:00.000Z",
         "objectId": "5b68f745e54b720685356c68",
         "createdAt": 1533605701242,
@@ -182,7 +182,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T01:25:00.000Z",
         "objectId": "5b68f6191d1b7006951d1ef4",
         "createdAt": 1533605401198,
@@ -191,7 +191,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T01:20:00.000Z",
         "objectId": "5b68f4ed1d1b7006951d1ee8",
         "createdAt": 1533605101281,
@@ -200,7 +200,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T01:15:00.000Z",
         "objectId": "5b68f3c177397c068af6494b",
         "createdAt": 1533604801171,
@@ -209,7 +209,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T01:10:00.000Z",
         "objectId": "5b68f295ac0ba706a160dc57",
         "createdAt": 1533604501295,
@@ -218,7 +218,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 0.1,
+        "avg": 0,
         "time_bucket": "2018-08-07T01:05:00.000Z",
         "objectId": "5b68f169709fa50690a2a32c",
         "createdAt": 1533604201168,
@@ -227,7 +227,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T01:00:00.000Z",
         "objectId": "5b68f03d1d1b7006951d1ec2",
         "createdAt": 1533603901231,
@@ -236,7 +236,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T00:55:00.000Z",
         "objectId": "5b68ef11fe9c6c068ba26b1a",
         "createdAt": 1533603601138,
@@ -245,7 +245,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T00:50:00.000Z",
         "objectId": "5b68ede52f253906a66ef496",
         "createdAt": 1533603301223,
@@ -254,7 +254,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T00:45:00.000Z",
         "objectId": "5b68ecb92f253906a66ef48d",
         "createdAt": 1533603001165,
@@ -263,7 +263,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T00:40:00.000Z",
         "objectId": "5b68eb8dac0ba706a160dc1d",
         "createdAt": 1533602701216,
@@ -272,7 +272,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T00:35:00.000Z",
         "objectId": "5b68ea61ac0ba706a160dc0f",
         "createdAt": 1533602401187,
@@ -281,7 +281,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T00:30:00.000Z",
         "objectId": "5b68e9352a316706962881e5",
         "createdAt": 1533602101195,
@@ -290,7 +290,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T00:25:00.000Z",
         "objectId": "5b68e8092a316706962881d8",
         "createdAt": 1533601801172,
@@ -299,7 +299,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T00:20:00.000Z",
         "objectId": "5b68e6dd2f253906a66ef455",
         "createdAt": 1533601501243,
@@ -308,7 +308,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T00:15:00.000Z",
         "objectId": "5b68e5b177397c068af648d2",
         "createdAt": 1533601201154,
@@ -317,7 +317,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T00:10:00.000Z",
         "objectId": "5b68e4852a316706962881bb",
         "createdAt": 1533600901209,
@@ -326,7 +326,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T00:05:00.000Z",
         "objectId": "5b68e359fe9c6c068ba26ab8",
         "createdAt": 1533600601188,
@@ -335,7 +335,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-07T00:00:00.000Z",
         "objectId": "5b68e22d77397c068af648ba",
         "createdAt": 1533600301185,
@@ -344,7 +344,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-06T23:55:00.000Z",
         "objectId": "5b68e101fe9c6c068ba26a9e",
         "createdAt": 1533600001129,
@@ -353,7 +353,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-06T23:50:00.000Z",
         "objectId": "5b68dfd52a31670696288195",
         "createdAt": 1533599701223,
@@ -362,7 +362,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-06T23:45:00.000Z",
         "objectId": "5b68dea9fe9c6c068ba26a89",
         "createdAt": 1533599401177,
@@ -371,7 +371,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-06T23:40:00.000Z",
         "objectId": "5b68dd7d2f253906a66ef403",
         "createdAt": 1533599101249,
@@ -380,7 +380,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-06T23:35:00.000Z",
         "objectId": "5b68dc51fe9c6c068ba26a73",
         "createdAt": 1533598801186,
@@ -389,7 +389,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-06T23:30:00.000Z",
         "objectId": "5b68db25fe9c6c068ba26a6b",
         "createdAt": 1533598501244,
@@ -398,7 +398,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-06T23:25:00.000Z",
         "objectId": "5b68d9f91d1b7006951d1df5",
         "createdAt": 1533598201161,
@@ -407,7 +407,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-06T23:20:00.000Z",
         "objectId": "5b68d8cd2a31670696288162",
         "createdAt": 1533597901208,
@@ -416,7 +416,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-06T23:15:00.000Z",
         "objectId": "5b68d7a1e54b720685356b58",
         "createdAt": 1533597601172,
@@ -425,7 +425,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-06T23:10:00.000Z",
         "objectId": "5b68d675ac0ba706a160db62",
         "createdAt": 1533597301233,
@@ -434,7 +434,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-06T23:05:00.000Z",
         "objectId": "5b68d549ac0ba706a160db5a",
         "createdAt": 1533597001128,
@@ -443,7 +443,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-06T23:00:00.000Z",
         "objectId": "5b68d41d77397c068af64846",
         "createdAt": 1533596701194,
@@ -452,7 +452,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-06T22:55:00.000Z",
         "objectId": "5b68d2f1fe9c6c068ba26a24",
         "createdAt": 1533596401125,
@@ -461,7 +461,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-06T22:50:00.000Z",
         "objectId": "5b68d1c5fe9c6c068ba26a18",
         "createdAt": 1533596101272,
@@ -470,7 +470,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-06T22:45:00.000Z",
         "objectId": "5b68d0992f253906a66ef38f",
         "createdAt": 1533595801126,
@@ -479,7 +479,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-06T22:40:00.000Z",
         "objectId": "5b68cf6d709fa50690a2a1fe",
         "createdAt": 1533595501221,
@@ -488,7 +488,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-06T22:35:00.000Z",
         "objectId": "5b68ce412f253906a66ef377",
         "createdAt": 1533595201135,
@@ -497,7 +497,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-06T22:30:00.000Z",
         "objectId": "5b68cd15709fa50690a2a1e5",
         "createdAt": 1533594901218,
@@ -506,7 +506,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-06T22:25:00.000Z",
         "objectId": "5b68cbe92a316706962880f4",
         "createdAt": 1533594601131,
@@ -515,7 +515,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-06T22:20:00.000Z",
         "objectId": "5b68cabde54b720685356aed",
         "createdAt": 1533594301246,
@@ -542,7 +542,7 @@ export const healthChartMockdata = [
     {
         "env": "sdk",
         "servertype": "Auth/Identity/Iportal Mongo DB",
-        "avg": 1,
+        "avg": 0,
         "time_bucket": "2018-08-06T22:05:00.000Z",
         "objectId": "5b68c7392f253906a66ef337",
         "createdAt": 1533593401108,
