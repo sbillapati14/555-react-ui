@@ -62,7 +62,6 @@ componentWillUnmount() {
 }
 
 onResizeChartRender(){
-    this.renderBarChart(this.props.data);
 }
 
 componentWillReceiveProps(nextProps){
@@ -70,9 +69,10 @@ componentWillReceiveProps(nextProps){
 }
 
 renderBarChart(data){
-    const {chartHeight, chartWidth, chartId, classes, x_reference, y_reference, getTooltipData} = this.props;
-    var chartWidth1 = d3.select("#"+chartId+"wrapper").node().getBoundingClientRect().width;
-    var svg = d3.select(`#${chartId}`).attr("width", chartWidth1),
+    const {chartHeight,  chartId, classes, x_reference, y_reference, getTooltipData, barPadding} = this.props;
+    var chartWidth = d3.select("#"+chartId+"wrapper").node().getBoundingClientRect().width;
+    d3.select("#" + chartId + "wrapper").selectAll("g").remove();
+    var svg = d3.select(`#${chartId}`).style("width", "100%"),
     margin = {
                     top: 20,
                     right: 20,
@@ -85,7 +85,6 @@ renderBarChart(data){
 
     var x = d3.scaleBand()
         .rangeRound([0, width])
-        .padding(0.1);
 
     var y = d3.scaleLinear()
         .rangeRound([height, 0]);
@@ -100,25 +99,52 @@ renderBarChart(data){
     .data(data)
     .enter().append("rect")
     .attr("class", classes.bar)
-    .attr("x", function (d) {
-        return x(d[x_reference]);
+    .attr("x", function (d, i) {
+        return (x.bandwidth()+barPadding)*i;
+    })
+    .attr("y", function (d) {
+        return 1;
+    })
+    .on("mousemove", onMouseMove)
+    .on("mouseout", onMouseOut)
+     .style("fill", "#fff")
+    .attr("width", x.bandwidth())
+    .attr("height", function (d) {
+        return height;
+    })
+			.transition()
+			.duration(200)
+			.delay(function (d, i) {
+				return i * 10;
+            })
+
+    .attr("height", function (d) {
+        return height - y(1);
     })
     .attr("y", function (d) {
         return y(1);
     })
-    .attr("width", x.bandwidth())
-    .attr("height", function (d) {
-        return height - y(1);
-    })
-    .style("fill", d => (this.props.getBarColors(Number(d[y_reference]), d3.max(data, d=> Number(d[y_reference])))))
-    .on("mousemove", onMouseMove)
-    .on("mouseout", onMouseOut)
+    .style("fill", d => (this.props.getBarColors(d[y_reference], d3.max(data, d=> d[y_reference]))))
+    
+    
+
 
     d3.select("body").append("div")
          .attr("id", "myTooltip")
          .attr("class", classes.healthChartToolTip)
-         .style("opacity", 0);
-
+         .style("opacity", 0)
+         .style("position", "absolute")
+         .style("min-height", "20px")
+         .style("font-size", "12px")
+         .style("background-color", "#fff")
+         .style("border", "1px solid #999")
+         .style("color", "#000")
+         .style("border-radius", "8px")
+         .style("pointer-events", "none")
+         .style("padding", "11px")
+         .style("font-weight", "400")
+         .style("box-shadow", "1px 1px 10px #000000")
+         .style("font-family", '"Montserrat", "Helvetica", "Arial", sans-serif')
 
 function onMouseMove(d){
     var tooltipDiv = d3.select("#myTooltip");
@@ -185,5 +211,6 @@ Chart.defaultProps = {
     chartId: 'healthChart',
     x_reference: 'time_bucket',
     y_reference: 'avg',
+    barPadding: 2,
     data: []
 }

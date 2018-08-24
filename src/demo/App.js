@@ -363,9 +363,18 @@ class App extends Component {
                         >
                     <AnalyticsBox />
                     <br/>
-                    <h3>Color Indicators</h3>
-                    <ColorIndicators/>
               </PaperCard>
+
+              <br />
+              <PaperCard title="Color Indicators"
+                  avatar={
+                    <Avatar>
+                    <ImageIcon />
+                    </Avatar>
+                  }
+              >
+                  <ColorIndicators/>
+               </PaperCard>
 
   <br/>
 
@@ -387,7 +396,13 @@ class App extends Component {
 
       </PaperCard>
         <br/>
-      <PaperCard title = {"Simple Health Chart"} subtitle={'subtitle'} classes = {{cardHeader}} >
+      <PaperCard title = {"Simple Health Chart"} subtitle={'subtitle'} classes = {{cardHeader}}
+        avatar={
+          <Avatar>
+          <ImageIcon />
+          </Avatar>
+        }
+      >
           <div className={classes.healthIndicesWrapper}>
             <ColorIndicators/>
           </div>
