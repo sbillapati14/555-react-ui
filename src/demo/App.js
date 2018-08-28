@@ -41,7 +41,6 @@ import SideNav, { SideNavSection, SideNavOption } from '../lib/SideNav';
 import Icon from '../icons';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
-import {healthChartMockdata} from './mocks'
 
 
 const styles = theme => ({
@@ -112,26 +111,7 @@ class App extends Component {
     this.setState({[key] : pageNumber})
   }
 
-  getTooltipData(d){
-    const tooltipHtml = `
-    <div>Time Bucket: ${d.time_bucket}</div>
-    <div>Env: ${d.env}</div>
-    <div>Server Type: ${d.servertype}</div>
-    `;
-    return tooltipHtml;
-  }
 
-  getBarColors(value){
-    if(value === 0){
-        return '#DC2620'
-    }
-    else if(value === 1){
-        return '#86C35D'
-    }
-    else{
-        return '#FF9E00'
-    }
-}
 
   render() {
 
@@ -406,12 +386,7 @@ class App extends Component {
           <div className={classes.healthIndicesWrapper}>
             <ColorIndicators/>
           </div>
-          <HealthChart
-           chartId="healthChart1"
-           data={healthChartMockdata}
-           getTooltipData={this.getTooltipData}
-           getBarColors={this.getBarColors}
-          />
+          <HealthChart/>
       </PaperCard>
 
       

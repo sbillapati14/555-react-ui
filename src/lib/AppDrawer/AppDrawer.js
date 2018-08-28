@@ -8,7 +8,7 @@ const styles = theme => ({
         background: ' #182831',
         width: '266px',
         height: '100%',
-        position: 'relative',
+        position: 'fixed',
         zIndex: 1,
         float: 'left',
         transition: 'all .5s',
