@@ -27,6 +27,7 @@ import AlertsAndNotifications from '../lib/AlertsAndNotifications';
 import HealthChart from '../lib/HealthChart';
 import ColorIndicators from '../lib/ColorIndicators';
 import SearchDropdown from '../lib/SearchDropdown';
+import ProgressIndicator from '../lib/ProgressIndicator';
 
 import OutlineButton from '../lib/Button/OutlineButton';
 import GradientButton from '../lib/Button/GradientButton';
@@ -355,6 +356,18 @@ class App extends Component {
               >
                   <ColorIndicators/>
                </PaperCard>
+
+               <br />
+              <PaperCard title="Progress Indicator"
+                  avatar={
+                    <Avatar>
+                    <ImageIcon />
+                    </Avatar>
+                  }
+              >
+                  <ProgressIndicator/>
+               </PaperCard>
+
 
   <br/>
 

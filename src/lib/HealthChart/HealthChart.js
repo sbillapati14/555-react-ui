@@ -69,7 +69,7 @@ componentWillReceiveProps(nextProps){
 }
 
 renderBarChart(data){
-    const {chartHeight,  chartId, classes, x_reference, y_reference, getTooltipData, barPadding} = this.props;
+    const {chartHeight,  chartId, classes, x_reference, y_reference, getTooltipData, onClickBar, barPadding} = this.props;
     var chartWidth = d3.select("#"+chartId+"wrapper").node().getBoundingClientRect().width;
     d3.select("#" + chartId + "wrapper").selectAll("g").remove();
     var svg = d3.select(`#${chartId}`).style("width", "100%"),
@@ -107,7 +107,8 @@ renderBarChart(data){
     })
     .on("mousemove", onMouseMove)
     .on("mouseout", onMouseOut)
-     .style("fill", "#fff")
+    .on("click", handleBarClick )
+    .style("fill", "#fff")
     .attr("width", x.bandwidth())
     .attr("height", function (d) {
         return height;
@@ -145,6 +146,10 @@ renderBarChart(data){
          .style("font-weight", "400")
          .style("box-shadow", "1px 1px 10px #000000")
          .style("font-family", '"Montserrat", "Helvetica", "Arial", sans-serif')
+
+function handleBarClick(d){
+   onClickBar(d);
+}         
 
 function onMouseMove(d){
     var tooltipDiv = d3.select("#myTooltip");
@@ -202,7 +207,8 @@ Chart.propTypes = {
     y_reference: PropTypes.string,
     data: PropTypes.array,
     getBarColors: PropTypes.func,
-    getTooltipData: PropTypes.func
+    getTooltipData: PropTypes.func,
+    onClickBar: PropTypes.func
 }
 
 Chart.defaultProps = {
@@ -214,6 +220,7 @@ Chart.defaultProps = {
     barPadding: 2,
     getBarColors: (value, maxValue) => '#86C35D',
     getTooltipData: (d)=> "sample tooltip",
+    onClickBar: (d)=> {},
     data: [
        {
             "env": "sdk",

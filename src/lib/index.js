@@ -42,6 +42,7 @@ export { default as BarChart } from './Graphs';
 export { default as HealthChart } from './HealthChart';
 export { default as SearchDropdown } from './SearchDropdown';
 export { default as ColorIndicators } from './ColorIndicators';
+export { default as ProgressIndicator } from './ProgressIndicator';
 
 
 
