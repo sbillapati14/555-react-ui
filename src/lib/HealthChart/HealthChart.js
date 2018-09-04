@@ -86,8 +86,6 @@ renderBarChart(data){
     svg = d3.select(`#${chartId}`).style("width", "100%"),
     
     g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-                console.log('chartWidth:', chartWidth)
-                console.log('chartWidth:', document.getElementById("healthChartwrapper").offsetWidth)
     var x = d3.scaleBand()
         .rangeRound([0, width])
         .padding(0.2);
