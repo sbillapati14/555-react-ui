@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search'
+import Collapse from '@material-ui/core/Collapse';
 
 const styles = theme => ({
   search : {
@@ -16,7 +17,7 @@ const styles = theme => ({
     width: '100%',
     padding: '4.8px 20px 4.8px 12px',
     background: '#ffffff',
-    border: '1px solid #666',
+    border: '1px solid #ccc',
     color: '#666666',
     fontSize: '16px',
     borderRadius: '4px',
@@ -60,8 +61,12 @@ const styles = theme => ({
     top: '50px',
     position: 'absolute',
     right: '46px',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    color: '#ccc'
   },
+  root:{
+    display: 'block'
+  }
 })
 
 class SearchComponent extends React.Component {
@@ -162,7 +167,7 @@ class SearchComponent extends React.Component {
   render() {
     const {classes} = this.props;
     return (
-      <div className={classes.clear}>
+      <div className={classes.root}>
         <fieldset className={classNames(classes.search, classes.pfSelect)}>
           <input type="text" name="search" className={classes.searchInput}
             onBlur={this.onBlurSearch}
@@ -174,7 +179,10 @@ class SearchComponent extends React.Component {
             onKeyPress={this.handleKeyPress}
           />
           <span className={classes.searchIcon}><SearchIcon/></span>
+        <Collapse component="div" in={true} >        
           {this.renderList()}
+        </Collapse>
+          
         </fieldset>
       </div>
     );

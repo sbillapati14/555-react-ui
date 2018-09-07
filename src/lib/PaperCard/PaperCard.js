@@ -16,6 +16,9 @@ const styles = theme => ({
   subheader:{
     display: 'inline-block',
     paddingLeft: '15px'
+  },
+  cardRoot:{
+    overflow: 'hidden'
   }
 });
 
@@ -32,7 +35,7 @@ function PaperCard(props) {
           subheader={subtitle}
         />
         <Divider />
-        <CardContent>
+        <CardContent classes={{root: classes.cardRoot}}>
           {props.children}
         </CardContent>
       </Card>

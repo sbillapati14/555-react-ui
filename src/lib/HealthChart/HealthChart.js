@@ -68,7 +68,15 @@ onResizeChartRender(){
 }
 
 componentWillReceiveProps(nextProps){
+  if(!this.state.rendered){
     this.renderBarChart(nextProps.data);
+    this.checkComponentRender();
+  }
+}
+
+checkComponentRender(){
+  this.setState({isRendered: true});
+  setTimeout(()=>{this.setState({isRendered: false})}, 3000)
 }
 
 renderBarChart(data){
