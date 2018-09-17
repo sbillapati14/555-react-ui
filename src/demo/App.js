@@ -4,6 +4,7 @@ import {
   BrowserRouter as Router,
   NavLink,
 } from 'react-router-dom'
+import { is } from 'ramda';
 
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -35,10 +36,11 @@ import AccentButton from '../lib/Button/AccentButton';
 import PaperCard from '../lib/PaperCard';
 import { BarChart } from '../lib/Graphs';
 import { TextField, FormField } from '../lib/InputFields';
-import {Switch, SwitchButton} from '../lib/Switch';
+import { Switch, SwitchButton } from '../lib/Switch';
 import FilterStatus from '../lib/DropDown/FilterStatus';
 import { SelectList, SelectListItem } from '../lib/SelectList';
 import SideNav, { SideNavSection, SideNavOption } from '../lib/SideNav';
+import Tree from '../lib/Tree';
 import Icon from '../icons';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
@@ -48,24 +50,24 @@ const styles = theme => ({
   appBar: {
     display: 'flex'
   },
-  cardHeader:{
+  cardHeader: {
     padding: '0 15px'
   },
-  healthIndicesWrapper:{
+  healthIndicesWrapper: {
     textAlign: 'right',
     margin: '10px 5px'
   },
-  indicator:{
+  indicator: {
     padding: '0 5px'
   },
-  colorBox:{
+  colorBox: {
     width: '10px',
     height: '10px',
     background: '#000',
     position: 'absolute',
     marginTop: '3px'
   },
-  healthLabel:{
+  healthLabel: {
     padding: '0 0 0 15px',
   }
 
@@ -88,14 +90,14 @@ class App extends Component {
   }
 
   handleClick(e) {
-     e.preventDefault();
-     this.setState({ notification: !this.state.notification});
+    e.preventDefault();
+    this.setState({ notification: !this.state.notification });
   }
 
   handleClose = () => {
-    this.setState({ notification: false});
+    this.setState({ notification: false });
   };
-  copyToClipboard(){
+  copyToClipboard() {
     const el = document.createElement('textarea');
     el.value = this.state.cpyToClip;
     document.body.appendChild(el);
@@ -109,7 +111,7 @@ class App extends Component {
   };
 
   handlPageChange = (pageNumber, key) => {
-    this.setState({[key] : pageNumber})
+    this.setState({ [key]: pageNumber })
   }
 
 
@@ -118,7 +120,7 @@ class App extends Component {
 
     const { selectedApplication, selectedTeam } = this.state;
     const { classes } = this.props;
-    const {cardHeader} = classes;
+    const { cardHeader } = classes;
 
     return (
       <AppContainer>
@@ -142,26 +144,26 @@ class App extends Component {
 
                     {/* this is out menu with nested also */}
                     <SideNavSection component={NavLink} to="/stand-alone-nav-section" leftIcon={<InboxIcon height="20" />} label="Section NavLink" />
-                    <SideNavSection leftIcon={<span><Icon icon="credit"/></span>} label="Auth Types" >
+                    <SideNavSection leftIcon={<span><Icon icon="credit" /></span>} label="Auth Types" >
                       <SideNavOption component={NavLink} to="/page-one" primary="Server API Endpoints" />
                       <SideNavOption component={NavLink} to="/page-two" primary="Report a Problem" />
                       <SideNavOption component={NavLink} to="/page-three" primary="API Status" />
                       <SideNavOption component={NavLink} to="/page-four" primary="Call Trace" />
                       <SideNavOption primary="Not A Link" />
                     </SideNavSection>
-                   <SideNavSection component={NavLink} to="/stand-alone-nav-section" leftIcon={<span><Icon icon="token"/></span>} label="Tokens" />
-                   <SideNavSection leftIcon={<InboxIcon height="20" />} label="More Options" >
+                    <SideNavSection component={NavLink} to="/stand-alone-nav-section" leftIcon={<span><Icon icon="token" /></span>} label="Tokens" />
+                    <SideNavSection leftIcon={<InboxIcon height="20" />} label="More Options" >
                       <SideNavOption component={NavLink} to="/page-one" primary="Server API Endpoints" />
                       <SideNavOption component={NavLink} to="/page-two" primary="Report a Problem" />
                       <SideNavOption component={NavLink} to="/page-three" primary="API Status" />
                       <SideNavOption component={NavLink} to="/page-four" primary="Call Trace" />
                       <SideNavOption primary="Not A Link" />
                     </SideNavSection>
-                      <SideNavSection component={NavLink} to="/stand-alone-nav-section" leftIcon={<span><Icon icon="notify"/></span>} label="Notification" />
-                      <SideNavSection component={NavLink} to="/stand-alone-nav-section" leftIcon={<span><Icon icon="tools"/></span>} label="Tools And Support" />
-                      <SideNavSection component={NavLink} to="/stand-alone-nav-section" leftIcon={<span><Icon icon="heart"/></span>} label="Platform Health" />
-                      <SideNavSection component={NavLink} to="/stand-alone-nav-section"  leftIcon={<span><Icon icon="settings"/></span>} label="Settings" />
-                      <SideNavSection component={NavLink} to="/stand-alone-nav-section" leftIcon={<span><Icon icon="about"/></span>} label="About" />
+                    <SideNavSection component={NavLink} to="/stand-alone-nav-section" leftIcon={<span><Icon icon="notify" /></span>} label="Notification" />
+                    <SideNavSection component={NavLink} to="/stand-alone-nav-section" leftIcon={<span><Icon icon="tools" /></span>} label="Tools And Support" />
+                    <SideNavSection component={NavLink} to="/stand-alone-nav-section" leftIcon={<span><Icon icon="heart" /></span>} label="Platform Health" />
+                    <SideNavSection component={NavLink} to="/stand-alone-nav-section" leftIcon={<span><Icon icon="settings" /></span>} label="Settings" />
+                    <SideNavSection component={NavLink} to="/stand-alone-nav-section" leftIcon={<span><Icon icon="about" /></span>} label="About" />
                   </SideNav>
                 </nav>
               </Router>
@@ -170,18 +172,18 @@ class App extends Component {
 
             <AppContent isMobileOpen={isMobileOpen}>
 
-               <AppBar icon={<Language />} classes={{toolbar:classes.appBar}} title="Acme Application" toggleDrawer={toggleDrawer}
-               righticon={<span onClick={this.handleClick.bind(this)}><Icon icon="bell-alert"/></span>}
-               notification= {this.state.notification?(<ClickAwayListener onClickAway={this.handleClose}><PaperCard
+              <AppBar icon={<Language />} classes={{ toolbar: classes.appBar }} title="Acme Application" toggleDrawer={toggleDrawer}
+                righticon={<span onClick={this.handleClick.bind(this)}><Icon icon="bell-alert" /></span>}
+                notification={this.state.notification ? (<ClickAwayListener onClickAway={this.handleClose}><PaperCard
                   title="Alerts and Notifications"
                   avatar={
-                     <Avatar>
-                     <ImageIcon />
-                     </Avatar>
+                    <Avatar>
+                      <ImageIcon />
+                    </Avatar>
                   }
-               >
-               <AlertsAndNotifications/>
-                  </PaperCard></ClickAwayListener>): ''}>
+                >
+                  <AlertsAndNotifications />
+                </PaperCard></ClickAwayListener>) : ''}>
 
 
                 <SelectList name="selectedApplication" value={selectedApplication} onChange={this.handleChange('selectedApplication')} fullWidth>
@@ -190,18 +192,18 @@ class App extends Component {
                   <SelectListItem value="3">Funny App</SelectListItem>
                 </SelectList>
 
-                <PopOver Component = {<Icon icon="bell-alert" height="40" width="40"/>}>
-                <PaperCard
+                <PopOver Component={<Icon icon="bell-alert" height="40" width="40" />}>
+                  <PaperCard
                     title="Notifications"
                     avatar={
-                     <Icon icon="bell-notif" height="36" width="33"/>
+                      <Icon icon="bell-notif" height="36" width="33" />
                     }
-                   >
-                  <AlertsAndNotifications/>
-                 </PaperCard>
+                  >
+                    <AlertsAndNotifications />
+                  </PaperCard>
                 </PopOver>
-                 {<Icon icon="about" height="40" width="40"/> }
-                 {<Icon icon="settings" height="40" width="40"/> }
+                {<Icon icon="about" height="40" width="40" />}
+                {<Icon icon="settings" height="40" width="40" />}
 
                 {/* <Menu
                   button={<Button> Open Menu </Button>}
@@ -237,13 +239,13 @@ class App extends Component {
                 <PageLeft>
                   <PaperCard
                     title="Alerts and Notifications"
-                    avatar={<Icon icon="bell-notif" height="36" width="33"/>}
-                >
-                <AlertsAndNotifications/>
-                    </PaperCard>
+                    avatar={<Icon icon="bell-notif" height="36" width="33" />}
+                  >
+                    <AlertsAndNotifications />
+                  </PaperCard>
 
-                    <br />
-                    <PaperCard
+                  <br />
+                  <PaperCard
                     title="Buttons"
                     avatar={
                       <Avatar>
@@ -288,28 +290,28 @@ class App extends Component {
                       <FormField id="secret" label="App Secret" value="abc" />
                       <FormField id="key" label="App Key" value="sdfasfsadf" />
                       <FormField id="app" label="App" value="aa" />
-                      <FormField id="cpyToClip" label="Copy to CLipboard" value={this.state.cpyToClip} endAdornment={<span onClick={this.copyToClipboard.bind(this)}><Icon icon="copyToClipboard" viewBox="0 0 500 500" fill="#282828"/></span>}/>
-                      <FormField type="file" id="upload" label="File Upload"/>
+                      <FormField id="cpyToClip" label="Copy to CLipboard" value={this.state.cpyToClip} endAdornment={<span onClick={this.copyToClipboard.bind(this)}><Icon icon="copyToClipboard" viewBox="0 0 500 500" fill="#282828" /></span>} />
+                      <FormField type="file" id="upload" label="File Upload" />
                     </form>
                   </PaperCard>
-                  <br/>
+                  <br />
 
                   <PaperCard
-                     title="Search Dropdown"
-                     avatar={
+                    title="Search Dropdown"
+                    avatar={
                       <Avatar>
-                      <ImageIcon />
+                        <ImageIcon />
                       </Avatar>
                     }
-                   >
-                   <SearchDropdown
-                      validationState={()=>{}}
-                      selectedFilterObj = {{filterBy: 'code', placeholder: 'search a service', textStyle : 'uppercase'}}
+                  >
+                    <SearchDropdown
+                      validationState={() => { }}
+                      selectedFilterObj={{ filterBy: 'code', placeholder: 'search a service', textStyle: 'uppercase' }}
                       autoSuggestResults={this.props.autoSuggestWritingBrokers}
                       onFilter={this.props.handleFilter}
-                  />
+                    />
                   </PaperCard>
-                  <br/>
+                  <br />
 
                   <PaperCard
                     title="Pagination"
@@ -319,104 +321,104 @@ class App extends Component {
                       </Avatar>
                     }
                   >
-                    <Pagination    
-                      totalRecords = {200}
-                      recordsPerPage = {20}
-                      thresholdPageBtns = {5}
-                      currentPage = {this.state.pageNumber1}
-                      onClickPage = {(page)=>this.handlPageChange(page, "pageNumber1")}
+                    <Pagination
+                      totalRecords={200}
+                      recordsPerPage={20}
+                      thresholdPageBtns={5}
+                      currentPage={this.state.pageNumber1}
+                      onClickPage={(page) => this.handlPageChange(page, "pageNumber1")}
                     />
-                     <Pagination    
-                      totalRecords = {20}
-                      recordsPerPage = {4}
-                      currentPage = {this.state.pageNumber2}
-                      onClickPage = {(page)=>this.handlPageChange(page, "pageNumber2")}
+                    <Pagination
+                      totalRecords={20}
+                      recordsPerPage={4}
+                      currentPage={this.state.pageNumber2}
+                      onClickPage={(page) => this.handlPageChange(page, "pageNumber2")}
                     />
                   </PaperCard>
                   <br />
 
                   <PaperCard title="Miscellaneous"
-                      avatar={
-                          <Avatar>
-                            <ImageIcon />
-                          </Avatar>
-                        }
-                        >
-                    <AnalyticsBox />
-                    <br/>
-              </PaperCard>
-
-              <br />
-              <PaperCard title="Color Indicators"
-                  avatar={
-                    <Avatar>
-                    <ImageIcon />
-                    </Avatar>
-                  }
-              >
-                  <ColorIndicators/>
-               </PaperCard>
-
-               <br />
-              <PaperCard title="Progress Indicator"
-                  avatar={
-                    <Avatar>
-                    <ImageIcon />
-                    </Avatar>
-                  }
-              >
-                  <ProgressIndicator/>
-               </PaperCard>
-
-
-  <br/>
-
-      <PaperCard
-        title="Charts"
-        avatar={
-          <Avatar>
-            <ImageIcon />
-          </Avatar>
-        }
-      >
-          <BarChart
-          chartId="samplBarChart"
-          chartWidth={500}
-          chartHeight={300}
-          barWidth={50}/>
-
-          <br/>
-
-      </PaperCard>
-        <br/>
-      <PaperCard title = {"Simple Health Chart"} subtitle={'subtitle'} classes = {{cardHeader}}
-        avatar={
-          <Avatar>
-          <ImageIcon />
-          </Avatar>
-        }
-      >
-          <div className={classes.healthIndicesWrapper}>
-            <ColorIndicators/>
-          </div>
-          <HealthChart/>
-      </PaperCard>
-
-      
-                </PageLeft>
-
-                <PageRight>
-                <PaperCard title="Issues"
-                   avatar={
+                    avatar={
                       <Avatar>
                         <ImageIcon />
                       </Avatar>
                     }
-                    >
-                    <Issues />
-              </PaperCard>
+                  >
+                    <AnalyticsBox />
+                    <br />
+                  </PaperCard>
 
-                <br/>
+                  <br />
+                  <PaperCard title="Color Indicators"
+                    avatar={
+                      <Avatar>
+                        <ImageIcon />
+                      </Avatar>
+                    }
+                  >
+                    <ColorIndicators />
+                  </PaperCard>
+
+                  <br />
+                  <PaperCard title="Progress Indicator"
+                    avatar={
+                      <Avatar>
+                        <ImageIcon />
+                      </Avatar>
+                    }
+                  >
+                    <ProgressIndicator />
+                  </PaperCard>
+
+
+                  <br />
+
+                  <PaperCard
+                    title="Charts"
+                    avatar={
+                      <Avatar>
+                        <ImageIcon />
+                      </Avatar>
+                    }
+                  >
+                    <BarChart
+                      chartId="samplBarChart"
+                      chartWidth={500}
+                      chartHeight={300}
+                      barWidth={50} />
+
+                    <br />
+
+                  </PaperCard>
+                  <br />
+                  <PaperCard title={"Simple Health Chart"} subtitle={'subtitle'} classes={{ cardHeader }}
+                    avatar={
+                      <Avatar>
+                        <ImageIcon />
+                      </Avatar>
+                    }
+                  >
+                    <div className={classes.healthIndicesWrapper}>
+                      <ColorIndicators />
+                    </div>
+                    <HealthChart />
+                  </PaperCard>
+
+
+                </PageLeft>
+
+                <PageRight>
+                  <PaperCard title="Issues"
+                    avatar={
+                      <Avatar>
+                        <ImageIcon />
+                      </Avatar>
+                    }
+                  >
+                    <Issues />
+                  </PaperCard>
+
+                  <br />
                   <PaperCard
                     title="Switch's"
                     avatar={
@@ -433,7 +435,7 @@ class App extends Component {
                   </PaperCard>
 
                   <br />
-                    <PaperCard
+                  <PaperCard
                     title="Filters"
                     avatar={
                       <Avatar>
@@ -463,6 +465,69 @@ class App extends Component {
                         />
                       </form>
                     </FilterStatus>
+                  </PaperCard>
+
+                  <br />
+                  <PaperCard
+                    title="Tree"
+                    avatar={
+                      <Avatar>
+                        <ImageIcon />
+                      </Avatar>
+                    }
+                  >
+                    <Tree
+                      label='Folder Example'
+                      model={{
+                        'subfolder1': {
+                          'sub-subfolder1': {
+                            'file.yml': {
+                              'size': '6kb',
+                              'created': '12/21/2121'
+                            },
+                            'file.json': {
+                              'size': '8kb',
+                              'created': '11/11/2011'
+                            }
+                          },
+                          'file.rs': {
+                            'size': '15kb',
+                            'created': '10/20/2020'
+                          },
+                          'file.go': {
+                            'size': '9kb',
+                            'created': '10/20/2020'
+                          },
+                          'file.cpp': {
+                            'size': '9kb',
+                            'created': '10/20/2020'
+                          },
+                        },
+                        'subfolder2': {
+                          'file.docx': {
+                            'size': '110kb',
+                            'created': '10/20/2020'
+                          },
+                          'file.pptx': {
+                            'size': '90kb',
+                            'created': '10/20/2020'
+                          },
+                        },
+                        'file.js': {
+                          'size': '30kb',
+                          'created': '10/20/2020'
+                        },
+                        'file.py': {
+                          'size': '15kb',
+                          'created': '01/02/2121'
+                        }
+                      }}
+                      renderNode={(node) => 'size' in node && 'created' in node
+                        ? node.size
+                        : null}
+                      classes={classes}
+                      open={true}
+                    />
                   </PaperCard>
 
                 </PageRight>

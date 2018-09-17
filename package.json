@@ -25,6 +25,7 @@
     "@material-ui/core": "^1.4.1",
     "@material-ui/icons": "^2.0.0",
     "d3": "5.5.0",
+    "ramda": "^0.25.0",
     "react-popper": "^1.0.0-beta.6",
     "typeface-montserrat": "0.0.45"
   },
