@@ -25,12 +25,6 @@ const styles = theme => {
     },
     trunk: {
       paddingTop: '0.6em 0',
-      '& li:nth-child(odd)': {
-        backgroundColor: '#f5f5f5',
-      },
-      '& li:nth-child(even)': {
-        backgroundColor: 'white',
-      },
       '&:before': {
         content: '""',
         width: '0.1em',
