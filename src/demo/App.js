@@ -4,7 +4,7 @@ import {
   BrowserRouter as Router,
   NavLink,
 } from 'react-router-dom'
-import { is } from 'ramda';
+import { last } from 'ramda';
 
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -69,8 +69,15 @@ const styles = theme => ({
   },
   healthLabel: {
     padding: '0 0 0 15px',
-  }
-
+  },
+  fileInTree: {
+    display: 'flex',
+    flexFlow: 'row wrap',
+    justifyContent: 'space-between',
+    '& > *': {
+      margin: '0 0.25em',
+    }
+  },
 })
 
 class App extends Component {
@@ -522,8 +529,13 @@ class App extends Component {
                           'created': '01/02/2121'
                         }
                       }}
-                      renderNode={(node) => 'size' in node && 'created' in node
-                        ? node.size
+                      renderNode={(node, path) => 'size' in node && 'created' in node
+                        ? (
+                          <div className={classes.fileInTree}>
+                            <span>{last(path)}</span>
+                            <span>{node.size}</span>
+                          </div>
+                        )
                         : null}
                       classes={classes}
                       open={true}
