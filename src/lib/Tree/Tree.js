@@ -36,7 +36,6 @@ const styles = theme => {
         bottom: '0.5em',
         left: '0',
         borderRadius: '0.05em',
-        zIndex: '999',
       },
     },
     node: {
