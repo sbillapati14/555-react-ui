@@ -87,6 +87,7 @@ class ListField extends Component {
     this.state.value = isNil(props.value) ? this.state.value : props.value;
     this.error = this.error.bind(this);
     this.addPendingElement = this.addPendingElement.bind(this);
+    this.onChange = this.onChange.bind(this);
     this.removeElement = this.removeElement.bind(this);
     this.renderElements = this.renderElements.bind(this);
   }
@@ -96,21 +97,31 @@ class ListField extends Component {
     setTimeout(() => this.setState({ error: false }), 500);
   }
 
+  onChange() {
+    if (this.props.onChange) {
+      this.props.onChange(this.state.value);
+    }
+  }
+
   addPendingElement() {
     if (isNil(this.state.pendingElement) || isEmpty(this.state.pendingElement)) {
       this.error();
     } else {
-      this.setState({
-        value: append(this.state.pendingElement, this.state.value),
-        pendingElement: '',
-      });
+      this.setState(
+        {
+          value: append(this.state.pendingElement, this.state.value),
+          pendingElement: '',
+        },
+        this.onChange
+      );
     }
   }
 
   removeElement(index) {
-    this.setState({
-      value: removeIndex(index, this.state.value),
-    })
+    this.setState(
+      { value: removeIndex(index, this.state.value) },
+      this.onChange
+    )
   }
 
   renderElements() {
@@ -134,7 +145,7 @@ class ListField extends Component {
   }
 
   render() {
-    const { classes, inputClasses, component, label, style, ...rest } = this.props;
+    const { classes, inputClasses, onChange, label, style, ...rest } = this.props;
     delete rest.value;
     const inputErrorClass = this.state.error ? classes.error : classes.noError;
     const inputClass = `${classes.input} ${inputErrorClass}`
@@ -171,6 +182,7 @@ ListField.propTypes = {
       PropTypes.bool,
     ])
   ).isRequired,
+  onChange: PropTypes.func,
 };
 
 export default withStyles(styles)(ListField);
