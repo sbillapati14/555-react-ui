@@ -61,6 +61,9 @@ const styles = theme => ({
     '& path[fill="none"]': {
       strokeWidth: '0',
     },
+    '&:hover': {
+      cursor: 'pointer'
+    },
   },
   error: {
     backgroundColor: '#fce4e4',
