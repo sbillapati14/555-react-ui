@@ -18,7 +18,10 @@ const styles = theme => ({
     paddingLeft: '15px'
   },
   cardRoot:{
-    overflow: 'hidden'
+    overflow: 'visible'
+  },
+  card: {
+    overflow: 'visible'
   }
 });
 
