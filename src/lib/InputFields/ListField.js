@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { append, isNil, isEmpty, remove, __ } from 'ramda';
+import { append, equals, isNil, isEmpty, remove, __ } from 'ramda';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
@@ -93,6 +93,12 @@ class ListField extends Component {
     this.onChange = this.onChange.bind(this);
     this.removeElement = this.removeElement.bind(this);
     this.renderElements = this.renderElements.bind(this);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.value !== this.props.value) {
+      this.setState({ value: this.props.value });
+    }
   }
 
   error() {
