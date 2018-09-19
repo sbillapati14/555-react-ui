@@ -9,9 +9,15 @@ const styles = theme => ({
   search : {
     position: 'relative',
     width: '100%',
-    padding: '40px',
+    padding: '0',
     border: 'none',
     fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif'
+    },
+    optionsWrapper: {
+      position: 'absolute',
+      zIndex: 99,
+      width: '100%',
+      boxShadow: '0 0 10px #ccc'
     },
   searchInput: {
     width: '100%',
@@ -23,6 +29,7 @@ const styles = theme => ({
     borderRadius: '4px',
     fontWeight: '400',
     height: '40px',
+    position: 'relative',
     margin: 0,
     '&:focus-within': {
       border: '1px solid #66afe9',
@@ -58,9 +65,9 @@ const styles = theme => ({
     }
   },
   searchIcon:{
-    top: '50px',
+    top: '10px',
     position: 'absolute',
-    right: '46px',
+    right: '10px',
     cursor: 'pointer',
     color: '#ccc'
   },
@@ -179,7 +186,7 @@ class SearchComponent extends React.Component {
             onKeyPress={this.handleKeyPress}
           />
           <span className={classes.searchIcon}><SearchIcon/></span>
-        <Collapse component="div" in={true} >        
+        <Collapse component="div" className={classes.optionsWrapper} in={true} >        
           {this.renderList()}
         </Collapse>
           
