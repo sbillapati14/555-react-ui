@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import CloseIcon from '@material-ui/icons/Close';
 import UpArrowIcon from '@material-ui/icons/ArrowUpward';
-import { setStateOnChange } from '../../utils/react';
+import { setStateOnChange } from '../utils/react';
 
 const styles = theme => ({
   root: {
