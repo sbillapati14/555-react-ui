@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { both, curry, complement, is, isNil, mapObjIndexed, toString, values } from 'ramda';
+import { both, complement, is, isNil, mapObjIndexed, toString, values } from 'ramda';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { List, ListItem } from '@material-ui/core';
@@ -36,7 +36,6 @@ const styles = theme => {
         bottom: '0.5em',
         left: '0',
         borderRadius: '0.05em',
-        zIndex: '999',
       },
     },
     node: {
@@ -55,34 +54,12 @@ const styles = theme => {
       },
     },
     nodeContent: {
-      display: 'flex',
-      flexFlow: 'row wrap',
-      justifyContent: 'space-between',
-      width: '99%',
-      '& > *': {
-        margin: '0 0.25em',
-      }
-    }
+      width: '100%',
+    },
   }
 };
 
 const isRenderableTreeModel = both(is(Object), complement(is(Array)));
-
-// renderFn is a function that returns an element, or nil if it is unable to render the given model
-const renderModel = curry((renderFn, classes, label, model) => {
-  const renderedChild = renderFn(model);
-  const shouldRenderAsTree = isNil(renderedChild) && isRenderableTreeModel(model);
-
-  if (shouldRenderAsTree) return (
-    <TreeWithStyles label={label} model={model} renderNode={renderFn} classes={classes} />
-  );
-  else return (
-    <div className={classes.nodeContent}>
-      <div>{label}</div>
-      <div>{isNil(renderedChild) ? toString(model) : renderedChild}</div>
-    </div>
-  );
-});
 
 class Tree extends Component {
 
@@ -94,6 +71,8 @@ class Tree extends Component {
     super(props);
     this.state.open = isNil(props.open) ? false : props.open;
     this.toggleOpen = this.toggleOpen.bind(this);
+    this.renderModel = this.renderModel.bind(this);
+    this.renderChildren = this.renderChildren.bind(this);
   }
 
   toggleOpen(e) {
@@ -101,11 +80,33 @@ class Tree extends Component {
     this.setState({ open: !this.state.open });
   }
 
-  renderChildren(model, renderFn, classes) {
+  renderModel(key, model) {
+    const { renderNode, classes, path } = this.props;
+    const childPath = [...path, key]
+    const renderedChild = renderNode(model, childPath);
+    const shouldRenderAsTree = isNil(renderedChild) && isRenderableTreeModel(model);
+
+    if (shouldRenderAsTree) return (
+      <TreeWithStyles
+        label={key}
+        path={childPath}
+        model={model}
+        renderNode={renderNode}
+        classes={classes} />
+    );
+    else return (
+      <div className={classes.nodeContent}>
+        {isNil(renderedChild) ? toString(model) : renderedChild}
+      </div>
+    );
+  }
+
+  renderChildren() {
+    const { model, classes } = this.props;
     const renderedChildren = mapObjIndexed(
       (childModel, childName) => (
         <ListItem key={childName} onClick={e => e.stopPropagation()} className={classes.node}>
-          {renderModel(renderFn, classes, childName, childModel)}
+          {this.renderModel(childName, childModel)}
         </ListItem>
       ),
       model
@@ -115,16 +116,10 @@ class Tree extends Component {
   }
 
   render() {
-    const {
-      label,
-      model,
-      renderNode,
-      classes,
-    } = this.props;
-
+    const { label, classes, } = this.props;
     const children = this.state.open && (
       <List className={classes.trunk}>
-        {this.renderChildren(model, renderNode, classes)}
+        {this.renderChildren()}
       </List>
     );
 
@@ -144,7 +139,13 @@ Tree.propTypes = {
   label: PropTypes.string.isRequired,
   model: PropTypes.any.isRequired,
   renderNode: PropTypes.func.isRequired,
+  path: PropTypes.arrayOf(PropTypes.string),
   open: PropTypes.bool,
+};
+
+Tree.defaultProps = {
+  path: [],
+  open: false,
 };
 
 const TreeWithStyles = withStyles(styles)(Tree)
