@@ -35,7 +35,7 @@ import GradientButton from '../lib/Button/GradientButton';
 import AccentButton from '../lib/Button/AccentButton';
 import PaperCard from '../lib/PaperCard';
 import { BarChart } from '../lib/Graphs';
-import { TextField, FormField } from '../lib/InputFields';
+import { TextField, FormField, ListField } from '../lib/InputFields';
 import { Switch, SwitchButton } from '../lib/Switch';
 import FilterStatus from '../lib/DropDown/FilterStatus';
 import { SelectList, SelectListItem } from '../lib/SelectList';
@@ -299,6 +299,7 @@ class App extends Component {
                       <FormField id="app" label="App" value="aa" />
                       <FormField id="cpyToClip" label="Copy to CLipboard" value={this.state.cpyToClip} endAdornment={<span onClick={this.copyToClipboard.bind(this)}><Icon icon="copyToClipboard" viewBox="0 0 500 500" fill="#282828" /></span>} />
                       <FormField type="file" id="upload" label="File Upload" />
+                      <ListField label="List Input" value={['string value', true, 110100001101001]} />
                     </form>
                   </PaperCard>
                   <br />
@@ -537,7 +538,6 @@ class App extends Component {
                           </div>
                         )
                         : null}
-                      classes={classes}
                       open={true}
                     />
                   </PaperCard>
