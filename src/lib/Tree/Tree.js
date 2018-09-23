@@ -21,7 +21,6 @@ const styles = theme => {
       alignItems: 'center',
       cursor: 'pointer',
       height: '1em',
-      overflow: 'hidden',
     },
     trunk: {
       paddingTop: '0.6em 0',
