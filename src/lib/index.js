@@ -44,6 +44,7 @@ export { default as SearchDropdown } from './SearchDropdown';
 export { default as ColorIndicators } from './ColorIndicators';
 export { default as ProgressIndicator } from './ProgressIndicator';
 export { default as Tree } from './Tree';
+export { default as ContextMenu } from './ContextMenu';
 
 
 

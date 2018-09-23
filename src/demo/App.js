@@ -43,6 +43,7 @@ import SideNav, { SideNavSection, SideNavOption } from '../lib/SideNav';
 import Tree from '../lib/Tree';
 import Icon from '../icons';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import ContextMenu from '../lib/ContextMenu';
 
 
 
@@ -357,6 +358,25 @@ class App extends Component {
                     />
                   </PaperCard>
                   <br />
+                  <PaperCard
+                    title="Context Menu"
+                    avatar={
+                      <Avatar>
+                        <ImageIcon />
+                      </Avatar>
+                    }
+                  >
+                    <ContextMenu
+                      anchor={<Typography variant="subheading">right-click me!</Typography>}
+                    >
+                      <Typography variant="caption">copy</Typography>
+                      <Typography variant="caption">paste</Typography>
+                      <Typography variant="caption">print</Typography>
+                      <Typography variant="caption">help</Typography>
+                    </ContextMenu>
+                  </PaperCard>
+
+                  <br />
 
                   <PaperCard title="Miscellaneous"
                     avatar={
@@ -424,7 +444,6 @@ class App extends Component {
                     </div>
                     <HealthChart />
                   </PaperCard>
-
 
                 </PageLeft>
 
