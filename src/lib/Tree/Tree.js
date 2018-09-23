@@ -136,7 +136,7 @@ class Tree extends Component {
 }
 
 Tree.propTypes = {
-  label: PropTypes.string.isRequired,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
   model: PropTypes.any.isRequired,
   renderNode: PropTypes.func.isRequired,
   path: PropTypes.arrayOf(PropTypes.string),
