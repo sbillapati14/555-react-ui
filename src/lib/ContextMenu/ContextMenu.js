@@ -44,7 +44,7 @@ class ContextMenu extends Component {
   render() {
     const { anchor, children, classes } = this.props;
     const childrenContainerClass = `${classes.childrenContainer} ${this.state.open ? 'show' : ''}`
-    console.log('render');
+
     return (
       <ClickAwayListener onClickAway={() => this.setState({ open: false })} >
         <div
