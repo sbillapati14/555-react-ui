@@ -44,6 +44,7 @@ import Tree from '../lib/Tree';
 import Icon from '../icons';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import ContextMenu from '../lib/ContextMenu';
+import {healthChartMockdata} from './mocks'
 
 
 
@@ -442,7 +443,7 @@ class App extends Component {
                     <div className={classes.healthIndicesWrapper}>
                       <ColorIndicators />
                     </div>
-                    <HealthChart />
+                    <HealthChart data={healthChartMockdata}/>
                   </PaperCard>
 
                 </PageLeft>
