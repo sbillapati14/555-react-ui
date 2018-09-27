@@ -528,7 +528,8 @@ class App extends Component {
                             'file.json': {
                               'size': '8kb',
                               'created': '11/11/2011'
-                            }
+                            },
+                            '.empty': null,
                           },
                           'file.rs': {
                             'size': '15kb',
@@ -560,9 +561,9 @@ class App extends Component {
                         'file.py': {
                           'size': '15kb',
                           'created': '01/02/2121'
-                        }
+                        },
                       }}
-                      renderNode={(node, path) => 'size' in node && 'created' in node
+                      renderNode={(node, path) => node && 'size' in node && 'created' in node
                         ? (
                           <div className={classes.fileInTree}>
                             <span>{last(path)}</span>

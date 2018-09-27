@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { both, complement, is, isNil, mapObjIndexed, toString, values } from 'ramda';
+import { both, complement, filter, is, isNil, mapObjIndexed, toString, values } from 'ramda';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { List, ListItem } from '@material-ui/core';
@@ -70,7 +70,8 @@ class Tree extends Component {
     super(props);
     this.state.open = isNil(props.open) ? false : props.open;
     this.toggleOpen = this.toggleOpen.bind(this);
-    this.renderModel = this.renderModel.bind(this);
+    this.renderChildModel = this.renderChildModel.bind(this);
+    this.wrapChildElement = this.wrapChildElement.bind(this);
     this.renderChildren = this.renderChildren.bind(this);
   }
 
@@ -79,13 +80,23 @@ class Tree extends Component {
     this.setState({ open: !this.state.open });
   }
 
-  renderModel(key, model) {
+  renderChildModel(model, key) {
     const { renderNode, classes, path } = this.props;
     const childPath = [...path, key]
     const renderedChild = renderNode(model, childPath);
-    const shouldRenderAsTree = isNil(renderedChild) && isRenderableTreeModel(model);
+    const shouldUseChildRendering = !isNil(renderedChild);
+    const shouldRenderAsTree = !shouldUseChildRendering && isRenderableTreeModel(model);
+    const shouldRenderAsPrimitive = !shouldRenderAsTree && !isNil(model);
 
-    if (shouldRenderAsTree) return (
+    if (shouldUseChildRendering) return (
+      <div className={classes.nodeContent}>
+        {renderedChild}
+      </div>
+    ); else if (shouldRenderAsPrimitive) return (
+      <div className={classes.nodeContent}>
+        {toString(model)}
+      </div>
+    ); else if (shouldRenderAsTree) return (
       <TreeWithStyles
         label={key}
         path={childPath}
@@ -93,25 +104,25 @@ class Tree extends Component {
         renderNode={renderNode}
         classes={classes} />
     );
-    else return (
-      <div className={classes.nodeContent}>
-        {isNil(renderedChild) ? toString(model) : renderedChild}
-      </div>
+  }
+
+  wrapChildElement(element, key) {
+    const { classes } = this.props;
+
+    return element && (
+      <ListItem key={key} onClick={e => e.stopPropagation()} className={classes.node}>
+        {element}
+      </ListItem>
     );
   }
 
   renderChildren() {
-    const { model, classes } = this.props;
-    const renderedChildren = mapObjIndexed(
-      (childModel, childName) => (
-        <ListItem key={childName} onClick={e => e.stopPropagation()} className={classes.node}>
-          {this.renderModel(childName, childModel)}
-        </ListItem>
-      ),
-      model
-    );
+    const { model } = this.props;
+    const renderedChildren = mapObjIndexed(this.renderChildModel, model);
+    const wrappedChildren = mapObjIndexed(this.wrapChildElement, renderedChildren);
+    const children = values(wrappedChildren);
 
-    return values(renderedChildren);
+    return filter(complement(isNil), children);
   }
 
   render() {

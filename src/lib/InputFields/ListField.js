@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { append, equals, isNil, isEmpty, remove, __ } from 'ramda';
+import { append, isNil, isEmpty, remove, __ } from 'ramda';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import CloseIcon from '@material-ui/icons/Close';
-import UpArrowIcon from '@material-ui/icons/ArrowUpward';
+import AddIcon from '@material-ui/icons/Add';
 import { setStateOnChange } from '../utils/react';
 
 const styles = theme => ({
@@ -30,6 +30,9 @@ const styles = theme => ({
     position: 'absolute',
     top: '0.25em',
     right: '0.5em',
+    '&:hover': {
+      cursor: 'pointer',
+    },
   },
   label: {
     color: '#282828',
@@ -176,7 +179,7 @@ class ListField extends Component {
             onChange={setStateOnChange(this, ['pendingElement'])}
             {...rest}
           />
-          <UpArrowIcon onClick={this.addPendingElement} className={classes.inputButton} />
+          <AddIcon onClick={this.addPendingElement} className={classes.inputButton} />
         </div>
       </div>
     );
