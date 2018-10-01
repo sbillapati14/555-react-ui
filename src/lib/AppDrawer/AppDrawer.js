@@ -8,7 +8,7 @@ const styles = theme => ({
         background: ' #182831',
         width: '266px',
         height: '100%',
-        position: 'fixed',
+        // position: 'fixed',
         zIndex: 1,
         float: 'left',
         transition: 'all .5s',
@@ -35,7 +35,7 @@ const styles = theme => ({
     '@media (max-width: 1024px)': {
         leftNavigation: {
             width: '300px',
-            position: 'fixed',
+            // position: 'fixed',
             height: '100%',
             right: 0,
             top: 0,

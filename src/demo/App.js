@@ -27,6 +27,7 @@ import AppContent from '../lib/AppContent';
 import AlertsAndNotifications from '../lib/AlertsAndNotifications';
 import HealthChart from '../lib/HealthChart';
 import ColorIndicators from '../lib/ColorIndicators';
+import Skeleton from '../lib/Skeleton';
 import SearchDropdown from '../lib/SearchDropdown';
 import ProgressIndicator from '../lib/ProgressIndicator';
 
@@ -44,7 +45,6 @@ import Tree from '../lib/Tree';
 import Icon from '../icons';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import ContextMenu from '../lib/ContextMenu';
-import {healthChartMockdata} from './mocks'
 
 
 
@@ -415,6 +415,17 @@ class App extends Component {
 
                   <br />
 
+                  <PaperCard title="Skeleton"
+                    avatar={
+                      <Avatar>
+                        <ImageIcon />
+                      </Avatar>
+                    }
+                  >
+                    <Skeleton />
+                  </PaperCard>
+                  <br />
+
                   <PaperCard
                     title="Charts"
                     avatar={
@@ -443,7 +454,7 @@ class App extends Component {
                     <div className={classes.healthIndicesWrapper}>
                       <ColorIndicators />
                     </div>
-                    <HealthChart data={healthChartMockdata}/>
+                    <HealthChart />
                   </PaperCard>
 
                 </PageLeft>
