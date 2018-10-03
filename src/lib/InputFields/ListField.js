@@ -3,7 +3,7 @@ import { append, isNil, isEmpty, remove, __ } from 'ramda';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
-import CloseIcon from '@material-ui/icons/Close';
+import RemoveIcon from '@material-ui/icons/Remove';
 import AddIcon from '@material-ui/icons/Add';
 import { setStateOnChange } from '../utils/react';
 
@@ -48,10 +48,7 @@ const styles = theme => ({
   element: {
     display: 'flex',
     flexFlow: 'row nowrap',
-    justifyContent: 'flex-start',
-    '& > *': {
-      marginRight: '0.25em',
-    },
+    justifyContent: 'space-between',
   },
   elementContent: {
     display: 'flex',
@@ -59,8 +56,9 @@ const styles = theme => ({
     justifyContent: 'center',
   },
   removeElement: {
-    stroke: '#1682bc',
-    strokeWidth: '0.125em',
+    marginRight: '0.5em',
+    stroke: 'black',
+    fill: 'black',
     '& path[fill="none"]': {
       strokeWidth: '0',
     },
@@ -142,7 +140,8 @@ class ListField extends Component {
     return this.state.value.map(
       (element, index) => (
         <li key={index} className={classes.element}>
-          <CloseIcon
+          <span className={classes.elementContent}>{`${element}`}</span>
+          <RemoveIcon
             onClick={() => this.removeElement(index)}
             viewBox='-7 -7 35 35'
             color='secondary'
@@ -150,7 +149,6 @@ class ListField extends Component {
               colorSecondary: classes.removeElement,
             }}
           />
-          <span className={classes.elementContent}>{`${element}`}</span>
         </li>
       )
     )

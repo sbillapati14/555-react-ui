@@ -1,5 +1,15 @@
 import React, { Component } from 'react';
-import { both, complement, filter, is, isNil, mapObjIndexed, toString, values } from 'ramda';
+import {
+  allPass,
+  complement,
+  filter,
+  is,
+  isEmpty,
+  isNil,
+  mapObjIndexed,
+  toString,
+  values,
+} from 'ramda';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { List, ListItem } from '@material-ui/core';
@@ -58,7 +68,12 @@ const styles = theme => {
   }
 };
 
-const isRenderableTreeModel = both(is(Object), complement(is(Array)));
+const isRenderableTreeModel = allPass([
+  is(Object),
+  complement(is(Array)),
+  complement(isNil),
+  complement(isEmpty),
+]);
 
 class Tree extends Component {
 
@@ -86,7 +101,7 @@ class Tree extends Component {
     const renderedChild = renderNode(model, childPath);
     const shouldUseChildRendering = !isNil(renderedChild);
     const shouldRenderAsTree = !shouldUseChildRendering && isRenderableTreeModel(model);
-    const shouldRenderAsPrimitive = !shouldRenderAsTree && !isNil(model);
+    const shouldRenderAsPrimitive = !(shouldRenderAsTree || isNil(model) || isEmpty(model));
 
     if (shouldUseChildRendering) return (
       <div className={classes.nodeContent}>
