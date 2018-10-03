@@ -542,6 +542,7 @@ class App extends Component {
                               'created': '11/11/2011'
                             },
                             '.empty': null,
+                            'empty-dir': {},
                           },
                           'file.rs': {
                             'size': '15kb',
