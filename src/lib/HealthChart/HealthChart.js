@@ -123,6 +123,7 @@ renderBarChart(data, isResize){
         .attr("height", function (d) {
             return height;
         })
+        .style("fill", d => (this.props.getBarColors(d[y_reference], d3.max(data, d=> d[y_reference]))))
     }
 
     else{

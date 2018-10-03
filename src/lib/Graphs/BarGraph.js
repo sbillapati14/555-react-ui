@@ -57,7 +57,8 @@ var y = d3.scaleLinear()
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x))
 
-    svg.append("g")
+    var yAxis = svg.append("g")
+    .attr("class", 'yAxis')
     .call(d3.axisLeft(y))
     .append("text")
     .attr("fill", "#000")
@@ -66,6 +67,10 @@ var y = d3.scaleLinear()
     .attr("dy", "0.71em")
     .attr("text-anchor", "end")
     .text("avg");
+
+    svg.selectAll(".yAxis line")
+    .attr('x2', width)
+    .attr('stroke', '#eee');
 
     svg.selectAll(".bar")
         .data(data)

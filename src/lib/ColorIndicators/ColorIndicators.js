@@ -3,7 +3,8 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
     indicator:{
-        padding: '0 5px'
+        padding: '0 5px',
+        position: 'relative'
       },
       colorBox:{
         width: '10px',
