@@ -45,6 +45,9 @@ import Tree from '../lib/Tree';
 import Icon from '../icons';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import ContextMenu from '../lib/ContextMenu';
+import { D3LineChart } from '../lib/D3LineChart';
+import { NivoLineChart } from '../lib/NivoLineChart';
+import { NivoStackedBarChart } from '../lib/NivoStackedBarChart';
 
 
 
@@ -456,6 +459,45 @@ class App extends Component {
                     </div>
                     <HealthChart />
                   </PaperCard>
+                  <br />
+                  {/* <PaperCard
+                    title="D3 lineChart"
+                    avatar={
+                      <Avatar>
+                        <ImageIcon />
+                      </Avatar>
+                    }
+                  >
+                    <D3LineChart
+                      chartId="sampleLineChart"
+                      chartWidth={500}
+                      chartHeight={300} />
+                  </PaperCard>
+                  <br /> */}
+                  <PaperCard
+                    title="Nivo Line Chart"
+                    avatar={
+                      <Avatar>
+                        <ImageIcon />
+                      </Avatar>
+                    }
+                  >
+                    <NivoLineChart />
+                  </PaperCard>
+                  <br />
+                  <PaperCard
+                    title="Nivo Bar Chart"
+                    avatar={
+                      <Avatar>
+                        <ImageIcon />
+                      </Avatar>
+                    }
+                  >
+                    <NivoStackedBarChart
+                      chartId="nivoBarChart" />
+                  </PaperCard>
+                  <br />
+
 
                 </PageLeft>
 

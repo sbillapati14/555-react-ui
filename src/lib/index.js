@@ -46,6 +46,7 @@ export { default as ColorIndicators } from './ColorIndicators';
 export { default as ProgressIndicator } from './ProgressIndicator';
 export { default as Tree } from './Tree';
 export { default as ContextMenu } from './ContextMenu';
+export { default as LineChart } from './Nvd3LineChart';
 
 
 
