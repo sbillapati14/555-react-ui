@@ -16,11 +16,14 @@ const styles = theme => ({
     shapeRendering: 'crispEdges',
     fontSize: '12px',
     fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif'
-  }  ,
+  },
   lineChartTitle:{
     fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif',
     textAlign: 'center',
     color: '#333'
+  },
+  lineChart: {
+    height: '400px'
   }
 })
 
@@ -36,90 +39,93 @@ class LineChartComponent extends React.Component{
 
       const {data} = this.props;
 
-      console.log("Nivo data: " + JSON.stringify(this.props.data));
+      console.log("Nivo data: " + JSON.stringify(data));
 
       return(
-          <ResponsiveLine
-              data={this.props.data}
-              margin={{
-                  "top": 50,
-                  "right": 110,
-                  "bottom": 50,
-                  "left": 60
-              }}
-              xScale={{
-                  "type": "point"
-              }}
-              yScale={{
-                  "type": "linear",
-                  "stacked": true,
-                  "min": "auto",
-                  "max": "auto"
-              }}
-              minY="auto"
-              maxY="auto"
-              stacked={true}
-              axisBottom={{
-                  "orient": "bottom",
-                  "tickSize": 5,
-                  "tickPadding": 5,
-                  "tickRotation": 0,
-                  "legend": "transportation",
-                  "legendOffset": 36,
-                  "legendPosition": "center"
-              }}
-              axisLeft={{
-                  "orient": "left",
-                  "tickSize": 5,
-                  "tickPadding": 5,
-                  "tickRotation": 0,
-                  "legend": "count",
-                  "legendOffset": -40,
-                  "legendPosition": "center"
-              }}
-              dotSize={10}
-              dotColor="inherit:darker(0.3)"
-              dotBorderWidth={2}
-              dotBorderColor="#ffffff"
-              enableDotLabel={true}
-              dotLabel="y"
-              dotLabelYOffset={-12}
-              animate={true}
-              motionStiffness={90}
-              motionDamping={15}
-              legends={[
-                  {
-                      "anchor": "bottom-right",
-                      "direction": "column",
-                      "justify": false,
-                      "translateX": 100,
-                      "translateY": 0,
-                      "itemsSpacing": 0,
-                      "itemDirection": "left-to-right",
-                      "itemWidth": 80,
-                      "itemHeight": 20,
-                      "itemOpacity": 0.75,
-                      "symbolSize": 12,
-                      "symbolShape": "circle",
-                      "symbolBorderColor": "rgba(0, 0, 0, .5)",
-                      "effects": [
-                          {
-                              "on": "hover",
-                              "style": {
-                                  "itemBackground": "rgba(0, 0, 0, .03)",
-                                  "itemOpacity": 1
+              <ResponsiveLine
+                  data={data}
+                  margin={{
+                      "top": 50,
+                      "right": 110,
+                      "bottom": 90,
+                      "left": 80
+                  }}
+                  xScale={{
+                      "type": "point"
+                  }}
+                  yScale={{
+                      "type": "linear",
+                      "stacked": false,
+                      "min": 0,
+                      "max": "auto"
+                  }}
+                  minY="auto"
+                  maxY="auto"
+                  stacked={false}
+                  axisBottom={{
+                      "orient": "bottom",
+                      "tickSize": 5,
+                      "tickPadding": 5,
+                      "tickRotation": -45,
+                      "legend": "Date",
+                      "legendOffset": 90,
+                      "legendPosition": "center"
+                  }}
+                  axisLeft={{
+                      "orient": "left",
+                      "tickSize": 5,
+                      "tickPadding": 5,
+                      "tickRotation": 0,
+                      "legend": "Avg Response Time (ms)",
+                      "legendOffset": -60,
+                      "legendPosition": "center"
+                  }}
+                  dotSize={10}
+                  dotColor="inherit:darker(0.3)"
+                  dotBorderWidth={2}
+                  dotBorderColor="#ffffff"
+                  enableGridX={false}
+                  enableGridY={false}
+                  enableDots={true}
+                  enableDotLabel={false}
+                  dotLabel="y"
+                  dotLabelYOffset={-12}
+                  animate={true}
+                  motionStiffness={90}
+                  motionDamping={15}
+                  legends={[
+                      {
+                          "anchor": "bottom-right",
+                          "direction": "column",
+                          "justify": false,
+                          "translateX": 100,
+                          "translateY": 0,
+                          "itemsSpacing": 0,
+                          "itemDirection": "left-to-right",
+                          "itemWidth": 80,
+                          "itemHeight": 20,
+                          "itemOpacity": 0.75,
+                          "symbolSize": 12,
+                          "symbolShape": "circle",
+                          "symbolBorderColor": "rgba(0, 0, 0, .5)",
+                          "effects": [
+                              {
+                                  "on": "hover",
+                                  "style": {
+                                      "itemBackground": "rgba(0, 0, 0, .03)",
+                                      "itemOpacity": 1
+                                  }
                               }
-                          }
-                      ]
-                  }
-              ]}
-          />
+                          ]
+                      }
+                  ]}
+              />
       )
 
     }
 
     render(){
-      var chartToRender = document.getElementById('barChart');
+      var chartToRender = document.getElementById('lineChart');
       if(chartToRender){
         this.renderChart();
       }
@@ -127,82 +133,8 @@ class LineChartComponent extends React.Component{
         return(
           <div className={classes.lineWrapper}>
             <h3 className={classes.lineChartTitle}>{title}</h3>
-            <div id={this.props.chartId}>
-          <ResponsiveLine
-              data={this.props.data}
-              margin={{
-                  "top": 50,
-                  "right": 110,
-                  "bottom": 50,
-                  "left": 60
-              }}
-              xScale={{
-                  "type": "point"
-              }}
-              yScale={{
-                  "type": "linear",
-                  "stacked": true,
-                  "min": "auto",
-                  "max": "auto"
-              }}
-              minY="auto"
-              maxY="auto"
-              stacked={true}
-              axisBottom={{
-                  "orient": "bottom",
-                  "tickSize": 5,
-                  "tickPadding": 5,
-                  "tickRotation": 0,
-                  "legend": "transportation",
-                  "legendOffset": 36,
-                  "legendPosition": "center"
-              }}
-              axisLeft={{
-                  "orient": "left",
-                  "tickSize": 5,
-                  "tickPadding": 5,
-                  "tickRotation": 0,
-                  "legend": "count",
-                  "legendOffset": -40,
-                  "legendPosition": "center"
-              }}
-              dotSize={10}
-              dotColor="inherit:darker(0.3)"
-              dotBorderWidth={2}
-              dotBorderColor="#ffffff"
-              enableDotLabel={true}
-              dotLabel="y"
-              dotLabelYOffset={-12}
-              animate={true}
-              motionStiffness={90}
-              motionDamping={15}
-              legends={[
-                  {
-                      "anchor": "bottom-right",
-                      "direction": "column",
-                      "justify": false,
-                      "translateX": 100,
-                      "translateY": 0,
-                      "itemsSpacing": 0,
-                      "itemDirection": "left-to-right",
-                      "itemWidth": 80,
-                      "itemHeight": 20,
-                      "itemOpacity": 0.75,
-                      "symbolSize": 12,
-                      "symbolShape": "circle",
-                      "symbolBorderColor": "rgba(0, 0, 0, .5)",
-                      "effects": [
-                          {
-                              "on": "hover",
-                              "style": {
-                                  "itemBackground": "rgba(0, 0, 0, .03)",
-                                  "itemOpacity": 1
-                              }
-                          }
-                      ]
-                  }
-              ]}
-          />
+            <div id={this.props.chartId} className={classes.lineChart}>
+              {this.renderChart()}
             </div>
           </div>
         )
@@ -217,46 +149,46 @@ data : [
     {
       "id":"P50",
       "data":[
-        {"x":1537911060000,"y":23.29838575470128},
-        {"x":1537911960000,"y":19.00990099009901},
-        {"x":1537912860000,"y":18.22164142018369},
-        {"x":1537913760000,"y":35.797058216113264},
-        {"x":1537914660000,"y":15.73016323267748},
-        {"x":1537915560000,"y":16.23712101083459},
-        {"x":1537916460000,"y":10.190909708539982},
-        {"x":1537917360000,"y":10.492261956806856},
-        {"x":1537918260000,"y":18.194202601659326},
-        {"x":1537919160000,"y":22.406981543723098}
+        {"x":"2018-09-26 16:33","y":23.29},
+        {"x":"2018-09-26 16:32","y":19.00},
+        {"x":"2018-09-26 16:31","y":18.22},
+        {"x":"2018-09-26 16:30","y":35.79},
+        {"x":"2018-09-26 16:29","y":15.73},
+        {"x":"2018-09-26 16:28","y":16.23},
+        {"x":"2018-09-26 16:27","y":10.19},
+        {"x":"2018-09-26 16:26","y":10.49},
+        {"x":"2018-09-26 16:25","y":18.19},
+        {"x":"2018-09-26 16:24","y":22.40}
       ]
     },
     {
       "id":"P95",
       "data":[
-        {"x":1537911060000,"y":19.807936796222303},
-        {"x":1537911960000,"y":19.19871851498501},
-        {"x":1537912860000,"y":20.731259377315148},
-        {"x":1537913760000,"y":24.415016211570764},
-        {"x":1537914660000,"y":20.50738335553804},
-        {"x":1537915560000,"y":18.83781747262976},
-        {"x":1537916460000,"y":22.679757393083783},
-        {"x":1537917360000,"y":22.916850295274802},
-        {"x":1537918260000,"y":23.464633629817874},
-        {"x":1537919160000,"y":20.752883074579032}
+        {"x":"2018-09-26 16:33","y":19.80},
+        {"x":"2018-09-26 16:32","y":19.19},
+        {"x":"2018-09-26 16:31","y":20.73},
+        {"x":"2018-09-26 16:30","y":24.41},
+        {"x":"2018-09-26 16:29","y":20.50},
+        {"x":"2018-09-26 16:28","y":18.83},
+        {"x":"2018-09-26 16:27","y":22.67},
+        {"x":"2018-09-26 16:26","y":22.91},
+        {"x":"2018-09-26 16:25","y":23.46},
+        {"x":"2018-09-26 16:24","y":20.75}
       ]
     },
     {
       "id":"P99",
       "data":[
-        {"x":1537911060000,"y":21.765822078356958},
-        {"x":1537911960000,"y":17.574194279883218},
-        {"x":1537912860000,"y":35.073597056117756},
-        {"x":1537913760000,"y":33.12923359067649},
-        {"x":1537914660000,"y":29.64728895409255},
-        {"x":1537915560000,"y":27.28428363253031},
-        {"x":1537916460000,"y":21.292415844261187},
-        {"x":1537917360000,"y":28.843786274578775},
-        {"x":1537918260000,"y":27.326610730505735},
-        {"x":1537919160000,"y":28.99177845088706}
+        {"x":"2018-09-26 16:33","y":21.76},
+        {"x":"2018-09-26 16:32","y":17.57},
+        {"x":"2018-09-26 16:31","y":35.07},
+        {"x":"2018-09-26 16:30","y":33.12},
+        {"x":"2018-09-26 16:29","y":29.64},
+        {"x":"2018-09-26 16:28","y":27.28},
+        {"x":"2018-09-26 16:27","y":21.29},
+        {"x":"2018-09-26 16:26","y":28.84},
+        {"x":"2018-09-26 16:25","y":27.32},
+        {"x":"2018-09-26 16:24","y":28.99}
       ]
     }
   ],

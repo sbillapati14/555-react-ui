@@ -45,9 +45,9 @@ import Tree from '../lib/Tree';
 import Icon from '../icons';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import ContextMenu from '../lib/ContextMenu';
-import { LineChart } from '../lib/Nvd3LineChart';
 import { D3LineChart } from '../lib/D3LineChart';
 import { NivoLineChart } from '../lib/NivoLineChart';
+import { NivoStackedBarChart } from '../lib/NivoStackedBarChart';
 
 
 
@@ -460,21 +460,7 @@ class App extends Component {
                     <HealthChart />
                   </PaperCard>
                   <br />
-                  {/*<PaperCard
-                    title="Nvd3 lineChart"
-                    avatar={
-                      <Avatar>
-                        <ImageIcon />
-                      </Avatar>
-                    }
-                  >
-                    <LineChart
-                      chartId="samplLineChart"
-                      chartWidth={500}
-                      chartHeight={300} />
-                  </PaperCard>
-                  <br /> */}
-                  <PaperCard
+                  {/* <PaperCard
                     title="D3 lineChart"
                     avatar={
                       <Avatar>
@@ -487,20 +473,30 @@ class App extends Component {
                       chartWidth={500}
                       chartHeight={300} />
                   </PaperCard>
-                  <br />
+                  <br /> */}
                   <PaperCard
-                    title="Nivo lineChart"
+                    title="Nivo Line Chart"
                     avatar={
                       <Avatar>
                         <ImageIcon />
                       </Avatar>
                     }
                   >
-                    <NivoLineChart
-                      chartId="nivoLineChart"
-                      chartWidth={500}
-                      chartHeight={300} />
+                    <NivoLineChart />
                   </PaperCard>
+                  <br />
+                  <PaperCard
+                    title="Nivo Bar Chart"
+                    avatar={
+                      <Avatar>
+                        <ImageIcon />
+                      </Avatar>
+                    }
+                  >
+                    <NivoStackedBarChart
+                      chartId="nivoBarChart" />
+                  </PaperCard>
+                  <br />
 
 
                 </PageLeft>
