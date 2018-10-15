@@ -103,7 +103,8 @@ Pagination.propTypes = {
   totalRecords: PropTypes.number,
   recordsPerPage: PropTypes.number,
   onClickPage: PropTypes.func,
-  currentPage: PropTypes.number
+  currentPage: PropTypes.number,
+  thresholdPageBtns: PropTypes.number
 };
 
 Pagination.defaultProps = {
