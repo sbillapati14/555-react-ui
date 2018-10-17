@@ -39,7 +39,7 @@ class StackedBarChartComponent extends React.Component{
 
       const {data} = this.props;
 
-      console.log("Nivo data: " + JSON.stringify(data));
+      // console.log("Nivo data: " + JSON.stringify(data));
 
       return(
               <ResponsiveBar
