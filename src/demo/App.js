@@ -493,8 +493,7 @@ class App extends Component {
                       </Avatar>
                     }
                   >
-                    <NivoStackedBarChart
-                      chartId="nivoBarChart" />
+                    <NivoStackedBarChart />
                   </PaperCard>
                   <br />
 
