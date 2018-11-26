@@ -6,19 +6,19 @@ import SearchIcon from '@material-ui/icons/Search'
 import Collapse from '@material-ui/core/Collapse';
 
 const styles = theme => ({
-  search : {
+  search: {
     position: 'relative',
     width: '100%',
     padding: '0',
     border: 'none',
     fontFamily: '"Montserrat", "Helvetica", "Arial", sans-serif'
-    },
-    optionsWrapper: {
-      position: 'absolute',
-      zIndex: 99,
-      width: '100%',
-      boxShadow: '0 0 10px #ccc'
-    },
+  },
+  optionsWrapper: {
+    position: 'absolute',
+    zIndex: 99,
+    width: '100%',
+    boxShadow: '0 0 10px #ccc'
+  },
   searchInput: {
     width: '100%',
     padding: '4.8px 20px 4.8px 12px',
@@ -33,18 +33,18 @@ const styles = theme => ({
     margin: 0,
     '&:focus-within': {
       border: '1px solid #66afe9',
-      boxShadow:'0 0 0 0.2rem rgba(0,123,255,.25)'
-   }
+      boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)'
+    }
   },
   psDropdown: {
     maxHeight: '230px',
-   ' -webkit-transition': 'max-height .25s ease-out',
+    ' -webkit-transition': 'max-height .25s ease-out',
     '-o-transition': 'max-height .25s ease-out',
     transition: 'max-height .25s ease-out',
     background: '#fff',
     boxShadow: '1px 2psy'
   },
-  active:{
+  active: {
     padding: '10px 0',
     overflow: 'auto',
     border: '1px solid #dcdcdc',
@@ -59,19 +59,19 @@ const styles = theme => ({
     padding: '10px 16px',
     margin: '0px',
     fontWeight: '400',
-  '&:hover':{
-        background: '#005b99',
-        color: '#fff'
+    '&:hover': {
+      background: '#005b99',
+      color: '#fff'
     }
   },
-  searchIcon:{
+  searchIcon: {
     top: '10px',
     position: 'absolute',
     right: '10px',
     cursor: 'pointer',
     color: '#ccc'
   },
-  root:{
+  root: {
     display: 'block'
   }
 })
@@ -82,7 +82,7 @@ class SearchComponent extends React.Component {
     this.state = {
       value: "",
       options: this.props.optionsList || [],
-      listActive:  false,
+      listActive: false,
       searchInProgress: false
     };
     this.toggleList = this.toggleList.bind(this);
@@ -99,9 +99,9 @@ class SearchComponent extends React.Component {
   }
 
   handleChange(event) {
-    var options = this.props.optionsList.filter(item=> item.description.toLowerCase().includes(event.target.value.toLowerCase()))
-    this.setState({ value: event.target.value, listActive: true, options },()=>{
-      this.props.onChange && this.props.onChange(event.target.value);
+    var options = this.props.optionsList.filter(item => item.description.toLowerCase().includes(event.target.value.toLowerCase()))
+    this.setState({ value: event.target.value, listActive: true, options }, () => {
+      this.props.onChange && this.props.onChange(this.state.value);
     });
   }
 
@@ -116,31 +116,31 @@ class SearchComponent extends React.Component {
 
   handleFilter(ind) {
     let stateToUpdate = {}
-      stateToUpdate.value = this.state.options.find((item, i)=> i===ind).description;
-      stateToUpdate.listActive = false;
-    this.setState(stateToUpdate, ()=>{
-        this.props.onSelect && this.props.onSelect(this.state.options[ind])
+    stateToUpdate.value = this.state.options.find((item, i) => i === ind).description;
+    stateToUpdate.listActive = false;
+    this.setState(stateToUpdate, () => {
+      this.props.onSelect && this.props.onSelect(this.state.options[ind])
     });
   }
 
-  onFocusSearch(e){
-    const {value} = this.state;
-    this.handleChange({target:{value:''}});
-    this.setState({tempValue: value, options: this.props.optionsList, listActive: true})
+  onFocusSearch(e) {
+    const { value } = this.state;
+    this.handleChange({ target: { value: '' } });
+    this.setState({ tempValue: value, options: this.props.optionsList, listActive: true })
   }
 
-  onBlurSearch(e){
-    const {tempValue, value} = this.state;
-      let searchValue = value || tempValue ;
-      this.props.onBlur && this.props.onBlur(searchValue);
-      // (!value&& tempValue) && this.setState({value: tempValue})
-        this.setState({listActive: false})
+  onBlurSearch(e) {
+    const { tempValue, value } = this.state;
+    let searchValue = value || tempValue;
+    this.props.onBlur && this.props.onBlur(searchValue);
+    // (!value&& tempValue) && this.setState({value: tempValue})
+    this.setState({ listActive: false })
   }
 
   renderList() {
     let list, selectOption;
     const { listActive, searchInProgress } = this.state;
-    const {classes} = this.props;
+    const { classes } = this.props;
     selectOption = this.state.options;
     if (selectOption && listActive && selectOption.length !== 0) {
       list = (
@@ -150,7 +150,7 @@ class SearchComponent extends React.Component {
               return (
                 <label
                   htmlFor={option}
-                  className = {classes.psLabel}
+                  className={classes.psLabel}
                   key={i}
                   data-value={i}
                   onMouseDown={this.handleFilter.bind(this, i)} >
@@ -162,17 +162,17 @@ class SearchComponent extends React.Component {
         </div>
       );
     } else if ((!this.state.options || this.state.options.length === 0) && listActive && !searchInProgress) {
-      list = <div className = {classNames(classes.psDropdown, classes.active)}>
-      <label className = {classes.psLabel}>No records found</label></div>;
+      list = <div className={classNames(classes.psDropdown, classes.active)}>
+        <label className={classes.psLabel}>No records found</label></div>;
     } else {
-      list = <div className = {classes.psDropdown} />
+      list = <div className={classes.psDropdown} />
     }
     return list;
   }
 
 
   render() {
-    const {classes} = this.props;
+    const { classes } = this.props;
     return (
       <div className={classes.root}>
         <fieldset className={classNames(classes.search, classes.pfSelect)}>
@@ -185,11 +185,11 @@ class SearchComponent extends React.Component {
             onChange={this.handleChange}
             onKeyPress={this.handleKeyPress}
           />
-          <span className={classes.searchIcon}><SearchIcon/></span>
-        <Collapse component="div" className={classes.optionsWrapper} in={true} >        
-          {this.renderList()}
-        </Collapse>
-          
+          <span className={classes.searchIcon}><SearchIcon /></span>
+          <Collapse component="div" className={classes.optionsWrapper} in={true} >
+            {this.renderList()}
+          </Collapse>
+
         </fieldset>
       </div>
     );
@@ -205,8 +205,8 @@ SearchComponent.propTypes = {
 
 const data = [
   {
-  description: "Auth server",
-  code: "aith_server"
+    description: "Auth server",
+    code: "aith_server"
   },
   {
     description: "Cronos repo",
@@ -223,39 +223,39 @@ const data = [
   {
     description: "Cloud code",
     code: "cloud_code"
-    },
-    {
-      description: "Auth  skn server",
-      code: "auth_sknserver"
-    },
-    {
-      description: "Itas",
-      code: "itas"
-    },
-    {
-      description: "Tnps",
-      code: "tnps"
-    },
-    {
-      description: "Auth/identity/iportal mongo db",
-      code: "auth/identity/iportal_mongodb"
-      },
-      {
-        description: "Least load",
-        code: "least_load"
-      },
-      {
-        description: "Identity manager",
-        code: "identity_manager"
-      },
-      {
-        description: "Notification manager",
-        code: "notification_manager"
-      },
+  },
+  {
+    description: "Auth  skn server",
+    code: "auth_sknserver"
+  },
+  {
+    description: "Itas",
+    code: "itas"
+  },
+  {
+    description: "Tnps",
+    code: "tnps"
+  },
+  {
+    description: "Auth/identity/iportal mongo db",
+    code: "auth/identity/iportal_mongodb"
+  },
+  {
+    description: "Least load",
+    code: "least_load"
+  },
+  {
+    description: "Identity manager",
+    code: "identity_manager"
+  },
+  {
+    description: "Notification manager",
+    code: "notification_manager"
+  },
 ]
 
 SearchComponent.defaultProps = {
   placeholder: "Please search Here",
   optionsList: data
 }
-export default withStyles(styles) (SearchComponent);
+export default withStyles(styles)(SearchComponent);
