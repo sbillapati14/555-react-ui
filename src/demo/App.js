@@ -4,7 +4,7 @@ import {
   BrowserRouter as Router,
   NavLink,
 } from 'react-router-dom'
-import { last } from 'ramda';
+import { last, filter, startsWith, map } from 'ramda';
 
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -95,6 +95,9 @@ class App extends Component {
     pageNumber1: 1,
     pageNumber2: 1,
     listInput: ['app1.domain.com', 'app2.domain.com', 'app3.domain.com'],
+    searchDropdownValue: '',
+    searchDropdownOptions: ['one', 'two', 'three', 'four', 'five'],
+    searchDropdownMatches: [],
   }
 
   constructor(props) {
@@ -335,6 +338,28 @@ class App extends Component {
                       selectedFilterObj={{ filterBy: 'code', placeholder: 'search a service', textStyle: 'uppercase' }}
                       autoSuggestResults={this.props.autoSuggestWritingBrokers}
                       onFilter={this.props.handleFilter}
+                    />
+                  </PaperCard>
+                  <br />
+
+                  <PaperCard
+                    title="Managed Search Dropdown"
+                    avatar={
+                      <Avatar>
+                        <ImageIcon />
+                      </Avatar>
+                    }
+                  >
+                    <SearchDropdown
+                      value={this.state.searchDropdownValue}
+                      placeholder="Search options"
+                      optionsList={map(option => ({ description: option }), this.state.searchDropdownOptions)}
+                      onChange={value => this.setState({
+                        searchDropdownValue: value,
+                      })}
+                      onSelect={value => this.setState({
+                        searchDropdownValue: value,
+                      })}
                     />
                   </PaperCard>
                   <br />

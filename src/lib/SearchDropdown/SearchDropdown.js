@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import { curry, equals, filter, isEmpty, lensProp, prop, pathOr, reduce, set, __ } from 'ramda';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search'
@@ -74,14 +75,21 @@ const styles = theme => ({
   root: {
     display: 'block'
   }
-})
+});
+
+const propChanged = curry((propName, prevProps, nextProps) => !equals(
+  prop(propName, prevProps),
+  prop(propName, nextProps),
+));
 
 class SearchComponent extends React.Component {
+  mutableProps = ['value', 'optionsList']
+
   constructor(props) {
     super(props);
     this.state = {
-      value: "",
-      options: this.props.optionsList || [],
+      value: pathOr('', ['props', 'value'], this),
+      options: pathOr([], ['props', 'optionsList'], this),
       listActive: false,
       searchInProgress: false
     };
@@ -94,15 +102,39 @@ class SearchComponent extends React.Component {
     this.onBlurSearch = this.onBlurSearch.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    const changedProps = filter(
+      propChanged(__, prevProps, this.props),
+      this.mutableProps,
+    );
+    const composeUpdate = (accum, propName) => set(
+      lensProp(propName),
+      prop(propName, this.props),
+      accum
+    );
+    const update = reduce(composeUpdate, {}, changedProps);
+
+    if (!isEmpty(update)) {
+      this.setState(update);
+    }
+  }
+
   toggleList() {
     this.setState({ listActive: !this.state.listActive });
   }
 
   handleChange(event) {
     var options = this.props.optionsList.filter(item => item.description.toLowerCase().includes(event.target.value.toLowerCase()))
-    this.setState({ value: event.target.value, listActive: true, options }, () => {
-      this.props.onChange && this.props.onChange(this.state.value);
-    });
+    this.setState(
+      {
+        value: pathOr('', ['target', 'value'], event),
+        listActive: true,
+        options
+      },
+      () => {
+        this.props.onChange && this.props.onChange(this.state.value);
+      }
+    );
   }
 
   handleKeyPress(e) {
@@ -119,7 +151,7 @@ class SearchComponent extends React.Component {
     stateToUpdate.value = this.state.options.find((item, i) => i === ind).description;
     stateToUpdate.listActive = false;
     this.setState(stateToUpdate, () => {
-      this.props.onSelect && this.props.onSelect(this.state.options[ind])
+      this.props.onSelect && this.props.onSelect(this.state.value)
     });
   }
 
@@ -173,10 +205,14 @@ class SearchComponent extends React.Component {
 
   render() {
     const { classes } = this.props;
+
     return (
       <div className={classes.root}>
         <fieldset className={classNames(classes.search, classes.pfSelect)}>
-          <input type="text" name="search" className={classes.searchInput}
+          <input
+            type="text"
+            name="search"
+            className={classes.searchInput}
             onBlur={this.onBlurSearch}
             onFocus={this.onFocusSearch}
             tabIndex="0"
