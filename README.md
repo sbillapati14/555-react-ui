@@ -54,4 +54,3 @@ Produces production version of library under the `build` folder.
 ## Publish library
 
 `npm publish`
-
