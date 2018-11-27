@@ -89,7 +89,7 @@ class SearchComponent extends React.Component {
     super(props);
     this.state = {
       value: pathOr('', ['props', 'value'], this),
-      options: pathOr([], ['props', 'optionsList'], this),
+      optionsList: pathOr([], ['props', 'optionsList'], this),
       listActive: false,
       searchInProgress: false
     };
@@ -124,12 +124,12 @@ class SearchComponent extends React.Component {
   }
 
   handleChange(event) {
-    var options = this.props.optionsList.filter(item => item.description.toLowerCase().includes(event.target.value.toLowerCase()))
+    const optionsList = this.props.optionsList.filter(item => item.description.toLowerCase().includes(event.target.value.toLowerCase()))
     this.setState(
       {
         value: pathOr('', ['target', 'value'], event),
         listActive: true,
-        options
+        optionsList,
       },
       () => {
         this.props.onChange && this.props.onChange(this.state.value);
@@ -139,7 +139,7 @@ class SearchComponent extends React.Component {
 
   handleKeyPress(e) {
     if (e.key === 'Enter') {
-      if (this.state.listActive && this.state.options.length) {
+      if (this.state.listActive && this.state.optionsList.length) {
         this.handleFilter(0);
       }
     }
@@ -148,7 +148,7 @@ class SearchComponent extends React.Component {
 
   handleFilter(ind) {
     let stateToUpdate = {}
-    stateToUpdate.value = this.state.options.find((item, i) => i === ind).description;
+    stateToUpdate.value = this.state.optionsList.find((item, i) => i === ind).description;
     stateToUpdate.listActive = false;
     this.setState(stateToUpdate, () => {
       this.props.onSelect && this.props.onSelect(this.state.value)
@@ -158,7 +158,11 @@ class SearchComponent extends React.Component {
   onFocusSearch(e) {
     const { value } = this.state;
     this.handleChange({ target: { value: '' } });
-    this.setState({ tempValue: value, options: this.props.optionsList, listActive: true })
+    this.setState({
+      tempValue: value,
+      optionsList: this.props.optionsList,
+      listActive: true,
+    });
   }
 
   onBlurSearch(e) {
@@ -173,7 +177,7 @@ class SearchComponent extends React.Component {
     let list, selectOption;
     const { listActive, searchInProgress } = this.state;
     const { classes } = this.props;
-    selectOption = this.state.options;
+    selectOption = this.state.optionsList;
     if (selectOption && listActive && selectOption.length !== 0) {
       list = (
         <div className={classNames(classes.psDropdown, classes.active)}>
@@ -193,7 +197,7 @@ class SearchComponent extends React.Component {
           }
         </div>
       );
-    } else if ((!this.state.options || this.state.options.length === 0) && listActive && !searchInProgress) {
+    } else if ((!this.state.optionsList || this.state.optionsList.length === 0) && listActive && !searchInProgress) {
       list = <div className={classNames(classes.psDropdown, classes.active)}>
         <label className={classes.psLabel}>No records found</label></div>;
     } else {
@@ -212,6 +216,7 @@ class SearchComponent extends React.Component {
           <input
             type="text"
             name="search"
+            autoComplete="off"
             className={classes.searchInput}
             onBlur={this.onBlurSearch}
             onFocus={this.onFocusSearch}
