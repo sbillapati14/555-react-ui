@@ -63,7 +63,8 @@ const theme = createMuiTheme({
       root: {},
       elevation2: {
         boxShadow: '0px 1px 28px -6px rgba(0,0,0,0.3)',
-        borderRadius: '5px'
+        borderRadius: '5px',
+        width: '800px'
       }
     },
     MuiCardHeader: {
@@ -98,7 +99,7 @@ const theme = createMuiTheme({
         fontWeight: Typography.fontWeightMedium,
         textTransform: 'none',
         margin: '0 33px 0 0',
-        fontSize: '18px',
+        fontSize: '14px',
       },
     },
   },

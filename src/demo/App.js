@@ -48,6 +48,11 @@ import ContextMenu from '../lib/ContextMenu';
 import { D3LineChart } from '../lib/D3LineChart';
 import { NivoLineChart } from '../lib/NivoLineChart';
 import { NivoStackedBarChart } from '../lib/NivoStackedBarChart';
+import { MyApps } from '../lib/MyApps';
+import { AppElement } from '../lib/AppElement';
+
+
+
 
 
 
@@ -98,6 +103,7 @@ class App extends Component {
     searchDropdownValue: '',
     searchDropdownOptions: ['one', 'two', 'three', 'four', 'five'],
     searchDropdownMatches: [],
+    applications: [],
   }
 
   constructor(props) {
@@ -188,7 +194,7 @@ class App extends Component {
 
             <AppContent isMobileOpen={isMobileOpen}>
 
-              <AppBar icon={<Language />} classes={{ toolbar: classes.appBar }} title="Acme Application" toggleDrawer={toggleDrawer}
+              <AppBar icon={<Language />} classes={{ toolbar: classes.appBar }} title="" toggleDrawer={toggleDrawer}
                 righticon={<span onClick={this.handleClick.bind(this)}><Icon icon="bell-alert" /></span>}
                 notification={this.state.notification ? (<ClickAwayListener onClickAway={this.handleClose}><PaperCard
                   title="Alerts and Notifications"
@@ -208,6 +214,7 @@ class App extends Component {
                   <SelectListItem value="3">Funny App</SelectListItem>
                 </SelectList>
 
+                {/*
                 <PopOver Component={<Icon icon="bell-alert" height="40" width="40" />}>
                   <PaperCard
                     title="Notifications"
@@ -215,11 +222,12 @@ class App extends Component {
                       <Icon icon="bell-notif" height="36" width="33" />
                     }
                   >
-                    <AlertsAndNotifications />
+                    <AlertsAndNotifications/>
                   </PaperCard>
                 </PopOver>
                 {<Icon icon="about" height="40" width="40" />}
                 {<Icon icon="settings" height="40" width="40" />}
+                  */}
 
                 {/* <Menu
                   button={<Button> Open Menu </Button>}
@@ -253,408 +261,16 @@ class App extends Component {
               <AppPage>
 
                 <PageLeft>
-                  <PaperCard
-                    title="Alerts and Notifications"
-                    avatar={<Icon icon="bell-notif" height="36" width="33" />}
-                  >
-                    <AlertsAndNotifications />
-                  </PaperCard>
 
-                  <br />
-                  <PaperCard
-                    title="Buttons"
-                    avatar={
-                      <Avatar>
-                        <ImageIcon />
-                      </Avatar>
-                    }
-                  >
-                    <Button>Root</Button>
-                    <GradientButton>Gradien tButton</GradientButton>
-                    <OutlineButton color="white">OutlineButton</OutlineButton>
-                    <AccentButton>AccentButton</AccentButton>
-                  </PaperCard>
-
-                  <br />
-
-                  <PaperCard
-                    title="Paper Card"
-                    avatar={
-                      <Avatar>
-                        <ImageIcon />
-                      </Avatar>
-                    }
-                  >
-                    <Typography>
-                      Here is the content of the PaperCard
-                    </Typography>
-
-                  </PaperCard>
-
-                  <br />
-                  <PaperCard
-                    title="Form Inputs"
-                    avatar={
-                      <Avatar>
-                        <ImageIcon />
-                      </Avatar>
-                    }
-                  >
-                    <form>
-                      <FormField label="App Domain" value='Example' onChange={(e) => console.log(e)} />
-                      <FormField id="Disable" label="Federation Type" value="Disable input" disabled={true} />
-                      <FormField id="secret" label="App Secret" value="abc" />
-                      <FormField id="key" label="App Key" value="sdfasfsadf" />
-                      <FormField id="app" label="App" value="aa" />
-                      <FormField id="cpyToClip" label="Copy to CLipboard" value={this.state.cpyToClip} endAdornment={<span onClick={this.copyToClipboard.bind(this)}><Icon icon="copyToClipboard" viewBox="0 0 500 500" fill="#282828" /></span>} />
-                      <FormField type="file" id="upload" label="File Upload" />
-                      <ListField
-                        label="Managed List Input"
-                        value={this.state.listInput}
-                        onChange={val => {
-                          const unique = [...new Set(val)];
-                          this.setState({ listInput: unique });
-                        }}
-                      />
-                      <ListField
-                        label="Unanaged List Input"
-                        value={this.state.listInput}
-                        onChange={console.log}
-                      />
-                    </form>
-                  </PaperCard>
-                  <br />
-
-                  <PaperCard
-                    title="Search Dropdown"
-                    avatar={
-                      <Avatar>
-                        <ImageIcon />
-                      </Avatar>
-                    }
-                  >
-                    <SearchDropdown
-                      validationState={() => { }}
-                      selectedFilterObj={{ filterBy: 'code', placeholder: 'search a service', textStyle: 'uppercase' }}
-                      autoSuggestResults={this.props.autoSuggestWritingBrokers}
-                      onFilter={this.props.handleFilter}
-                    />
-                  </PaperCard>
-                  <br />
-
-                  <PaperCard
-                    title="Managed Search Dropdown"
-                    avatar={
-                      <Avatar>
-                        <ImageIcon />
-                      </Avatar>
-                    }
-                  >
-                    <SearchDropdown
-                      value={this.state.searchDropdownValue}
-                      placeholder="Search options"
-                      optionsList={map(option => ({ description: option }), this.state.searchDropdownOptions)}
-                      onChange={value => this.setState({
-                        searchDropdownValue: value,
-                      })}
-                      onSelect={value => this.setState({
-                        searchDropdownValue: value,
-                      })}
-                    />
-                  </PaperCard>
-                  <br />
-
-                  <PaperCard
-                    title="Pagination"
-                    avatar={
-                      <Avatar>
-                        <ImageIcon />
-                      </Avatar>
-                    }
-                  >
-                    <Pagination
-                      totalRecords={200}
-                      recordsPerPage={20}
-                      thresholdPageBtns={5}
-                      currentPage={this.state.pageNumber1}
-                      onClickPage={(page) => this.handlPageChange(page, "pageNumber1")}
-                    />
-                    <Pagination
-                      totalRecords={20}
-                      recordsPerPage={4}
-                      currentPage={this.state.pageNumber2}
-                      onClickPage={(page) => this.handlPageChange(page, "pageNumber2")}
-                    />
-                  </PaperCard>
-                  <br />
-                  <PaperCard
-                    title="Context Menu"
-                    avatar={
-                      <Avatar>
-                        <ImageIcon />
-                      </Avatar>
-                    }
-                  >
-                    <ContextMenu
-                      anchor={<Typography variant="subheading">right-click me!</Typography>}
-                    >
-                      <Typography variant="caption">copy</Typography>
-                      <Typography variant="caption">paste</Typography>
-                      <Typography variant="caption">print</Typography>
-                      <Typography variant="caption">help</Typography>
-                    </ContextMenu>
-                  </PaperCard>
-
-                  <br />
-
-                  <PaperCard title="Miscellaneous"
-                    avatar={
-                      <Avatar>
-                        <ImageIcon />
-                      </Avatar>
-                    }
-                  >
-                    <AnalyticsBox />
-                    <br />
-                  </PaperCard>
-
-                  <br />
-                  <PaperCard title="Color Indicators"
-                    avatar={
-                      <Avatar>
-                        <ImageIcon />
-                      </Avatar>
-                    }
-                  >
-                    <ColorIndicators />
-                  </PaperCard>
-
-                  <br />
-                  <PaperCard title="Progress Indicator"
-                    avatar={
-                      <Avatar>
-                        <ImageIcon />
-                      </Avatar>
-                    }
-                  >
-                    <ProgressIndicator />
-                  </PaperCard>
-
-
-                  <br />
-
-                  <PaperCard title="Skeleton"
-                    avatar={
-                      <Avatar>
-                        <ImageIcon />
-                      </Avatar>
-                    }
-                  >
-                    <Skeleton />
-                  </PaperCard>
-                  <br />
-
-                  <PaperCard
-                    title="Charts"
-                    avatar={
-                      <Avatar>
-                        <ImageIcon />
-                      </Avatar>
-                    }
-                  >
-                    <BarChart
-                      chartId="samplBarChart"
-                      chartWidth={500}
-                      chartHeight={300}
-                      barWidth={50} />
-
-                    <br />
-
-                  </PaperCard>
-                  <br />
-                  <PaperCard title={"Simple Health Chart"} subtitle={'subtitle'} classes={{ cardHeader }}
-                    avatar={
-                      <Avatar>
-                        <ImageIcon />
-                      </Avatar>
-                    }
-                  >
-                    <div className={classes.healthIndicesWrapper}>
-                      <ColorIndicators />
-                    </div>
-                    <HealthChart />
-                  </PaperCard>
-                  <br />
-                  {/* <PaperCard
-                    title="D3 lineChart"
-                    avatar={
-                      <Avatar>
-                        <ImageIcon />
-                      </Avatar>
-                    }
-                  >
-                    <D3LineChart
-                      chartId="sampleLineChart"
-                      chartWidth={500}
-                      chartHeight={300} />
-                  </PaperCard>
-                  <br /> */}
-                  <PaperCard
-                    title="Nivo Line Chart"
-                    avatar={
-                      <Avatar>
-                        <ImageIcon />
-                      </Avatar>
-                    }
-                  >
-                    <NivoLineChart />
-                  </PaperCard>
-                  <br />
-                  <PaperCard
-                    title="Nivo Bar Chart"
-                    avatar={
-                      <Avatar>
-                        <ImageIcon />
-                      </Avatar>
-                    }
-                  >
-                    <NivoStackedBarChart />
-                  </PaperCard>
-                  <br />
-
+                <PaperCard
+                  title="Application Name"
+                  avatar={<Icon icon= "language" height="36" width="33" />}
+                >
+                  <AppElement />
+                </PaperCard>
+                <br />
 
                 </PageLeft>
-
-                <PageRight>
-                  <PaperCard title="Issues"
-                    avatar={
-                      <Avatar>
-                        <ImageIcon />
-                      </Avatar>
-                    }
-                  >
-                    <Issues />
-                  </PaperCard>
-
-                  <br />
-                  <PaperCard
-                    title="Switch's"
-                    avatar={
-                      <Avatar>
-                        <ImageIcon />
-                      </Avatar>
-                    }
-                  >
-                    <Typography variant="display3" gutterBottom>Switch</Typography>
-                    <Switch checked={true} ></Switch>
-                    <Switch checked={false} ></Switch>
-                    <Switch disabled={true} ></Switch>
-                    <SwitchButton checked={true}></SwitchButton>
-                  </PaperCard>
-
-                  <br />
-                  <PaperCard
-                    title="Filters"
-                    avatar={
-                      <Avatar>
-                        <ImageIcon />
-                      </Avatar>
-                    }
-                  >
-                    <FilterStatus>
-                      <form>
-                        <TextField
-                          id="Example"
-                          label="Example"
-                          margin="normal"
-                          placeholder="Example"
-                        />
-                        <TextField disabled
-                          id="Disabled"
-                          label="Disabled"
-                          margin="normal"
-                          placeholder="Disabled"
-                          value="Disable input"
-                        />
-                        <TextField
-                          hintText="Text Here"
-                          fullWidth={true}
-                          floatingLabelText="Text Here Label"
-                        />
-                      </form>
-                    </FilterStatus>
-                  </PaperCard>
-
-                  <br />
-                  <PaperCard
-                    title="Tree"
-                    avatar={
-                      <Avatar>
-                        <ImageIcon />
-                      </Avatar>
-                    }
-                  >
-                    <Tree
-                      label='Folder Example'
-                      model={{
-                        'subfolder1': {
-                          'sub-subfolder1': {
-                            'file.yml': {
-                              'size': '6kb',
-                              'created': '12/21/2121'
-                            },
-                            'file.json': {
-                              'size': '8kb',
-                              'created': '11/11/2011'
-                            },
-                            '.empty': null,
-                            'empty-dir': {},
-                          },
-                          'file.rs': {
-                            'size': '15kb',
-                            'created': '10/20/2020'
-                          },
-                          'file.go': {
-                            'size': '9kb',
-                            'created': '10/20/2020'
-                          },
-                          'file.cpp': {
-                            'size': '9kb',
-                            'created': '10/20/2020'
-                          },
-                        },
-                        'subfolder2': {
-                          'file.docx': {
-                            'size': '110kb',
-                            'created': '10/20/2020'
-                          },
-                          'file.pptx': {
-                            'size': '90kb',
-                            'created': '10/20/2020'
-                          },
-                        },
-                        'file.js': {
-                          'size': '30kb',
-                          'created': '10/20/2020'
-                        },
-                        'file.py': {
-                          'size': '15kb',
-                          'created': '01/02/2121'
-                        },
-                      }}
-                      renderNode={(node, path) => node && 'size' in node && 'created' in node
-                        ? (
-                          <div className={classes.fileInTree}>
-                            <span>{last(path)}</span>
-                            <span>{node.size}</span>
-                          </div>
-                        )
-                        : null}
-                      open={true}
-                    />
-                  </PaperCard>
-
-                </PageRight>
               </AppPage>
 
             </AppContent>

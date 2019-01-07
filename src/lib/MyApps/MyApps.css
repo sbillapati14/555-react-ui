@@ -1,0 +1,23 @@
+.button_list {
+    float: left;
+    width: 100px;
+  }
+  
+  .button_list ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .button_list ul li{
+    list-style-type: none;
+    display: inline;
+    padding:0;
+  }
+  
+  .button_list ul li AccentButton{
+    display: inline;
+  }
+  
+  .button_list ul li GradientButton{
+    display: inline;
+  }
