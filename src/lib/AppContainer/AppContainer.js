@@ -9,6 +9,7 @@ const styles = theme => ({
     portalPage: {
         height: '100%',
         width: '100%',
+        scrollBehavior: 'smooth',
         '& > body': {
             minHeight: '100%',
             position: 'relative',
