@@ -12,6 +12,8 @@ import HelpIcon from '@material-ui/icons/Help';
 import AuthTypesSSO from '../AuthTypes/Sso.jsx';
 import AuthTypesTokenExchange from '../AuthTypes/TokenExchange.jsx';
 import AuthTypesPingId from '../AuthTypes/PingID.jsx';
+import Transfer from '../Transfer';
+import Register from '../Notifications/Register.jsx';
 
 
 function TabContainer(props) {
@@ -59,15 +61,15 @@ class AppElement extends React.Component {
                         <Tab className = {classes.eachTab} label= "PingID"/>
                         <Tab className = {classes.eachTab} label = "Token Exchange Auth" />
                         <Tab className = {classes.eachTab} label = "SSO Auth Settings"  />
-                        <Tab className = {classes.eachTab} label = "Tokens"  />
-                        <Tab className = {classes.eachTab} label = "Notifications" />
+                        <Tab className = {classes.eachTab} label = "Notifications"  />
+                        <Tab className = {classes.eachTab} label = "Transfer" />
                     </Tabs>
                 </AppBar>
                 {value === 0 && <TabContainer><AuthTypesPingId /></TabContainer>}
                 {value === 1 && <TabContainer><AuthTypesTokenExchange /></TabContainer>}
                 {value === 2 && <TabContainer><AuthTypesSSO /></TabContainer>}
-                {value === 3 && <TabContainer>Tokens</TabContainer>}
-                {value === 4 && <TabContainer>Notifications</TabContainer>}
+                {value === 3 && <TabContainer><Register /></TabContainer>}
+                {value === 4 && <TabContainer><Transfer /></TabContainer>}
             </div>
         );
     }
