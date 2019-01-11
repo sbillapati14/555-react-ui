@@ -56,6 +56,7 @@ class Transfer extends React.Component{
      // this.copyToSelf=this.copyToSelf.bind(this);
   }
 
+
   copyToClipboard(id) {
     var copyText = document.getElementById(id);
     copyText.select();
@@ -73,11 +74,11 @@ class Transfer extends React.Component{
             <FormField classes={{root: classes.root}} id="userEmail" label="User Email" 
             endAdornment={<span className={classes.copyClip} onClick={()=>this.copyToClipboard("userEmail")}><Icon icon="copyIcon" width= '15' height= '15' viewBox="0 0 500 500" fill="#282828"/></span>}
             value={userEmail} />
-            <FormField classes={{root: classes.root}} id="userName" label="User Name"  disabled={true}
+            <FormField classes={{root: classes.root}} id="userName" label="User Name" 
             endAdornment={<span className={classes.copyClip} onClick={()=>this.copyToClipboard("userName")}><Icon icon="copyIcon" width= '15' height= '15' viewBox="0 0 500 500" fill="#282828"/></span>}
             value={userName} />
-            <FormField classes={{root: classes.root}} id="ownerId" label="Owner Id"  disabled={true}
-            endAdornment={<span className={classes.copyClip} onClick={()=>copyToClipboard("ownerId")}><Icon icon="copyIcon" width= '15' height= '15' viewBox="0 0 500 500" fill="#282828"/></span>}
+            <FormField classes={{root: classes.root}} id="ownerId" label="Owner Id"
+            endAdornment={<span className={classes.copyClip} onClick={()=>this.copyToClipboard("ownerId")}><Icon icon="copyIcon" width= '15' height= '15' viewBox="0 0 500 500" fill="#282828"/></span>}
             value={ownerId} />
 
         </PaperCard>
