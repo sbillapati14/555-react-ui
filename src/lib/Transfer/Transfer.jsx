@@ -55,11 +55,6 @@ class Transfer extends React.Component{
       super(props);
      // this.copyToSelf=this.copyToSelf.bind(this);
   }
-  /*copyToSelf() {
-    var copyText = document.getElementById(this.props.id);
-    copyText.select();
-    document.execCommand("copy");
-  }*/
 
   copyToClipboard(id) {
     var copyText = document.getElementById(id);
