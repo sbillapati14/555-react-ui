@@ -355,10 +355,10 @@ class App extends Component {
                       placeholder="Search options"
                       optionsList={map(option => ({ description: option }), this.state.searchDropdownOptions)}
                       onChange={value => this.setState({
-                        searchDropdownValue: value,
+                        searchDropdownValue: value.description,
                       })}
-                      onSelect={value => this.setState({
-                        searchDropdownValue: value,
+                      onSelect={selection => this.setState({
+                        searchDropdownValue: selection.description,
                       })}
                     />
                   </PaperCard>
