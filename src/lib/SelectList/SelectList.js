@@ -80,6 +80,10 @@ const styles = theme => ({
     options: {
         paddingTop: 0,
     },
+    wrapper: {
+        maxHeight: '250px',
+        overflow: 'auto'
+    }
 });
 
 
@@ -167,7 +171,7 @@ class SelectList extends Component {
                         <Typography className={selectedItemTextClass}>{selected}</Typography>
                         {this.state.open ? <ArrowDropUp className={classes.icon} /> : <ArrowDropDown className={classes.icon} />}
                     </Button>
-                    <Collapse component="div" in={this.state.open} className={classes.listItemsContainer}>
+                    <Collapse component="div" in={this.state.open} classes={{wrapper: classes.wrapper}} className={classes.listItemsContainer}>
                         <List component="ul" classes={{ root: classes.options }}>
                             {items}
                         </List>
