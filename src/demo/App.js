@@ -373,7 +373,7 @@ class App extends Component {
                     }
                   >
                     <Pagination
-                      totalRecords={200}
+                      totalRecords={400}
                       recordsPerPage={20}
                       thresholdPageBtns={5}
                       currentPage={this.state.pageNumber1}
