@@ -48,7 +48,6 @@ function PaperCard(props) {
 
 PaperCard.propTypes = {
   classes: PropTypes.object.isRequired,
-  title: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(PaperCard);
