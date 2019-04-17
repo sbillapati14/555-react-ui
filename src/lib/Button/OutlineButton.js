@@ -22,6 +22,7 @@ function OutlinedButton(props) {
 
   return (
     <Button
+      id={`outlinedButton-${props.children.split(' ').join('')}`}
       className={classes.button}
       style={{ color: color, borderColor: color }}
       {...rest}

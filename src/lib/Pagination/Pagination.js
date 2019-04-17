@@ -153,11 +153,18 @@ class Pagination extends React.Component {
   }
 
   getListItem(index, totalPages, classes, currentPage){
-      return (
-      <li key={index}
-          className={classNames({ [classes.activeBtn] : (currentPage===index+1)}, classes.pageBtn )}
-          onClick={(e)=>{this.onClickPage(index, totalPages)}}>{index + 1}</li>
-      )
+    const { title } = this.props;
+
+    return (
+      <li
+        id={`paginationSlide${index}-${title.split(' ').join('')}`}
+        key={index}
+        className={classNames({ [classes.activeBtn] : (currentPage===index+1)}, classes.pageBtn )}
+        onClick={(e)=>{this.onClickPage(index, totalPages)}}
+      >
+        {index + 1}
+      </li>
+    )
   }
 
   render(){
@@ -166,7 +173,8 @@ class Pagination extends React.Component {
       totalRecords,
       recordsPerPage,
       currentPage,
-      thresholdPageBtns
+      thresholdPageBtns,
+      title
     } = this.props;
 
     let paginationList = [];
@@ -181,20 +189,38 @@ class Pagination extends React.Component {
     if(thresholdPageBtns)
     paginationList =  paginationList.filter((item, index)=>  (index>=((currentSlide-1)*thresholdPageBtns) && index < (currentSlide*thresholdPageBtns)));
     return (
-      <ul className={classes.pagination}>
+      <ul className={classes.pagination} id={`pagination-${title.split(' ').join('')}`}>
         {
-          thresholdPageBtns && <li className={classes.pageLargeIconBtn}  onClick={()=>this.onClickPage('prevSlide', totalPages)}>
+          thresholdPageBtns && <li
+            id={`paginationPrevSlide-${title.split(' ').join('')}`}
+            className={classes.pageLargeIconBtn}
+            onClick={()=>this.onClickPage('prevSlide', totalPages)}
+          >
             <LeftIcon classes={{root: classes.pageArrowLarge}}/>
           </li>
         }
-        <li className={classes.pageIconBtn}  onClick={()=>this.onClickPage('prev', totalPages)}>
-        <LeftIcon classes={{root: classes.pageArrow}}/></li>
+        <li
+          id={`paginationPrevPage-${title.split(' ').join('')}`}
+          className={classes.pageIconBtn}
+          onClick={()=>this.onClickPage('prev', totalPages)}
+        >
+          <LeftIcon classes={{root: classes.pageArrow}}/>
+        </li>
         {paginationList}
-        <li className={classes.pageIconBtn}  onClick={()=>this.onClickPage('next', totalPages)}>
-        <RightIcon classes={{root: classes.pageArrow}} /></li>
+        <li
+          id={`paginationNextPage-${title.split(' ').join('')}`}
+          className={classes.pageIconBtn}
+          onClick={()=>this.onClickPage('next', totalPages)}
+        >
+          <RightIcon classes={{root: classes.pageArrow}} />
+        </li>
         {
-          thresholdPageBtns && <li className={classes.pageLargeIconBtn}  onClick={()=>this.onClickPage('nextSlide', totalPages)}>
-            <RightIcon classes={{root: classes.pageArrowLarge}}/>
+          thresholdPageBtns && <li
+            id={`paginationNextSlide-${title.split(' ').join('')}`}
+            className={classes.pageLargeIconBtn}
+            onClick={()=>this.onClickPage('nextSlide', totalPages)}
+          >
+            <RightIcon classes={{root: classes.pageArrowLarge}} />
           </li>
         }
       </ul>
@@ -204,6 +230,7 @@ class Pagination extends React.Component {
 }
 
 Pagination.propTypes = {
+  title: PropTypes.string.isRequired,
   classes: PropTypes.object.isRequired,
   totalRecords: PropTypes.number,
   recordsPerPage: PropTypes.number,
