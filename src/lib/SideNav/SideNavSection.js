@@ -98,8 +98,8 @@ class SideNavSection extends Component {
     if(!nextProps.open)
     this.setState({open: false})
   }
-  
-  
+
+
   handleOnClick(e) {
     const { onClick} = this.props;
     const open  = this.state.open;
@@ -126,8 +126,7 @@ class SideNavSection extends Component {
     const iconClass = this.state.open ? classes.rightIconOpen : classes.rightIconClose;
     return (
       <ListItem className={classes.root} onClick={(e) => this.handleOnClick(e)}>
-        <div className={listItemClass}>
-
+        <div id={`listItem-${label.split(' ').join('')}`} className={listItemClass}>
           {leftIcon && (
             <ListItemIcon className={classes.leftIcon}>
               {leftIcon}

@@ -121,7 +121,7 @@ class AppBar extends Component {
                 <MenuIcon className={classes.hamburIcon} onClick={this.handleClick} />
                 <div className={classes.logo}>
                     {this.renderIcon()}
-                    <div className="txt">{title}</div>
+                    <div className="txt" id="appBarTitle">{title}</div>
                 </div>
                 <div className={classes.toolbar}>
                     {children}

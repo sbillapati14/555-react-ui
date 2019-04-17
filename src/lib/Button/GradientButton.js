@@ -19,6 +19,7 @@ function GradientButton(props) {
 
   return (
     <Button
+      id={`gradientButton-${props.children.split(' ').join('')}`}
       className={classes.button}
       style={{ color: color, borderColor: color }}
       {...rest}

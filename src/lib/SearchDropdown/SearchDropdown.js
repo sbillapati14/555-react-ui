@@ -240,7 +240,7 @@ class SearchComponent extends React.Component {
 // *********** Props documentation **********
 SearchComponent.propTypes = {
   placeholder: PropTypes.string,
-  optionsList: PropTypes.array
+  optionsList: PropTypes.array,
 }
 
 const data = [

@@ -52,36 +52,36 @@ class PopoverDropdown extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, title } = this.props;
     const { open } = this.state;
     return (
       <div className={classes.root}>
       <Manager>
         <Reference>
-        {({ ref }) => (
-                 <div onClick={this.handleClick}>
-                 {this.props.Component}
-              </div>
-      )}
-
+          {({ ref }) => (
+            <div onClick={this.handleClick} id={`popoverClickHandler-${title}`}>
+              {this.props.Component}
+            </div>
+          )}
         </Reference>
-        <Popper 
-        placement="bottom-end"
-        eventsEnabled={true}
-        modifiers={{ preventOverflow: { enabled: false } }}
-        positionFixed={false}
-        className={classNames({ [classes.popperClose]: !open}, classes.popper)}>
-        {({ ref, style, placement, arrowProps }) => (
-          <ClickAwayListener onClickAway={this.handleClose}>
-          <Grow in={open} id="menu-list" style={{ transformOrigin: '0 0 0' }}>
-            <Paper className={classes.popperContent} ref={ref} data-placement={placement}>
-              <span className = {classes.carot}></span>
-              {this.props.children}
-            </Paper>
-          </Grow>
-        </ClickAwayListener>
-        )}
-      </Popper>
+        <Popper
+          placement="bottom-end"
+          eventsEnabled={true}
+          modifiers={{ preventOverflow: { enabled: false } }}
+          positionFixed={false}
+          className={classNames({ [classes.popperClose]: !open}, classes.popper)}
+        >
+          {({ ref, style, placement, arrowProps }) => (
+            <ClickAwayListener onClickAway={this.handleClose}>
+            <Grow in={open} id={`popoverContainer-${title.split(' ').join('')}`} style={{ transformOrigin: '0 0 0' }}>
+              <Paper className={classes.popperContent} ref={ref} data-placement={placement}>
+                <span className = {classes.carot}></span>
+                {this.props.children}
+              </Paper>
+            </Grow>
+          </ClickAwayListener>
+          )}
+        </Popper>
       </Manager>
     </div>
     );
@@ -90,6 +90,7 @@ class PopoverDropdown extends React.Component {
 
 PopoverDropdown.propTypes = {
   classes: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(PopoverDropdown);

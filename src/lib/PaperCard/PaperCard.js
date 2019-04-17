@@ -29,7 +29,7 @@ function PaperCard(props) {
   const { classes, title, avatar, headerIcon, subtitle, ...otherProps } = props;
 
   return (
-    <Paper {...otherProps} elevation={2}>
+    <Paper {...otherProps} id={`paperCard-${title.split(' ').join('')}`} elevation={2}>
       <Card className={classes.card}>
         <CardHeader
           classes={{ title: classes.title, root: classes.cardHeader, subheader: classes.subheader }}
@@ -48,6 +48,7 @@ function PaperCard(props) {
 
 PaperCard.propTypes = {
   classes: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(PaperCard);

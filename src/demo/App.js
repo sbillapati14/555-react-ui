@@ -208,7 +208,7 @@ class App extends Component {
                   <SelectListItem value="3">Funny App</SelectListItem>
                 </SelectList>
 
-                <PopOver Component={<Icon icon="bell-alert" height="40" width="40" />}>
+                <PopOver title="notificationsPopover" Component={<Icon icon="bell-alert" height="40" width="40" />}>
                   <PaperCard
                     title="Notifications"
                     avatar={
@@ -269,8 +269,8 @@ class App extends Component {
                       </Avatar>
                     }
                   >
-                    <Button>Root</Button>
-                    <GradientButton>Gradien tButton</GradientButton>
+                    <Button id="rootButton">Root</Button>
+                    <GradientButton>Gradient Button</GradientButton>
                     <OutlineButton color="white">OutlineButton</OutlineButton>
                     <AccentButton>AccentButton</AccentButton>
                   </PaperCard>
@@ -285,7 +285,7 @@ class App extends Component {
                       </Avatar>
                     }
                   >
-                    <Typography>
+                    <Typography id="paperCard-PaperCard-content">
                       Here is the content of the PaperCard
                     </Typography>
 
@@ -301,7 +301,7 @@ class App extends Component {
                     }
                   >
                     <form>
-                      <FormField label="App Domain" value='Example' onChange={(e) => console.log(e)} />
+                      <FormField label="App Domain" id="appDomainField" value='Example' onChange={(e) => console.log(e)} />
                       <FormField id="Disable" label="Federation Type" value="Disable input" disabled={true} />
                       <FormField id="secret" label="App Secret" value="abc" />
                       <FormField id="key" label="App Key" value="sdfasfsadf" />
@@ -373,6 +373,7 @@ class App extends Component {
                     }
                   >
                     <Pagination
+                      title="Sample Pagination"
                       totalRecords={400}
                       recordsPerPage={20}
                       thresholdPageBtns={5}
@@ -380,6 +381,7 @@ class App extends Component {
                       onClickPage={(page) => this.handlPageChange(page, "pageNumber1")}
                     />
                     <Pagination
+                      title="Sample Pagination 2"
                       totalRecords={20}
                       recordsPerPage={4}
                       currentPage={this.state.pageNumber2}

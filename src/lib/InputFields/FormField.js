@@ -59,7 +59,10 @@ class FormField extends Component {
       if(component) {
         if (label) {
           return (
-            <div className={classes.formFieldContainer}>
+            <div
+              className={classes.formFieldContainer}
+              id={`formFieldWrapper-${label.split(' ').join('')}`}
+            >
               <label className={classes.formLabel}>{label}</label>
               {component}
             </div>
@@ -71,15 +74,18 @@ class FormField extends Component {
         const combinedStyle = { alignItems: 'center', flexDirection: 'row', ...style }
 
         return (
-            <div className={classes.formFieldWrapper}>
+            <div
+              className={classes.formFieldWrapper}
+              id={`formFieldWrapper-${label.split(' ').join('')}`}
+            >
                 <label className={classes.formLabel}>{label}</label>
                 <Input
-                    fullWidth={true}
-                     disableUnderline = {true}
-                    style={combinedStyle}
-                    classes = {inputClasses}
-                    {...rest }
-                    className={classes.root}
+                  fullWidth={true}
+                  disableUnderline = {true}
+                  style={combinedStyle}
+                  classes = {inputClasses}
+                  {...rest }
+                  className={classes.root}
                />
             </div>
             );

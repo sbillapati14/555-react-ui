@@ -28,10 +28,13 @@ class SelectListItem extends Component {
 
     render() {
 
-        const { classes, children, selected } = this.props;
+        const { classes, children, selected, value } = this.props;
 
         return (
-            <ListItem onClick={e => this.handleClick(e)}>
+            <ListItem
+              id={`selectListItem-${value.split(' ').join('')}`}
+              onClick={e => this.handleClick(e)}
+            >
                 <ListItemText disableTypography
                     primary={<Typography style={{ color: selected ? "#2b9cd8" : "#666666" }}>{children}</Typography>} />
                 {selected && <ListItemIcon classes={{ root: classes.icon }}><Check /></ListItemIcon>}
@@ -54,8 +57,7 @@ SelectListItem.propTypes = {
         PropTypes.string,
         PropTypes.number,
         PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
-    ]),
-
+    ]).isRequired,
     active: PropTypes.bool
 };
 

@@ -107,10 +107,10 @@ class AppDrawer extends Component {
         let theTitle = title;
         // do some work on the title
         if (theTitle && typeof theTitle === 'string' && theTitle.indexOf('|')) {
-            // split the string on | 
+            // split the string on |
             const t = theTitle.split('|');
             theTitle = (
-                <Typography className="txt" type="title" color="inherit">
+                <Typography className="txt" id="appDrawerLogoText" type="title" color="inherit">
                     <span className="medium">{t[0]}</span> {t[1]}
                 </Typography>
             )
@@ -120,11 +120,11 @@ class AppDrawer extends Component {
 
             <aside className={this.getNavClasses()}>
 
-                <div className="logo">
+                <div className="logo" id="appDrawerLogo">
                     {theTitle}
                 </div>
 
-                <div className="nav" style={{ height: drawerHeight }}>
+                <div className="nav" id="navContainer" style={{ height: drawerHeight }}>
                     {children}
                 </div>
 
