@@ -129,11 +129,14 @@ class SelectList extends Component {
           placeHolderText,
           subHeaderText,
           children,
+          id,
           value,
           fullWidth,
           primary,
           name
         } = this.props;
+
+        const selectListId = `selectListId-${id || Math.random().toString(36).substr(2, 9)}`;
 
         let selectedItemClass = classes.selectedItem;
         if (this.state.open)
@@ -175,7 +178,7 @@ class SelectList extends Component {
 
         return (
             <ClickAwayListener onClickAway={this.closeDropDown}>
-                <div id={`selectList-${name.split(' ').join('')}`} className={rootClass}>
+                <div id={selectListId} className={rootClass}>
                     <Button disableRipple={true} className={selectedItemClass} onClick={this.toggleDropDown} fullWidth={fullWidth}>
                         <Typography className={selectedItemTextClass}>{selected}</Typography>
                         {this.state.open ? <ArrowDropUp className={classes.icon} /> : <ArrowDropDown className={classes.icon} />}
@@ -192,7 +195,6 @@ class SelectList extends Component {
 }
 
 SelectList.propTypes = {
-    name: PropTypes.string.isRequired,
     subHeaderText: PropTypes.string,
     placeHolderText: PropTypes.string,
     /**

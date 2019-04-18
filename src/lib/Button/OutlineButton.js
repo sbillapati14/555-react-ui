@@ -18,11 +18,12 @@ const styles = {
 };
 
 function OutlinedButton(props) {
-  const { classes, color, ...rest } = props;
+  const { classes, color, id, ...rest } = props;
+  const buttonId = `buttonId-${id || Math.random().toString(36).substr(2, 9)}`;
 
   return (
     <Button
-      id={`outlinedButton-${props.children.split(' ').join('')}`}
+      id={buttonId}
       className={classes.button}
       style={{ color: color, borderColor: color }}
       {...rest}
