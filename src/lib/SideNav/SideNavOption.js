@@ -93,7 +93,8 @@ class SideNavOption extends Component {
   }
 
   render() {
-    const { classes, active, primary, component: Component, ...rest } = this.props;
+    const { classes, active, id, primary, component: Component, ...rest } = this.props;
+    const sideNavOptionId = `sideNavOptionId-${id || Math.random().toString(36).substr(2, 9)}`;
 
     let listItemClass = classes.listItem;
     if (active)
@@ -101,7 +102,7 @@ class SideNavOption extends Component {
 
     let text = <ListItemText disableTypography classes={{ root: listItemClass }} primary={primary} />;
     if (Component)
-      text = <Component {...rest} className={classes.link} id={`listItem-${primary.split(' ').join('')}`}>{primary}</Component>
+      text = <Component {...rest} className={classes.link} id={sideNavOptionId}>{primary}</Component>
 
     return (
       <ListItem component='li' classes={{ root: classes.root }} onClick={(e) => this.handleClick(e)}>

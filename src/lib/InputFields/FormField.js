@@ -54,14 +54,15 @@ class FormField extends Component {
     document.execCommand("copy");
   }
     render() {
-      const { classes, inputClasses, component, label, style, ...rest} = this.props
+      const { classes, inputClasses, component, id, label, style, ...rest} = this.props
+      const formFieldId = `formFieldId-${id || Math.random().toString(36).substr(2, 9)}`;
 
       if(component) {
         if (label) {
           return (
             <div
               className={classes.formFieldContainer}
-              id={`formFieldWrapper-${label.split(' ').join('')}`}
+              id={formFieldId}
             >
               <label className={classes.formLabel}>{label}</label>
               {component}
@@ -76,7 +77,7 @@ class FormField extends Component {
         return (
             <div
               className={classes.formFieldWrapper}
-              id={`formFieldWrapper-${label.split(' ').join('')}`}
+              id={formFieldId}
             >
                 <label className={classes.formLabel}>{label}</label>
                 <Input

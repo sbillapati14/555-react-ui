@@ -174,25 +174,28 @@ class Pagination extends React.Component {
       recordsPerPage,
       currentPage,
       thresholdPageBtns,
-      title
+      title,
+      id
     } = this.props;
+
+    const paginationId = `paginationId-${id || Math.random().toString(36).substr(2, 9)}`;
 
     let paginationList = [];
     const {currentSlide} = this.state;
     const totalPages = Math.ceil(totalRecords/recordsPerPage);
 
     for (var i=0; i<totalPages; i++) {
-        const index = i;
-    const listItem = this.getListItem(index, totalPages, classes, currentPage)
-             paginationList.push(listItem);
+      const index = i;
+      const listItem = this.getListItem(index, totalPages, classes, currentPage)
+      paginationList.push(listItem);
     }
     if(thresholdPageBtns)
     paginationList =  paginationList.filter((item, index)=>  (index>=((currentSlide-1)*thresholdPageBtns) && index < (currentSlide*thresholdPageBtns)));
     return (
-      <ul className={classes.pagination} id={`pagination-${title.split(' ').join('')}`}>
+      <ul className={classes.pagination} id={`paginationContainer-${paginationId}`}>
         {
           thresholdPageBtns && <li
-            id={`paginationPrevSlide-${title.split(' ').join('')}`}
+            id={`prevSlide-${paginationId}`}
             className={classes.pageLargeIconBtn}
             onClick={()=>this.onClickPage('prevSlide', totalPages)}
           >
@@ -200,7 +203,7 @@ class Pagination extends React.Component {
           </li>
         }
         <li
-          id={`paginationPrevPage-${title.split(' ').join('')}`}
+          id={`prevPage-${paginationId}`}
           className={classes.pageIconBtn}
           onClick={()=>this.onClickPage('prev', totalPages)}
         >
@@ -208,7 +211,7 @@ class Pagination extends React.Component {
         </li>
         {paginationList}
         <li
-          id={`paginationNextPage-${title.split(' ').join('')}`}
+          id={`nextPage-${paginationId}`}
           className={classes.pageIconBtn}
           onClick={()=>this.onClickPage('next', totalPages)}
         >
@@ -216,7 +219,7 @@ class Pagination extends React.Component {
         </li>
         {
           thresholdPageBtns && <li
-            id={`paginationNextSlide-${title.split(' ').join('')}`}
+            id={`nextSlide-${paginationId}`}
             className={classes.pageLargeIconBtn}
             onClick={()=>this.onClickPage('nextSlide', totalPages)}
           >
@@ -230,7 +233,6 @@ class Pagination extends React.Component {
 }
 
 Pagination.propTypes = {
-  title: PropTypes.string.isRequired,
   classes: PropTypes.object.isRequired,
   totalRecords: PropTypes.number,
   recordsPerPage: PropTypes.number,
