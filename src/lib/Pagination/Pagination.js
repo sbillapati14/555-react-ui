@@ -153,11 +153,11 @@ class Pagination extends React.Component {
   }
 
   getListItem(index, totalPages, classes, currentPage){
-    const { title } = this.props;
+    const { id } = this.props;
 
     return (
       <li
-        id={`paginationSlide${index}-${title.split(' ').join('')}`}
+        id={`paginationPage${index+1}-${id || Math.random().toString(36).substr(2, 9)}`}
         key={index}
         className={classNames({ [classes.activeBtn] : (currentPage===index+1)}, classes.pageBtn )}
         onClick={(e)=>{this.onClickPage(index, totalPages)}}
