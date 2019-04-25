@@ -98,8 +98,8 @@ class SideNavSection extends Component {
     if(!nextProps.open)
     this.setState({open: false})
   }
-  
-  
+
+
   handleOnClick(e) {
     const { onClick} = this.props;
     const open  = this.state.open;
@@ -109,7 +109,8 @@ class SideNavSection extends Component {
   }
 
   render() {
-    const { classes, children, open, leftIcon, label, component: Component, ...rest } = this.props;
+    const { classes, children, open, leftIcon, label, id, component: Component, ...rest } = this.props;
+    const sideNavSectionId = `sideNavSectionId-${id || Math.random().toString(36).substr(2, 9)}`;
 
     let listItemClass = classes.listItem;
     let optionsClass = classes.options;
@@ -126,8 +127,7 @@ class SideNavSection extends Component {
     const iconClass = this.state.open ? classes.rightIconOpen : classes.rightIconClose;
     return (
       <ListItem className={classes.root} onClick={(e) => this.handleOnClick(e)}>
-        <div className={listItemClass}>
-
+        <div id={sideNavSectionId} className={listItemClass}>
           {leftIcon && (
             <ListItemIcon className={classes.leftIcon}>
               {leftIcon}

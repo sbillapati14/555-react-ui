@@ -124,16 +124,15 @@ class SearchComponent extends React.Component {
   }
 
   handleChange(event) {
+    const value = pathOr('', ['target', 'value'], event);
     const optionsList = this.props.optionsList.filter(item => item.description.toLowerCase().includes(event.target.value.toLowerCase()))
     this.setState(
       {
-        value: pathOr('', ['target', 'value'], event),
+        value,
         listActive: true,
         optionsList,
       },
-      () => {
-        this.props.onChange && this.props.onChange(this.state.value);
-      }
+      () => this.props.onChange && this.props.onChange(value),
     );
   }
 
@@ -147,12 +146,12 @@ class SearchComponent extends React.Component {
 
 
   handleFilter(ind) {
-    let stateToUpdate = {}
-    stateToUpdate.value = this.state.optionsList.find((item, i) => i === ind).description;
-    stateToUpdate.listActive = false;
-    this.setState(stateToUpdate, () => {
-      this.props.onSelect && this.props.onSelect(this.state.value)
-    });
+    const match = this.state.optionsList.find((item, i) => i === ind);
+    const update = { value: match.description, listActive: false };
+    this.setState(
+      update,
+      () => this.props.onSelect && this.props.onSelect(match),
+    );
   }
 
   onFocusSearch(e) {
@@ -241,7 +240,7 @@ class SearchComponent extends React.Component {
 // *********** Props documentation **********
 SearchComponent.propTypes = {
   placeholder: PropTypes.string,
-  optionsList: PropTypes.array
+  optionsList: PropTypes.array,
 }
 
 const data = [

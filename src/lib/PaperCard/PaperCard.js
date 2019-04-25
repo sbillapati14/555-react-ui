@@ -26,10 +26,10 @@ const styles = theme => ({
 });
 
 function PaperCard(props) {
-  const { classes, title, avatar, headerIcon, subtitle, ...otherProps } = props;
-
+  const { classes, id, title, avatar, headerIcon, subtitle, ...otherProps } = props;
+  const paperCardId = `paperCard-${id || Math.random().toString(36).substr(2, 9)}`;
   return (
-    <Paper {...otherProps} elevation={2}>
+    <Paper {...otherProps} id={paperCardId} elevation={2}>
       <Card className={classes.card}>
         <CardHeader
           classes={{ title: classes.title, root: classes.cardHeader, subheader: classes.subheader }}

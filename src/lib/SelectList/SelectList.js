@@ -80,6 +80,10 @@ const styles = theme => ({
     options: {
         paddingTop: 0,
     },
+    wrapper: {
+        maxHeight: '250px',
+        overflow: 'auto'
+    }
 });
 
 
@@ -120,7 +124,19 @@ class SelectList extends Component {
     }
 
     render() {
-        const { classes, placeHolderText, subHeaderText, children, value, fullWidth, primary} = this.props;
+        const {
+          classes,
+          placeHolderText,
+          subHeaderText,
+          children,
+          id,
+          value,
+          fullWidth,
+          primary,
+          name
+        } = this.props;
+
+        const selectListId = `selectListId-${id || Math.random().toString(36).substr(2, 9)}`;
 
         let selectedItemClass = classes.selectedItem;
         if (this.state.open)
@@ -162,12 +178,12 @@ class SelectList extends Component {
 
         return (
             <ClickAwayListener onClickAway={this.closeDropDown}>
-                <div className={rootClass}>
+                <div id={selectListId} className={rootClass}>
                     <Button disableRipple={true} className={selectedItemClass} onClick={this.toggleDropDown} fullWidth={fullWidth}>
                         <Typography className={selectedItemTextClass}>{selected}</Typography>
                         {this.state.open ? <ArrowDropUp className={classes.icon} /> : <ArrowDropDown className={classes.icon} />}
                     </Button>
-                    <Collapse component="div" in={this.state.open} className={classes.listItemsContainer}>
+                    <Collapse component="div" in={this.state.open} classes={{wrapper: classes.wrapper}} className={classes.listItemsContainer}>
                         <List component="ul" classes={{ root: classes.options }}>
                             {items}
                         </List>

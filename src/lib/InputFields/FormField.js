@@ -54,12 +54,16 @@ class FormField extends Component {
     document.execCommand("copy");
   }
     render() {
-      const { classes, inputClasses, component, label, style, ...rest} = this.props
+      const { classes, inputClasses, component, id, label, style, ...rest} = this.props
+      const formFieldId = `formFieldId-${id || Math.random().toString(36).substr(2, 9)}`;
 
       if(component) {
         if (label) {
           return (
-            <div className={classes.formFieldContainer}>
+            <div
+              className={classes.formFieldContainer}
+              id={formFieldId}
+            >
               <label className={classes.formLabel}>{label}</label>
               {component}
             </div>
@@ -71,15 +75,18 @@ class FormField extends Component {
         const combinedStyle = { alignItems: 'center', flexDirection: 'row', ...style }
 
         return (
-            <div className={classes.formFieldWrapper}>
+            <div
+              className={classes.formFieldWrapper}
+              id={formFieldId}
+            >
                 <label className={classes.formLabel}>{label}</label>
                 <Input
-                    fullWidth={true}
-                     disableUnderline = {true}
-                    style={combinedStyle}
-                    classes = {inputClasses}
-                    {...rest }
-                    className={classes.root}
+                  fullWidth={true}
+                  disableUnderline = {true}
+                  style={combinedStyle}
+                  classes = {inputClasses}
+                  {...rest }
+                  className={classes.root}
                />
             </div>
             );
