@@ -435,7 +435,7 @@ class App extends Component {
                       handleClose={this.handleClose}
                       open={this.state.open}
                       dialogTitle='Modal title'
-                      dialogMessage='Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus acfacilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.'
+                      dialogContent='Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus acfacilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.'
                     />
                     <br />
                   </PaperCard>
