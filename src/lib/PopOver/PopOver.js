@@ -52,36 +52,37 @@ class PopoverDropdown extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, title, id } = this.props;
+    const popoverId = `popoverId-${id || Math.random().toString(36).substr(2, 9)}`;
     const { open } = this.state;
     return (
       <div className={classes.root}>
       <Manager>
         <Reference>
-        {({ ref }) => (
-                 <div onClick={this.handleClick}>
-                 {this.props.Component}
-              </div>
-      )}
-
+          {({ ref }) => (
+            <div onClick={this.handleClick} id={`popoverClickHandler-${popoverId}`}>
+              {this.props.Component}
+            </div>
+          )}
         </Reference>
-        <Popper 
-        placement="bottom-end"
-        eventsEnabled={true}
-        modifiers={{ preventOverflow: { enabled: false } }}
-        positionFixed={false}
-        className={classNames({ [classes.popperClose]: !open}, classes.popper)}>
-        {({ ref, style, placement, arrowProps }) => (
-          <ClickAwayListener onClickAway={this.handleClose}>
-          <Grow in={open} id="menu-list" style={{ transformOrigin: '0 0 0' }}>
-            <Paper className={classes.popperContent} ref={ref} data-placement={placement}>
-              <span className = {classes.carot}></span>
-              {this.props.children}
-            </Paper>
-          </Grow>
-        </ClickAwayListener>
-        )}
-      </Popper>
+        <Popper
+          placement="bottom-end"
+          eventsEnabled={true}
+          modifiers={{ preventOverflow: { enabled: false } }}
+          positionFixed={false}
+          className={classNames({ [classes.popperClose]: !open}, classes.popper)}
+        >
+          {({ ref, style, placement, arrowProps }) => (
+            <ClickAwayListener onClickAway={this.handleClose}>
+            <Grow in={open} id={`popoverContainer-${popoverId}`} style={{ transformOrigin: '0 0 0' }}>
+              <Paper className={classes.popperContent} ref={ref} data-placement={placement}>
+                <span className = {classes.carot}></span>
+                {this.props.children}
+              </Paper>
+            </Grow>
+          </ClickAwayListener>
+          )}
+        </Popper>
       </Manager>
     </div>
     );

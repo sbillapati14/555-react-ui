@@ -10,7 +10,7 @@ const styles = theme => ({
       border: 'none',
       outline: 'none',
       borderRadius: 5,
-      height: 39,
+      // height: 39,
       fontSize: 14,
       color: '#606060',
     }

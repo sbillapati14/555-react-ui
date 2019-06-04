@@ -83,7 +83,7 @@ const styles = theme => ({
   }
 });
 
-class SdieNavOption extends Component {
+class SideNavOption extends Component {
 
   handleClick(e) {
     e.preventDefault();
@@ -93,7 +93,8 @@ class SdieNavOption extends Component {
   }
 
   render() {
-    const { classes, active, primary, component: Component, ...rest } = this.props;
+    const { classes, active, id, primary, component: Component, ...rest } = this.props;
+    const sideNavOptionId = `sideNavOptionId-${id || Math.random().toString(36).substr(2, 9)}`;
 
     let listItemClass = classes.listItem;
     if (active)
@@ -101,7 +102,7 @@ class SdieNavOption extends Component {
 
     let text = <ListItemText disableTypography classes={{ root: listItemClass }} primary={primary} />;
     if (Component)
-      text = <Component {...rest} className={classes.link}>{primary}</Component>
+      text = <Component {...rest} className={classes.link} id={sideNavOptionId}>{primary}</Component>
 
     return (
       <ListItem component='li' classes={{ root: classes.root }} onClick={(e) => this.handleClick(e)}>
@@ -111,8 +112,8 @@ class SdieNavOption extends Component {
   }
 }
 
-SdieNavOption.propTypes = {
-  primary: PropTypes.node,
+SideNavOption.propTypes = {
+  primary: PropTypes.node.isRequired,
   /**
    * The component used for the root node.
    * Either a string to use a DOM element or a component.
@@ -121,4 +122,4 @@ SdieNavOption.propTypes = {
   component: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 };
 
-export default withStyles(styles)(SdieNavOption);
+export default withStyles(styles)(SideNavOption);

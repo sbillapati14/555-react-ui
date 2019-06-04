@@ -29,6 +29,7 @@ const styles = theme => ({
     },
   },
   pageIconBtn: {
+    opacity: '1',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -49,7 +50,28 @@ const styles = theme => ({
      backgroundColor: '#2fb3faa8'
     },
   },
+  pageIconBtnDisabled: {
+    opacity: '.5',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '30px',
+    width: '45px',
+    color: 'rgba(0, 0, 0, 0.6)',
+    fontSize: '14px',
+    fontWeight: 'normal',
+    textAlign: 'center',
+    textShadow: 'none',
+    padding: '2px',
+    borderRadius: '3px',
+    border: '1px solid #ccc',
+    transition:  'all 0.12s ease-in-out',
+    '&:hover': {
+     cursor: 'not-allowed',
+    }
+  },
   pageLargeIconBtn: {
+    opacity: '1',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -70,6 +92,26 @@ const styles = theme => ({
      backgroundColor: '#2fb3faa8'
     },
   },
+  pageLargeIconBtnDisabled: {
+    opacity: '.5',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '30px',
+    width: '45px',
+    color: 'rgba(0, 0, 0, 0.6)',
+    fontSize: '14px',
+    fontWeight: 'normal',
+    textAlign: 'center',
+    textShadow: 'none',
+    padding: '0',
+    borderRadius: '3px',
+    border: '1px solid #ccc',
+    transition:  'all 0.12s ease-in-out',
+    '&:hover': {
+     cursor: 'not-allowed',
+    },
+  },
   activeBtn: {
     backgroundColor: '#2fb3fa',
     color: '#fff'
@@ -82,7 +124,7 @@ const styles = theme => ({
   pageArrow: {
     fontSize: '18px',
   },
-  pageArrowLarge: {
+  slideArrow: {
     fontSize: '30px',
   }
 });
@@ -153,11 +195,18 @@ class Pagination extends React.Component {
   }
 
   getListItem(index, totalPages, classes, currentPage){
-      return (
-      <li key={index}
-          className={classNames({ [classes.activeBtn] : (currentPage===index+1)}, classes.pageBtn )}
-          onClick={(e)=>{this.onClickPage(index, totalPages)}}>{index + 1}</li>
-      )
+    const { id } = this.props;
+
+    return (
+      <li
+        id={`paginationPage${index+1}-${id || Math.random().toString(36).substr(2, 9)}`}
+        key={index}
+        className={classNames({ [classes.activeBtn] : (currentPage===index+1)}, classes.pageBtn )}
+        onClick={(e)=>{this.onClickPage(index, totalPages)}}
+      >
+        {index + 1}
+      </li>
+    )
   }
 
   render(){
@@ -166,35 +215,107 @@ class Pagination extends React.Component {
       totalRecords,
       recordsPerPage,
       currentPage,
-      thresholdPageBtns
+      thresholdPageBtns,
+      id
     } = this.props;
 
+    const {
+      slideIndex,
+      currentSlide
+    } = this.state;
+
+    console.log('slideIndex: ', slideIndex);
+    console.log('currentSlide: ', currentSlide);
+
+    const paginationId = `paginationId-${id || Math.random().toString(36).substr(2, 9)}`;
+
     let paginationList = [];
-    const {currentSlide} = this.state;
     const totalPages = Math.ceil(totalRecords/recordsPerPage);
 
     for (var i=0; i<totalPages; i++) {
-        const index = i;
-    const listItem = this.getListItem(index, totalPages, classes, currentPage)
-             paginationList.push(listItem);
+      const index = i;
+      const listItem = this.getListItem(index, totalPages, classes, currentPage)
+      paginationList.push(listItem);
     }
     if(thresholdPageBtns)
-    paginationList =  paginationList.filter((item, index)=>  (index>=((currentSlide-1)*thresholdPageBtns) && index < (currentSlide*thresholdPageBtns)));
+    paginationList =  paginationList.filter((item, index) => (index>=((currentSlide-1)*thresholdPageBtns) && index < (currentSlide*thresholdPageBtns)));
+
+    // set arrow styles for edge cases
+    let leftSlideBtnClass = classes.pageLargeIconBtn;
+    let leftPageBtnClass = classes.pageIconBtn;
+
+    if (currentSlide === 1) {
+      // when user on first slide, fade out left slide arrow
+      leftSlideBtnClass = classes.pageLargeIconBtnDisabled;
+      if (currentPage === 1) {
+        // when use on first page, fade out left page arrow
+        leftPageBtnClass = classes.pageIconBtnDisabled;
+      }
+    }
+
+    let rightSlideBtnClass= classes.pageLargeIconBtn;
+    let rightPageBtnClass = classes.pageIconBtn;
+
+    if (currentSlide === slideIndex.length) {
+      // when user on last slide, fade out right slide arrow
+      rightSlideBtnClass = classes.pageLargeIconBtnDisabled;
+      if (currentPage === totalPages) {
+        // when user on last page, fade out right page arrow
+        rightPageBtnClass = classes.pageIconBtnDisabled;
+      }
+    }
+
+
+
     return (
-      <ul className={classes.pagination}>
+      <ul className={classes.pagination} id={`paginationContainer-${paginationId}`}>
         {
-          thresholdPageBtns && <li className={classes.pageLargeIconBtn}  onClick={()=>this.onClickPage('prevSlide', totalPages)}>
-            <LeftIcon classes={{root: classes.pageArrowLarge}}/>
+          thresholdPageBtns && <li
+            id={`prevSlide-${paginationId}`}
+            className={leftSlideBtnClass}
+            onClick={() => {
+              if (currentSlide !== 1) {
+                this.onClickPage('prevSlide', totalPages)
+              }
+            }}
+          >
+            <LeftIcon classes={{ root: classes.slideArrow }}/>
           </li>
         }
-        <li className={classes.pageIconBtn}  onClick={()=>this.onClickPage('prev', totalPages)}>
-        <LeftIcon classes={{root: classes.pageArrow}}/></li>
+          <li
+            id={`prevPage-${paginationId}`}
+            className={leftPageBtnClass}
+            onClick={() => {
+              if (currentPage !== 1) {
+                this.onClickPage('prev', totalPages)
+              }
+            }}
+          >
+            <LeftIcon classes={{ root: classes.pageArrow }}/>
+          </li>
         {paginationList}
-        <li className={classes.pageIconBtn}  onClick={()=>this.onClickPage('next', totalPages)}>
-        <RightIcon classes={{root: classes.pageArrow}} /></li>
+        <li
+          id={`nextPage-${paginationId}`}
+          className={rightPageBtnClass}
+          onClick={() => {
+            if (currentPage !== totalPages) {
+              this.onClickPage('next', totalPages)
+            }
+          }}
+        >
+          <RightIcon classes={{ root: classes.pageArrow }} />
+        </li>
         {
-          thresholdPageBtns && <li className={classes.pageLargeIconBtn}  onClick={()=>this.onClickPage('nextSlide', totalPages)}>
-            <RightIcon classes={{root: classes.pageArrowLarge}}/>
+          thresholdPageBtns && <li
+            id={`nextSlide-${paginationId}`}
+            className={rightSlideBtnClass}
+            onClick={() => {
+              if (currentSlide !== slideIndex.length) {
+                this.onClickPage('nextSlide', totalPages)
+              }
+            }}
+          >
+            <RightIcon classes={{ root: classes.slideArrow }} />
           </li>
         }
       </ul>

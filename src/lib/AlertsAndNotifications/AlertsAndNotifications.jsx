@@ -46,19 +46,19 @@ const styles = theme => {
     };
 
 const AlertsAndNotifications  = ({notifications, title, showTitle, classes}) => {
-    return(
-                <List className={classes.notificationList}>
-                {notifications.map((notification, ind)=>
-                  (<div key={ind}>
-                      <ListItem key={ind} className={classes.listItem}>
-                          <Dot style={{ color:  "#000"}} className={classes.circle} />
-                          <p className={classes.alert}>{notification.description}</p>
-                    <span className={classes.alertTime}>{timeAgo(notification.timestamp)}</span>
-                  </ListItem>
-                  {(ind < notifications.length-1) && <Divider />}
-                </div>)
-                )}
-                </List>
+    return (
+      <List className={classes.notificationList}>
+        {notifications.map((notification, ind)=>
+          (<div key={ind}>
+              <ListItem key={ind} id={`notificationItem-${ind}`} className={classes.listItem}>
+                  <Dot style={{ color:  "#000"}} className={classes.circle} />
+                  <p className={classes.alert}>{notification.description}</p>
+            <span className={classes.alertTime}>{timeAgo(notification.timestamp)}</span>
+          </ListItem>
+          {(ind < notifications.length-1) && <Divider />}
+        </div>)
+        )}
+      </List>
     )
 }
 
