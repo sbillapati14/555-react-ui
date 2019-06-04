@@ -48,6 +48,7 @@ import ContextMenu from '../lib/ContextMenu';
 import { D3LineChart } from '../lib/D3LineChart';
 import { NivoLineChart } from '../lib/NivoLineChart';
 import { NivoStackedBarChart } from '../lib/NivoStackedBarChart';
+import { AlertHelpDialog } from '../lib';
 
 
 
@@ -130,13 +131,24 @@ class App extends Component {
     this.setState({ [key]: pageNumber })
   }
 
+  handleClickOpen = () => {
+    this.setState({
+      open: true,
+    });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+
 
 
   render() {
 
     const { selectedApplication, selectedTeam } = this.state;
-    const { classes } = this.props;
+    const { classes, dialogOpenHandler } = this.props;
     const { cardHeader } = classes;
+    console.log(`Props: ${this.props}`);
 
     return (
       <AppContainer>
@@ -405,6 +417,27 @@ class App extends Component {
                       <Typography variant="caption">print</Typography>
                       <Typography variant="caption">help</Typography>
                     </ContextMenu>
+                  </PaperCard>
+
+                  <br />
+
+                  <PaperCard title="AlertDialogs"
+                    avatar={
+                      <Avatar>
+                        <ImageIcon />
+                      </Avatar>
+                    }
+                  >
+                    <Button variant="outlined" color="secondary" onClick={this.handleClickOpen}>
+                      Open help dialog
+                    </Button>
+                    <AlertHelpDialog
+                      handleClose={this.handleClose}
+                      open={this.state.open}
+                      dialogTitle='Modal title'
+                      dialogContent='Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus acfacilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.'
+                    />
+                    <br />
                   </PaperCard>
 
                   <br />
