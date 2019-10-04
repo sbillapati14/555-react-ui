@@ -73,7 +73,7 @@ class AlertHelpDialog extends React.Component {
       dialogTitle,
       dialogContent,
       handleClose,
-      open,
+      // open,
     } = this.props;
 
     return (

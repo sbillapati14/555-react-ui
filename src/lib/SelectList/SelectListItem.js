@@ -27,8 +27,13 @@ class SelectListItem extends Component {
     }
 
     render() {
-
-        const { classes, children, selected, value, id } = this.props;
+        const {
+          classes,
+          children,
+          selected,
+          // value,
+          id
+        } = this.props;
         const selectListItemId = `selectListItemId-${id || Math.random().toString(36).substr(2, 9)}`;
 
         return (

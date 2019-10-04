@@ -1,5 +1,5 @@
 import React from 'react'
-import * as d3 from 'd3';
+// import * as d3 from 'd3';
 import { withStyles } from '@material-ui/core/styles';
 import { ResponsiveLine } from '@nivo/line'
 

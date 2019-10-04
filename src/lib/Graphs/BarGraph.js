@@ -34,18 +34,18 @@ renderChart(){
   var margin = {top: 40, right: 20, bottom: 30, left: 40},
       width = (this.props.chartWidth || 500) - margin.left - margin.right,
       height = (this.props.chartHeight || 500) - margin.top - margin.bottom;
-  
-  
+
+
   var x = d3.scaleBand()
     .rangeRound([0, width])
     .padding(barPadding);
 
 var y = d3.scaleLinear()
     .rangeRound([height, 0]);
-  
+
   x.domain(data.map(function(d) { return d.label; }));
-  y.domain([0, d3.max(data, function(d) { return d.value; })]); 
-  
+  y.domain([0, d3.max(data, function(d) { return d.value; })]);
+
   let chartId = `#${this.props.chartId}`;
   var svg = d3.select(chartId).append("svg")
       .attr("width", width + margin.left + margin.right)
@@ -57,7 +57,7 @@ var y = d3.scaleLinear()
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x))
 
-    var yAxis = svg.append("g")
+    svg.append("g")
     .attr("class", 'yAxis')
     .call(d3.axisLeft(y))
     .append("text")
@@ -96,7 +96,7 @@ var y = d3.scaleLinear()
           <div className={classes.barWrapper}>
             <h3 className={classes.barChartTitle}>{title}</h3>
            <div id={this.props.chartId}>
-                
+
            </div>
            </div>
         )

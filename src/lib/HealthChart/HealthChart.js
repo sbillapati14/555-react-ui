@@ -72,10 +72,18 @@ componentWillReceiveProps(nextProps){
     this.renderBarChart(nextProps.data);
 }
 
-
-
 renderBarChart(data, isResize){
-    const {chartHeight, minWidth,  chartId, classes, x_reference, y_reference, getTooltipData, onClickBar, barPadding} = this.props;
+    const {
+      chartHeight,
+      minWidth,
+      chartId,
+      classes,
+      x_reference,
+      y_reference,
+      getTooltipData,
+      onClickBar,
+      // barPadding
+    } = this.props;
     var chartWidth = document.getElementById(chartId+"wrapper").clientWidth;
     chartWidth = chartWidth<minWidth ? minWidth : chartWidth;
 
