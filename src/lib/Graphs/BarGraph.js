@@ -54,23 +54,23 @@ var y = d3.scaleLinear()
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     svg.append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x))
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x))
 
     svg.append("g")
-    .attr("class", 'yAxis')
-    .call(d3.axisLeft(y))
-    .append("text")
-    .attr("fill", "#000")
-    .attr("transform", "rotate(-90)")
-    .attr("y", 6)
-    .attr("dy", "0.71em")
-    .attr("text-anchor", "end")
-    .text("avg");
+      .attr("class", 'yAxis')
+      .call(d3.axisLeft(y))
+      .append("text")
+      .attr("fill", "#000")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", "0.71em")
+      .attr("text-anchor", "end")
+      .text("avg");
 
     svg.selectAll(".yAxis line")
-    .attr('x2', width)
-    .attr('stroke', '#eee');
+      .attr('x2', width)
+      .attr('stroke', '#eee');
 
     svg.selectAll(".bar")
         .data(data)
