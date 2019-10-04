@@ -224,9 +224,6 @@ class Pagination extends React.Component {
       currentSlide
     } = this.state;
 
-    console.log('slideIndex: ', slideIndex);
-    console.log('currentSlide: ', currentSlide);
-
     const paginationId = `paginationId-${id || Math.random().toString(36).substr(2, 9)}`;
 
     let paginationList = [];

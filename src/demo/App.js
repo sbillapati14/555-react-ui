@@ -148,7 +148,7 @@ class App extends Component {
     const { selectedApplication, selectedTeam } = this.state;
     const { classes, dialogOpenHandler } = this.props;
     const { cardHeader } = classes;
-    console.log(`Props: ${this.props}`);
+    // console.log(`Props: ${this.props}`);
 
     return (
       <AppContainer>

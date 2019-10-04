@@ -91,7 +91,7 @@ class NestedList extends React.Component {
 
     handleSelectOption = (index) => {
 
-        console.log("clicked", index)
+        // console.log("clicked", index)
         this.setState({ selected: index })
         // this.handleClick
         if (index === 0) {
@@ -102,7 +102,7 @@ class NestedList extends React.Component {
         setTimeout((_) => {
             // this.handleClick
         }, 300)
-        console.log(index)
+        // console.log(index)
     }
 
     render() {

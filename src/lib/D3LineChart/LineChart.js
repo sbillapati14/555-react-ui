@@ -56,18 +56,18 @@ class LineChartComponent extends React.Component{
       var margin = {top: 40, right: 20, bottom: 30, left: 40},
           width = (this.props.chartWidth || 500) - margin.left - margin.right,
           height = (this.props.chartHeight || 500) - margin.top - margin.bottom;
-      
-      
+
+
       var x = d3.scaleBand()
                 .rangeRound([0, width])
                 .padding(linePadding);
 
       var y = d3.scaleLinear()
                 .rangeRound([height, 0]);
-      
+
       x.domain(data.map(function(d) { return d.label; }));
-      y.domain([0, d3.max(data, function(d) { return d.value; })]); 
-      
+      y.domain([0, d3.max(data, function(d) { return d.value; })]);
+
       let chartId = `#${this.props.chartId}`;
 
       var percentiles = data.map(function(id) {
@@ -109,10 +109,16 @@ class LineChartComponent extends React.Component{
       //     .attr("height", function(d) { return height - y(d.y); })
 
       data.forEach( function(d) {
-        console.log("Single Line Data: " + JSON.stringify(d))
+        // console.log("Single Line Data: " + JSON.stringify(d))
         var lineFun = d3.line()
-                      .x(function(d) {console.log("x: " + d.x); return d.x} )
-                      .y(function(d) {console.log("y: " + d.y); return d.y} )
+                      .x(function(d) {
+                        // console.log("x: " + d.x);
+                        return d.x
+                      })
+                      .y(function(d) {
+                        // console.log("y: " + d.y);
+                        return d.y
+                      } )
                       .curve(d3.curveBasis)
 
         svg.append("path")
@@ -139,7 +145,7 @@ class LineChartComponent extends React.Component{
         <div className={classes.lineWrapper}>
           <h3 className={classes.lineChartTitle}>{title}</h3>
           <div id={this.props.chartId}>
-              
+
           </div>
         </div>
       )

@@ -7,7 +7,7 @@ let babelPresetEnv;
 // It's something that matches the latest official supported features of JavaScript.
 // Nothing more (stage-1, etc), nothing less (require, etc).
 if (ENV === 'es') {
-    console.log("i'm here yolo")
+    // console.log("i'm here yolo")
     babelPresetEnv = {};
 } else {
     babelPresetEnv = {

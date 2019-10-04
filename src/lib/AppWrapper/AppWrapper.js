@@ -13,7 +13,7 @@ class AppWrapper extends Component {
     };
 
     toggleDrawer = () => {
-        console.log('toggleDrawer', !this.state.isMobileOpen)
+        // console.log('toggleDrawer', !this.state.isMobileOpen)
         this.setState({ isMobileOpen: !this.state.isMobileOpen });
     };
 
