@@ -4,7 +4,12 @@ import {
   BrowserRouter as Router,
   NavLink,
 } from 'react-router-dom'
-import { last, filter, startsWith, map } from 'ramda';
+import {
+  last,
+  // filter,
+  // startsWith,
+  map
+} from 'ramda';
 
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -45,12 +50,10 @@ import Tree from '../lib/Tree';
 import Icon from '../icons';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import ContextMenu from '../lib/ContextMenu';
-import { D3LineChart } from '../lib/D3LineChart';
+// import { D3LineChart } from '../lib/D3LineChart';
 import { NivoLineChart } from '../lib/NivoLineChart';
 import { NivoStackedBarChart } from '../lib/NivoStackedBarChart';
 import { AlertHelpDialog } from '../lib';
-
-
 
 const styles = theme => ({
   appBar: {
@@ -146,9 +149,12 @@ class App extends Component {
   render() {
 
     const { selectedApplication, selectedTeam } = this.state;
-    const { classes, dialogOpenHandler } = this.props;
+    const {
+      classes,
+      // dialogOpenHandler
+    } = this.props;
     const { cardHeader } = classes;
-    console.log(`Props: ${this.props}`);
+    // console.log(`Props: ${this.props}`);
 
     return (
       <AppContainer>

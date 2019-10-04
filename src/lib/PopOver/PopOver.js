@@ -7,8 +7,6 @@ import { Manager, Reference, Popper, } from 'react-popper';
 import Grow from '@material-ui/core/Grow';
 import Paper from '@material-ui/core/Paper';
 
-
-
 const styles = theme => ({
    root: {
        display: 'flex',
@@ -52,7 +50,11 @@ class PopoverDropdown extends React.Component {
   };
 
   render() {
-    const { classes, title, id } = this.props;
+    const {
+      classes,
+      // title,
+      id
+    } = this.props;
     const popoverId = `popoverId-${id || Math.random().toString(36).substr(2, 9)}`;
     const { open } = this.state;
     return (

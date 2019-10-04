@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import withStyles from "@material-ui/core/styles/withStyles";
 import LeftIcon from '@material-ui/icons/ChevronLeft';
 import RightIcon from '@material-ui/icons/ChevronRight';
-import SvgIcon from '@material-ui/core/SvgIcon';
+// import SvgIcon from '@material-ui/core/SvgIcon';
 
 const styles = theme => ({
   pageBtn: {
@@ -223,9 +223,6 @@ class Pagination extends React.Component {
       slideIndex,
       currentSlide
     } = this.state;
-
-    console.log('slideIndex: ', slideIndex);
-    console.log('currentSlide: ', currentSlide);
 
     const paginationId = `paginationId-${id || Math.random().toString(36).substr(2, 9)}`;
 
